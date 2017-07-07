@@ -1,8 +1,12 @@
-# web-dev-template
+a. I am a senior undergraduate student majoring in Computer Science in Northeastern. I have one co-op experience at Norvartis Pharmaceuticals, working as a software developer. 
 
-1. git clone https://github.com/jannunzi/web-dev-template.git
-1. cd web-dev-template
-1. npm install
-1. mongod
-1. node server.js
-1. browse to localhost:3000
+b. This repository is for keeping record of progress in my CS5610 web-development class for 2017 summer 2 session.
+
+c. 
+  i) Root to hosted environment on Heroku.
+     https://lee-jaejin-webdev.herokuapp.com/
+
+
+  ii)Link to my project.
+
+  iii)Link to my assignment
