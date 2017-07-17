@@ -13,17 +13,17 @@
         <div class="row">
             <div class="navbar-header col-xs-12">
                 <p class="navbar-text pull-left col-2">
-                    <a href="profile.html" class="navbar-link">
+                    <a href="widget-chooser.html" class="navbar-link">
                         <span class="glyphicon glyphicon-chevron-left">
                         </span>
                     </a>
                 </p>
                      <a class="navbar-brand col-8" href="#">
-                        Pages
+                        Widget Edit
                     </a>
                 <p class="navbar-text pull-right col-2">
-                    <a href="page-new.html" class="navbar-link">
-                        <span class="glyphicon glyphicon-plus">
+                    <a href="website-new.html" class="navbar-link">
+                        <span class="glyphicon glyphicon-ok">
                         </span>
                     </a>
                 </p>
@@ -32,24 +32,38 @@
         </div>
 </nav>
 
-<div class="container-fluid container-list-group list-group">
-    <p class="list-group-item group-item-wslist">
-        <a href="widget-list.html">Example page</a>
-        <a href="page-edit.html"><span class="pull-right glyphicon glyphicon-cog"></span></a>
-    </p>
-    <p class="list-group-item group-item-wslist">
-        <a href="#">Example page</a>
-        <a href="#"><span class="pull-right glyphicon glyphicon-cog"></span></a>
-    </p>
-    <p class="list-group-item group-item-wslist">
-        <a href="#">Example page</a>
-        <a href="#"><span class="pull-right glyphicon glyphicon-cog"></span></a>
-    </p>
-    <p class="list-group-item group-item-wslist">
-        <a href="#">Example page</a>
-        <a href="#"><span class="pull-right glyphicon glyphicon-cog"></span></a>
-    </p>
-</div>
+<form class="container-fluid">
+    <div class="form-group container-list-group">
+        <label for="widget-name">Name</label>
+        <input type="text"
+               class="form-control element-margin"
+               id="widget-name"
+               placeholder="Widget Name">
+
+        <label for="widget-text">Text</label>
+        <input type="text"
+               class="form-control element-margin"
+               id="widget-text"
+               placeholder="Image text">
+
+        <label for="widget-url">URL</label>
+        <input type="text"
+               class="form-control element-margin"
+               id="widget-url"
+               placeholder="URL of the image">
+
+        <label for="widget-width">Width</label>
+        <input type="text"
+               class="form-control element-margin"
+               id="widget-width"
+               placeholder="Width of the image (e.g. 100%)">
+
+        <input class="form-control btn btn-danger element-margin"
+               type="button"
+               value="Delete">
+
+    </div>
+</form>
 
 <div class="nav-footer"></div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
