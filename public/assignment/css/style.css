@@ -6,20 +6,44 @@ body {
     padding-top: 36px;
 }
 
+
 .container-list-group {
     margin-top: 30px;
 }
 
+.nav-footer {
+    margin-bottom: 60px;
+}
 .group-item-wslist {
     margin-left: 4%;
     margin-right: 0.5%;
 }
 
-.right-most-footer{
+.right-most-footer {
     padding-right: 15px; !important;
 }
 
-.element-margin{
+.element-margin {
     margin-top: 10px;
     margin-bottom: 5px;
+}
+
+.widget-menu {
+    background-color: #C0C0C0;
+    z-index: 100;
+    border: 1px solid;
+    border-top: 0px;
+    border-right: 0px;
+    border-radius: 3px;
+}
+.glyphicon-align-justify {
+    color: black;
+}
+/*.glyphicon-cog {*/
+    /*color: #337ab7;*/
+/*}*/
+
+.widget-menu-item {
+    padding: 1px;
+    margin: 1px;
 }
