@@ -18,3 +18,8 @@ body {
 .right-most-footer{
     padding-right: 15px; !important;
 }
+
+.element-margin{
+    margin-top: 10px;
+    margin-bottom: 5px;
+}

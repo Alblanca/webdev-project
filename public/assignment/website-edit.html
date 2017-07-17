@@ -37,7 +37,7 @@
                     </a>
                 </p>
                      <a class="navbar-brand " href="#">
-                        New Website
+                        Edit Website
                     </a>
                 <p class="navbar-text pull-right  ">
                     <a href="#" class="navbar-link">
@@ -62,21 +62,35 @@
     </p>
 </div>
 
+
+<!--<div class="container-list-group hidden-xs hidden-sm col-md-4">-->
+        <!--<a class="list-group-item group-item-wslist" href="#">Item-->
+            <!--<span class="pull-right glyphicon glyphicon-cog"></span>-->
+        <!--</a>-->
+        <!--<a class="list-group-item group-item-wslist" href="#">Item 2-->
+            <!--<span class="pull-right glyphicon glyphicon-cog"></span>-->
+        <!--</a>-->
+<!--</div>-->
+
 </div>
 <form class="col-md-8">
     <div class="form-group container-list-group">
-        <label for="website-name">Name</label>
+        <label for="website-name">Website Name</label>
 
         <input type="text"
                class="form-control element-margin"
                id="website-name"
-                placeholder="Website Name">
+                placeholder="Website Name"
+               value="Example Website">
 
-        <label class="element-margin" for="description">Description</label>
+        <label class="element-margin" for="description">Website Description</label>
         <textarea class="form-control element-margin"
                     id="description"
                     rows="5"
-                  placeholder="Description"></textarea>
+                  placeholder="Description">This is an example description</textarea>
+        <input class="form-control btn btn-danger element-margin"
+                type="button"
+                value="Delete">
 
     </div>
 </form>
