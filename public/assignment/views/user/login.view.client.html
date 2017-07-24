@@ -4,21 +4,28 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
+    <link href="../../css/style.css" rel="stylesheet"/>
+
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid" ng-controller="loginController">
+        <div class="alert alert-info" ng-show="welcomeUser">
+            Welcome back {{welcomeUser.username}}
+        </div>
         <h1>Login</h1>
         <input type="text"
                class="form-control"
+               ng-model="user.username"
                placeholder="username"/>
         <input type="password"
                class="form-control"
+               ng-model="user.password"
                placeholder="password"/>
         <a class="btn btn-primary btn-block"
-           href="profile.html">Login</a>
+           ng-click="login(user)"
+           href="#">Login</a>
         <a class="btn btn-success btn-block"
-           href="register.html">Register</a>
+           href="register.view.client.html">Register</a>
     </div>
 </body>
 </html>

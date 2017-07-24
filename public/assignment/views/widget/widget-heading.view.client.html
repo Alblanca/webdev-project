@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
+    <link href="../../css/style.css" rel="stylesheet"/>
 </head>
 <body>
 
@@ -13,7 +13,7 @@
         <div class="row">
             <div class="navbar-header col-xs-12">
                 <p class="navbar-text pull-left col-2">
-                    <a href="widget-chooser.html" class="navbar-link">
+                    <a href="widget-chooser.view.client.html" class="navbar-link">
                         <span class="glyphicon glyphicon-chevron-left">
                         </span>
                     </a>
@@ -22,7 +22,7 @@
                         Widget Edit
                     </a>
                 <p class="navbar-text pull-right col-2">
-                    <a href="widget-list.html" class="navbar-link">
+                    <a href="widget-list.view.client.html" class="navbar-link">
                         <span class="glyphicon glyphicon-ok">
                         </span>
                     </a>
@@ -35,36 +35,32 @@
 <form class="container-fluid">
     <div class="form-group container-list-group">
         <label for="widget-name">Name</label>
+
         <input type="text"
                class="form-control element-margin"
                id="widget-name"
                placeholder="Widget Name">
 
         <label for="widget-text">Text</label>
+
         <input type="text"
                class="form-control element-margin"
                id="widget-text"
-               placeholder="Image text">
+               placeholder="Title text">
 
-        <label for="widget-url">URL</label>
+        <label for="widget-size">Size</label>
+
         <input type="text"
                class="form-control element-margin"
-               id="widget-url"
-               placeholder="URL of the image">
+               id="widget-size"
+               placeholder="Size of the title">
 
-        <label for="widget-width">Width</label>
-        <input type="text"
-               class="form-control element-margin"
-               id="widget-width"
-               placeholder="Width of the image (e.g. 100%)">
 
-        <label class="control-label" for="widget-file">Upload</label>
-        <input id="widget-file" type="file" class="file form-control">
-
-        <input class="form-control btn btn-primary element-margin"
-               type="button"
-               value="Upload Image">
-
+        <!--<label class="element-margin" for="description">Website Description</label>-->
+        <!--<textarea class="form-control element-margin"-->
+                  <!--id="description"-->
+                  <!--rows="5"-->
+                  <!--placeholder="Description">This is an example description</textarea>-->
         <input class="form-control btn btn-danger element-margin"
                type="button"
                value="Delete">
@@ -77,7 +73,7 @@
             <span class="col-9"></span>
             <div class="navbar-text col-3 pull-right">
                     <div class=" ">
-                        <a href="profile.html">
+                        <a href="../user/profile.view.client.html">
                             <span class="right-most-footer glyphicon glyphicon-user"></span>
                         </a>
                     </div>

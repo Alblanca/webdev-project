@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
+    <link href="../../css/style.css" rel="stylesheet"/>
 </head>
 <body>
 
@@ -13,7 +13,7 @@
         <div class="row">
             <div class="navbar-header hidden-xs hidden-sm col-md-4">
                 <p class="navbar-text pull-left  ">
-                    <a href="page-list.html" class= "navbar-link">
+                    <a href="page-list.view.client.html" class= "navbar-link">
                         <span class="glyphicon glyphicon-chevron-left">
                         </span>
                     </a>
@@ -22,7 +22,7 @@
                     Pages
                 </a>
                 <p class="navbar-text pull-right ">
-                    <a href="#" class="navbar-link">
+                    <a href="page-new.view.client.html" class="navbar-link">
                         <span class="glyphicon glyphicon-plus">
                         </span>
                     </a>
@@ -31,16 +31,16 @@
 
             <div class="navbar-header col-md-8 col-sm-12 col-xs-12">
                 <p class="navbar-text pull-left hidden-lg hidden-xl hidden-md ">
-                    <a href="page-list.html" class= "navbar-link">
+                    <a href="page-list.view.client.html" class= "navbar-link">
                         <span class="glyphicon glyphicon-chevron-left">
                         </span>
                     </a>
                 </p>
                      <a class="navbar-brand " href="#">
-                        New Page
+                        Edit Page
                     </a>
                 <p class="navbar-text pull-right  ">
-                    <a href="page-list.html" class="navbar-link">
+                    <a href="#" class="navbar-link">
                         <span class="glyphicon glyphicon-ok">
                         </span>
                     </a>
@@ -53,19 +53,19 @@
 
 <div class="container-fluid container-list-group list-group hidden-xs hidden-sm col-md-4">
     <p class="list-group-item group-item-wslist">
-        <a href="widget-list.html">Example Page</a>
-        <a href="website-edit.html"><span class="pull-right glyphicon glyphicon-cog"></span></a>
+        <a href="../widget/widget-list.view.client.html">Example page</a>
+        <a href="page-edit.view.client.html"><span class="pull-right glyphicon glyphicon-cog"></span></a>
     </p>
     <p class="list-group-item group-item-wslist">
-        <a href="#">Example Page</a>
+        <a href="#">Example page</a>
         <a href="#"><span class="pull-right glyphicon glyphicon-cog"></span></a>
     </p>
     <p class="list-group-item group-item-wslist">
-        <a href="#">Example Page</a>
+        <a href="#">Example page</a>
         <a href="#"><span class="pull-right glyphicon glyphicon-cog"></span></a>
     </p>
     <p class="list-group-item group-item-wslist">
-        <a href="#">Example Page</a>
+        <a href="#">Example page</a>
         <a href="#"><span class="pull-right glyphicon glyphicon-cog"></span></a>
     </p>
 </div>
@@ -78,13 +78,18 @@
         <input type="text"
                class="form-control element-margin"
                id="page-name"
-                placeholder="Page Name">
+                placeholder="Website Name"
+               value="Example Website">
 
         <label class="element-margin" for="title">Title</label>
         <textarea class="form-control element-margin"
                     id="title"
                     rows="5"
-                  placeholder="Page Title"></textarea>
+                  placeholder="Description">This is an example description</textarea>
+        <input class="form-control btn btn-danger element-margin"
+                type="button"
+                value="Delete">
+
     </div>
 </form>
 
@@ -94,7 +99,7 @@
             <span class="col-9"></span>
             <div class="navbar-text col-3 pull-right">
                     <div class=" ">
-                        <a href="profile.html">
+                        <a href="../user/profile.view.client.html">
                             <span class="right-most-footer glyphicon glyphicon-user"></span>
                         </a>
                     </div>
