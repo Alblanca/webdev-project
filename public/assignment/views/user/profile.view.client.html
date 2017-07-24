@@ -1,4 +1,4 @@
-<div ng-controller="profileController">
+<div>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="row">
@@ -31,28 +31,37 @@
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" class="form-control" id="username" placeholder="Username"
-                    ng-model="user.username">
+                    ng-model="model.user.username">
                 </div>
                 <div class="form-group">
                     <label for="email">Email address</label>
-                    <input type="email" class="form-control" id="email" placeholder="alice@wonderland.com">
+                    <input type="email"
+                           class="form-control"
+                           ng-model="model.user.email"
+                           id="email"
+                           placeholder="alice@wonderland.com">
                 </div>
                 <div class="form-group">
                     <label for="first-name">First Name</label>
                     <input type="text" class="form-control" id="first-name" placeholder="Alice"
-                    ng-model="user.firstName">
+                    ng-model="model.user.firstName">
                 </div>
                 <div class="form-group">
                     <label for="last-name">Last Name</label>
                     <input type="text" class="form-control" id="last-name" placeholder="Wonderland"
-                    ng-model="user.lastName">
+                    ng-model="model.user.lastName">
                 </div>
             </form>
 
+
             <a class="btn btn-primary btn-block"
+                ng-click="model.updateUser(model.user)">Update</a>
+            <a class="btn btn-info btn-block"
                href="../website/website-list.view.client.html">Websites</a>
             <a class="btn btn-danger  btn-block"
-               href="login.view.client.html">Logout</a>
+               ng-click="model.unregisterUser(model.user)">Unregister</a>
+            <a class="btn btn-danger  btn-block"
+               href="#!login">Logout</a>
         </div>
 
     <!--footer -->
