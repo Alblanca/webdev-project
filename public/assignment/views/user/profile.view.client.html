@@ -1,78 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../../css/style.css" rel="stylesheet"/>
-</head>
-<body>
-
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="navbar-header col-xs-12">
-                <p class="navbar-text pull-left col-2">
-                    <a href="profile.view.client.html" class="navbar-link">
-                        <span class="glyphicon ">
-                        </span>
+<div>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="navbar-header col-xs-12">
+                    <p class="navbar-text pull-left col-2">
+                        <a href="profile.view.client.html" class="navbar-link">
+                            <span class="glyphicon ">
+                            </span>
+                        </a>
+                    </p>
+                    <a class="navbar-brand col-8" href="#">
+                        Profile
                     </a>
-                </p>
-                <a class="navbar-brand col-8" href="#">
-                    Profile
+                    <p class="navbar-text pull-right col-2">
+                        <a href="#" class="navbar-link">
+                            <span class="glyphicon glyphicon-ok">
+                            </span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+        <div class="container">
+            <h1>Profile</h1>
+
+            <form>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" placeholder="alice@wonderland.com">
+                </div>
+                <div class="form-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text" class="form-control" id="first-name" placeholder="Alice">
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" class="form-control" id="last-name" placeholder="Wonderland">
+                </div>
+            </form>
+
+            <a class="btn btn-primary btn-block"
+               href="../website/website-list.view.client.html">Websites</a>
+            <a class="btn btn-danger  btn-block"
+               href="login.view.client.html">Logout</a>
+        </div>
+
+    <!--footer -->
+    <div class="nav-footer"></div>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <span class="col-9"></span>
+        <div class="navbar-text col-3 pull-right">
+            <div class=" ">
+                <a href="profile.view.client.html">
+                    <span class="right-most-footer glyphicon glyphicon-user"></span>
                 </a>
-                <p class="navbar-text pull-right col-2">
-                    <a href="#" class="navbar-link">
-                        <span class="glyphicon glyphicon-ok">
-                        </span>
-                    </a>
-                </p>
             </div>
         </div>
-    </div>
-</nav>
-
-
-    <div class="container">
-        <h1>Profile</h1>
-
-        <form>
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" placeholder="Username">
-            </div>
-            <div class="form-group">
-                <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" placeholder="alice@wonderland.com">
-            </div>
-            <div class="form-group">
-                <label for="first-name">First Name</label>
-                <input type="text" class="form-control" id="first-name" placeholder="Alice">
-            </div>
-            <div class="form-group">
-                <label for="last-name">Last Name</label>
-                <input type="text" class="form-control" id="last-name" placeholder="Wonderland">
-            </div>
-        </form>
-
-        <a class="btn btn-primary btn-block"
-           href="../website/website-list.view.client.html">Websites</a>
-        <a class="btn btn-danger  btn-block"
-           href="login.view.client.html">Logout</a>
-    </div>
-
-<!--footer -->
-<div class="nav-footer"></div>
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <span class="col-9"></span>
-    <div class="navbar-text col-3 pull-right">
-        <div class=" ">
-            <a href="profile.view.client.html">
-                <span class="right-most-footer glyphicon glyphicon-user"></span>
-            </a>
-        </div>
-    </div>
-</nav>
-
-</body>
-</html>
+    </nav>
+</div>

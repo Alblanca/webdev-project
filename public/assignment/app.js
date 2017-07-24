@@ -1,8 +1,17 @@
 /**
  * Created by berti on 7/23/2017.
  */
-var app = angular.module("WebAppMaker", []);
+var app = angular.module("WebAppMaker", ["ngRoute"]);
 app.controller("loginController", loginController);
+
+app.config(configuration);
+
+function configuration($routeProvider) {
+    $routeProvider
+        .when("/login", {
+            templateUrl: "views/user/login.view.client.html"
+        })
+}
 
 function loginController($scope) {
     var users = [

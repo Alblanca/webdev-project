@@ -1,79 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../../css/style.css" rel="stylesheet"/>
-</head>
-<body>
-
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="navbar-header col-xs-12">
-                <p class="navbar-text pull-left col-2">
-                    <a href="widget-chooser.view.client.html" class="navbar-link">
-                        <span class="glyphicon glyphicon-chevron-left">
-                        </span>
-                    </a>
-                </p>
-                     <a class="navbar-brand col-8" href="#">
-                        Widget Edit
-                    </a>
-                <p class="navbar-text pull-right col-2">
-                    <a href="widget-list.view.client.html" class="navbar-link">
-                        <span class="glyphicon glyphicon-ok">
-                        </span>
-                    </a>
-                </p>
+<div>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="navbar-header col-xs-12">
+                    <p class="navbar-text pull-left col-2">
+                        <a href="widget-chooser.view.client.html" class="navbar-link">
+                            <span class="glyphicon glyphicon-chevron-left">
+                            </span>
+                        </a>
+                    </p>
+                         <a class="navbar-brand col-8" href="#">
+                            Widget Edit
+                        </a>
+                    <p class="navbar-text pull-right col-2">
+                        <a href="widget-list.view.client.html" class="navbar-link">
+                            <span class="glyphicon glyphicon-ok">
+                            </span>
+                        </a>
+                    </p>
+                </div>
             </div>
+            </div>
+    </nav>
+
+    <form class="container-fluid">
+        <div class="form-group container-list-group">
+            <label for="widget-name">Name</label>
+            <input type="text"
+                   class="form-control element-margin"
+                   id="widget-name"
+                   placeholder="Widget Name">
+
+            <label for="widget-text">Text</label>
+            <input type="text"
+                   class="form-control element-margin"
+                   id="widget-text"
+                   placeholder="Image text">
+
+            <label for="widget-url">URL</label>
+            <input type="text"
+                   class="form-control element-margin"
+                   id="widget-url"
+                   placeholder="URL of the image">
+
+            <label for="widget-width">Width</label>
+            <input type="text"
+                   class="form-control element-margin"
+                   id="widget-width"
+                   placeholder="Width of the image (e.g. 100%)">
+
+            <label class="control-label" for="widget-file">Upload</label>
+            <input id="widget-file" type="file" class="file form-control">
+
+            <input class="form-control btn btn-primary element-margin"
+                   type="button"
+                   value="Upload Image">
+
+            <input class="form-control btn btn-danger element-margin"
+                   type="button"
+                   value="Delete">
+
         </div>
-        </div>
-</nav>
+    </form>
 
-<form class="container-fluid">
-    <div class="form-group container-list-group">
-        <label for="widget-name">Name</label>
-        <input type="text"
-               class="form-control element-margin"
-               id="widget-name"
-               placeholder="Widget Name">
-
-        <label for="widget-text">Text</label>
-        <input type="text"
-               class="form-control element-margin"
-               id="widget-text"
-               placeholder="Image text">
-
-        <label for="widget-url">URL</label>
-        <input type="text"
-               class="form-control element-margin"
-               id="widget-url"
-               placeholder="URL of the image">
-
-        <label for="widget-width">Width</label>
-        <input type="text"
-               class="form-control element-margin"
-               id="widget-width"
-               placeholder="Width of the image (e.g. 100%)">
-
-        <label class="control-label" for="widget-file">Upload</label>
-        <input id="widget-file" type="file" class="file form-control">
-
-        <input class="form-control btn btn-primary element-margin"
-               type="button"
-               value="Upload Image">
-
-        <input class="form-control btn btn-danger element-margin"
-               type="button"
-               value="Delete">
-
-    </div>
-</form>
-
-<div class="nav-footer"></div>
-<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="nav-footer"></div>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
             <span class="col-9"></span>
             <div class="navbar-text col-3 pull-right">
                     <div class=" ">
@@ -82,7 +73,5 @@
                         </a>
                     </div>
             </div>
-</nav>
-
-</body>
-</html>
+    </nav>
+</div>
