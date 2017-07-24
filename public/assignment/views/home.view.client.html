@@ -6,21 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <script src="../vendor/angular/angular.js"></script>
-    <script src="../vendor/angular/angular-route.js"></script>
-    <script src="app.js"></script>
+    <script src="../../vendor/angular/angular.js"></script>
+    <script src="../../vendor/angular/angular-route.js"></script>
+    <script src="../app.js"></script>
     <link rel="icon" href="https://v4-alpha.getbootstrap.com/favicon.ico">
 
     <title>CS5610 Assignment</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../vendor/css/bootstrap/index/bootstrap.min.css" rel="stylesheet">
+    <!--&lt;!&ndash; Bootstrap core CSS &ndash;&gt;-->
+    <link href="../../vendor/css/bootstrap/index/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="../vendor/css/bootstrap/index/carousel.css" rel="stylesheet">
+    <!--&lt;!&ndash; Custom styles for this template &ndash;&gt;-->
+    <link href="../../vendor/css/bootstrap/index/carousel.css" rel="stylesheet">
 
   <script>(function n(){!function(){function e(e,t,n){t=t||{};var r=e.ownerDocument||e,i=r.createEvent?r.createEvent("CustomEvent"):r.createEventObject();i.initCustomEvent&&i.initCustomEvent(t.type,!!t.bubbles,!!t.cancelable,t.detail);for(var a in t)i[a]=t[a];return setTimeout(function(){try{e.dispatchEvent?e.dispatchEvent(i):e.fireEvent("on"+t.type,r.createEventObject())}catch(n){var a=e["listen"+t.type];if(a)for(var o=0;o<a.length;++o)try{a[o].call(e,i)}catch(e){}}n()},0),this}function t(e,t,n){function r(e,t){try{var n=e.ownerDocument;if(n.createEventObject){var r=n.createEventObject();e.fireEvent("on"+t,r)}else r=n.createEvent("HTMLEvents"),r.initEvent(t,!0,!0),e.dispatchEvent(r)}catch(e){}}var i=!0,a=e.className&&e.className.indexOf("fancified")!=-1;if(window.jQuery){var o=window.jQuery(e);try{if(o.selectBoxIt)o.selectBoxIt("selectOption",o.val());else if(o.data("chosen")||o.chosen)o.trigger("chosen:updated").trigger("liszt:updated");else if(o.data("chooserElement"))o.trigger("change");else if(o.fancySelect)o.get("fancySelect").select("value",o.val());else if(o.selectBox)o.selectBox("value",o.val());else if(o.selectric)o.selectric("refresh");else if(o.coreUISelect){var s=o.data("coreUISelect");s.isSelectShow=!0,s.changeDropdownData(),s.isSelectShow=!1}else if(o.data("myJSPulldownObject")){var l=o.data("myJSPulldownObject");l.setToValue(o.val())}else if(o.fancyfields)o.setVal(o.val());else if(o.data("select2"));else if(o.data("selectize"))i=!1,o.data("selectize").setValue(o.val());else if(o.hasClass("fancified"))o.trigger("update");else if(o.selectmenu){var c=o.val();try{o.selectmenu("value",o[0].options[0].value)}catch(e){}o.selectmenu("value",c)}o.trigger("change")}catch(e){}}i&&(a&&r(e,"update"),r(e,"change"),r(e,"blur")),n()}function n(t,n,r,i){var a=t.value;e(t,{type:"keydown",keyCode:n,which:n,charCode:n,bubbles:!0},function(){e(t,{type:"keypress",keyCode:n,which:n,charCode:n,bubbles:!0},function(){setTimeout(function(){var o=t.value;a==o&&(t.value=r),e(t,{type:"input",keyCode:n,which:n,charCode:n,bubbles:!0},function(){e(t,{type:"keyup",keyCode:n,which:n,charCode:n,bubbles:!0},function(){i()})})},1)})})}function r(e,t,i,a){if(!t||""==t)return void a();var o=t.charCodeAt(0);i+=t.charAt(0),n(e,o,i,function(){r(e,t.substring(1),i,a)})}function i(t,n,r){if(window.abineTriggerChangeInProgress)return void setTimeout(function(){i(t,n,r)},100);window.abineTriggerChangeInProgress=!0;try{if(window.jQuery){var a=window.jQuery(t);(a.data("rawMaskFn")||a.mask||a.CardPhoneFormatting)&&a.focus().val(n).trigger("input").trigger("paste")}}catch(e){}e(t,{type:"change"},function(){e(t,{type:"blur"},function(){try{var e=new Event("input",{bubbles:!0,cancelable:!0});t.dispatchEvent(e)}catch(e){}window.abineTriggerChangeInProgress=!1,r()})})}function a(t,n,a){e(t,{type:"focus"},function(){e(t,{type:"click"},function(){r(t,n,"",function(){i(t,n,function(){e(document,{type:"abineFilled"},function(){a()})})})})})}function o(n,r,i,a){var o=/[\s]+/g,s=(r||"").toLowerCase().replace(o,""),l=function(){e(document,{type:"abineFilled"},function(){a()})},c=!1,u=!1,d=n.getElementsByTagName("option");if(d&&d.length>0){for(var h=-1,f=0;f<d.length;f++){var p=(d[f].text||"").toLowerCase().replace(o,""),m=(d[f].getAttribute("value")||"").toLowerCase().replace(o,"");if(m==s||p==s){d[f].selected||(c=!0,d[f].selected=!0),u=!0;break}h==-1&&p.indexOf(s)!=-1&&(h=f)}u||h==-1||i||d[h].selected||(c=!0,d[h].selected=!0,u=!0)}n.setAttribute("abineFillResponse",u),c?t(n,r,l):l()}function s(){var e=document.getElementsByClassName("abineFillTarget");if(e.length>0)return e[0];for(var t=0;t<frames.length;t++)try{var e=frames[t].document.getElementsByClassName("abineFillTarget");if(e.length>0)return e[0]}catch(e){}return null}function l(){var n=document.createElement("div");n.id="abineFillElement","undefined"!=typeof paypal&&n.setAttribute("data-paypal","1"),"undefined"!=typeof OffAmazonPayments&&n.setAttribute("data-amazon","1"),"undefined"!=typeof MasterPass&&n.setAttribute("data-masterpass","1"),document.documentElement.appendChild(n),n.addEventListener("fill",function(){var t=s();if(t){var r=n.getAttribute("value");a(t,r,function(){})}else e(document,{type:"abineFilled"},function(){})},!1),n.addEventListener("fillSelect",function(){var t=s();if(t){var r=n.getAttribute("value"),i=!!n.getAttribute("skipPartial");o(t,r,i,function(){})}else e(document,{type:"abineFilled"},function(){})}),n.addEventListener("triggerChange",function(){var e=s(),r=n.getAttribute("value");e&&(e.nodeName.match(/select/i)?t(e,r,function(){}):i(e,r,function(){}))})}l()}()})()</script></head>
-  <body>
+  <div>
 
     <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,19 +33,22 @@
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="views/user/login.view.client.html">Login</a>
+            <a class="nav-link" href="#!/login" ng-show="!currentUser">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="views/user/register.view.client.html">Register</a>
+            <a class="nav-link" href="#!/login" ng-show="currentUser">Logout</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="views/website/website-list.view.client.html">Webpages</a>
+            <a class="nav-link" href="#!/register" ng-show="!currentUser">Register</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./page-list.html.html">Pages</a>
+            <a class="nav-link" href="#!/profile/{{currentUser._id}}" ng-show="currentUser">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="views/widget/widget-list.view.client.html">Widgets</a>
+            <a class="nav-link" href="#!/admin" ng-show="currentUser && currentUser.isAdmin">Admin</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="website/website-list.view.client.html" ng-show="currentUser">Webpages</a>
           </li>
         </ul>
         <!--<form class="form-inline mt-2 mt-md-0" abineguid="AD102A2DF93B40208161557356B0B32F">-->
@@ -67,7 +70,7 @@
             <div class="carousel-caption d-none d-md-block text-left">
               <h1>Make your website.</h1>
               <p>Make your fascinating websites.</p>
-              <p><a class="btn btn-lg btn-primary" href="views/user/login.view.client.html" role="button">Sign up today</a></p>
+              <p><a class="btn btn-lg btn-primary" href="user/login.view.client.html" role="button">Sign up today</a></p>
             </div>
           </div>
         </div>
@@ -77,7 +80,7 @@
             <div class="carousel-caption d-none d-md-block">
               <h1>View your websites</h1>
               <p>List your beautiful websites</p>
-              <p><a class="btn btn-lg btn-primary" href="views/website/website-list.view.client.html" role="button">Browse websites</a></p>
+              <p><a class="btn btn-lg btn-primary" href="website/website-list.view.client.html" role="button">Browse websites</a></p>
             </div>
           </div>
         </div>
@@ -173,5 +176,3 @@
 
     </div><!-- /.container -->
   
-
-<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500" preserveAspectRatio="none" style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs><style type="text/css"></style></defs><text x="0" y="25" style="font-weight:bold;font-size:25pt;font-family:Arial, Helvetica, Open Sans, sans-serif">500x500</text></svg></body><div id="abineFillElement"></div></html>
