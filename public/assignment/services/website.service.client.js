@@ -31,7 +31,6 @@
                     sites.push(websites[w]);
                 }
             }
-
             return sites;
         }
 

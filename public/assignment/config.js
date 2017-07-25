@@ -51,12 +51,18 @@
                 controller: "websiteEditController",
                 controllerAs: "model"
             })
+        //page routes
+            .when("/user/:userId/website/:websiteId/page", {
+                templateUrl: "views/page/page-list.view.client.html",
+                controller: "pageListController",
+                controllerAs: "model"
+            })
         //widget routes
             .when("/user/:userId/website/:websiteId/page/:pageId/widget", {
                 templateUrl: "views/widget/widget-list.view.client.html",
                 controller: "widgetListController",
                 controllerAs: "model"
-            })
+            });
     }
 
 })();

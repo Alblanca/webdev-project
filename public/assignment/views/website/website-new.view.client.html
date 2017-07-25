@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="navbar-header hidden-xs hidden-sm col-md-4">
                     <p class="navbar-text pull-left  ">
-                        <a href="#!/" class= "navbar-link">
+                        <a href="#!/user/{{model.userId}}/website" class= "navbar-link">
                             <span class="glyphicon glyphicon-chevron-left">
                             </span>
                         </a>
@@ -13,17 +13,17 @@
                     <a class="navbar-brand " href="#">
                         Websites
                     </a>
-                    <p class="navbar-text pull-right ">
-                        <a href="#" class="navbar-link">
-                            <span class="glyphicon glyphicon-plus">
-                            </span>
-                        </a>
-                    </p>
+                    <!--<p class="navbar-text pull-right ">-->
+                        <!--<a href="#" class="navbar-link">-->
+                            <!--<span class="glyphicon glyphicon-plus">-->
+                            <!--</span>-->
+                        <!--</a>-->
+                    <!--</p>-->
                 </div>
 
                 <div class="navbar-header col-md-8 col-sm-12 col-xs-12">
                     <p class="navbar-text pull-left hidden-lg hidden-xl hidden-md ">
-                        <a href="website-list.view.client.html" class= "navbar-link">
+                        <a href="#!/user/{{model.userId}}/website" class= "navbar-link">
                             <span class="glyphicon glyphicon-chevron-left">
                             </span>
                         </a>
@@ -46,14 +46,6 @@
     <!--scrollable content?-->
 
     <div class="container-fluid container-list-group list-group hidden-xs hidden-sm col-md-4">
-        <!--<p class="list-group-item group-item-wslist">-->
-            <!--<a href="../page/page-list.view.client.html">Example Webpage</a>-->
-            <!--<a href="website-edit.view.client.html"><span class="pull-right glyphicon glyphicon-cog"></span></a>-->
-        <!--</p>-->
-        <!--<p class="list-group-item group-item-wslist">-->
-            <!--<a href="#">Example Webpage</a>-->
-            <!--<a href="#"><span class="pull-right glyphicon glyphicon-cog"></span></a>-->
-        <!--</p>-->
         <div ng-include src="'views/website/website-list.component.client.html'"></div>
     </div>
 
