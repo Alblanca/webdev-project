@@ -19,8 +19,14 @@
         init ();
 
         function createPage(page) {
+            if(!page || !page.name || !page.description) {
+                alert("no content!");
+                return;
+            }
+
             pageService.createPage(model.websiteId, page);
             $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page");
         }
+
     }
 })();

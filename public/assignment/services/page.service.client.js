@@ -14,7 +14,11 @@
 
        var api = {
            "findPagesForWebpage" : findPagesForWebpage,
-           "createPage" : createPage
+           "findPageById" : findPageById,
+           "createPage" : createPage,
+           "findPageById" : findPageById,
+           "updatePage" : updatePage,
+           "deletePage" : deletePage
        };
 
        return api;
@@ -30,6 +34,14 @@
             return _pages;
         }
 
+        function findPageById(pid) {
+            for (var p in pages) {
+                if(pages[p]._id === pid) {
+                    return pages[p];
+                }
+            }
+        }
+
         function createPage(websiteId, page) {
             page._id = (new Date()).getTime() + "";
             page.websiteId = websiteId;
@@ -38,5 +50,31 @@
             return;
         }
 
+        function findPageById(pid) {
+            for (var p in pages) {
+                if(pages[p]._id === pid) {
+                    return pages[p];
+                }
+            }
+        }
+
+        function updatePage(pid, page) {
+            for (var p in pages) {
+                if(pages[p]._id === pid) {
+                    pages[p].name = page.name;
+                    pages[p].description = page.description;
+                    return;
+                }
+            }
+        }
+
+        function deletePage(pid) {
+            for (var p in pages) {
+                if(pages[p]._id === pid) {
+                    delete pages[p];
+                    return;
+                }
+            }
+        }
     }
 })();
