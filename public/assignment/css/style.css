@@ -6,6 +6,9 @@ body {
     padding-top: 36px;
 }
 
+.pointer-icon {
+    cursor : pointer;
+}
 
 .container-list-group {
     margin-top: 30px;

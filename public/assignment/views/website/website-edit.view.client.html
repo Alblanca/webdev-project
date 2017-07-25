@@ -5,16 +5,16 @@
             <div class="row">
                 <div class="navbar-header hidden-xs hidden-sm col-md-4">
                     <p class="navbar-text pull-left  ">
-                        <a href="website-list.view.client.html" class= "navbar-link">
+                        <a href="#!/user/{{model.userId}}/website" class= "navbar-link">
                             <span class="glyphicon glyphicon-chevron-left">
                             </span>
                         </a>
                     </p>
-                    <a class="navbar-brand " href="#">
+                    <a class="navbar-brand " disabled>
                         Websites
                     </a>
                     <p class="navbar-text pull-right ">
-                        <a href="#" class="navbar-link">
+                        <a href="#!/user/{{model.userId}}/website/new" class="navbar-link">
                             <span class="glyphicon glyphicon-plus">
                             </span>
                         </a>
@@ -28,11 +28,11 @@
                             </span>
                         </a>
                     </p>
-                         <a class="navbar-brand " href="#">
+                         <a class="navbar-brand ">
                             Edit Website
                         </a>
-                    <p class="navbar-text pull-right  ">
-                        <a href="#" class="navbar-link">
+                    <p class="navbar-text pull-right pointer-icon">
+                        <a ng-click="model.updateWebsite(website, model.websiteId)" class="navbar-link">
                             <span class="glyphicon glyphicon-ok">
                             </span>
                         </a>
@@ -44,25 +44,8 @@
     </nav>
 
     <div class="container-fluid container-list-group list-group hidden-xs hidden-sm col-md-4">
-        <p class="list-group-item group-item-wslist">
-            <a href="../page/page-list.view.client.html">Example Webpage</a>
-            <a href="website-edit.view.client.html"><span class="pull-right glyphicon glyphicon-cog"></span></a>
-        </p>
-        <p class="list-group-item group-item-wslist">
-            <a href="#">Example Webpage</a>
-            <a href="#"><span class="pull-right glyphicon glyphicon-cog"></span></a>
-        </p>
+        <div ng-include src="'views/website/website-list.component.client.html'"></div>
     </div>
-
-
-    <!--<div class="container-list-group hidden-xs hidden-sm col-md-4">-->
-            <!--<a class="list-group-item group-item-wslist" href="#">Item-->
-                <!--<span class="pull-right glyphicon glyphicon-cog"></span>-->
-            <!--</a>-->
-            <!--<a class="list-group-item group-item-wslist" href="#">Item 2-->
-                <!--<span class="pull-right glyphicon glyphicon-cog"></span>-->
-            <!--</a>-->
-    <!--</div>-->
 
     </div>
     <form class="col-md-8">
@@ -72,16 +55,18 @@
             <input type="text"
                    class="form-control element-margin"
                    id="website-name"
-                    placeholder="Website Name"
-                   value="Example Website">
+                   ng-model="model.website.name"
+                    placeholder="Website Name">
 
             <label class="element-margin" for="description">Website Description</label>
             <textarea class="form-control element-margin"
                         id="description"
                         rows="5"
+                      ng-model="model.website.description"
                       placeholder="Description">This is an example description</textarea>
             <input class="form-control btn btn-danger element-margin"
                     type="button"
+                   ng-click="model.deleteWebsite(model.websiteId)"
                     value="Delete">
 
         </div>

@@ -31,9 +31,9 @@
                          <a class="navbar-brand " href="#">
                             New Website
                         </a>
-                    <p class="navbar-text pull-right  ">
-                        <a href="website-list.view.client.html" class="navbar-link">
-                            <span class="glyphicon glyphicon-ok">
+                    <p class="navbar-text pull-right">
+                        <a class="navbar-link pointer-icon">
+                            <span class="glyphicon glyphicon-ok" ng-click="model.createWebsite(website)">
                             </span>
                         </a>
                     </p>
@@ -65,12 +65,15 @@
             <input type="text"
                    class="form-control element-margin"
                    id="website-name"
+                   ng-model="website.name"
                     placeholder="Website Name">
 
-            <label class="element-margin" for="description">Description</label>
+            <label class="element-margin"
+                   for="description">Description</label>
             <textarea class="form-control element-margin"
                         id="description"
                         rows="5"
+                      ng-model="website.description"
                       placeholder="Description"></textarea>
 
         </div>
