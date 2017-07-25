@@ -1,7 +1,8 @@
 <p ng-repeat="page in model.pages" class="list-group-item group-item-wslist">
-    <a href="#!/user/{{model.userId}}/website/{{website._id}}/page" >{{page.name}}</a>
-    <a class="pointer-icon" >
+    <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page" >{{page.name}}</a>
+    <a class="pointer-icon"
+       href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}" >
         <!--ng-click="model.findWebsiteById(website._id)"-->
-        <span  ng-click="model.findPageById(page._id)"
-                class="pull-right glyphicon glyphicon-cog"></span></a>
+        <span class="pull-right glyphicon glyphicon-cog"></span>
+    </a>
 </p>

@@ -6,7 +6,7 @@
         .module("WebAppMaker")
         .controller("pageEditController", pageEditController);
 
-    function pageEditController($routeParams, pageService) {
+    function pageEditController($routeParams, pageService, $location) {
         var model = this;
 
         model.userId = $routeParams["userId"];

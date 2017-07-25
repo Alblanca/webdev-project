@@ -13,6 +13,8 @@
         {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi"}
     ]
 
+    var user = users[0];
+
     function configuration($routeProvider) {
         $routeProvider
             .when("/", {
