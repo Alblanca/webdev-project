@@ -13,7 +13,8 @@
         ];
 
        var api = {
-           "findPagesForWebpage" : findPagesForWebpage
+           "findPagesForWebpage" : findPagesForWebpage,
+           "createPage" : createPage
        };
 
        return api;
@@ -23,11 +24,18 @@
 
             for (var p in pages) {
                 if(pages[p].websiteId === wid) {
-                    var pp = pages[p];
                     _pages.push(pages[p]);
                 }
             }
             return _pages;
+        }
+
+        function createPage(websiteId, page) {
+            page._id = (new Date()).getTime() + "";
+            page.websiteId = websiteId;
+            pages.push(page);
+
+            return;
         }
 
     }

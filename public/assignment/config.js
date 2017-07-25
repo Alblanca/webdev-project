@@ -57,6 +57,12 @@
                 controller: "pageListController",
                 controllerAs: "model"
             })
+
+            .when("/user/:userId/website/:websiteId/page/new", {
+                templateUrl: "views/page/page-new.view.client.html",
+                controller: "pageNewController",
+                controllerAs: "model"
+            })
         //widget routes
             .when("/user/:userId/website/:websiteId/page/:pageId/widget", {
                 templateUrl: "views/widget/widget-list.view.client.html",
