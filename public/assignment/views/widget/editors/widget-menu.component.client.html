@@ -1,5 +1,6 @@
 <span class="pull-right pull-top widget-menu rounded-bottom">
-    <a href="">
+    <!--<a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">-->
+    <a ng-href="{{model.getWidgetEditUrl(widget)}}">
         <span class="glyphicon glyphicon-cog widget-menu-item"></span>
     </a>
     <a href="">

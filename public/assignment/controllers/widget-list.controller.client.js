@@ -16,6 +16,7 @@
         model.trustHtmlContent = trustHtmlContent;
         model.trustUrlResource = trustUrlResource;
         model.getWidgetIncludeUrl = getWidgetIncludeUrl;
+        model.getWidgetEditUrl = getWidgetEditUrl;
 
         function init() {
             model.widgets = widgetService.findWidgetsForPage(model.pageId);
@@ -23,7 +24,6 @@
         init();
 
         function trustUrlResource(url) {
-            console.log(url);
             var youtubeUrl = "https://www.youtube.com/embed/";
             var urlParts = url.split("/");
             youtubeUrl += urlParts[urlParts.length-1];
@@ -36,6 +36,11 @@
 
         function getWidgetIncludeUrl(widgetType) {
             return "views/widget/editors/widget-" + widgetType + ".component.client.html";
+        }
+
+        function getWidgetEditUrl(widget) {
+            return "#!/user/"+ model.userId +"/website/"+ model.websiteId +
+                "/page/" + model.pageId +"/widget/" + widget.widgetType.toLowerCase() + "/" +widget._id;
         }
     }
 })();

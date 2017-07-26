@@ -90,6 +90,37 @@
                 controller: "widgetNewController",
                 controllerAs: "model"
             })
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/heading/new", {
+                templateUrl: "views/widget/widget-heading.view.client.html",
+                controller: "widgetNewController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/image/new", {
+                templateUrl: "views/widget/widget-image.view.client.html",
+                controller: "widgetNewController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/youtube/new", {
+                templateUrl: "views/widget/widget-youtube.view.client.html",
+                controller: "widgetNewController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/heading/:widgetId", {
+                templateUrl: "views/widget/widget-heading.view.client.html",
+                controller: "widgetEditController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/image/:widgetId", {
+                templateUrl: "views/widget/widget-image.view.client.html",
+                controller: "widgetEditController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/youtube/:widgetId", {
+                templateUrl: "views/widget/widget-youtube.view.client.html",
+                controller: "widgetEditController",
+                controllerAs: "model"
+            })
+
             .otherwise({redirectTo : "/login"});
 
     }

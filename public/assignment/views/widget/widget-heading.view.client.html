@@ -5,16 +5,19 @@
             <div class="row">
                 <div class="navbar-header col-xs-12">
                     <p class="navbar-text pull-left col-2">
-                        <a href="widget-chooser.view.client.html" class="navbar-link">
+                        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/"
+                           class="navbar-link">
                             <span class="glyphicon glyphicon-chevron-left">
                             </span>
                         </a>
                     </p>
-                         <a class="navbar-brand col-8" href="#">
+                         <a class="navbar-brand col-8" href="">
                             Widget Edit
                         </a>
                     <p class="navbar-text pull-right col-2">
-                        <a href="widget-list.view.client.html" class="navbar-link">
+                        <a href=""
+                           ng-click="model.widgetOk('HEADING', model.widget)"
+                           class="navbar-link">
                             <span class="glyphicon glyphicon-ok">
                             </span>
                         </a>
@@ -30,6 +33,7 @@
             <input type="text"
                    class="form-control element-margin"
                    id="widget-name"
+                   ng-model="model.widget.name"
                    placeholder="Widget Name">
 
             <label for="widget-text">Text</label>
@@ -37,6 +41,7 @@
             <input type="text"
                    class="form-control element-margin"
                    id="widget-text"
+                   ng-model="model.widget.text"
                    placeholder="Title text">
 
             <label for="widget-size">Size</label>
@@ -44,10 +49,12 @@
             <input type="text"
                    class="form-control element-margin"
                    id="widget-size"
+                   ng-model="model.widget.size"
                    placeholder="Size of the title">
 
             <input class="form-control btn btn-danger element-margin"
                    type="button"
+                   ng-show="model.widgetId"
                    value="Delete">
         </div>
     </form>
