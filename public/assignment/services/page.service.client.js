@@ -16,7 +16,6 @@
            "findPagesForWebpage" : findPagesForWebpage,
            "findPageById" : findPageById,
            "createPage" : createPage,
-           "findPageById" : findPageById,
            "updatePage" : updatePage,
            "deletePage" : deletePage
        };
@@ -34,13 +33,6 @@
             return _pages;
         }
 
-        function findPageById(pid) {
-            for (var p in pages) {
-                if(pages[p]._id === pid) {
-                    return pages[p];
-                }
-            }
-        }
 
         function createPage(websiteId, page) {
             page._id = (new Date()).getTime() + "";
@@ -53,7 +45,7 @@
         function findPageById(pid) {
             for (var p in pages) {
                 if(pages[p]._id === pid) {
-                    return pages[p];
+                    return angular.copy(pages[p]);
                 }
             }
         }

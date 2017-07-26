@@ -25,8 +25,8 @@
             $location.url("/user/"+ model.userId+"/website");
         }
 
-        function updateWebsite(websiteId) {
-            websiteService.updateWebsite(websiteId);
+        function updateWebsite(website, websiteId) {
+            websiteService.updateWebsite(website, websiteId);
             $location.url("/user/"+ model.userId +"/website");
         }
     }

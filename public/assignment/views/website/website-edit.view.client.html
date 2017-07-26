@@ -28,11 +28,11 @@
                             </span>
                         </a>
                     </p>
-                         <a class="navbar-brand ">
+                         <a class="navbar-brand">
                             Edit Website
                         </a>
                     <p class="navbar-text pull-right pointer-icon">
-                        <a ng-click="model.updateWebsite(website, model.websiteId)" class="navbar-link">
+                        <a ng-click="model.updateWebsite(model.website, model.websiteId)" class="navbar-link">
                             <span class="glyphicon glyphicon-ok">
                             </span>
                         </a>
@@ -63,7 +63,7 @@
                         id="description"
                         rows="5"
                       ng-model="model.website.description"
-                      placeholder="Description">This is an example description</textarea>
+                      placeholder="Description"></textarea>
             <input class="form-control btn btn-danger element-margin"
                     type="button"
                    ng-click="model.deleteWebsite(model.websiteId)"

@@ -45,7 +45,7 @@
         function findWebsiteById(id) {
             for(var w in websites) {
                 if (websites[w]._id === id) {
-                    return websites[w];
+                    return angular.copy(websites[w]);
                 }
             }
         }

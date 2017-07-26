@@ -32,8 +32,6 @@
                         users[u].firstName = user.firstName;
                         users[u].lastName = user.lastName;
                         users[u].email = user.email;
-                        console.log("updated: " + users[u]);
-                        console.log(""+users);
                     }
                 }
             }
@@ -66,7 +64,7 @@
             function findUserById(userId) {
                 for (var u in users) {
                     if (users[u]._id === userId) {
-                        return users[u];
+                        return angular.copy(users[u]);
                     }
                 }
                 return null;

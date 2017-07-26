@@ -74,7 +74,18 @@
                 templateUrl: "views/widget/widget-list.view.client.html",
                 controller: "widgetListController",
                 controllerAs: "model"
-            });
+            })
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/new", {
+                templateUrl: "views/widget/widget-chooser.view.client.html",
+                controller: "widgetNewController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/new", {
+                templateUrl: "views/widget/widget-chooser.view.client.html",
+                controller: "widgetNewController",
+                controllerAs: "model"
+            })
+
     }
 
 })();

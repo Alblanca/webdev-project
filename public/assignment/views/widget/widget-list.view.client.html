@@ -1,88 +1,36 @@
-
 <div class="scroll-page">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="row">
                 <div class="navbar-header col-xs-12">
                     <p class="navbar-text pull-left col-2">
-                        <a href="../page/page-list.view.client.html" class="navbar-link">
+                        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/" class="navbar-link">
                             <span class="glyphicon glyphicon-chevron-left">
                             </span>
                         </a>
                     </p>
-                         <a class="navbar-brand col-8" href="#">
+                         <a class="navbar-brand col-8"
+                            href="">
                             Widgets
                         </a>
                     <p class="navbar-text pull-right col-2">
-                        <a href="widget-chooser.view.client.html" class="navbar-link">
+                        <a href="#!user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new"
+                           class="navbar-link">
                             <span class="glyphicon glyphicon-plus">
                             </span>
                         </a>
                     </p>
                 </div>
             </div>
-            </div>
+        </div>
     </nav>
 
     <div class="container-fluid container-list-group list-group col-12">
-        <div class="list-group-item">
-             <span class="pull-right pull-top widget-menu rounded-bottom">
-                <a href="#"><span class="glyphicon glyphicon-cog widget-menu-item"></span></a>
-                <a href="#"><span class="glyphicon glyphicon-align-justify widget-menu-item"></span></a>
-            </span>
-        <h1 class="text-center">Title</h1>
-        </div>
-
-        <div class="list-group-item">
-             <span class="pull-right pull-top widget-menu rounded-bottom">
-                <a href="#"><span class="glyphicon glyphicon-cog widget-menu-item"></span></a>
-                <a href="#"><span class="glyphicon glyphicon-align-justify widget-menu-item"></span></a>
-            </span>
-            <img class="list-group-item img-fluid img-responsive pagination-centered"
-                 src="http://www.shindiristudio.com/clients/fertico-sa/img/slides/rose3.png">
-        </div>
-
-        <div class="list-group-item">
-             <span class="pull-right pull-top widget-menu rounded-bottom">
-                <a href="#"><span class="glyphicon glyphicon-cog widget-menu-item"></span></a>
-                <a href="#"><span class="glyphicon glyphicon-align-justify widget-menu-item"></span></a>
-            </span>
-            <h1 class="text-center">Title</h1>
-        </div>
-
-        <div class="list-group-item">
-             <span class="pull-right pull-top widget-menu rounded-bottom">
-                <a href="#"><span class="glyphicon glyphicon-cog widget-menu-item"></span></a>
-                <a href="#"><span class="glyphicon glyphicon-align-justify widget-menu-item"></span></a>
-            </span>
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item"
-                        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                        allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <div class="list-group-item">
-             <span class="pull-right pull-top widget-menu rounded-bottom">
-                <a href="#"><span class="glyphicon glyphicon-cog widget-menu-item"></span></a>
-                <a href="#"><span class="glyphicon glyphicon-align-justify widget-menu-item"></span></a>
-            </span>
-            <h1 class="text-center">Title</h1>
+        <div ng-repeat="widget in model.widgets">
+            <div class="list-group-item" ng-include="model.getWidgetIncludeUrl(widget.widgetType)"></div>
         </div>
     </div>
 
-
-
-    <!--<div class="container-fluid container-list-group list-group">-->
-        <!--<p class="list-group-item group-item-wslist">-->
-            <!--<a hrpage-list.view.client.htmlhtml">Example Webpage</a>-->
-            <!--<a hrwebsite-edit.view.client.htmlhtml"><span class="pull-right glyphicon glyphicon-cog"></span></a>-->
-        <!--</p>-->
-        <!--<p class="list-group-item group-item-wslist">-->
-            <!--<a href="#">Example Webpage</a>-->
-            <!--<a href="#"><span class="pull-right glyphicon glyphicon-cog"></span></a>-->
-        <!--</p>-->
-    <!--</div>-->
 
     <div class="nav-footer"></div>
 

@@ -15,6 +15,8 @@
         model.unregisterUser = unregisterUser;
 
         function init() {
+            var ef = userService.findUserById(userId);
+            console.log(ef);
             model.user = userService.findUserById(userId);
         }
         init();

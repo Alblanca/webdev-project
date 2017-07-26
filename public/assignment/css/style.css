@@ -6,6 +6,10 @@ body {
     padding-top: 36px;
 }
 
+.embed-responsive-item {
+    text-align: center;
+}
+
 .pointer-icon {
     cursor : pointer;
 }
