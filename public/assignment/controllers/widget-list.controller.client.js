@@ -17,11 +17,16 @@
         model.trustUrlResource = trustUrlResource;
         model.getWidgetIncludeUrl = getWidgetIncludeUrl;
         model.getWidgetEditUrl = getWidgetEditUrl;
+        model.warnUnimplemented = warnUnimplemented;
 
         function init() {
             model.widgets = widgetService.findWidgetsForPage(model.pageId);
         }
         init();
+
+        function warnUnimplemented() {
+            alert("Not yet implemented feature!");
+        }
 
         function trustUrlResource(url) {
             var youtubeUrl = "https://www.youtube.com/embed/";

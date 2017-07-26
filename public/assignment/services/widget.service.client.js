@@ -59,10 +59,7 @@
         function deleteWidget(widgetId) {
             for(var w in widgets) {
                 if(widgets[w]._id === widgetId) {
-                    widget.widgetType = widgets[w].widgetType;
-                    widget._id = widgetId;
                     delete widgets[w];
-                    widgets.push(widget);
                 }
             }
             return;

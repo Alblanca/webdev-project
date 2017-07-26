@@ -100,6 +100,11 @@
                 controller: "widgetNewController",
                 controllerAs: "model"
             })
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/html/new", {
+                templateUrl: "views/widget/widget-html.view.client.html",
+                controller: "widgetNewController",
+                controllerAs: "model"
+            })
             .when("/user/:userId/website/:websiteId/page/:pageId/widget/youtube/new", {
                 templateUrl: "views/widget/widget-youtube.view.client.html",
                 controller: "widgetNewController",
@@ -117,6 +122,11 @@
             })
             .when("/user/:userId/website/:websiteId/page/:pageId/widget/youtube/:widgetId", {
                 templateUrl: "views/widget/widget-youtube.view.client.html",
+                controller: "widgetEditController",
+                controllerAs: "model"
+            })
+            .when("/user/:userId/website/:websiteId/page/:pageId/widget/html/:widgetId", {
+                templateUrl: "views/widget/widget-html.view.client.html",
                 controller: "widgetEditController",
                 controllerAs: "model"
             })

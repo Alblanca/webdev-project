@@ -15,7 +15,7 @@
                         </a>
                     <p class="navbar-text pull-right col-2">
                         <a href=""
-                           ng-click="model.widgetOk('IMAGE', model.widget)"
+                           ng-click="model.widgetOk('HTML', model.widget)"
                            class="navbar-link">
                             <span class="glyphicon glyphicon-ok">
                             </span>
@@ -25,10 +25,10 @@
             </div>
             </div>
     </nav>
-
     <form class="container-fluid">
         <div class="form-group container-list-group">
             <label for="widget-name">Name</label>
+
             <input type="text"
                    class="form-control element-margin"
                    id="widget-name"
@@ -36,39 +36,19 @@
                    placeholder="Widget Name">
 
             <label for="widget-text">Text</label>
-            <input type="text"
-                   class="form-control element-margin"
-                   id="widget-text"
-                   ng-model="model.widget.text"
-                   placeholder="Image text">
 
-            <label for="widget-url">URL</label>
-            <input type="text"
-                   class="form-control element-margin"
-                   id="widget-url"
-                   ng-model="model.widget.url"
-                   placeholder="URL of the image">
+            <textarea class="form-control element-margin"
+                      id="widget-text"
+                      rows="5"
+                      ng-model="model.widget.text"
+                      placeholder="Embeddable HTML code"></textarea>
 
-            <label for="widget-width">Width</label>
-            <input type="text"
-                   class="form-control element-margin"
-                   id="widget-width"
-                   ng-model="model.widget.width"
-                   placeholder="Width of the image (e.g. 100%)">
-
-            <label class="control-label" for="widget-file">Upload</label>
-            <input id="widget-file" type="file" class="file form-control">
-
-            <input class="form-control btn btn-primary element-margin"
-                   type="button"
-                   value="Upload Image">
 
             <input class="form-control btn btn-danger element-margin"
                    type="button"
                    ng-show="model.widgetId"
                    ng-click="model.deleteWidget()"
                    value="Delete">
-
         </div>
     </form>
 
