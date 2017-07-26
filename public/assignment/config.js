@@ -23,110 +23,110 @@
             //     controllerAs: "model"
             // })
             .when("/", {
-                templateUrl: "views/user/login.view.client.html",
+                templateUrl: "views/user/templates/login.view.client.html",
                 controller:  "loginController",
                 controllerAs: "model"
             })
             .when("/login", {
-                templateUrl: "views/user/login.view.client.html",
+                templateUrl: "views/user/templates/login.view.client.html",
                 controller:  "loginController",
                 controllerAs: "model"
             })
             .when("/profile/:userId", {
-                templateUrl: "views/user/profile.view.client.html",
+                templateUrl: "views/user/templates/profile.view.client.html",
                 controller: "profileController",
                 controllerAs: "model"
             })
             .when("/register", {
-                templateUrl: "views/user/register.view.client.html",
+                templateUrl: "views/user/templates/register.view.client.html",
                 controller: "registerController",
                 controllerAs: "model"
             })
         //website routes
             .when("/user/:userId/website", {
-                templateUrl: "views/website/website-list.view.client.html",
+                templateUrl: "views/website/templates/website-list.view.client.html",
                 controller: "websiteListController",
                 controllerAs: "model"
             })
             .when("/user/:userId/website/new", {
-                templateUrl: "views/website/website-new.view.client.html",
+                templateUrl: "views/website/templates/website-new.view.client.html",
                 controller: "websiteNewController",
                 controllerAs: "model"
             })
             .when("/user/:userId/website/:websiteId", {
-                templateUrl: "views/website/website-edit.view.client.html",
+                templateUrl: "views/website/templates/website-edit.view.client.html",
                 controller: "websiteEditController",
                 controllerAs: "model"
             })
         //page routes
             .when("/user/:userId/website/:websiteId/page", {
-                templateUrl: "views/page/page-list.view.client.html",
+                templateUrl: "views/page/templates/page-list.view.client.html",
                 controller: "pageListController",
                 controllerAs: "model"
             })
             .when("/user/:userId/website/:websiteId/page/new", {
-                templateUrl: "views/page/page-new.view.client.html",
+                templateUrl: "views/page/templates/page-new.view.client.html",
                 controller: "pageNewController",
                 controllerAs: "model"
             })
             .when("/user/:userId/website/:websiteId/page/:pageId", {
-                templateUrl: "views/page/page-edit.view.client.html",
+                templateUrl: "views/page/templates/page-edit.view.client.html",
                 controller: "pageEditController",
                 controllerAs: "model"
             })
         //widget routes
             .when("/user/:userId/website/:websiteId/page/:pageId/widget", {
-                templateUrl: "views/widget/widget-list.view.client.html",
+                templateUrl: "views/widget/templates/widget-list.view.client.html",
                 controller: "widgetListController",
                 controllerAs: "model"
             })
             .when("/user/:userId/website/:websiteId/page/:pageId/widget/new", {
-                templateUrl: "views/widget/widget-chooser.view.client.html",
+                templateUrl: "views/widget/templates/widget-chooser.view.client.html",
                 controller: "widgetNewController",
                 controllerAs: "model"
             })
             .when("/user/:userId/website/:websiteId/page/:pageId/widget/new", {
-                templateUrl: "views/widget/widget-chooser.view.client.html",
+                templateUrl: "views/widget/templates/widget-chooser.view.client.html",
                 controller: "widgetNewController",
                 controllerAs: "model"
             })
             .when("/user/:userId/website/:websiteId/page/:pageId/widget/heading/new", {
-                templateUrl: "views/widget/widget-heading.view.client.html",
+                templateUrl: "views/widget/templates/widget-heading.view.client.html",
                 controller: "widgetNewController",
                 controllerAs: "model"
             })
             .when("/user/:userId/website/:websiteId/page/:pageId/widget/image/new", {
-                templateUrl: "views/widget/widget-image.view.client.html",
+                templateUrl: "views/widget/templates/widget-image.view.client.html",
                 controller: "widgetNewController",
                 controllerAs: "model"
             })
             .when("/user/:userId/website/:websiteId/page/:pageId/widget/html/new", {
-                templateUrl: "views/widget/widget-html.view.client.html",
+                templateUrl: "views/widget/templates/widget-html.view.client.html",
                 controller: "widgetNewController",
                 controllerAs: "model"
             })
             .when("/user/:userId/website/:websiteId/page/:pageId/widget/youtube/new", {
-                templateUrl: "views/widget/widget-youtube.view.client.html",
+                templateUrl: "views/widget/templates/widget-youtube.view.client.html",
                 controller: "widgetNewController",
                 controllerAs: "model"
             })
             .when("/user/:userId/website/:websiteId/page/:pageId/widget/heading/:widgetId", {
-                templateUrl: "views/widget/widget-heading.view.client.html",
+                templateUrl: "views/widget/templates/widget-heading.view.client.html",
                 controller: "widgetEditController",
                 controllerAs: "model"
             })
             .when("/user/:userId/website/:websiteId/page/:pageId/widget/image/:widgetId", {
-                templateUrl: "views/widget/widget-image.view.client.html",
+                templateUrl: "views/widget/templates/widget-image.view.client.html",
                 controller: "widgetEditController",
                 controllerAs: "model"
             })
             .when("/user/:userId/website/:websiteId/page/:pageId/widget/youtube/:widgetId", {
-                templateUrl: "views/widget/widget-youtube.view.client.html",
+                templateUrl: "views/widget/templates/widget-youtube.view.client.html",
                 controller: "widgetEditController",
                 controllerAs: "model"
             })
             .when("/user/:userId/website/:websiteId/page/:pageId/widget/html/:widgetId", {
-                templateUrl: "views/widget/widget-html.view.client.html",
+                templateUrl: "views/widget/templates/widget-html.view.client.html",
                 controller: "widgetEditController",
                 controllerAs: "model"
             })

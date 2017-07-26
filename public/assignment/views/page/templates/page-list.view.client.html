@@ -1,20 +1,20 @@
-
 <div>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="row">
                 <div class="navbar-header col-xs-12">
                     <p class="navbar-text pull-left col-2">
-                        <a href="#!/profile/{{model.userId}}"class="navbar-link">
+                        <a href="#!/user/{{model.userId}}/website"
+                           class="navbar-link">
                             <span class="glyphicon glyphicon-chevron-left">
                             </span>
                         </a>
                     </p>
-                         <a class="navbar-brand col-8" href="#!/user/{{model.userId}}/website">
-                            Websites
+                         <a class="navbar-brand col-8" href="">
+                            Pages
                         </a>
                     <p class="navbar-text pull-right col-2">
-                        <a href="#!/user/{{model.userId}}/website/new" class="navbar-link">
+                        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/new" class="navbar-link">
                             <span class="glyphicon glyphicon-plus">
                             </span>
                         </a>
@@ -24,14 +24,8 @@
             </div>
     </nav>
 
-
     <div class="container-fluid container-list-group list-group">
-        <!--<p ng-repeat="website in model.websites" class="list-group-item group-item-wslist">-->
-            <!--<a href="!#/user/{{model.userId}}/website/{{website._id}}">{{website.name}}</a>-->
-
-            <!--<a href="views/website/website-edit.view.client.html"><span class="pull-right glyphicon glyphicon-cog"></span></a>-->
-        <!--</p>-->
-        <div ng-include src="'views/website/website-list.component.client.html'"></div>
+        <div ng-include src="'views/page/templates/page-list.component.client.html'"></div>
     </div>
 
     <div class="nav-footer"></div>
@@ -39,7 +33,7 @@
                 <span class="col-9"></span>
                 <div class="navbar-text col-3 pull-right">
                         <div class=" ">
-                            <a href="../user/profile.view.client.html">
+                            <a href="../../user/templates/profile.view.client.html">
                                 <span class="right-most-footer glyphicon glyphicon-user"></span>
                             </a>
                         </div>

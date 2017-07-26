@@ -1,3 +1,4 @@
+
 <div>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -15,7 +16,7 @@
                         </a>
                     <p class="navbar-text pull-right col-2">
                         <a href=""
-                           ng-click="model.widgetOk('YOUTUBE', model.widget)"
+                           ng-click="model.widgetOk('HEADING', model.widget)"
                            class="navbar-link">
                             <span class="glyphicon glyphicon-ok">
                             </span>
@@ -25,10 +26,10 @@
             </div>
             </div>
     </nav>
-
     <form class="container-fluid">
         <div class="form-group container-list-group">
             <label for="widget-name">Name</label>
+
             <input type="text"
                    class="form-control element-margin"
                    id="widget-name"
@@ -36,25 +37,20 @@
                    placeholder="Widget Name">
 
             <label for="widget-text">Text</label>
+
             <input type="text"
                    class="form-control element-margin"
                    id="widget-text"
                    ng-model="model.widget.text"
-                   placeholder="video text">
+                   placeholder="Title text">
 
-            <label for="widget-url">URL</label>
+            <label for="widget-size">Size</label>
+
             <input type="text"
                    class="form-control element-margin"
-                   id="widget-url"
-                   ng-model="model.widget.url"
-                   placeholder="URL of the video">
-
-            <label for="widget-width">Width</label>
-            <input type="text"
-                   class="form-control element-margin"
-                   id="widget-width"
-                   ng-model="model.widget.width"
-                   placeholder="Width of the video (e.g. 100%)">
+                   id="widget-size"
+                   ng-model="model.widget.size"
+                   placeholder="Size of the title">
 
             <input class="form-control btn btn-danger element-margin"
                    type="button"
@@ -69,7 +65,7 @@
             <span class="col-9"></span>
             <div class="navbar-text col-3 pull-right">
                     <div class=" ">
-                        <a href="../user/profile.view.client.html">
+                        <a href="../../user/templates/profile.view.client.html">
                             <span class="right-most-footer glyphicon glyphicon-user"></span>
                         </a>
                     </div>

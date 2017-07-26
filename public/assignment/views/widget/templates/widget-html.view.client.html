@@ -1,4 +1,3 @@
-
 <div>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -16,7 +15,7 @@
                         </a>
                     <p class="navbar-text pull-right col-2">
                         <a href=""
-                           ng-click="model.widgetOk('HEADING', model.widget)"
+                           ng-click="model.widgetOk('HTML', model.widget)"
                            class="navbar-link">
                             <span class="glyphicon glyphicon-ok">
                             </span>
@@ -38,19 +37,12 @@
 
             <label for="widget-text">Text</label>
 
-            <input type="text"
-                   class="form-control element-margin"
-                   id="widget-text"
-                   ng-model="model.widget.text"
-                   placeholder="Title text">
+            <textarea class="form-control element-margin"
+                      id="widget-text"
+                      rows="5"
+                      ng-model="model.widget.text"
+                      placeholder="Embeddable HTML code"></textarea>
 
-            <label for="widget-size">Size</label>
-
-            <input type="text"
-                   class="form-control element-margin"
-                   id="widget-size"
-                   ng-model="model.widget.size"
-                   placeholder="Size of the title">
 
             <input class="form-control btn btn-danger element-margin"
                    type="button"
@@ -65,7 +57,7 @@
             <span class="col-9"></span>
             <div class="navbar-text col-3 pull-right">
                     <div class=" ">
-                        <a href="../user/profile.view.client.html">
+                        <a href="../../user/templates/profile.view.client.html">
                             <span class="right-most-footer glyphicon glyphicon-user"></span>
                         </a>
                     </div>
