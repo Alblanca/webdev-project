@@ -17,9 +17,14 @@
 
     function configuration($routeProvider) {
         $routeProvider
+            // .when("/", {
+            //     templateUrl: "views/home.view.client.html",
+            //     controller:  "homeController",
+            //     controllerAs: "model"
+            // })
             .when("/", {
-                templateUrl: "views/home.view.client.html",
-                controller:  "homeController",
+                templateUrl: "views/user/login.view.client.html",
+                controller:  "loginController",
                 controllerAs: "model"
             })
             .when("/login", {
@@ -85,6 +90,7 @@
                 controller: "widgetNewController",
                 controllerAs: "model"
             })
+            .otherwise({redirectTo : "/login"});
 
     }
 
