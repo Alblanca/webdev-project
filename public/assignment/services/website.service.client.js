@@ -6,7 +6,7 @@
         .module("WebAppMaker")
         .service("websiteService", websiteService);
 
-    function websiteService() {
+    function websiteService($http) {
         var websites = [
             { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
             { "_id": "234", "name": "Tweeter",     "developerId": "456", "description": "Lorem" },
@@ -24,14 +24,10 @@
         this.updateWebsite = updateWebsite;
 
         function findWebsitesForUser(userId) {
-            var sites = [];
+            var url = "/api/user/" + userId + "/website";
 
-            for (var w in websites) {
-                if(websites[w].developerId === userId) {
-                    sites.push(websites[w]);
-                }
-            }
-            return sites;
+            return $http.get(url);
+
         }
 
         function createWebsite(website, userId) {
