@@ -16,7 +16,7 @@
     var user = users[0];
 
     function configuration($routeProvider, $httpProvider) {
-        $httpProvider.defaults.headers.post['Content-Type'] = 'application/json; charset=utf-8';
+        // $httpProvider.defaults.headers.post['Content-Type'] = 'application/json; charset=utf-8';
         $routeProvider
             // .when("/", {
             //     templateUrl: "views/home.view.client.html",

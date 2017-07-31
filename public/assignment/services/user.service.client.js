@@ -27,16 +27,8 @@
             return api;
 
             function updateUser(user) {
-                var url = "/api/user";
-                return $http.set(url)
-
-                for (var u in users) {
-                    if (users[u]._id === user._id) {
-                        users[u].firstName = user.firstName;
-                        users[u].lastName = user.lastName;
-                        users[u].email = user.email;
-                    }
-                }
+                var url = "/api/user/" + user._id;
+                return $http.put(url, user);
             }
 
             function unregisterUser(user) {

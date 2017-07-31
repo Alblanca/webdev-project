@@ -19,13 +19,11 @@
             // Password validation
             if(user.password === user.password2) {
                 // Username validation
-                var promise = userService.findUserByUsername(user.username);
-                promise
+                userService.findUserByUsername(user.username)
                     .then(function (response) {
                         var foundUser = response.data;
                         if (foundUser === "0") {
-                            var _promise = userService.registerUser(user);
-                            _promise
+                            userService.registerUser(user)
                                 .then(function (res) {
                                     var _user = res.data;
                                     $location.url("profile/" + _user._id);

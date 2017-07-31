@@ -16,8 +16,7 @@
         init();
 
         function login(user) {
-            var promise = userService.findUserByUsernameAndPassword(user.username, user.password);
-            promise
+            userService.findUserByUsernameAndPassword(user.username, user.password)
                 .then(function (res) {
                     var _user = res.data;
                     if (_user === "0") {
