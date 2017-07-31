@@ -27,6 +27,9 @@
             return api;
 
             function updateUser(user) {
+                var url = "/api/user";
+                return $http.set(url)
+
                 for (var u in users) {
                     if (users[u]._id === user._id) {
                         users[u].firstName = user.firstName;
@@ -45,39 +48,25 @@
             }
 
             function findUserByUsername(username) {
-                for (var u in users) {
-                    if (users[u].username === username) {
-                        return users[u];
-                    }
-                }
-                return null;
+                var url = "/api/user?username=" + username;
+                return $http.get(url);
             }
 
             function registerUser(user) {
-                user._id = (new Date()).getTime() + "";
-                user.email = '';
-                users.push(user);
+                var url = "/api/user";
 
-                return user;
+                return $http.post(url, user);
+
             }
 
             function findUserById(userId) {
-                for (var u in users) {
-                    if (users[u]._id === userId) {
-                        return angular.copy(users[u]);
-                    }
-                }
-                return null;
+                return $http.get("/api/user/" + userId);
             }
             
             function findUserByUsernameAndPassword(username, password) {
-                for (var u in users) {
-                    var _user = users[u];
-                    if (_user.username === username && password === _user.password) {
-                        return _user;
-                    }
-                }
-                return null;
+                var url = "/api/user?username="+username + "&password="+password;
+
+                return $http.get(url);
             }
 
         }

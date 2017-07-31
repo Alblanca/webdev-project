@@ -16,13 +16,17 @@
         init();
 
         function login(user) {
-            var user = userService.findUserByUsernameAndPassword(user.username, user.password);
-            if (user === null) {
-                model.errorMessage = "User not found";
-            } else {
-                $rootScope.currentUser = user;
-                $location.url("profile/" + user._id);
-            }
+            var promise = userService.findUserByUsernameAndPassword(user.username, user.password);
+            promise
+                .then(function (res) {
+                    var _user = res.data;
+                    if (_user === "0") {
+                        model.errorMessage = "User not found";
+                    } else {
+                        $rootScope.currentUser = _user;
+                        $location.url("profile/" + _user._id);
+                    }
+                });
         }
     }
 })();

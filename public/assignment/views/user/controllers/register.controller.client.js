@@ -19,13 +19,21 @@
             // Password validation
             if(user.password === user.password2) {
                 // Username validation
-                var foundUser = userService.findUserByUsername(user.username);
-                if (!foundUser) {
-                    var _user = userService.registerUser(user);
-                    $location.url("profile/" + user._id);
-                } else {
-                    model.errorMessage = "Username already exists";
-                }
+                var promise = userService.findUserByUsername(user.username);
+                promise
+                    .then(function (response) {
+                        var foundUser = response.data;
+                        if (foundUser === "0") {
+                            var _promise = userService.registerUser(user);
+                            _promise
+                                .then(function (res) {
+                                    var _user = res.data;
+                                    $location.url("profile/" + _user._id);
+                                });
+                        } else {
+                            model.errorMessage = "Username already exists";
+                        }
+                    });
             } else {
                 model.errorMessage = "Password does not match";
             }

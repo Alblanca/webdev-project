@@ -10,8 +10,51 @@ var users = [
     {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi", email: "alice@wonder.com"}
 ]
 
+//http handlers
 app.get("/api/users", getAllUsers);
-app.get("/api/users/:userId", getUserById);
+app.get("/api/user/:userId", getUserById);
+app.get("/api/user", findUser);
+app.post("/api/user", registerUser);
+
+function registerUser(req, res) {
+    var user = req.body;
+
+    user._id = (new Date()).getTime() + "";
+    user.email = '';
+    users.push(user);
+
+    res.send(user);
+    return;
+}
+
+function findUser(req, res) {
+    var username = req.query.username;
+    var password = req.query.password;
+
+    if (username && password) {
+        for (var u in users) {
+            var _user = users[u];
+            if (_user.username === username && password === _user.password) {
+                res.send(_user);
+                return;
+            }
+        }
+        res.send("0");
+        return;
+    } else if(username) {
+        for (var u in users) {
+            if (users[u].username === username) {
+                res.send(users[u]);
+                return;
+            }
+        }
+        res.send("0");
+        return;
+    }
+
+
+
+}
 
 function getAllUsers(req, response) {
     response.send(users);
