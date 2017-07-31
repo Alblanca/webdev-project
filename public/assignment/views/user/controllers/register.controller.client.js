@@ -23,14 +23,15 @@
                     .then(function (response) {
                         var foundUser = response.data;
                         if (foundUser === "0") {
-                            userService.registerUser(user)
-                                .then(function (res) {
-                                    var _user = res.data;
-                                    $location.url("profile/" + _user._id);
-                                });
+                            return userService.registerUser(user);
+
                         } else {
                             model.errorMessage = "Username already exists";
                         }
+                    })
+                    .then(function (res) {
+                        var _user = res.data;
+                        $location.url("profile/" + _user._id);
                     });
             } else {
                 model.errorMessage = "Password does not match";
