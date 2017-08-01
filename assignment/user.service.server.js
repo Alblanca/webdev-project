@@ -11,12 +11,26 @@ var users = [
 ]
 
 //http handlers
-app.get("/api/user", getAllUsers);
+app.get("/api/users", getAllUsers);
 app.get("/api/user/:userId", getUserById);
 app.get("/api/user", findUser);
 app.post("/api/user", registerUser);
 app.put("/api/user/:userId", updateUser);
+app.delete("/api/user/:userId", unregisterUser);
 
+function unregisterUser(req, res) {
+    var userId = req.params.userId;
+
+    for (var u in users) {
+        if (users[u]._id === userId) {
+            delete users[u];
+            res.sendStatus(200);
+            return;
+        }
+    }
+    res.sendStatus(404);
+    return;
+}
 
 function updateUser(req, res) {
     var user = req.body;

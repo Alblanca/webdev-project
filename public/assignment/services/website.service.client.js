@@ -27,7 +27,6 @@
             var url = "/api/user/" + userId + "/website";
 
             return $http.get(url);
-
         }
 
         function createWebsite(website, userId) {
