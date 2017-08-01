@@ -45,7 +45,7 @@
 
         function getWidgetEditUrl(widget) {
             return "#!/user/"+ model.userId +"/website/"+ model.websiteId +
-                "/page/" + model.pageId +"/widget/" + widget.widgetType.toLowerCase() + "/" +widget._id;
+                "/page/" + model.pageId +"/widget/" + widget._id;
         }
     }
 })();

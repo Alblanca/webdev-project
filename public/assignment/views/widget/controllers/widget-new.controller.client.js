@@ -16,21 +16,16 @@
         model.pageId = $routeParams["pageId"];
 
         model.createWidget = createWidget;
-        model.widgetOk = widgetOk;
 
         function init() {
 
         }
         init();
 
-        function widgetOk(widgetType, widget) {
-            createWidget(widgetType, widget);
-        }
-
-        function createWidget(widgetType, widget) {
-            widgetService.createWidget(model.pageId, widgetType, widget);
-            $location.url("/user/"+model.userId+"/website/"+
-                model.websiteId+"/page/" + model.pageId+"/widget");
+        function createWidget(widgetType) {
+            var newWidget = widgetService.createWidget(model.pageId, widgetType);
+            $location.url("/user/"+ model.userId +"/website/" + model.websiteId + "/page/" +
+                model.pageId + "/widget/" + newWidget._id);
         }
 
     }

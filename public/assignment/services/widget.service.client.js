@@ -35,21 +35,20 @@
            return _widgets;
        }
 
-        function createWidget(pid, widgetType, widget) {
+        function createWidget(pid, widgetType) {
+           var widget = {};
             widget.pageId = pid;
             widget._id = (new Date()).getTime() + "";
             widget.widgetType = widgetType;
 
             widgets.push(widget);
 
-            return;
+            return widget;
         }
 
-        function updateWidget(widgetType, widgetId, widget) {
+        function updateWidget(widget) {
             for(var w in widgets) {
-                if(widgets[w]._id === widgetId) {
-                    widget.widgetType = widgetType;
-                    widget._id = widgetId;
+                if(widgets[w]._id === widget._id) {
                     delete widgets[w];
                     widgets[w] = widget;
                 }

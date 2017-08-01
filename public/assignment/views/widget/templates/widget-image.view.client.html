@@ -1,86 +1,44 @@
-<div>
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="navbar-header col-xs-12">
-                    <p class="navbar-text pull-left col-2">
-                        <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/"
-                           class="navbar-link">
-                            <span class="glyphicon glyphicon-chevron-left">
-                            </span>
-                        </a>
-                    </p>
-                         <a class="navbar-brand col-8" href="">
-                            Widget Edit
-                        </a>
-                    <p class="navbar-text pull-right col-2">
-                        <a href=""
-                           ng-click="model.widgetOk('IMAGE', model.widget)"
-                           class="navbar-link">
-                            <span class="glyphicon glyphicon-ok">
-                            </span>
-                        </a>
-                    </p>
-                </div>
-            </div>
-            </div>
-    </nav>
+<form class="container-fluid">
+    <div class="form-group container-list-group">
+        <label for="widget-name">Name</label>
+        <input type="text"
+               class="form-control element-margin"
+               id="widget-name"
+               ng-model="model.widget.name"
+               placeholder="Widget Name">
 
-    <form class="container-fluid">
-        <div class="form-group container-list-group">
-            <label for="widget-name">Name</label>
-            <input type="text"
-                   class="form-control element-margin"
-                   id="widget-name"
-                   ng-model="model.widget.name"
-                   placeholder="Widget Name">
+        <label for="widget-text">Text</label>
+        <input type="text"
+               class="form-control element-margin"
+               id="widget-text"
+               ng-model="model.widget.text"
+               placeholder="Image text">
 
-            <label for="widget-text">Text</label>
-            <input type="text"
-                   class="form-control element-margin"
-                   id="widget-text"
-                   ng-model="model.widget.text"
-                   placeholder="Image text">
+        <label for="widget-url">URL</label>
+        <input type="text"
+               class="form-control element-margin"
+               id="widget-url"
+               ng-model="model.widget.url"
+               placeholder="URL of the image">
 
-            <label for="widget-url">URL</label>
-            <input type="text"
-                   class="form-control element-margin"
-                   id="widget-url"
-                   ng-model="model.widget.url"
-                   placeholder="URL of the image">
+        <label for="widget-width">Width</label>
+        <input type="text"
+               class="form-control element-margin"
+               id="widget-width"
+               ng-model="model.widget.width"
+               placeholder="Width of the image (e.g. 100%)">
 
-            <label for="widget-width">Width</label>
-            <input type="text"
-                   class="form-control element-margin"
-                   id="widget-width"
-                   ng-model="model.widget.width"
-                   placeholder="Width of the image (e.g. 100%)">
+        <label class="control-label" for="widget-file">Upload</label>
+        <input id="widget-file" type="file" class="file form-control">
 
-            <label class="control-label" for="widget-file">Upload</label>
-            <input id="widget-file" type="file" class="file form-control">
+        <input class="form-control btn btn-primary element-margin"
+               type="button"
+               value="Upload Image">
 
-            <input class="form-control btn btn-primary element-margin"
-                   type="button"
-                   value="Upload Image">
-
-            <input class="form-control btn btn-danger element-margin"
-                   type="button"
-                   ng-show="model.widgetId"
-                   ng-click="model.deleteWidget()"
-                   value="Delete">
-
-        </div>
-    </form>
-
-    <div class="nav-footer"></div>
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-            <span class="col-9"></span>
-            <div class="navbar-text col-3 pull-right">
-                    <div class=" ">
-                        <a href="../../user/templates/profile.view.client.html">
-                            <span class="right-most-footer glyphicon glyphicon-user"></span>
-                        </a>
-                    </div>
-            </div>
-    </nav>
-</div>
+        <input class="form-control btn btn-danger element-margin"
+               type="button"
+               ng-show="model.widgetId"
+               ng-click="model.deleteWidget()"
+               value="Delete">
+    </div>
+</form>

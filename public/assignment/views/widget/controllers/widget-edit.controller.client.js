@@ -18,16 +18,11 @@
 
         model.deleteWidget = deleteWidget;
         model.updateWidget = updateWidget;
-        model.widgetOk = widgetOk;
 
         function init() {
             model.widget = widgetService.findWidgetById(model.widgetId);
         }
         init();
-
-        function widgetOk(widgetType, widget) {
-            model.updateWidget(widgetType, widget);
-        }
 
         function deleteWidget() {
             widgetService.deleteWidget(model.widgetId);
@@ -35,8 +30,8 @@
                 model.websiteId+"/page/" + model.pageId+"/widget");
         }
 
-        function updateWidget(widgetType, widget) {
-            widgetService.updateWidget(widgetType, model.widgetId, widget);
+        function updateWidget(widget) {
+            widgetService.updateWidget(widget);
             $location.url("/user/"+model.userId+"/website/"+
                 model.websiteId+"/page/" + model.pageId+"/widget");
         }
