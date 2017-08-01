@@ -21,8 +21,11 @@
         init();
 
         function createWebsite(website) {
-            websiteService.createWebsite(website, model.userId);
-            $location.url("/user/"+ model.userId + "/website");
+            websiteService
+                .createWebsite(website, model.userId)
+                .then(function () {
+                    $location.url("/user/"+ model.userId + "/website");
+                });
         }
     }
 })();

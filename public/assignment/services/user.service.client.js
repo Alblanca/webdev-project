@@ -27,7 +27,7 @@
             function unregisterUser(user) {
                 var url = "/api/user/" + user._id;
 
-                $http.delete(url);
+                return $http.delete(url);
             }
 
             function findUserByUsername(username) {

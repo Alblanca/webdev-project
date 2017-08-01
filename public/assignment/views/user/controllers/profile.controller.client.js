@@ -28,8 +28,11 @@
         }
 
         function unregisterUser(user) {
-            userService.unregisterUser(user);
-            $location.url("/login");
+            userService
+                .unregisterUser(user)
+                .then(function () {
+                    $location.url("/login");
+                });
         }
     }
 

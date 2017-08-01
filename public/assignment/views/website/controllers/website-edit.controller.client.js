@@ -19,7 +19,12 @@
                 .then(function (websites) {
                     model.websites = websites;
                 });
-            model.website = websiteService.findWebsiteById(model.websiteId);
+
+            websiteService
+                .findWebsiteById(model.userId, model.websiteId)
+                .then(function (website) {
+                    model.website = website;
+                });
         }
         init ();
 

@@ -36,20 +36,15 @@
             var url = "/api/user/" + userId + "/website";
 
             return $http.post(url, website);
-
-            website._id = (new Date()).getTime() + "";
-            website.developerId = userId;
-            websites.push(website);
-
-            return;
         }
 
-        function findWebsiteById(id) {
-            for(var w in websites) {
-                if (websites[w]._id === id) {
-                    return angular.copy(websites[w]);
-                }
-            }
+        function findWebsiteById(userId, id) {
+            var url = "/api/user/" + userId + "/website/" + id;
+
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                })
         }
 
         function deleteWebsite(id) {

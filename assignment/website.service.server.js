@@ -5,6 +5,7 @@ var app = require("../express");
 
 app.get("/api/user/:userId/website", findWebsitesForUser);
 app.post("/api/user/:userId/website", createWebsite);
+app.get("/api/user/:userId/website/:websiteId", findWebsiteById);
 
 var websites = [
     { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
@@ -16,8 +17,29 @@ var websites = [
     { "_id": "789", "name": "Chess",       "developerId": "234", "description": "Lorem" }
 ];
 
-function createWebsite(req, res) {
+function findWebsiteById(req, res) {
+    var websiteId = req.params.websiteId;
 
+    for(var w in websites) {
+        if (websites[w]._id === websiteId) {
+            res.json(websites[w]);
+            return;
+        }
+    }
+
+    res.sendStatus(404);
+    return;
+}
+
+function createWebsite(req, res) {
+    var website = req.body;
+    var userId = req.params.userId;
+    website.developerId = userId;
+    website._id = (new Date()).getTime() + "";
+
+    websites.push(website);
+    res.json(website);
+    return;
 }
 
 function findWebsitesForUser(req, res) {
