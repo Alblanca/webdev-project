@@ -14,7 +14,11 @@
         model.createPage = createPage;
 
         function init() {
-            model.pages = pageService.findPagesForWebpage(model.websiteId);
+            pageService
+                .findPagesForWebpage(model.userId, model.websiteId)
+                .then(function (pages) {
+                    model.pages = pages;
+                });
         }
         init ();
 
@@ -24,8 +28,11 @@
                 return;
             }
 
-            pageService.createPage(model.websiteId, page);
-            $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page");
+            pageService
+                .createPage(model.userId, model.websiteId, page)
+                .then(function () {
+                    $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page");
+                });
         }
 
     }
