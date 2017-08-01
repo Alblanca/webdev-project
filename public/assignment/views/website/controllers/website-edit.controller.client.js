@@ -15,7 +15,10 @@
         model.updateWebsite = updateWebsite;
 
         function init() {
-            model.websites = websiteService.findWebsitesForUser(model.userId);
+            websiteService.findWebsitesForUser(model.userId)
+                .then(function (websites) {
+                    model.websites = websites;
+                });
             model.website = websiteService.findWebsiteById(model.websiteId);
         }
         init ();

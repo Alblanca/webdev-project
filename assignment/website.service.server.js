@@ -4,6 +4,7 @@
 var app = require("../express");
 
 app.get("/api/user/:userId/website", findWebsitesForUser);
+app.post("/api/user/:userId/website", createWebsite);
 
 var websites = [
     { "_id": "123", "name": "Facebook",    "developerId": "456", "description": "Lorem" },
@@ -14,6 +15,10 @@ var websites = [
     { "_id": "678", "name": "Checkers",    "developerId": "123", "description": "Lorem" },
     { "_id": "789", "name": "Chess",       "developerId": "234", "description": "Lorem" }
 ];
+
+function createWebsite(req, res) {
+
+}
 
 function findWebsitesForUser(req, res) {
     var userId = req.params.userId;

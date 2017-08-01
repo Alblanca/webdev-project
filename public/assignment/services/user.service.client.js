@@ -7,7 +7,7 @@
             .factory("userService", userService);
         
         function userService($http) {
-            
+
             var api = {
                 "findUserByUsernameAndPassword": findUserByUsernameAndPassword,
                 "findUserById" : findUserById,

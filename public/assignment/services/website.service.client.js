@@ -26,10 +26,17 @@
         function findWebsitesForUser(userId) {
             var url = "/api/user/" + userId + "/website";
 
-            return $http.get(url);
+           return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
         function createWebsite(website, userId) {
+            var url = "/api/user/" + userId + "/website";
+
+            return $http.post(url, website);
+
             website._id = (new Date()).getTime() + "";
             website.developerId = userId;
             websites.push(website);
