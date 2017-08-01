@@ -16,11 +16,15 @@
         model.trustHtmlContent = trustHtmlContent;
         model.trustUrlResource = trustUrlResource;
         model.getWidgetIncludeUrl = getWidgetIncludeUrl;
-        model.getWidgetEditUrl = getWidgetEditUrl;
+        // model.getWidgetEditUrl = getWidgetEditUrl;
         model.warnUnimplemented = warnUnimplemented;
 
         function init() {
-            model.widgets = widgetService.findWidgetsForPage(model.pageId);
+            widgetService
+                .findWidgetsForPage(model.userId, model.websiteId, model.pageId)
+                .then(function (widgets) {
+                    model.widgets = widgets;
+                });
         }
         init();
 
@@ -43,9 +47,9 @@
             return "views/widget/editors/widget-" + widgetType + ".component.client.html";
         }
 
-        function getWidgetEditUrl(widget) {
-            return "#!/user/"+ model.userId +"/website/"+ model.websiteId +
-                "/page/" + model.pageId +"/widget/" + widget._id;
-        }
+        // function getWidgetEditUrl(widget) {
+        //     return "#!/user/"+ model.userId +"/website/"+ model.websiteId +
+        //         "/page/" + model.pageId +"/widget/" + widget._id;
+        // }
     }
 })();
