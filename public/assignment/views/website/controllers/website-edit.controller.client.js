@@ -29,13 +29,19 @@
         init ();
 
         function deleteWebsite(websiteId) {
-            websiteService.deleteWebsite(websiteId);
-            $location.url("/user/"+ model.userId+"/website");
+            websiteService
+                .deleteWebsite(model.userId, websiteId)
+                .then(function () {
+                    $location.url("/user/"+ model.userId+"/website");
+                });
         }
 
         function updateWebsite(website, websiteId) {
-            websiteService.updateWebsite(website, websiteId);
-            $location.url("/user/"+ model.userId +"/website");
+            websiteService
+                .updateWebsite(website,model.userId, websiteId)
+                .then(function () {
+                    $location.url("/user/"+ model.userId +"/website");
+                });
         }
     }
 })();

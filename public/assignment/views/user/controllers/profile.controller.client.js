@@ -16,8 +16,8 @@
 
         function init() {
             userService.findUserById(userId)
-                .then(function (response) {
-                    model.user = response.data;
+                .then(function (_user) {
+                    model.user = _user;
                 });
 
         }

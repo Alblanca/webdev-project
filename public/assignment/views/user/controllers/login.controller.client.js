@@ -17,8 +17,7 @@
 
         function login(user) {
             userService.findUserByUsernameAndPassword(user.username, user.password)
-                .then(function (res) {
-                    var _user = res.data;
+                .then(function (_user) {
                     if (_user === "0") {
                         model.errorMessage = "User not found";
                     } else {

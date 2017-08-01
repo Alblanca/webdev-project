@@ -43,13 +43,19 @@
             }
 
             function findUserById(userId) {
-                return $http.get("/api/user/" + userId);
+                return $http.get("/api/user/" + userId)
+                    .then(function (response) {
+                        return response.data;
+                    });
             }
             
             function findUserByUsernameAndPassword(username, password) {
                 var url = "/api/user?username="+username + "&password="+password;
 
-                return $http.get(url);
+                return $http.get(url)
+                    .then(function (response) {
+                        return response.data;
+                    });
             }
 
         }

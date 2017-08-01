@@ -27,6 +27,7 @@
 
                         } else {
                             model.errorMessage = "Username already exists";
+                            return;
                         }
                     })
                     .then(function (res) {
