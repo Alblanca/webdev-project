@@ -26,11 +26,12 @@
         </div>
     </nav>
 
-    <div class="container-fluid container-list-group list-group col-12">
-        <div ng-repeat="widget in model.widgets">
-            <div class="list-group-item" ng-include="model.getWidgetIncludeUrl(widget.widgetType)"></div>
-        </div>
-    </div>
+    <!--<div class="container-fluid container-list-group list-group col-12">-->
+        <!--<div ng-repeat="widget in model.widgets">-->
+            <!--<div class="list-group-item" ng-include="model.getWidgetIncludeUrl(widget.widgetType)"></div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <widget-list></widget-list>
 
 
     <div class="nav-footer"></div>

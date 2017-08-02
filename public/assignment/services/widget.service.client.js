@@ -13,6 +13,14 @@
        this.deleteWidget = deleteWidget;
        this.updateWidget = updateWidget;
        this.findWidgetById = findWidgetById;
+       this.updateWidgetPosition = updateWidgetPosition;
+
+       function updateWidgetPosition(uid, wid, pid, widgetId, startIndex, endIndex) {
+           var url = "/api/user/" + uid + "/website/" + wid + "/page/" + pid +
+               "/widget?startIndex=" + startIndex + "&endIndex=" + endIndex;
+
+           return $http.put(url);
+       }
 
        function findWidgetsForPage(uid, wid, pid) {
            var url = "/api/user/" + uid + "/website/" + wid + "/page/" + pid +"/widget";

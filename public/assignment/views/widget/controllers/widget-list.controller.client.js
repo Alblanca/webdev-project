@@ -18,6 +18,7 @@
         model.getWidgetIncludeUrl = getWidgetIncludeUrl;
         // model.getWidgetEditUrl = getWidgetEditUrl;
         model.warnUnimplemented = warnUnimplemented;
+        model.updateWidgetPosition = updateWidgetPosition;
 
         function init() {
             widgetService
@@ -27,6 +28,14 @@
                 });
         }
         init();
+
+        function updateWidgetPosition(startIndex, endIndex) {
+            widgetService
+                .updateWidgetPosition(model.userId, model.websiteId, model.pageId, model.widgetId, startIndex, endIndex)
+                .then(function () {
+                    return;
+                });
+        }
 
         function warnUnimplemented() {
             alert("Not yet implemented feature!");

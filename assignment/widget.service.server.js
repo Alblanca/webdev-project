@@ -8,6 +8,7 @@ app.post("/api/user/:userId/website/:websiteId/page/:pageId/widget", createWidge
 app.get("/api/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId", findWidgetById);
 app.delete("/api/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId", deleteWidget);
 app.put("/api/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId", updateWidget);
+app.put("/api/user/:userId/website/:websiteId/page/:pageId/widget/", updateWidgetPosition);
 
 var widgets = [
     { "_id": "123","name": "lorem","widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
@@ -20,6 +21,19 @@ var widgets = [
         "url": "https://youtu.be/AM2Ivdi9c4E" },
     { "_id": "789","name": "lorem", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
 ];
+
+function updateWidgetPosition(req, res) {
+    var startIndex = req.query.startIndex;
+    var endIndex = req.query.endIndex;
+    var pageId = req.params.pageId;
+
+    var tempWidget = widgets[startIndex];
+    widgets[startIndex] = widgets[endIndex];
+    widgets[endIndex] = tempWidget;
+
+    res.sendStatus(200);
+    return;
+}
 
 function updateWidget(req, res) {
     var widget = req.body;
