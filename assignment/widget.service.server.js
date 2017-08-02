@@ -104,3 +104,61 @@ function findWidgetsForPage(req, res) {
     res.json(_widgets);
     return;
 }
+
+function getWidgetById(id) {
+    for(var w in widgets) {
+        if(widgets[w]._id === id) {
+            return widgets[w];
+        }
+    }
+    return null;
+}
+
+var multer = require('multer');
+// var upload = multer({ dest: 'public/assignment/uploads/'});
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/assignment/uploads/')
+    },
+    filename: function (req, file, cb) {
+        var givenName = req.body.filename;
+        var fileName = file.originalname;
+        cb(null, fileName);
+    }
+});
+
+var upload = multer({ storage: storage });
+app.post ("/api/upload", upload.single('myFile'), uploadImage);
+
+function uploadImage(req, res) {
+
+    var widgetId = req.body.widgetId;
+    var width = req.body.width;
+    var myFile = req.file;
+    var givenName = req.body.filename;
+    var widgetText = req.body.widgetText;
+
+    var userId = req.body.userId;
+    var websiteId = req.body.websiteId;
+    var pageId = req.body.pageId;
+
+    var originalname  = myFile.originalname; // file name on user's computer
+    var filename      = givenName? givenName: myFile.filename;     // new file name in upload folder
+    var path          = myFile.path;         // full path of uploaded file
+    var destination   = myFile.destination;  // folder where file is saved to
+    var size          = myFile.size;
+    var mimetype      = myFile.mimetype;
+
+    //update everything
+    widget = getWidgetById(widgetId);
+    widget.url = 'uploads/'+originalname;
+    widget.width = width;
+    widget.text = widgetText;
+    widget.name = givenName;
+
+    var callbackUrl   = "../assignment/#!/user/"+userId+"/website/"+websiteId + "/page/" + pageId + "/widget/" + widgetId;
+
+    res.redirect(callbackUrl);
+
+}
+

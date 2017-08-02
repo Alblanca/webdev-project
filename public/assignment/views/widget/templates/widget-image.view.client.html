@@ -1,10 +1,11 @@
-<form class="container-fluid">
+<form class="container-fluid" action="/api/upload" method="post" enctype="multipart/form-data">
     <div class="form-group container-list-group">
         <label for="widget-name">Name</label>
         <input type="text"
                class="form-control element-margin"
                id="widget-name"
                ng-model="model.widget.name"
+               name="filename"
                placeholder="Widget Name">
 
         <label for="widget-text">Text</label>
@@ -12,6 +13,7 @@
                class="form-control element-margin"
                id="widget-text"
                ng-model="model.widget.text"
+               name="widgetText"
                placeholder="Image text">
 
         <label for="widget-url">URL</label>
@@ -26,18 +28,23 @@
                class="form-control element-margin"
                id="widget-width"
                ng-model="model.widget.width"
+               name="width"
                placeholder="Width of the image (e.g. 100%)">
 
+        <input  name="userId"    value="{{model.userId}}"   style="display: none"/>
+        <input  name="websiteId" value="{{model.websiteId}}"   style="display: none"/>
+        <input  name="pageId"    value="{{model.pageId}}"   style="display: none"/>
+        <input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>
+
         <label class="control-label" for="widget-file">Upload</label>
-        <input id="widget-file" type="file" class="file form-control">
+        <input id="widget-file" type="file" class="file form-control" name="myFile">
 
         <input class="form-control btn btn-primary element-margin"
-               type="button"
+               type="submit"
                value="Upload Image">
 
         <input class="form-control btn btn-danger element-margin"
                type="button"
-               ng-show="model.widgetId"
                ng-click="model.deleteWidget()"
                value="Delete">
     </div>
