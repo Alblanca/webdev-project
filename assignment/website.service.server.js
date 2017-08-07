@@ -3,6 +3,8 @@
  */
 var app = require("../express");
 
+var websiteModel = mongoose.model("")
+
 app.get("/api/user/:userId/website", findWebsitesForUser);
 app.post("/api/user/:userId/website", createWebsite);
 app.get("/api/user/:userId/website/:websiteId", findWebsiteById);
@@ -67,11 +69,19 @@ function findWebsiteById(req, res) {
 function createWebsite(req, res) {
     var website = req.body;
     var userId = req.params.userId;
-    website.developerId = userId;
-    website._id = (new Date()).getTime() + "";
 
-    websites.push(website);
-    res.json(website);
+    WebsiteModel
+        .createWebsite(userId, website)
+        .then(function (websiteDoc) {
+            res.json(websiteDoc);
+        }, function (err) {
+            res.sendStatus(500).send(err);
+        });
+    // website.developerId = userId;
+    // website._id = (new Date()).getTime() + "";
+    //
+    // websites.push(website);
+    // res.json(website);
     return;
 }
 
