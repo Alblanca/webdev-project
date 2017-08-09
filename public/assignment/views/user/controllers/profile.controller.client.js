@@ -24,7 +24,11 @@
         init();
 
         function updateUser(user) {
-            userService.updateUser(user);
+            userService
+                .updateUser(user)
+                .then(function () {
+                    alert("User updated!");
+                });
         }
 
         function unregisterUser(user) {

@@ -6,11 +6,6 @@ var websiteSchema = mongoose.Schema({
     created: {type: Date, default: Date.now}
 }, {collection: "website"});
 
-websiteModel.createWebsite = createWebsite;
 
-module.exports = websiteModel;
+module.exports = websiteSchema;
 
-function createWebsite(developerId, website) {
-    website.developer = developerId;
-    return websiteModel.create(website);
-}

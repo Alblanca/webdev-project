@@ -8,6 +8,6 @@ var userSchema = mongoose.Schema(
         email: String,
         websites: [{type: mongoose.Schema.Types.ObjectId, ref:"WebsiteModel"}],   //1. arrays of references
         isAdmin: Boolean
-    });
+    }, {collection: "user"});
 
 module.exports = userSchema;

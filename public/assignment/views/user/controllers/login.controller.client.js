@@ -18,7 +18,7 @@
         function login(user) {
             userService.findUserByUsernameAndPassword(user.username, user.password)
                 .then(function (_user) {
-                    if (_user === "0") {
+                    if (_user === null) {
                         model.errorMessage = "User not found";
                     } else {
                         $rootScope.currentUser = _user;

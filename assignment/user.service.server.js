@@ -2,6 +2,7 @@
  * Created by berti on 7/31/2017.
  */
 var app = require("../express");
+var userModel = require("./models/user.model.server");
 
 var users = [
     {_id: "123", username: "alice", password: "alice", firstName: "Alice", lastName: "Wonder", email: "alice@wonder.com", isAdmin: true},
@@ -35,26 +36,26 @@ function unregisterUser(req, res) {
 function updateUser(req, res) {
     var user = req.body;
     var userId = user._id;
-    for (var u in users) {
-        if (users[u]._id === userId) {
-            users[u] = user;
-            res.send(user);
-            return;
-        }
-    }
-    res.sendStatus(404);
-    return;
+
+    userModel
+        .updateUser(userId, user)
+        .then(function (status) {
+            res.json(status);
+        }, function (err) {
+            res.sendStatus(500).send(err);
+        });
 }
 
 function registerUser(req, res) {
     var user = req.body;
 
-    user._id = (new Date()).getTime() + "";
-    user.email = '';
-    users.push(user);
+    userModel
+        .createUser(user)
+        .then(function (user) {
+            res.json(user);
+            return;
+        })
 
-    res.send(user);
-    return;
 }
 
 function findUser(req, res) {
@@ -62,24 +63,25 @@ function findUser(req, res) {
     var password = req.query.password;
 
     if (username && password) {
-        for (var u in users) {
-            var _user = users[u];
-            if (_user.username === username && password === _user.password) {
-                res.send(_user);
+        userModel
+            .findUserByCredentials(username, password)
+            .then(function (user) {
+                res.json(user);
                 return;
-            }
-        }
-        res.send("0");
-        return;
+            }, function (err) {
+                res.sendStatus(404).send(err);
+                return;
+            })
     } else if(username) {
-        for (var u in users) {
-            if (users[u].username === username) {
-                res.send(users[u]);
+        userModel
+            .findUserByUsername(username)
+            .then(function (user) {
+                res.send(user);
                 return;
-            }
-        }
-        res.send("0");
-        return;
+            }, function (err) {
+                res.sendStatus(500).send(err);
+                return;
+            })
     }
 
 }
@@ -89,10 +91,14 @@ function getAllUsers(req, response) {
 }
 
 function getUserById(req, response) {
-    for(var u in users) {
-        if(users[u]._id === req.params.userId) {
-            response.send(users[u]);
-        }
-    }
+    var userId = req.params.userId;
+    var what;
+    return userModel
+        .findUserById(userId)
+        .then(function (user) {
+            response.json(user);
+            return;
+        });
     response.send("can't find matched user");
+    return;
 }
