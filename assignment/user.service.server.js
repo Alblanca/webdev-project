@@ -22,15 +22,25 @@ app.delete("/api/user/:userId", unregisterUser);
 function unregisterUser(req, res) {
     var userId = req.params.userId;
 
-    for (var u in users) {
-        if (users[u]._id === userId) {
-            delete users[u];
-            res.sendStatus(200);
+    userModel
+        .unregisterUser(userId)
+        .then(function (status) {
+            res.json(status);
             return;
-        }
-    }
-    res.sendStatus(404);
-    return;
+        }, function (err) {
+            res.sendStatus(500).send(err);
+            return;
+        })
+    //
+    // for (var u in users) {
+    //     if (users[u]._id === userId) {
+    //         delete users[u];
+    //         res.sendStatus(200);
+    //         return;
+    //     }
+    // }
+    // res.sendStatus(404);
+    // return;
 }
 
 function updateUser(req, res) {

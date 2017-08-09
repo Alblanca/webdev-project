@@ -11,8 +11,13 @@ userModel.findUserById = findUserById;
 userModel.updateUser = updateUser;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.findUserByUsername = findUserByUsername;
+userModel.unregisterUser = unregisterUser;
 
 module.exports = userModel;
+
+function unregisterUser(userId) {
+    return userModel.remove({_id: userId});
+}
 
 function findUserByUsername(username) {
     return userModel.findOne({username : username});
