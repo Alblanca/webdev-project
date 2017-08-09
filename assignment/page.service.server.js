@@ -2,6 +2,7 @@
  * Created by berti on 8/1/2017.
  */
 var app = require("../express");
+var pageModel = require("./models/page.model.server");
 
 app.get("/api/user/:userId/website/:websiteId/page", findPagesForWebpage);
 app.post("/api/user/:userId/website/:websiteId/page", createPage);
@@ -17,70 +18,74 @@ var pages = [
 
 function deletePage(req, res) {
     var pageId = req.params.pageId;
+    var websiteId = req.params.websiteId;
 
-    for (var p in pages) {
-        if(pages[p]._id === pageId) {
-            delete pages[p];
-
+    pageModel
+        .deletePage(websiteId, pageId)
+        .then(function (status) {
             res.sendStatus(200);
             return;
-        }
-    }
-    res.sendStatus(404);
-    return;
+        }, function (err) {
+            res.sendStatus(500).send(err);
+            return;
+        });
 }
 
 function updatePage(req, res) {
     var pageId = req.params.pageId;
     var page = req.body;
 
-    for (var p in pages) {
-        if(pages[p]._id === pageId) {
-            pages[p].name = page.name;
-            pages[p].description = page.description;
-
-            res.json(pages[p]);
+    pageModel
+        .updatePage(pageId, page)
+        .then(function (status) {
+            res.json(status);
             return;
-        }
-    }
-    res.sendStatus(404);
-    return;
+        }, function (err) {
+            res.sendStatus(500).send(err);
+            return;
+        });
 }
 
 function findPageById(req, res) {
     var pageId = req.params.pageId;
 
-    for (var p in pages) {
-        if(pages[p]._id === pageId) {
-            res.json(pages[p]);
+    pageModel
+        .findPageById(pageId)
+        .then(function (page) {
+            res.json(page);
             return;
-        }
-    }
-    res.sendStatus(404);
-    return;
+        }, function (err) {
+            res.sendStatus(404).send(err);
+            return;
+        });
+
 }
 
 function createPage(req, res) {
     var page = req.body;
     var websiteId = req.params.websiteId;
 
-    page._id = (new Date()).getTime() + "";
-    page.websiteId = websiteId;
-    pages.push(page);
-
-    res.json(page);
-    return;
+    pageModel
+        .createPage(websiteId, page)
+        .then(function (page) {
+            res.json(page);
+            return;
+        }, function (err) {
+            res.send(err);
+            return;
+        });
 }
 
 function findPagesForWebpage(req, res) {
     var wid = req.params.websiteId;
-    var _pages = [];
 
-    for (var p in pages) {
-        if(pages[p].websiteId === wid) {
-            _pages.push(pages[p]);
-        }
-    }
-    res.json(_pages);
-    return;
+    pageModel
+        .findPagesForWebsite(wid)
+        .then(function (pages) {
+            res.json(pages);
+            return;
+        }, function (err) {
+            res.sendStatus(404).send(err);
+            return;
+        });
 }
