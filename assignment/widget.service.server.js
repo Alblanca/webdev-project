@@ -38,18 +38,16 @@ function updateWidgetPosition(req, res) {
 
 function updateWidget(req, res) {
     var widget = req.body;
+    var widgetId = req.params.widgetId;
 
-    for(var w in widgets) {
-        if(widgets[w]._id === widget._id) {
-            delete widgets[w];
-            widgets[w] = widget;
-
-            res.json(widgets[w]);
+    widgetModel
+        .updateWidget(widgetId, widget)
+        .then(function (widget) {
+            res.sendStatus(200);
             return;
-        }
-    }
-    res.sendStatus(404);
-    return;
+        }, function (err) {
+            res.sendStatus(404).send(err.message);
+        });
 }
 
 function deleteWidget(req, res) {

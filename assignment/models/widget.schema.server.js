@@ -4,6 +4,9 @@ var widgetSchema = mongoose.Schema({
     name: String,
     text: String,
     widgetType: String,
+    size: String,
+    width: String,
+    url: String,
     created: {type: Date, default: Date.now}
 }, {collection: "widget"});
 
