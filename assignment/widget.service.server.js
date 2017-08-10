@@ -3,6 +3,7 @@
  */
 var app = require("../express");
 var widgetModel = require("./models/widget.model.server");
+var pageModel = require("./models/page.model.server");
 
 app.get("/api/user/:userId/website/:websiteId/page/:pageId/widget", findWidgetsForPage);
 app.post("/api/user/:userId/website/:websiteId/page/:pageId/widget", createWidget);
@@ -11,29 +12,20 @@ app.delete("/api/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId",
 app.put("/api/user/:userId/website/:websiteId/page/:pageId/widget/:widgetId", updateWidget);
 app.put("/api/user/:userId/website/:websiteId/page/:pageId/widget/", updateWidgetPosition);
 
-var widgets = [
-    { "_id": "123","name": "lorem","widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
-    { "_id": "234","name": "lorem", "widgetType": "HEADING", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
-    { "_id": "345","name": "lorem", "widgetType": "IMAGE", "pageId": "321", "width": "100%",
-        "url": "http://lorempixel.com/400/200/"},
-    { "_id": "456","name": "lorem", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"},
-    { "_id": "567","name": "lorem", "widgetType": "HEADING", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
-    { "_id": "678","name": "lorem", "widgetType": "YOUTUBE", "pageId": "321", "width": "100%",
-        "url": "https://youtu.be/AM2Ivdi9c4E" },
-    { "_id": "789","name": "lorem", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
-];
-
 function updateWidgetPosition(req, res) {
     var startIndex = req.query.startIndex;
     var endIndex = req.query.endIndex;
     var pageId = req.params.pageId;
 
-    var tempWidget = widgets[startIndex];
-    widgets[startIndex] = widgets[endIndex];
-    widgets[endIndex] = tempWidget;
-
-    res.sendStatus(200);
-    return;
+    pageModel
+        .updateWidgetPosition(pageId, startIndex, endIndex)
+        .then(function (status) {
+            res.sendStatus(200).json(status);
+            return;
+        }, function (err) {
+            res.sendStatus(500).send(err.message);
+            return;
+        });
 }
 
 function updateWidget(req, res) {
@@ -97,7 +89,7 @@ function createWidget(req, res) {
 function findWidgetsForPage(req, res) {
     var pid = req.params.pageId;
 
-    widgetModel
+    pageModel
         .findWidgetsForPage(pid)
         .then(function (widgets) {
             res.json(widgets);

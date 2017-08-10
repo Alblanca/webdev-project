@@ -12,6 +12,7 @@ widgetModel.findWidgetById = findWidgetById;
 widgetModel.updateWidget = updateWidget;
 widgetModel.deleteWidget = deleteWidget;
 
+
 function deleteWidget(pageId, widgetId) {
     return widgetModel
         .remove({_id : widgetId})

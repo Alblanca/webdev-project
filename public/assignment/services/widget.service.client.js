@@ -27,7 +27,7 @@
 
            return $http.get(url)
                .then(function (response) {
-                   return response.data;
+                   return response.data[0].widgets;
                });
        }
 

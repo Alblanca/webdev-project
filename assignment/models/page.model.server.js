@@ -12,7 +12,32 @@ pageModel.findPageById = findPageById;
 pageModel.updatePage = updatePage;
 pageModel.addWidget = addWidget;
 pageModel.removeWidget = removeWidget;
+pageModel.updateWidgetPosition = updateWidgetPosition;
+pageModel.findWidgetsForPage = findWidgetsForPage;
 module.exports = pageModel;
+
+function findWidgetsForPage(pageId) {
+    return pageModel
+        .find({_id: pageId})
+        .populate('widgets')
+        .exec();
+}
+
+function updateWidgetPosition(pageId, startIndex, endIndex) {
+    return pageModel
+        .findById(pageId)
+        .then(function (page) {
+            var widgets = page.widgets;
+            console.log(page.widgets);
+            var tempWidget = page.widgets[startIndex];
+            widgets[startIndex] = widgets[endIndex];
+            widgets[endIndex] = tempWidget;
+            page.widgets = widgets;
+            page.widgets.splice(0, 0);
+
+            return page.save();
+        });
+}
 
 function updatePage(pageId, page) {
     return pageModel
