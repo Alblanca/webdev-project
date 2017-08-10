@@ -10,6 +10,15 @@ widgetModel.createWidget = createWidget;
 widgetModel.findWidgetsForPage = findWidgetsForPage;
 widgetModel.findWidgetById = findWidgetById;
 widgetModel.updateWidget = updateWidget;
+widgetModel.deleteWidget = deleteWidget;
+
+function deleteWidget(pageId, widgetId) {
+    return widgetModel
+        .remove({_id : widgetId})
+        .then(function (status) {
+            return pageModel.removeWidget(pageId, widgetId);
+        });
+}
 
 function findWidgetById(widgetId) {
     return widgetModel.findById(widgetId);

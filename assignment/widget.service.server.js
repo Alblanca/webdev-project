@@ -52,17 +52,17 @@ function updateWidget(req, res) {
 
 function deleteWidget(req, res) {
     var widgetId = req.params.widgetId;
+    var pageId = req.params.pageId;
 
-    for(var w in widgets) {
-        if(widgets[w]._id === widgetId) {
-            delete widgets[w];
-
+    widgetModel
+        .deleteWidget(pageId, widgetId)
+        .then(function (status) {
             res.sendStatus(200);
             return;
-        }
-    }
-    res.sendStatus(400);
-    return;
+        }, function (err) {
+            res.sendStatus(500).send(err.message);
+            return;
+        });
 }
 
 function findWidgetById(req, res) {
