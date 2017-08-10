@@ -10,6 +10,7 @@ pageModel.createPage = createPage;
 pageModel.deletePage = deletePage;
 pageModel.findPageById = findPageById;
 pageModel.updatePage = updatePage;
+pageModel.addWidget = addWidget;
 module.exports = pageModel;
 
 function updatePage(pageId, page) {
@@ -51,3 +52,11 @@ function findPageById(pageId) {
     return pageModel.findById(pageId);
 }
 
+function addWidget(pageId, widgetId) {
+    return pageModel
+        .findPageById(pageId)
+        .then(function (page) {
+            page.widgets.push(widgetId);
+            return page.save();
+        });
+}

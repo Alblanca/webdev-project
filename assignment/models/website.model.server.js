@@ -55,7 +55,6 @@ function findWebsiteById(websiteId) {
 }
 
 function addPage(websiteId, pageId) {
-    console.log(websiteId);
     return websiteModel
         .findWebsiteById(websiteId)
         .then(function (website) {

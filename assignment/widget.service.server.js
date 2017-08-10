@@ -2,6 +2,7 @@
  * Created by berti on 8/1/2017.
  */
 var app = require("../express");
+var widgetModel = require("./models/widget.model.server");
 
 app.get("/api/user/:userId/website/:websiteId/page/:pageId/widget", findWidgetsForPage);
 app.post("/api/user/:userId/website/:websiteId/page/:pageId/widget", createWidget);
@@ -69,40 +70,44 @@ function deleteWidget(req, res) {
 function findWidgetById(req, res) {
     var widgetId = req.params.widgetId;
 
-    for(var w in widgets) {
-        if(widgets[w]._id === widgetId) {
-            res.send(widgets[w]);
+    widgetModel
+        .findWidgetById(widgetId)
+        .then(function (widget) {
+            res.json(widget);
             return;
-        }
-    }
-    res.sendStatus(404);
-    return;
+        }, function (err) {
+            res.sendStatus(404).send(err.message);
+            return;
+        });
 }
 
 function createWidget(req, res) {
     var widget = req.body;
     var pid = req.params.pageId;
 
-    widget.pageId = pid;
-    widget._id = (new Date()).getTime() + "";
-
-    widgets.push(widget);
-
-    res.json(widget);
-    return;
+    widgetModel
+        .createWidget(widget, pid)
+        .then(function (widget) {
+            res.json(widget);
+            return;
+        }, function (err) {
+            res.send(err.message);
+            return;
+        });
 }
 
 function findWidgetsForPage(req, res) {
     var pid = req.params.pageId;
 
-    var _widgets = [];
-    for(var w in widgets) {
-        if(widgets[w].pageId === pid) {
-            _widgets.push(widgets[w]);
-        }
-    }
-    res.json(_widgets);
-    return;
+    widgetModel
+        .findWidgetsForPage(pid)
+        .then(function (widgets) {
+            res.json(widgets);
+            return;
+        }, function (err) {
+            res.sendStatus(404).send(err);
+            return;
+        });
 }
 
 function getWidgetById(id) {
