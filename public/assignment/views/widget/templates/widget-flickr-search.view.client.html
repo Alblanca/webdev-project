@@ -18,13 +18,27 @@
 </nav>
 
 <div class="input-group container-list-group search-bar">
-    <input ng-model="searchText" type="text" class="form-control">
+    <input ng-model="searchText" type="text" class="form-control" placeholder="Type Search Term (e.g. Flowers, River, Water)">
     <span class="input-group-btn">
-        <a ng-click="model.searchPhotos(searchText)" class="btn btn-default" type="button">
+        <a ng-click="model.searchPhotos(searchText)"
+           class="btn btn-default"
+           type="button">
             <span class="glyphicon glyphicon-search"></span>
         </a>
     </span>
 </div>
+
+<div class ="container-fluid">
+    <div class="row">
+        <div class="col-xs-4" ng-repeat="photo in model.photos.photo">
+            <a href="" ng-click="model.choosePhoto(photo)">
+            <img class="img-responsive flickr-imgs"
+                 ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_m.jpg"/>
+            </a>
+        </div>
+    </div>
+</div>
+
 
 
 <div class="nav-footer"></div>

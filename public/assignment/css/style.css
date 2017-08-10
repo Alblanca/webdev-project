@@ -2,6 +2,11 @@
     margin: 30px;
 }
 
+.flickr-imgs {
+    margin: 1%;
+    border-style: solid;
+}
+
 input.form-control {
     margin-bottom: 5px;
 }
