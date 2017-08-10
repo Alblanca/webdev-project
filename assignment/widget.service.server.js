@@ -144,16 +144,23 @@ function uploadImage(req, res) {
     var size          = myFile.size;
     var mimetype      = myFile.mimetype;
 
-    //update everything
-    widget = getWidgetById(widgetId);
+    var widget = {};
+
     widget.url = 'uploads/'+originalname;
     widget.width = width;
     widget.text = widgetText;
     widget.name = givenName;
 
-    var callbackUrl   = "../assignment/#!/user/"+userId+"/website/"+websiteId + "/page/" + pageId + "/widget/" + widgetId;
+    console.log("about to send \n" + widget);
 
-    res.redirect(callbackUrl);
+    widgetModel
+        .updateWidget(widgetId, widget)
+        .then(function (_res) {
+            console.log("response? : " + _res);
+            var callbackUrl   = "../assignment/#!/user/"+userId+"/website/"+websiteId + "/page/" + pageId + "/widget/" + widgetId;
+
+            res.redirect(callbackUrl);
+        });
 
 }
 
