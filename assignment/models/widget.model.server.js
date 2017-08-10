@@ -7,7 +7,6 @@ var widgetModel = mongoose.model("WidgetModel", widgetSchema);
 module.exports = widgetModel;
 
 widgetModel.createWidget = createWidget;
-widgetModel.findWidgetsForPage = findWidgetsForPage;
 widgetModel.findWidgetById = findWidgetById;
 widgetModel.updateWidget = updateWidget;
 widgetModel.deleteWidget = deleteWidget;
@@ -45,7 +44,4 @@ function createWidget(widget, pageId) {
         });
 }
 
-function findWidgetsForPage(pageId) {
-    return widgetModel.find({page: pageId});
-}
 

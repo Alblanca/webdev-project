@@ -28,7 +28,6 @@ function updateWidgetPosition(pageId, startIndex, endIndex) {
         .findById(pageId)
         .then(function (page) {
             var widgets = page.widgets;
-            console.log(page.widgets);
             var tempWidget = page.widgets[startIndex];
             widgets[startIndex] = widgets[endIndex];
             widgets[endIndex] = tempWidget;
