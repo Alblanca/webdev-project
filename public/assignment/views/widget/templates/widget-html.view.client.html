@@ -10,13 +10,10 @@
 
         <label for="widget-text">HTML Content</label>
 
-        <!--<textarea class="form-control element-margin"-->
-                  <!--id="widget-text"-->
-                  <!--rows="5"-->
-                  <!--ng-model="model.widget.text"-->
-                  <!--placeholder="Embeddable HTML code"></textarea>-->
-
-        <div text-angular class="element-margin" ng-model="model.widget.text" placeholder="Create your html content or paste pre-formatted html. Click </> to access raw html element"></div>
+        <div text-angular class="element-margin"
+             ng-model="model.widget.text"
+             ta-toolbar="[['h1','h2','h3'], ['bold','italics','underline','strikeThrough'], ['ul','ol'],['justifyLeft', 'justifyCenter', 'justifyRight','justifyFull'], ['insertImage', 'insertLink', 'insertVideo'], ['html'], ['wordcount', 'charcount']]"
+             placeholder="Create your html content or paste pre-formatted html. Click </> to access raw html element"></div>
 
 
         <input class="form-control btn btn-danger element-margin"
