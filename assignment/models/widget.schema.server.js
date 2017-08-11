@@ -7,6 +7,9 @@ var widgetSchema = mongoose.Schema({
     size: String,
     width: String,
     url: String,
+    rows: Number,
+    placeholder: String,
+    formatted: Boolean,
     created: {type: Date, default: Date.now}
 }, {collection: "widget"});
 

@@ -1,0 +1,17 @@
+<div ng-include src="'views/widget/editors/widget-menu.component.client.html'"></div>
+</br>
+
+<div ng-if="widget.formatted"
+     text-angular
+     placeholder="{{widget.placeholder}}"
+     value="{{widget.text}}"
+     ta-toolbar="[['h1','h2','h3'], ['bold','italics','underline','strikeThrough'], ['ul','ol'],['justifyLeft', 'justifyCenter', 'justifyRight','justifyFull'], ['insertImage', 'insertLink', 'insertVideo'], ['html'], ['wordcount', 'charcount']]"
+     classs="">
+
+</div>
+<input ng-if="!widget.formatted && (!widget.rows || widget.rows === 1)"
+       placeholder="{{widget.placeholder}}" class="form-control"/>
+
+<textarea ng-if="!widget.formatted && (widget.rows > 1)"
+          rows="{{widget.rows}}" placeholder="{{widget.placeholder}}"
+          class="form-control">{{widget.text}}</textarea>
