@@ -151,12 +151,9 @@ function uploadImage(req, res) {
     widget.text = widgetText;
     widget.name = givenName;
 
-    console.log("about to send \n" + widget);
-
     widgetModel
         .updateWidget(widgetId, widget)
         .then(function (_res) {
-            console.log("response? : " + _res);
             var callbackUrl   = "../assignment/#!/user/"+userId+"/website/"+websiteId + "/page/" + pageId + "/widget/" + widgetId;
 
             res.redirect(callbackUrl);
