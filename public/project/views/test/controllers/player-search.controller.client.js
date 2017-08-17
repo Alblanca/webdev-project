@@ -6,7 +6,7 @@
         .module("OverHub")
         .controller("playerSearchController", playerSearchController);
 
-    function playerSearchController($location, userService, $rootScope) {
+    function playerSearchController($location, testService, $rootScope) {
         var model = this;
         model.login = login;
         model.searchUser = searchUser;
@@ -17,7 +17,15 @@
         init();
 
         function searchUser(searchText) {
+            var apiText = null;
+            apiText = searchText.replace('#', '-');
 
+            testService
+                .searchUser(apiText)
+                .then(function (res) {
+                    var playa = JSON.stringify(res.data, null, 2);
+                    model.searchData = playa;
+                });
         }
 
         function login(user) {
