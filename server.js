@@ -6,8 +6,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/public'));
 
-// require("./test/app");
-require("./assignment/app");
 require("./project/app");
 
 var port = process.env.PORT || 3000;
