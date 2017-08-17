@@ -1,10 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Project Home Page</title>
+<!-- saved from url=(0052)https://v4-alpha.getbootstrap.com/examples/carousel/ -->
+<html lang="en" ng-app="OverHub">
+<head>"/>
+    <link href="css/style.css" rel="stylesheet"/>
+
+    <!--Meta-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="CS5610 assignment page for jaejin lee">
+    <meta name="author" content="Jaejin Lee, Anastaisa Amirova">
+
+    <!-- Core Scripts -->
+
+    <!--jquery-->
+    <script src="../vendor/jquery/jquery.js"></script>
+    <script src="../vendor/jquery/jquery-ui.js"></script>
+
+    <!--Angular-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
+
+    <!--Directive-->
+
+    <!--Text-angular scripts-->
+    <script src="../vendor/text-angular/textAngular-rangy.min.js"></script>
+    <script src="../vendor/text-angular/textAngular-sanitize.min.js"></script>
+    <script src="../vendor/text-angular/textAngular.min.js"></script>
+
+    <!-- Controllers and Config files-->
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+    <!--<script src="views/user/controllers/profile.controller.client.js"></script>-->
+    <!--<script src="views/user/controllers/login.controller.client.js"></script>-->
+    <!--<script src="views/user/controllers/register.controller.client.js"></script>-->
+    <!--<script src="views/website/controllers/website-list.controller.client.js"></script>-->
+    <!--<script src="views/website/controllers/website-new.controller.client.js"></script>-->
+    <!--<script src="views/website/controllers/website-edit.controller.client.js"></script>-->
+    <!--<script src="views/page/controllers/page-list.controller.client.js"></script>-->
+    <!--<script src="views/page/controllers/page-new.controller.client.js"></script>-->
+    <!--<script src="views/page/controllers/page-edit.controller.client.js"></script>-->
+    <!--<script src="views/widget/controllers/widget-list.controller.client.js"></script>-->
+    <!--<script src="views/widget/controllers/widget-new.controller.client.js"></script>-->
+    <!--<script src="views/widget/controllers/widget-edit.controller.client.js"></script>-->
+    <!--<script src="views/widget/controllers/widget-flickr-search.controller.client.js"></script>-->
+
+    <!--<script src="controllers/home.controller.client.js"></script>-->
+
+    <!-- Services -->
+    <!--<script src="services/user.service.client.js"></script>-->
+    <!--<script src="services/website.service.client.js"></script>-->
+    <!--<script src="services/page.service.client.js"></script>-->
+    <!--<script src="services/widget.service.client.js"></script>-->
+    <!--<script src="services/search.service.client.js"></script>-->
+
+    <!-- CSS -->
+    <link rel="icon" href="https://v4-alpha.getbootstrap.com/favicon.ico"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet
+
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <!--<link href="../vendor/text-angular/textAngular.css" rel="stylesheet"/>-->
+
+
 </head>
+
+<script>(function n(){!function(){function e(e,t,n){t=t||{};var r=e.ownerDocument||e,i=r.createEvent?r.createEvent("CustomEvent"):r.createEventObject();i.initCustomEvent&&i.initCustomEvent(t.type,!!t.bubbles,!!t.cancelable,t.detail);for(var a in t)i[a]=t[a];return setTimeout(function(){try{e.dispatchEvent?e.dispatchEvent(i):e.fireEvent("on"+t.type,r.createEventObject())}catch(n){var a=e["listen"+t.type];if(a)for(var o=0;o<a.length;++o)try{a[o].call(e,i)}catch(e){}}n()},0),this}function t(e,t,n){function r(e,t){try{var n=e.ownerDocument;if(n.createEventObject){var r=n.createEventObject();e.fireEvent("on"+t,r)}else r=n.createEvent("HTMLEvents"),r.initEvent(t,!0,!0),e.dispatchEvent(r)}catch(e){}}var i=!0,a=e.className&&e.className.indexOf("fancified")!=-1;if(window.jQuery){var o=window.jQuery(e);try{if(o.selectBoxIt)o.selectBoxIt("selectOption",o.val());else if(o.data("chosen")||o.chosen)o.trigger("chosen:updated").trigger("liszt:updated");else if(o.data("chooserElement"))o.trigger("change");else if(o.fancySelect)o.get("fancySelect").select("value",o.val());else if(o.selectBox)o.selectBox("value",o.val());else if(o.selectric)o.selectric("refresh");else if(o.coreUISelect){var s=o.data("coreUISelect");s.isSelectShow=!0,s.changeDropdownData(),s.isSelectShow=!1}else if(o.data("myJSPulldownObject")){var l=o.data("myJSPulldownObject");l.setToValue(o.val())}else if(o.fancyfields)o.setVal(o.val());else if(o.data("select2"));else if(o.data("selectize"))i=!1,o.data("selectize").setValue(o.val());else if(o.hasClass("fancified"))o.trigger("update");else if(o.selectmenu){var c=o.val();try{o.selectmenu("value",o[0].options[0].value)}catch(e){}o.selectmenu("value",c)}o.trigger("change")}catch(e){}}i&&(a&&r(e,"update"),r(e,"change"),r(e,"blur")),n()}function n(t,n,r,i){var a=t.value;e(t,{type:"keydown",keyCode:n,which:n,charCode:n,bubbles:!0},function(){e(t,{type:"keypress",keyCode:n,which:n,charCode:n,bubbles:!0},function(){setTimeout(function(){var o=t.value;a==o&&(t.value=r),e(t,{type:"input",keyCode:n,which:n,charCode:n,bubbles:!0},function(){e(t,{type:"keyup",keyCode:n,which:n,charCode:n,bubbles:!0},function(){i()})})},1)})})}function r(e,t,i,a){if(!t||""==t)return void a();var o=t.charCodeAt(0);i+=t.charAt(0),n(e,o,i,function(){r(e,t.substring(1),i,a)})}function i(t,n,r){if(window.abineTriggerChangeInProgress)return void setTimeout(function(){i(t,n,r)},100);window.abineTriggerChangeInProgress=!0;try{if(window.jQuery){var a=window.jQuery(t);(a.data("rawMaskFn")||a.mask||a.CardPhoneFormatting)&&a.focus().val(n).trigger("input").trigger("paste")}}catch(e){}e(t,{type:"change"},function(){e(t,{type:"blur"},function(){try{var e=new Event("input",{bubbles:!0,cancelable:!0});t.dispatchEvent(e)}catch(e){}window.abineTriggerChangeInProgress=!1,r()})})}function a(t,n,a){e(t,{type:"focus"},function(){e(t,{type:"click"},function(){r(t,n,"",function(){i(t,n,function(){e(document,{type:"abineFilled"},function(){a()})})})})})}function o(n,r,i,a){var o=/[\s]+/g,s=(r||"").toLowerCase().replace(o,""),l=function(){e(document,{type:"abineFilled"},function(){a()})},c=!1,u=!1,d=n.getElementsByTagName("option");if(d&&d.length>0){for(var h=-1,f=0;f<d.length;f++){var p=(d[f].text||"").toLowerCase().replace(o,""),m=(d[f].getAttribute("value")||"").toLowerCase().replace(o,"");if(m==s||p==s){d[f].selected||(c=!0,d[f].selected=!0),u=!0;break}h==-1&&p.indexOf(s)!=-1&&(h=f)}u||h==-1||i||d[h].selected||(c=!0,d[h].selected=!0,u=!0)}n.setAttribute("abineFillResponse",u),c?t(n,r,l):l()}function s(){var e=document.getElementsByClassName("abineFillTarget");if(e.length>0)return e[0];for(var t=0;t<frames.length;t++)try{var e=frames[t].document.getElementsByClassName("abineFillTarget");if(e.length>0)return e[0]}catch(e){}return null}function l(){var n=document.createElement("div");n.id="abineFillElement","undefined"!=typeof paypal&&n.setAttribute("data-paypal","1"),"undefined"!=typeof OffAmazonPayments&&n.setAttribute("data-amazon","1"),"undefined"!=typeof MasterPass&&n.setAttribute("data-masterpass","1"),document.documentElement.appendChild(n),n.addEventListener("fill",function(){var t=s();if(t){var r=n.getAttribute("value");a(t,r,function(){})}else e(document,{type:"abineFilled"},function(){})},!1),n.addEventListener("fillSelect",function(){var t=s();if(t){var r=n.getAttribute("value"),i=!!n.getAttribute("skipPartial");o(t,r,i,function(){})}else e(document,{type:"abineFilled"},function(){})}),n.addEventListener("triggerChange",function(){var e=s(),r=n.getAttribute("value");e&&(e.nodeName.match(/select/i)?t(e,r,function(){}):i(e,r,function(){}))})}l()}()})()</script></head>
+
+<title>CS5610 Assignment</title>
+
+
 <body>
-    <h1>Project Home Page</h1>
+
+<div ng-view></div>
+
 </body>
+
 </html>
