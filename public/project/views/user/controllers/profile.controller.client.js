@@ -3,7 +3,7 @@
  */
 (function () {
     angular
-        .module("WebAppMaker")
+        .module("OverHub")
         .controller("profileController", profileController);
 
     function profileController($routeParams, $location, userService) {

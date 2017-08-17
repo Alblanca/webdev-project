@@ -3,7 +3,7 @@
  */
 (function () {
     angular
-        .module("WebAppMaker")
+        .module("OverHub")
         .controller("registerController", registerController);
 
     function registerController(userService, $location) {
