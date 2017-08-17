@@ -3,7 +3,7 @@
  */
 (function () {
     angular
-        .module("WebAppMaker")
+        .module("OverHub")
         .controller("loginController", loginController);
 
     function loginController($location, userService, $rootScope) {
