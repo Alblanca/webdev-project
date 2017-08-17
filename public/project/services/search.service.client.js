@@ -33,15 +33,6 @@
 
             return $http.get(url);
         }
-
-
-        function findWidgetById(uid, wid, pid, widgetId) {
-            var url = "/api/user/" + uid + "/website/" + wid + "/page/" + pid +"/widget/" + widgetId;
-
-            return $http.get(url)
-                .then(function (response) {
-                    return response.data;
-                });
-        }
+        
     }
 })();

@@ -31,6 +31,11 @@
                 controller: "registerController",
                 controllerAs: "model"
             })
+            .when("/test", {
+                templateUrl: "views/test/templates/player-search.view.client.html",
+                controller: "playerSearchController",
+                controllerAs: "model"
+            });
             // //website routes
             // .when("/user/:userId/website", {
             //     templateUrl: "views/website/templates/website-list.view.client.html",
