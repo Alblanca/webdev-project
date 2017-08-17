@@ -12,7 +12,11 @@
                 },
                 stop: function(event, ui) {
                     endIndex = $(ui.item).index();
-                    scope.model.updateWidgetPosition(startIndex, endIndex);
+                    scope.model
+                        .updateWidgetPosition(startIndex, endIndex);
+                    setTimeout(function(){
+                        //do what you need here
+                    }, 20000);
                 }
             });
             var startIndex = -1;
