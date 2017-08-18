@@ -24,7 +24,13 @@
             .when("/profile/:userId", {
                 templateUrl: "views/user/templates/profile.view.client.html",
                 controller: "profileController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    asdf: checkLogin
+                }
+            })
+            .when("/unauthorized", {
+                templateUrl: "views/user/templates/unauthorized.view.client.html"
             })
             .when("/register", {
                 templateUrl: "views/user/templates/register.view.client.html",
@@ -91,6 +97,21 @@
             // })
             // .otherwise({redirectTo : "/login"});
 
+    }
+    
+    function checkLogin(userService, $q, $location) {
+        var deferred = $q.defer();
+        userService
+            .checkLogin()
+            .then(function (user) {
+                if(user === '0') {
+                    deferred.reject();
+                    $location.url("/unauthorized");
+                } else {
+                    deferred.resolve(user);
+                }
+            });
+        return deferred.promise;
     }
 
 })();

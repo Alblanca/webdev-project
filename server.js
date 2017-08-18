@@ -10,6 +10,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
@@ -20,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 
 require("./project/app");
-//test
+
 var port = process.env.PORT || 3000;
 
 app.listen(port);

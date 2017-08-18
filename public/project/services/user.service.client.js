@@ -9,15 +9,23 @@
         function userService($http) {
 
             var api = {
-                "findUserByUsernameAndPassword": findUserByUsernameAndPassword,
+                "login": login,
                 "findUserById" : findUserById,
                 "findUserByUsername" : findUserByUsername,
                 "registerUser" : registerUser,
                 "updateUser" : updateUser,
-                "unregisterUser" : unregisterUser
+                "unregisterUser" : unregisterUser,
+                "checkLogin" : checkLogin
             };
 
             return api;
+
+            function checkLogin() {
+                return $http.get("/api/checkLogin")
+                    .then(function (res) {
+                        return res.data;
+                    });
+            }
 
             function updateUser(user) {
                 var url = "/api/user/" + user._id;
@@ -31,8 +39,8 @@
             }
 
             function findUserByUsername(username) {
-                var url = "/api/user?username=" + username;
-                return $http.get(url);
+                var url = "/api/login";
+                return $http.post(url, {username: username});
             }
 
             function registerUser(user) {
@@ -49,10 +57,10 @@
                     });
             }
             
-            function findUserByUsernameAndPassword(username, password) {
-                var url = "/api/user?username="+username + "&password="+password;
+            function login(username, password) {
+                var url = "/api/login";
 
-                return $http.get(url)
+                return $http.post(url, {username: username, password: password})
                     .then(function (response) {
                         return response.data;
                     });

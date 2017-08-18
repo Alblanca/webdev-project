@@ -3,14 +3,56 @@
  */
 var app = require("../express");
 var userModel = require("./models/user.model.server");
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var auth = authorized;
+
+passport.use(new LocalStrategy(localStrategy));
+passport.serializeUser(serializeUser);
+passport.deserializeUser(deserializeUser);
+
+function authorized (req, res, next) {
+    if (!req.isAuthenticated()) {
+        res.send(401);
+    } else {
+        next();
+    }
+};
+
+
+function localStrategy(username, password, done) {
+    userModel
+        .findUserByCredentials(username, password)
+        .then(function (user) {
+            if(!user) {
+                return done(null, false);
+            }
+            return done(null, user);
+        }, function (err) {
+            if(err) {
+                return done(err);
+            }
+        });
+}
 
 //http handlers
 app.get("/api/users", getAllUsers);
 app.get("/api/user/:userId", getUserById);
-app.get("/api/user", findUser);
+// app.post("/api/login", findUser);
+app.post  ('/api/login', passport.authenticate('local'), login);
 app.post("/api/user", registerUser);
 app.put("/api/user/:userId", updateUser);
 app.delete("/api/user/:userId", unregisterUser);
+app.get("/api/checkLogin", checkLogin);
+
+function checkLogin(req, res) {
+    res.send(req.isAuthenticated() ? req.user : '0');
+}
+
+function login(req, res) {
+    var user = req.user;
+    res.json(user);
+}
 
 function unregisterUser(req, res) {
     var userId = req.params.userId;
@@ -62,8 +104,9 @@ function registerUser(req, res) {
 }
 
 function findUser(req, res) {
-    var username = req.query.username;
-    var password = req.query.password;
+    var user = req.body;
+    var username = user.username;
+    var password = user.password;
 
     if (username && password) {
         userModel
@@ -104,4 +147,21 @@ function getUserById(req, response) {
         });
     response.send("can't find matched user");
     return;
+}
+
+function serializeUser(user, done) {
+    done(null, user);
+}
+
+function deserializeUser(user, done) {
+    userModel
+        .findUserById(user._id)
+        .then(
+            function(user){
+                done(null, user);
+            },
+            function(err){
+                done(err, null);
+            }
+        );
 }
