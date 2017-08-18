@@ -1,0 +1,158 @@
+
+a.logo {
+    font-family: 'Permanent Marker', 'cursive';
+    color: orange !important;
+}
+
+a.logo:hover {
+    text-decoration: none;
+}
+
+.board-headings {
+    padding-top: 15px;
+    text-align: left;
+    font-family: 'Oxygen', 'sans-serif';
+    font-weight: bold;
+}
+
+.board-subheadings {
+    padding-top: 10px;
+    padding-left: 10px;
+    font-family: 'Oswald', 'sans-serif';
+}
+
+.card-block {
+    margin-top: auto;
+}
+
+.card-padding {
+
+}
+
+h1 {
+    font-family: 'Oswald', 'sans-serif';
+    margin-top: 5px;
+}
+
+p.post-info {
+    padding-left: 30px;
+    margin-bottom: -5px;
+}
+
+p.post-tags {
+    margin-bottom: 2px;
+    padding-left: 10px;
+    margin-right: 20px;
+    background-color: #c3cadb;
+}
+
+
+.vote-container {
+    margin: 0 auto;
+}
+
+.tags-badge {
+    glyph-orientation-horizontal: center;
+}
+
+.home-boxes {
+    /*max-width: 75%;*/
+}
+
+.thread-score {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+}
+
+.post-container {
+    display: inline-grid;
+}
+
+.post-content-container {
+    border: 2px solid white;
+    padding: 10px;
+    margin: 10px;
+    background-color: #e3e5ea;
+}
+
+.row.home-boxes {
+    display: block;
+    margin: 0 auto;
+}
+
+.endorse-button-lg {
+    margin-left: 5px;
+}
+
+right {
+    float:right;
+    text-align: right;
+}
+
+.media.board-listing {
+    border: 2px solid lightslategray;
+}
+
+@media (min-width:600px) { .home-boxes { max-width: 75% !important;}
+    .post-container { max-width: 80% !important; }
+    .all-comments-container { max-width: 80% !important; }}
+
+@media (max-width:600px) {
+    h1.profile-header { font-size: 40px; }
+    .edit-icon { font-size: 15px; }
+}
+
+.navbar-nav {
+    flex-direction: row;
+}
+
+.comment-container {
+    /*border: 1px double lightslategray;*/
+    background-color: #c3cadb;
+    padding: 3px;
+    margin-bottom: 5px;
+}
+
+.btn-outline-success {
+    font-family: 'Raleway', 'sans-serif' !important;
+}
+
+body {
+    background-color: #dce0e8;
+    font-family: 'Raleway', 'sans-serif';
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float:right;
+}
+
+.profile-header .display-2 {
+    font-size: 2em;
+}
+
+.profile-header {
+    font-family: 'Anton', 'sans-serif';
+    text-transform: uppercase;
+    padding: 10px;
+}
+
+h3.profile-header {
+    text-transform: lowercase;
+    opacity: .7;
+    padding-top: 20px;
+}
+
+.profile-icon {
+    background-color: darkslategray;
+    box-shadow: 5px 5px 3px grey;
+    margin: 15px;
+}
+
+.edit-icon {
+    font-size: 2em;
+}
