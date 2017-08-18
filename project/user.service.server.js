@@ -85,8 +85,9 @@ function localStrategy(username, password, done) {
 app.get("/api/users", getAllUsers);
 app.get("/api/user/:userId", getUserById);
 // app.post("/api/login", findUser);
+app.post("/api/findUser", findUser);
 app.post  ('/api/login', passport.authenticate('local'), login);
-app.post("/api/user", registerUser);
+app.post("/api/register", registerUser);
 app.put("/api/user/:userId", updateUser);
 app.delete("/api/user/:userId", unregisterUser);
 app.get("/api/checkLogin", checkLogin);
@@ -124,7 +125,7 @@ function unregisterUser(req, res) {
         }, function (err) {
             res.sendStatus(500).send(err);
             return;
-        })
+        });
 }
 
 function updateUser(req, res) {
@@ -145,10 +146,18 @@ function registerUser(req, res) {
 
     userModel
         .createUser(user)
-        .then(function (user) {
-            res.json(user);
-            return;
-        })
+        .then(function(user){
+                if(user){
+                    req.login(user, function(err) {
+                        if(err) {
+                            res.status(400).send(err);
+                        } else {
+                            res.json(user);
+                        }
+                    });
+                }
+            });
+
 
 }
 
@@ -178,7 +187,6 @@ function findUser(req, res) {
                 return;
             })
     }
-
 }
 
 function getAllUsers(req, response) {

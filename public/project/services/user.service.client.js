@@ -44,12 +44,12 @@
             }
 
             function findUserByUsername(username) {
-                var url = "/api/login";
+                var url = "/api/findUser";
                 return $http.post(url, {username: username});
             }
 
             function registerUser(user) {
-                var url = "/api/user";
+                var url = "/api/register";
 
                 return $http.post(url, user);
 

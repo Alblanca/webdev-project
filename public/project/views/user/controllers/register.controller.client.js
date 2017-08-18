@@ -19,7 +19,8 @@
             // Password validation
             if(user.password === user.password2) {
                 // Username validation
-                userService.findUserByUsername(user.username)
+                userService
+                    .findUserByUsername(user.username)
                     .then(function (response) {
                         var foundUser = response.data;
                         if (foundUser === "") {
@@ -31,7 +32,7 @@
                     })
                     .then(function (res) {
                         var _user = res.data;
-                        $location.url("profile/" + _user._id);
+                        $location.url("profile/");
                     });
             } else {
                 model.errorMessage = "Password does not match";
