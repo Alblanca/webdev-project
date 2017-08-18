@@ -3,8 +3,8 @@
     cursor: pointer !important;
 }
 .container{
-    /*overflow-y: hidden;*/
-    /*overflow-x: hidden;*/
+    /*overflow-y: overlay;*/
+    /*overflow-x: overlay;*/
 }
 
 .inner-container{
@@ -13,9 +13,9 @@
 }
 
 .dropdown-menu {
-    position: fixed;
-    left: auto;
-    top: auto;
+    /*position: fixed;*/
+    /*left: auto;*/
+    /*top: auto;*/
     /*z-index: 1;*/
 }
 
@@ -24,8 +24,8 @@
 }
 
 .navbar-menus {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 a.logo {

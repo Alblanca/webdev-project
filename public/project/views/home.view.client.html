@@ -20,27 +20,17 @@
   <a class="logo navbar-brand" href=""><h3 class="display-4">OVERHUB</h3></a>
 
   <ul class="navbar-nav navbar-left">
-    <li class="nav-item dropdown navbar-menus pull-left">
-      <!--<a class="nav-link dropdown-toggle" role="button" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-        <!--Boards-->
-      <!--</a>-->
-      <!--<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" role="menu">-->
-        <!--<li role="presentation" class="dropdown-item"><a role="presentation" href="#">Action</a></li>-->
-        <!--<li role="presentation" class="dropdown-item"><a role="presentation" href="#">Action</a></li>-->
-      <!--</ul>-->
 
-
-    </li>
-    <div class="inner-container">
+    <div class="inner-container navbar-menus">
         <button href="" class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
           Boards <span class="caret"></span>
         </button>
       <ul class="dropdown-menu" role="menu">
-        <li><a href="#">Action</a></li>
-        <li><a href="#">Another action</a></li>
-        <li><a href="#">Something else here</a></li>
-        <li class="divider"></li>
-        <li><a href="#">Separated link</a></li>
+        <li class="dropdown-item"><a href="#">Action</a></li>
+        <li class="dropdown-item"><a href="#">Another action</a></li>
+        <li class="dropdown-item"><a href="#">Something else here</a></li>
+        <li class="dropdown-divider"></li>
+        <li class="dropdown-item"><a href="#">Separated link</a></li>
       </ul>
     </div>
 
@@ -58,6 +48,11 @@
       <button ng-show="!currentUser" class="pull-right btn btn-outline-success navbar-menus"
               data-toggle="modal" data-target="#loginRegisterModal" href="#!/login">Login</button>
     </li>
+    <li class="nav-item">
+      <button ng-show="!currentUser" class="pull-right btn btn-danger navbar-menus"
+              data-toggle="modal" data-target="#loginRegisterModal" href="#!/login">Logout</button>
+    </li>
+
   </ul>
 
 </nav>
