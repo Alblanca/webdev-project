@@ -122,7 +122,7 @@ app.get('/blizzard/callback',
     function(req, res){
         console.log("profile: ");
         console.log(profile);
-        res.redirect('/project/#!/profile');
+        res.redirect('/');
     });
 
 
