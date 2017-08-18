@@ -1,4 +1,22 @@
-<nav id="navbarOH" class="navbar navbar-fixed-top navbar-dark bg-dark container">
+<script>
+    (function () {
+        //$('#loginRegisterModal').modal('show');
+
+        var tagPopoverContent = "<div><a href='google.com'>#google</a>, " +
+            "<a href='facebook.com'>#facebook</a>, <a href='blizzard.com'>blizzard</a>, " +
+            "<a href='blizzard.com'>#overwatch</a></div>";
+
+        $(document).ready(function () {
+            $('#tags-badge').popover({
+                placement: 'left',
+                animation: true,
+                html: true,
+                content: tagPopoverContent
+            });
+        })
+    })();
+</script>
+<nav id="navbarOH" class="navbar navbar-fixed-top navbar-dark bg-dark">
   <a class="logo navbar-brand" href=""><h3 class="display-4">OVERHUB</h3></a>
 
   <ul class="navbar-nav navbar-left">
@@ -200,10 +218,7 @@
           <th class="col-xs-3">{{post.poster}}</th>
           <th class="col-xs-1">{{post.comments}}</th>
           <th class="col-xs-1"><span class="badge badge-pill badge-warning" data-toggle="popover" data-trigger="click"
-                                     title="Tags" id="tags-badge">
-            <!--<th class="col-xs-1"><button class="btn btn-outline-success" data-toggle="popover" data-trigger="click"-->
-            <!--title="Tags" id="tags-badge">-->
-                5</span></th>
+                                     title="Tags" id="tags-badge">5</span></th>
         </tr>
       </div>
 
