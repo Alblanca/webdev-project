@@ -55,7 +55,6 @@ function blizzardStrategy(token, refreshToken, profile, done) {
         }, function (err) {
             if(err) { return done(err); }
         });
-    return done(null, profile);
 }
 
 function googleStrategy(token, refreshToken, profile, done) {
@@ -136,10 +135,10 @@ app.get("/api/logout", logout);
 app.get('/login/auth/blizzard', passport.authenticate('bnet'));
 
 app.get('/blizzard/callback',
-    passport.authenticate('bnet', { failureRedirect: '/' }),
-    function(req, res){
-        res.redirect('/project/#!/profile');
-    });
+    passport.authenticate('bnet', {
+        successRedirect: '/project/#!/profile',
+        failureRedirect: '/'
+    }));
 
 app.get('/google/callback',
     passport.authenticate('google', {
