@@ -16,29 +16,48 @@
 </head>
 
 
-<nav id="navbarOH" class="navbar navbar-fixed-top navbar-dark bg-dark">
+<nav id="navbarOH" class="navbar navbar-fixed-top navbar-dark bg-dark container">
   <a class="logo navbar-brand" href=""><h3 class="display-4">OVERHUB</h3></a>
 
   <ul class="navbar-nav navbar-left">
     <li class="nav-item dropdown navbar-menus pull-left">
-      <a class="nav-link dropdown-toggle" role="button" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Boards
-      </a>
-      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" role="menu">
-        <li role="presentation" class="dropdown-item"><a role="presentation" href="#">Action</a></li>
-        <li role="presentation" class="dropdown-item"><a role="presentation" href="#">Action</a></li>
+      <!--<a class="nav-link dropdown-toggle" role="button" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+        <!--Boards-->
+      <!--</a>-->
+      <!--<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" role="menu">-->
+        <!--<li role="presentation" class="dropdown-item"><a role="presentation" href="#">Action</a></li>-->
+        <!--<li role="presentation" class="dropdown-item"><a role="presentation" href="#">Action</a></li>-->
+      <!--</ul>-->
+
+
+    </li>
+    <div class="inner-container">
+        <button href="" class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+          Boards <span class="caret"></span>
+        </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Separated link</a></li>
       </ul>
+    </div>
+
+    <li class="nav-item navbar-menus">
+      <button class="btn btn-secondary">Admin</button>
     </li>
 
-    <li class="nav-item navbar-menus"><a ng-show="currentUser.isAdmin" href="#!/admin">Admin</a></li>
-
-
-    <img src="http://watchkings.de/wp-content/uploads/2017/01/icon-vector-dva.png" width="30" height="30" class="d-inline-block align-top navbar-menus" alt="">
-    <li class="nav-item"><a ng-show="currentUser" href="#!/profile/{{currentUser._id}}">{{currentUser._username}}</a></li>
-    <div class="navbar-right">
+    <li class="nav-item navbar-menus">
+      <button type="button" class="btn btn-primary btn-outline-primary" href="#!/profile/{{currentUser._id}}">
+        <img src="http://watchkings.de/wp-content/uploads/2017/01/icon-vector-dva.png" width="18" height="18" class="d-inline-block align-top" alt="">
+        Alblanca
+      </button>
+    </li>
+    <li class="nav-item">
       <button ng-show="!currentUser" class="pull-right btn btn-outline-success navbar-menus"
               data-toggle="modal" data-target="#loginRegisterModal" href="#!/login">Login</button>
-    </div>
+    </li>
   </ul>
 
 </nav>

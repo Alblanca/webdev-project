@@ -1,5 +1,26 @@
 .register-login-button {
     margin-top: 10px;
+    cursor: pointer !important;
+}
+.container{
+    /*overflow-y: hidden;*/
+    /*overflow-x: hidden;*/
+}
+
+.inner-container{
+    margin: 0 0 0 0;
+    height: 0px;
+}
+
+.dropdown-menu {
+    position: fixed;
+    left: auto;
+    top: auto;
+    /*z-index: 1;*/
+}
+
+.btn {
+    cursor: pointer;
 }
 
 .navbar-menus {
