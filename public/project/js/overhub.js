@@ -1,5 +1,5 @@
 (function () {
-    // $('#loginRegisterModal').modal('show');
+    //$('#loginRegisterModal').modal('show');
 
     var tagPopoverContent = "<div><a href='google.com'>#google</a>, " +
         "<a href='facebook.com'>#facebook</a>, <a href='blizzard.com'>blizzard</a>, " +
@@ -12,9 +12,11 @@
             html: true,
             content:tagPopoverContent
         });
-    });
+});
 
-    $().button(toggle);
+    // $().button(toggle);
+
+    //$('.nav a[href="#Register"]').tab('show')
 
 
     // $(function () {
