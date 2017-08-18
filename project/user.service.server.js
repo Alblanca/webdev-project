@@ -24,7 +24,6 @@ var blizzardConfig = {
     region: "us"
 };
 
-
 passport.use(new BnetStrategy(blizzardConfig, blizzardStrategy));
 passport.use(new LocalStrategy(localStrategy));
 passport.use(new GoogleStrategy(googleConfig, googleStrategy));
