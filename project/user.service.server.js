@@ -120,6 +120,8 @@ app.get('/login/auth/blizzard', passport.authenticate('bnet'));
 app.get('/blizzard/callback',
     passport.authenticate('bnet', { failureRedirect: '/' }),
     function(req, res){
+        console.log("profile: ");
+        console.log(profile);
         res.redirect('/project/#!/profile');
     });
 
