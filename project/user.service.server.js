@@ -6,19 +6,34 @@ var userModel = require("./models/user.model.server");
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+var BnetStrategy = require('passport-bnet').Strategy;
+
 
 var auth = authorized;
 
 var googleConfig = {
     clientID     : process.env.OVERHUB_GOOGLE_CLIENT_ID,
     clientSecret : process.env.OVERHUB_GOOGLE_CLIENT_SECRET,
-    callbackURL  : 'http://localhost:3000/google/callback'
+    callbackURL  : process.env.OVERHUB_GOOGLE_CALLBACK_URL
 };
 
+var blizzardConfig = {
+    clientID: process.env.OVERHUB_BLIZZARD_CLIENT_ID,
+    clientSecret: process.env.OVERHUB_BLIZZARD_CLIENT_SECRET,
+    callbackURL: process.env.OVERHUB_BLIZZARD_CALLBACK_URL,
+    region: "us"
+};
+
+
+passport.use(new BnetStrategy(blizzardConfig, blizzardStrategy));
 passport.use(new LocalStrategy(localStrategy));
 passport.use(new GoogleStrategy(googleConfig, googleStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
+
+function blizzardStrategy(token, refreshToken, profile, done) {
+    return done(null, profile);
+}
 
 function googleStrategy(token, refreshToken, profile, done) {
     userModel
@@ -93,6 +108,22 @@ app.delete("/api/user/:userId", unregisterUser);
 app.get("/api/checkLogin", checkLogin);
 app.get('/login/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
 app.get("/api/logout", logout);
+
+//auth strategies
+app.get('/login/auth/blizzard', passport.authenticate('bnet'));
+
+// app.get('/blizzard/callback',
+//     passport.authenticate('bnet', {
+//         successRedirect: '/project/#!/login',
+//         failureRedirect: '/project/#!/login'
+//     }));
+app.get('/blizzard/callback',
+    passport.authenticate('bnet', { failureRedirect: '/' }),
+    function(req, res){
+        res.redirect('/');
+    });
+
+
 
 app.get('/google/callback',
     passport.authenticate('google', {
