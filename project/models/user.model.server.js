@@ -13,8 +13,14 @@ userModel.findUserByCredentials = findUserByCredentials;
 userModel.findUserByUsername = findUserByUsername;
 userModel.unregisterUser = unregisterUser;
 userModel.findUserByGoogleId = findUserByGoogleId;
+userModel.findUserByBlizzardId = findUserByBlizzardId;
 
 module.exports = userModel;
+
+function findUserByBlizzardId(bid) {
+    return userModel
+        .findOne({'blizzard.id' : bid});
+}
 
 function findUserByGoogleId(gid) {
     return userModel

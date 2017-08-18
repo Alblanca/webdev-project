@@ -31,7 +31,30 @@ passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 
 function blizzardStrategy(token, refreshToken, profile, done) {
-    console.log(profile);
+    userModel
+        .findUserByBlizzardId(profile.id)
+        .then(function (user) {
+            if(user) {
+                return done(null, user);
+            } else {
+                var newBlizzardUser = {
+                    username: profile.battletag.split('#').join('-'),
+                    blizzard: {
+                        id: profile.id,
+                        token: token,
+                        provider: profile.provider
+                    }
+                }
+            }
+            return userModel.createUser(newBlizzardUser);
+        }, function (err) {
+            if(err) { return done(err); }
+        })
+        .then(function (user) {
+            return done(null, user);
+        }, function (err) {
+            if(err) { return done(err); }
+        });
     return done(null, profile);
 }
 
@@ -112,20 +135,11 @@ app.get("/api/logout", logout);
 //auth strategies
 app.get('/login/auth/blizzard', passport.authenticate('bnet'));
 
-// app.get('/blizzard/callback',
-//     passport.authenticate('bnet', {
-//         successRedirect: '/project/#!/login',
-//         failureRedirect: '/project/#!/login'
-//     }));
 app.get('/blizzard/callback',
     passport.authenticate('bnet', { failureRedirect: '/' }),
     function(req, res){
-        console.log("profile: ");
-        console.log(profile);
-        res.redirect('/');
+        res.redirect('/project/#!/profile');
     });
-
-
 
 app.get('/google/callback',
     passport.authenticate('google', {

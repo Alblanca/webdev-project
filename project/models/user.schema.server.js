@@ -11,6 +11,11 @@ var userSchema = mongoose.Schema(
         google: {
             id:    String,
             token: String
+        },
+        blizzard: {
+            id: String,
+            token: String,
+            provider: String
         }
     }, {collection: "user"});
 
