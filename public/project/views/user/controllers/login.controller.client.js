@@ -16,7 +16,8 @@
         init();
 
         function login(user) {
-            userService.login(user.username, user.password)
+            userService
+                .login(user.username, user.password)
                 .then(function (_user) {
                     if (_user === null) {
                         model.errorMessage = "User not found";

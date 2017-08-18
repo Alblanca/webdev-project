@@ -31,6 +31,8 @@ passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 
 function blizzardStrategy(token, refreshToken, profile, done) {
+    console.log("WTFWTWFWTFWTWFWTWF");
+    console.log(profile);
     return done(null, profile);
 }
 
