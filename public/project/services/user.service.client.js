@@ -16,10 +16,17 @@
                 "updateUser" : updateUser,
                 "unregisterUser" : unregisterUser,
                 "checkLogin" : checkLogin,
-                "logout" : logout
+                "logout" : logout,
+                "getCurrentUser" : getCurrentUser
             };
 
             return api;
+
+            function getCurrentUser() {
+                var url="/api/currentUser";
+                return $http.get(url);
+            }
+
 
             function logout() {
                 return $http.get("/api/logout");

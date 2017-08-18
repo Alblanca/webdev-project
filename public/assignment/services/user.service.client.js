@@ -14,10 +14,16 @@
                 "findUserByUsername" : findUserByUsername,
                 "registerUser" : registerUser,
                 "updateUser" : updateUser,
-                "unregisterUser" : unregisterUser
+                "unregisterUser" : unregisterUser,
+                "getCurrentUser" : getCurrentUser
             };
 
             return api;
+
+            function getCurrentUser() {
+                var url="/api/user/current";
+                return $http.get(url);
+            }
 
             function updateUser(user) {
                 var url = "/api/user/" + user._id;

@@ -130,6 +130,7 @@ app.delete("/api/user/:userId", unregisterUser);
 app.get("/api/checkLogin", checkLogin);
 app.get('/login/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
 app.get("/api/logout", logout);
+app.get('/api/currentUser', getCurrentUser);
 
 //auth strategies
 app.get('/login/auth/blizzard', passport.authenticate('bnet'));
@@ -158,6 +159,14 @@ function login(req, res) {
 function logout(req, res) {
     req.logOut();
     res.json(200);
+}
+
+function getCurrentUser (req, res) {
+    if (req.user === undefined) {
+        res.json({});
+    } else {
+        res.json(req.user);
+    }
 }
 
 function unregisterUser(req, res) {
