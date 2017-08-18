@@ -27,7 +27,7 @@
 
             function checkLogin() {
                 return $http.get("/api/checkLogin")
-                    .success(function (res) {
+                    .then(function (res) {
                         return res.data;
                     });
             }
