@@ -12,7 +12,7 @@
         //     controllerAs: "model"
         // })
             .when("/", {
-                templateUrl: "views/home/templates/home.view.client.html"
+                templateUrl: "views/home/templates/body.view.client.html"
                 // controller:  "loginController",
                 // controllerAs: "model"
             })
