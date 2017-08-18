@@ -8,6 +8,9 @@
     function postService($http) {
 
        var api = {
+           "findPostsByBoardId" : findPostsByBoardId,
+           "createPost" : createPost,
+
            "findPagesForWebpage" : findPagesForWebpage,
            "findPageById" : findPageById,
            "createPage" : createPage,
@@ -16,6 +19,32 @@
        };
 
        return api;
+
+        function findPostsByBoardId(boardId) {
+            var url = "/api/boards/" + boardId;
+
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
+
+        function createPost(boardId, post) {
+            var url = "/api/boards/" + boardId;
+
+            return $http.put(url, post)
+                .then(function (response) {
+                    return response.data;
+                })
+        }
+
+
+
+
+
+
+
+
 
         function findPagesForWebpage(userId, wid) {
             var url = "/api/user/" + userId + "/website/" + wid + "/page";

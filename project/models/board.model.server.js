@@ -14,6 +14,8 @@ var boardModel = mongoose.model("BoardModel", boardSchema);
 
 boardModel.findAllBoards = findAllBoards;
 boardModel.createBoard = createBoard;
+boardModel.addPost = addPost;
+boardModel.findBoardById = findBoardById;
 
 module.exports = boardModel;
 // create website, update, remove ...
@@ -29,6 +31,23 @@ function createBoard(board){
             return result;
         });
 }
+
+function addPost(boardId, postId) {
+    return boardModel
+        .findBoardById(boardId)
+        .then(function (board) {
+            board.posts.push(postId);
+            return board.save(); //goes and write this to database
+        });
+}
+
+function findBoardById(boardId) {
+    return boardModel.findById(boardId);
+}
+
+
+
+
 
 function updateWebsite(websiteId, website) {
     return websiteModel

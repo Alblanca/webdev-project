@@ -10,6 +10,21 @@ app.get("/api/user/:userId/website/:websiteId/page/:pageId", findPageById);
 app.put("/api/user/:userId/website/:websiteId/page/:pageId", updatePage);
 app.delete("/api/user/:userId/website/:websiteId/page/:pageId", deletePage);
 
+app.get("/api/boards/:boardId", findPostsByBoardId);
+
+function findPostsByBoardId(req, res) {
+    var boardId = req.params.boardId;
+    postModel
+        .findPostsByBoardId(boardId)
+        .then(function (status) {
+            res.sendStatus(200);
+            return;
+        }, function (err) {
+            res.sendStatus(500).send(err);
+            return;
+        });
+}
+
 function deletePage(req, res) {
     var pageId = req.params.pageId;
     var websiteId = req.params.websiteId;

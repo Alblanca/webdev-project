@@ -14,6 +14,8 @@
             boardService
                 .findAllBoards()
                 .then(function (boards) {
+                    // var length = boards.length;
+                    // '[[b1, b2, b3],[b1,b2,b3],[b1]]'
                     model.boards = boards;
                 });
         }
