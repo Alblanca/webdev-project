@@ -25,9 +25,9 @@
                 templateUrl: "views/user/templates/profile.view.client.html",
                 controller: "profileController",
                 controllerAs: "model",
-                resolve: {
-                    currentUser: checkLogin
-                }
+                // resolve: {
+                //     currentUser: checkLogin
+                // }
             })
             .when("/unauthorized", {
                 templateUrl: "views/user/templates/unauthorized.view.client.html"
@@ -41,13 +41,18 @@
                 templateUrl: "views/test/templates/player-search.view.client.html",
                 controller: "playerSearchController",
                 controllerAs: "model"
-            });
+            })
             // //website routes
-            // .when("/user/:userId/website", {
-            //     templateUrl: "views/website/templates/website-list.view.client.html",
-            //     controller: "websiteListController",
-            //     controllerAs: "model"
-            // })
+            .when("/boards", {
+                templateUrl: "views/board/templates/boards.view.client.html",
+                controller: "boardListController",
+                controllerAs: "model"
+            })
+            .when("/boards/new", {
+                templateUrl: "views/board/templates/boards-new.view.client.html",
+                controller: 'boardNewController',
+                controllerAs: "model"
+            });
             // .when("/user/:userId/website/new", {
             //     templateUrl: "views/website/templates/website-new.view.client.html",
             //     controller: "websiteNewController",

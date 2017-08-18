@@ -1,0 +1,21 @@
+<div class="form-group container-list-group">
+    <label for="name">Title</label>
+    <input type="text"
+           class="element-margin form-control"
+           placeholder="Post Title"
+           ng-model="vm.post.title"/>
+
+    <label for="html">HTML Content</label>
+    <div text-angular class="element-margin"
+         placeholder="HTML content goes here!"
+         ng-model="vm.post.content"
+         ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+        ['indent','outdent'],['html']]">
+    </div>
+
+    <button class="btn btn-primary btn-block form-control"
+            ng-click="vm.updatePost(vm.widget)">Save Changes</button>
+    <a class="btn btn-primary btn-danger btn-block form-control"
+       ng-click="vm.deletePost()">Delete</a>
+</div>

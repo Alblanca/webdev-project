@@ -1,0 +1,63 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WebDev</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" href="css.css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Oswald|Raleway|Oxygen|Anton" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="stuff.js"></script>
+    <link rel="stylesheet" href="./dist/ohi_font.css">
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://npmcdn.com/react-bootstrap-table/dist/react-bootstrap-table.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/2e48185324.js"></script>
+
+</head>
+
+<h1 class="text-left posts-headings">Posts in Genju Board</h1>
+<button ng-show="currentUser" class="btn btn-outline-secondary posts-headings" href="#!/login"><i class="fa fa-plus" aria-hidden="true"></i> Create A New Post</button>
+<hr/>
+
+<div class="posts-table col-12">
+<table class="table dt-responsive table-striped">
+    <thead class="thead-inverse">
+        <tr class="row col-12">
+            <th class="col-2 col-md-1">Score</th>
+            <th class="col-8 col-md-4">Title</th>
+            <th class="hidden-sm-down col-md-1">Tags</th>
+            <th class="col-2 col-md-2">Date</th>
+            <th class="hidden-sm-down col-md-3">Poster</th>
+            <th class="hidden-sm-down col-md-1">Comments</th>
+        </tr>
+    </thead>
+    <tbody>
+    <div ng-repeat="post in vm.posts">
+        <tr class="row col-12">
+            <td class="col-2 col-md-1">{{post.score}}</td>
+            <td class="col-8 col-md-4">{{post.title}}</td>
+            <td class="hidden-sm-down col-md-1"><span class="badge badge-pill badge-warning" data-toggle="popover" data-trigger="click"
+                                                      title="Tags" id="tags-badge">
+            <!--<th class="col-xs-1"><button class="btn btn-outline-success" data-toggle="popover" data-trigger="click"-->
+                <!--title="Tags" id="tags-badge">-->
+                5</span></td>
+            <td class="col-2 col-md-2">{{post.date}}</td>
+            <td class="hidden-sm-down col-md-3">{{post.poster}}</td>
+            <td class="hidden-sm-down col-md-1">{{post.comments}}</td>
+
+        </tr>
+    </div>
+
+    </tbody>
+</table>
+</div>
+
+
+<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
+<!--<script src="stuff.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>-->
+
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>-->

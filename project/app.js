@@ -3,5 +3,6 @@
  */
 
 require("./user.service.server");
+require("./board.service.server.js");
 
 var db = require("./models/database");
