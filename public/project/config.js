@@ -12,9 +12,9 @@
         //     controllerAs: "model"
         // })
             .when("/", {
-                templateUrl: "views/user/templates/login.view.client.html",
-                controller:  "loginController",
-                controllerAs: "model"
+                templateUrl: "views/home/templates/home.view.client.html"
+                // controller:  "loginController",
+                // controllerAs: "model"
             })
             .when("/login", {
                 templateUrl: "views/user/templates/login.view.client.html",
