@@ -24,7 +24,9 @@
         // }
 
         return {
-            templateUrl: "views/home/templates/oh-navbar.component.client.html"
+            templateUrl: "views/home/templates/oh-navbar.component.client.html",
+            controller: 'ohNavbarController',
+            controllerAs: 'model'
             // link : linkFunction
         }
     }
