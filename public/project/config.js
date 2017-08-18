@@ -57,6 +57,11 @@
                 templateUrl: "views/post/templates/posts.view.client.html",
                 controller: 'postListController',
                 controllerAs: "model"
+            })
+            .when("/boards/:boardId/new", {
+                templateUrl: "views/post/templates/posts-new.view.client.html",
+                controller: "postNewController",
+                controllerAs: "model"
             });
             // .when("/user/:userId/website/new", {
             //     templateUrl: "views/website/templates/website-new.view.client.html",

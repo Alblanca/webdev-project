@@ -1,4 +1,4 @@
 (function () {
     angular
-        .module("OverHub", ["ngRoute"]);
+        .module("OverHub", ["ngRoute", "textAngular"]);
 })();

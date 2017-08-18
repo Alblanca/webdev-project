@@ -3,19 +3,26 @@
     <input type="text"
            class="element-margin form-control"
            placeholder="Post Title"
-           ng-model="vm.post.title"/>
+           ng-model="model.post.title"/>
 
     <label for="html">HTML Content</label>
     <div text-angular class="element-margin"
          placeholder="HTML content goes here!"
-         ng-model="vm.post.content"
+         ng-model="model.post.content"
+         rows="5"
          ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
         ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
         ['indent','outdent'],['html']]">
     </div>
 
+    <label for="tags">Tags</label>
+    <input type="text"
+           class="element-margin form-control"
+           placeholder="Add up to 10 relevant (comma-separated) tags to help others find your post."
+           ng-model="model.post.tags"/>
+
     <button class="btn btn-primary btn-block form-control"
-            ng-click="vm.updatePost(vm.widget)">Save Changes</button>
+            ng-click="model.createPost(model.post)">Save Changes</button>
     <a class="btn btn-primary btn-danger btn-block form-control"
-       ng-click="vm.deletePost()">Delete</a>
+       ng-click="model.deletePost()">Delete</a>
 </div>
