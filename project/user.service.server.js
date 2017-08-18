@@ -31,7 +31,6 @@ passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 
 function blizzardStrategy(token, refreshToken, profile, done) {
-    console.log("WTFWTWFWTFWTWFWTWF");
     console.log(profile);
     return done(null, profile);
 }
@@ -121,8 +120,7 @@ app.get('/login/auth/blizzard', passport.authenticate('bnet'));
 app.get('/blizzard/callback',
     passport.authenticate('bnet', { failureRedirect: '/' }),
     function(req, res){
-        console.log("succeeded@@@@@@@@@@@@");
-        res.redirect('/profile');
+        res.redirect('/project/#!/profile');
     });
 
 
