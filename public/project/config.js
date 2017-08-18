@@ -21,12 +21,12 @@
                 controller:  "loginController",
                 controllerAs: "model"
             })
-            .when("/profile/:userId", {
+            .when("/profile", {
                 templateUrl: "views/user/templates/profile.view.client.html",
                 controller: "profileController",
                 controllerAs: "model",
                 resolve: {
-                    asdf: checkLogin
+                    currentUser: checkLogin
                 }
             })
             .when("/unauthorized", {

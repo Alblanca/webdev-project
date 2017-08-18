@@ -6,9 +6,10 @@
         .module("OverHub")
         .controller("profileController", profileController);
 
-    function profileController($routeParams, $location, userService) {
+    function profileController($routeParams, $location, userService, currentUser) {
         var model = this;
-        var userId = $routeParams["userId"];
+        var userId = currentUser._id;
+        // var userId = $routeParams["userId"];
 
         //declare functions
         model.updateUser = updateUser;

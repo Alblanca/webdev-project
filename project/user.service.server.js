@@ -5,6 +5,8 @@ var app = require("../express");
 var userModel = require("./models/user.model.server");
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
 var auth = authorized;
 
 passport.use(new LocalStrategy(localStrategy));
@@ -44,6 +46,11 @@ app.post("/api/user", registerUser);
 app.put("/api/user/:userId", updateUser);
 app.delete("/api/user/:userId", unregisterUser);
 app.get("/api/checkLogin", checkLogin);
+app.get("/login/auth/google", googleLogin);
+
+function googleLogin() {
+
+}
 
 function checkLogin(req, res) {
     res.send(req.isAuthenticated() ? req.user : '0');

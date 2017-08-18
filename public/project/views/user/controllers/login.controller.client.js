@@ -21,8 +21,7 @@
                     if (_user === null) {
                         model.errorMessage = "User not found";
                     } else {
-                        $rootScope.currentUser = _user;
-                        $location.url("profile/" + _user._id);
+                        $location.url("profile/");
                     }
                 });
         }
