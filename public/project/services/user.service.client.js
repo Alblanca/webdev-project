@@ -15,10 +15,15 @@
                 "registerUser" : registerUser,
                 "updateUser" : updateUser,
                 "unregisterUser" : unregisterUser,
-                "checkLogin" : checkLogin
+                "checkLogin" : checkLogin,
+                "logout" : logout
             };
 
             return api;
+
+            function logout() {
+                return $http.get("/api/logout");
+            }
 
             function checkLogin() {
                 return $http.get("/api/checkLogin")

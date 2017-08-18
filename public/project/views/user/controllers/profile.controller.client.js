@@ -14,6 +14,7 @@
         //declare functions
         model.updateUser = updateUser;
         model.unregisterUser = unregisterUser;
+        model.logout = logout;
 
         function init() {
             userService.findUserById(userId)
@@ -23,6 +24,14 @@
 
         }
         init();
+
+        function logout() {
+            userService
+                .logout()
+                .then(function () {
+                    $location.url("/");
+                });
+        }
 
         function updateUser(user) {
             userService

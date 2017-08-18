@@ -63,7 +63,7 @@ function authorized (req, res, next) {
     } else {
         next();
     }
-};
+}
 
 
 function localStrategy(username, password, done) {
@@ -91,6 +91,7 @@ app.put("/api/user/:userId", updateUser);
 app.delete("/api/user/:userId", unregisterUser);
 app.get("/api/checkLogin", checkLogin);
 app.get('/login/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+app.get("/api/logout", logout);
 
 app.get('/google/callback',
     passport.authenticate('google', {
@@ -105,6 +106,11 @@ function checkLogin(req, res) {
 function login(req, res) {
     var user = req.user;
     res.json(user);
+}
+
+function logout(req, res) {
+    req.logOut();
+    res.json(200);
 }
 
 function unregisterUser(req, res) {
