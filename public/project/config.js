@@ -67,6 +67,8 @@
                 templateUrl: "views/post/templates/thread.view.client.html",
                 controller: "threadViewController",
                 controllerAs: "model"
+            .when("/terminate-auth", {
+                templateUrl: "views/home/templates/terminate-auth.view.client.html"
             });
             // .when("/user/:userId/website/new", {
             //     templateUrl: "views/website/templates/website-new.view.client.html",

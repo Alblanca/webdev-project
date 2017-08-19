@@ -26,7 +26,7 @@
         return {
             templateUrl: "views/home/templates/oh-navbar.component.client.html",
             controller: 'ohNavbarController',
-            controllerAs: 'model'
+            controllerAs: 'navController'
             // link : linkFunction
         }
     }
