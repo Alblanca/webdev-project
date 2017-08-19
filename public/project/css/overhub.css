@@ -72,7 +72,6 @@ p.post-tags {
     margin-bottom: 2px;
     padding-left: 10px;
     margin-right: 20px;
-    background-color: #c3cadb;
 }
 
 
@@ -101,7 +100,7 @@ p.post-tags {
 .post-content-container {
     border: 2px solid white;
     padding: 10px;
-    margin: 10px;
+    margin: 8px;
     background-color: #e3e5ea;
 }
 
@@ -143,9 +142,9 @@ right {
     margin-bottom: 5px;
 }
 
-.btn-outline-success {
-    font-family: 'Raleway', 'sans-serif' !important;
-}
+/*.btn-outline-success {*/
+    /*font-family: 'Raleway', 'sans-serif' !important;*/
+/*}*/
 
 body {
     background-color: #dce0e8;

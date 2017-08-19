@@ -82,6 +82,11 @@
                 controller: "threadViewController",
                 controllerAs: "model"
             })
+            .when("/boards/:boardId/post/:postId/edit", {
+                templateUrl: "views/post/templates/posts-edit.view.client.html",
+                controller: "postEditController",
+                controllerAs: "model"
+            })
             .when("/terminate-auth", {
                 templateUrl: "views/home/templates/terminate-auth.view.client.html"
             });

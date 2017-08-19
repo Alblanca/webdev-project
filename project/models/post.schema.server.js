@@ -13,7 +13,8 @@ var postSchema = mongoose
             dateCreated : {type : Date, default : new Date().toJSON().slice(0,10)},
             tags : Array,
             isEndorsed : {type : Boolean, default : false},
-            votes : [{
+            votes : { type : Number, default : 0},
+            votesDetail : [{
                 user: {type: mongoose.Schema.Types.ObjectId, ref : "UserModel"},
                 isUpvote: {type: Boolean}
             }]
