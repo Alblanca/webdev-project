@@ -17,10 +17,16 @@
                 "unregisterUser" : unregisterUser,
                 "checkLogin" : checkLogin,
                 "logout" : logout,
-                "getCurrentUser" : getCurrentUser
+                "getCurrentUser" : getCurrentUser,
+                "findUserByNickname" : findUserByNickname
             };
 
             return api;
+
+            function findUserByNickname(nickname) {
+                var url="/api/nickname?" + nickname;
+                return $http.get(url);
+            }
 
             function getCurrentUser() {
                 var url="/api/currentUser";

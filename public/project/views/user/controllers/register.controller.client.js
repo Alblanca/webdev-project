@@ -24,11 +24,15 @@
         function registerUser(user) {
             // content validation
             var errorMsg = validateUsernameAndPassword(user);
+            //nickname verification
+            errorMsg = validateNickname(user);
+
             if(errorMsg) {
                 model.errorMessage = errorMsg;
                 shakeAlert();
                 return;
             }
+
             // Password validation
             if(user.password === user.password2) {
                 // Username validation
@@ -59,6 +63,28 @@
 
 
         //private functions
+
+        function validateNickname(user) {
+            var nickname = user.nickname;
+            var whiteSpace =  nickname.indexOf(' ');
+            if(nickname === "") { // user chose to not input nickname, abort.
+                return null;
+            }
+            if(whiteSpace != -1) {
+                return "Nickname can't contain white spaces!";
+            }
+
+            userService
+                .findUserByNickname(nickname)
+                .then(function (response) {
+                    var foundNickname = response.data;
+                    if(foundNickname === "") {
+                        return null;
+                    } else {
+                        return "Nickname Already exists!";
+                    }
+                });
+        }
 
         function shakeAlert() {
             $('.modal').effect('shake');

@@ -14,12 +14,12 @@ userModel.findUserByUsername = findUserByUsername;
 userModel.unregisterUser = unregisterUser;
 userModel.findUserByGoogleId = findUserByGoogleId;
 userModel.findUserByBlizzardId = findUserByBlizzardId;
+userModel.findUserByNickname = findUserByNickname;
 
 userModel.addPost = addPost;
 userModel.savePost = savePost;
 
 module.exports = userModel;
-
 
 function addPost(userId, postId) {
     return userModel
@@ -39,6 +39,9 @@ function savePost(postId, userId) {
             console.log(user);
             return user.save(); //goes and write this to database
         });
+function findUserByNickname(nickname) {
+    return userModel
+        .findOne({'nickname' : nickname});
 }
 
 function findUserByBlizzardId(bid) {

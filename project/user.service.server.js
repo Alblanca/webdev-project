@@ -131,17 +131,23 @@ app.get("/api/checkLogin", checkLogin);
 app.get('/login/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
 app.get("/api/logout", logout);
 app.get('/api/currentUser', getCurrentUser);
+app.get('/api/nickname/', findUserByNickname);
 
 app.put('/api/:userId/save', savePost);
 
 //auth strategies
 app.get('/login/auth/blizzard', passport.authenticate('bnet'));
 
-app.get('/blizzard/callback',
-    passport.authenticate('bnet', {
-        successRedirect: '/project/#!/profile',
-        failureRedirect: '/'
-    }));
+// app.get('/blizzard/callback',
+//     passport.authenticate('bnet', {
+//         successRedirect: '/project/#!/profile',
+//         failureRedirect: '/'
+//     }));
+
+app.get('/blizzard/callback', passport.authenticate('bnet', {failureRedirect: '/'}),
+    function (req, res) {
+        res.redirect('/project/#!/terminate-auth');
+    });
 //
 // app.get('/google/callback',
 //     passport.authenticate('google', {
@@ -186,6 +192,20 @@ function getCurrentUser (req, res) {
     } else {
         res.json(req.user);
     }
+}
+
+function findUserByNickname(req, res) {
+    var nickname = req.query.nickname;
+
+    userModel
+        .findUserByNickname(nickname)
+        .then(function (response) {
+            res.send(response);
+            return;
+        }, function (err) {
+            res.send(err.message);
+            return;
+        });
 }
 
 function unregisterUser(req, res) {

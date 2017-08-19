@@ -1,5 +1,5 @@
 <nav id="navbarOH" class="navbar navbar-fixed-top navbar-dark bg-dark">
-    <a class="logo navbar-brand" href=""><h3 class="display-4">OVERHUB</h3></a>
+    <a class="logo navbar-brand" href="/project"><h3 class="display-4">OVERHUB</h3></a>
 
     <ul class="navbar-nav navbar-left">
 
@@ -21,10 +21,10 @@
         </li>
 
         <li class="nav-item navbar-menus" ng-show='navController.currentUser'>
-            <button type="button" class="btn btn-primary btn-outline-primary" href="#!/profile/{{navController.currentUser._id}}">
+            <a class="btn btn-primary btn-outline-primary" href="/project/#!/profile">
                 <img src="http://watchkings.de/wp-content/uploads/2017/01/icon-vector-dva.png" width="18" height="18" class="d-inline-block align-top" alt="">
-                {{navController.currentUser.username}}
-            </button>
+                {{navController.currentUser.nickname ? navController.currentUser.nickname : navController.currentUser.username}}
+            </a>
         </li>
         <li class="nav-item" ng-show="!navController.currentUser">
             <button ng-show="!currentUser" class="pull-right btn btn-outline-success navbar-menus"
@@ -84,8 +84,8 @@
                                         Sign up via google
                                     </a>
                                     <a class="btn btn-info btn-block register-login-button"
-                                       href=""
-                                       ng-click="vm.login(vm.user)"><img src="../../../img/battlenet-logo.svg" style="width: 20px;">  Sign up via battlenet</a>
+                                       href="/login/auth/blizzard" onclick="window.open(this.href, 'mywin','left=20,top=20,width=600,height=600,toolbar=1,resizable=0');return false;">
+                                        <img src="../../../img/battlenet-logo.svg" style="width: 20px;">  Sign up via battlenet</a>
                                 </div>
                             </div>
                         </div>
@@ -101,6 +101,12 @@
                                    class="form-control"
                                    placeholder="Username"
                                    ng-model="registerController.user.username"/>
+                            <label for="registerUsername"><b>Nickname</b></label>
+                            <input type="text"
+                                   id="registerNickname"
+                                   class="form-control"
+                                   placeholder="Website nickname for user"
+                                   ng-model="registerController.user.nickname"/>
 
                             <label for="registerPassword" class="register-login-button"><b>Password</b></label>
                             <input type="password"
