@@ -1,11 +1,11 @@
 (function () {
     //$('#loginRegisterModal').modal('show');
 
-    $scope.loadTags = function(query) {
-        // An arrays of strings here will also be converted into an
-        // array of objects
-        return $http.get('tags.json');
-    };
+    // $scope.loadTags = function(query) {
+    //     // An arrays of strings here will also be converted into an
+    //     // array of objects
+    //     return $http.get('tags.json');
+    // };
 
     var tagPopoverContent = "<div><a href='google.com'>#google</a>, " +
         "<a href='facebook.com'>#facebook</a>, <a href='blizzard.com'>blizzard</a>, " +

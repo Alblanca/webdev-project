@@ -6,14 +6,14 @@
         .module("OverHub")
         .controller("threadViewController", threadViewController);
 
-    function threadViewController($routeParams, postService, $location) {
+    function threadViewController($routeParams, postService, $location, userService) {
         var model = this;
         model.tempComment = "";
         // model.userId = $routeParams["userId"];
         model.boardId = $routeParams["boardId"];
         model.postId = $routeParams["postId"];
         //model.endorsePost = endorsePost();
-        model.addComment = addComment();
+        model.addComment = addComment;
 
         function init() {
             postService
@@ -33,7 +33,7 @@
 
         function addComment(comment) {
             var currentUser = "teststring";
-            comment._user = currentUser;
+            // comment._user = currentUser;
             postService
                 .addComment(comment)
                 .then(function () {
