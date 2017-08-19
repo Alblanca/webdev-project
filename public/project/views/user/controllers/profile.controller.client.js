@@ -6,10 +6,9 @@
         .module("OverHub")
         .controller("profileController", profileController);
 
-    function profileController($routeParams, $location, userService, currentUser) {
+    function profileController($location, userService, currentUser) {
         var model = this;
         var userId = currentUser._id;
-        // var userId = $routeParams["userId"];
 
         //declare functions
         model.updateUser = updateUser;
@@ -17,10 +16,13 @@
         model.logout = logout;
 
         function init() {
-            userService.findUserById(userId)
-                .then(function (_user) {
-                    model.user = _user;
-                });
+            model.user = currentUser;
+            model.displayName = currentUser.nickname ? currentUser.nickname : currentUser.username;
+            if(currentUser.blizzard) {
+                model.isAuthenticatedUser = true;
+            } else {
+                model.isAuthenticatedUser = false;
+            }
 
         }
         init();

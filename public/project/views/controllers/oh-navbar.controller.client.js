@@ -23,6 +23,7 @@
             userService
                 .logout()
                 .then(function () {
+                    $location.url("/");
                     $window.location.reload();
                 });
         }

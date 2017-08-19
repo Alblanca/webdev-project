@@ -7,7 +7,7 @@ var userSchema = mongoose.Schema(
         lastName: String,
         email: String,
         nickname: String,
-        // websites: [{type: mongoose.Schema.Types.ObjectId, ref:"WebsiteModel"}],   //1. arrays of references
+        introduction: String,
         isAdmin: {type: Boolean, default: false},
         savedPosts : [{type: mongoose.Schema.Types.ObjectId, ref:"postModel"}],
         posts : [{type: mongoose.Schema.Types.ObjectId, ref:"postModel"}],
