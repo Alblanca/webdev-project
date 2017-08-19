@@ -6,6 +6,7 @@ var userSchema = mongoose.Schema(
         firstName: String,
         lastName: String,
         email: String,
+        nickname: String,
         // websites: [{type: mongoose.Schema.Types.ObjectId, ref:"WebsiteModel"}],   //1. arrays of references
         isAdmin: {type: Boolean, default: false},
         google: {
