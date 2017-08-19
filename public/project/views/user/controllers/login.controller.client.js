@@ -9,10 +9,15 @@
     function loginController($window, $location, userService, $rootScope) {
         var model = this;
         model.login = login;
+        model.onClickRegister = onClickRegister;
 
         function init() {
         }
         init();
+
+        function onClickRegister() {
+            $('.nav a[href="#Register"]').tab('show');
+        }
 
         function login(user) {
             if(!user) {

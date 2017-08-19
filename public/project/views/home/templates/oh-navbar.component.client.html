@@ -78,7 +78,7 @@
                                        ng-click="loginController.login(loginController.user)">Login</a>
                                     <a class="btn btn-success btn-block register-login-button"
                                        href=""
-                                       ng-click="vm.login(vm.user)">Register</a>
+                                       ng-click="loginController.onClickRegister()">Register</a>
                                     <a class="btn btn-danger btn-block register-login-button"
                                        href=""
                                        ng-click="vm.login(vm.user)"><span class="fa fa-google-plus"></span>  Sign up via google</a>
@@ -89,35 +89,38 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane" id="Register">
+                    <div class="tab-pane" id="Register" ng-controller="registerController as registerController">
                         <div class="container">
+                            <div ng-show="registerController.errorMessage" class="alert alert-danger">
+                                {{registerController.errorMessage}}
+                            </div>
                             <label for="registerUsername"><b>Username</b></label>
                             <input type="text"
                                    id="registerUsername"
                                    class="form-control"
                                    placeholder="Username"
-                                   ng-model="vm.user.username"/>
+                                   ng-model="registerController.user.username"/>
 
                             <label for="registerPassword" class="register-login-button"><b>Password</b></label>
                             <input type="password"
                                    id="registerPassword"
                                    class="form-control"
                                    placeholder="Password"
-                                   ng-model="vm.user.password"/>
+                                   ng-model="registerController.user.password"/>
 
                             <label for="registerPassword2" class="register-login-button"><b>Confirm Password</b></label>
                             <input type="password"
                                    id="registerPassword2"
                                    class="form-control"
                                    placeholder="Confirm Password"
-                                   ng-model="vm.user.password"/>
+                                   ng-model="registerController.user.password2"/>
 
                             <a class="btn btn-success btn-block register-login-button"
                                href=""
-                               ng-click="vm.addUser(vm.user)">Register</a>
+                               ng-click="registerController.registerUser(registerController.user)">Register</a>
                             <a class="btn btn-danger btn-block register-login-button"
                                href=""
-                               ng-click="vm.addUser(vm.user)">Back</a>
+                               ng-click="registerController.onClickBack()">Back</a>
                         </div>
                     </div>
                 </div>
