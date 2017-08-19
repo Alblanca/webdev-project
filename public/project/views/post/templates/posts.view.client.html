@@ -16,8 +16,8 @@
     <!--<script src="https://use.fontawesome.com/2e48185324.js"></script>-->
 
 <!--</head>-->
-
-<h1 class="text-left posts-headings">Posts in Genju Board</h1>
+<overhub-navbar></overhub-navbar>
+<h1 class="text-left posts-headings">Posts in {{model.findOne({board : model.boardId}).populate('_board', 'name')}}</h1>
 <a class="btn btn-outline-secondary posts-headings" href="#!/boards/{{model.boardId}}/new"><i class="fa fa-plus" aria-hidden="true"></i> Create A New Post</a>
 <hr/>
 
@@ -34,21 +34,19 @@
         </tr>
     </thead>
     <tbody>
-    <div ng-repeat="post in vm.posts">
-        <tr class="row col-12">
-            <td class="col-2 col-md-1">{{post.score}}</td>
-            <td class="col-8 col-md-4">{{post.title}}</td>
+        <tr class="row col-12" ng-repeat="post in model.posts">
+            <td class="col-2 col-md-1">{{post.votes}}</td>
+            <td class="col-8 col-md-4"><a href="#!/boards/{{post._board}}/post/{{post._id}}">{{post.title}}</a></td>
             <td class="hidden-sm-down col-md-1"><span class="badge badge-pill badge-warning" data-toggle="popover" data-trigger="click"
                                                       title="Tags" id="tags-badge">
             <!--<th class="col-xs-1"><button class="btn btn-outline-success" data-toggle="popover" data-trigger="click"-->
                 <!--title="Tags" id="tags-badge">-->
-                5</span></td>
-            <td class="col-2 col-md-2">{{post.date}}</td>
+                {{post.tags.length}}</span></td>
+            <td class="col-2 col-md-2">{{post.dateCreated}}</td>
             <td class="hidden-sm-down col-md-3">{{post.poster}}</td>
-            <td class="hidden-sm-down col-md-1">{{post.comments}}</td>
+            <td class="hidden-sm-down col-md-1">{{post.comments.length}}</td>
 
         </tr>
-    </div>
 
     </tbody>
 </table>

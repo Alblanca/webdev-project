@@ -12,13 +12,14 @@ var postModel = require("./models/post.model.server");
 
 app.get("/api/boards/:boardId", findPostsByBoardId);
 app.post("/api/boards/:boardId/new", createPost);
+app.get("/api/post/:postId", findPostById);
 
 function findPostsByBoardId(req, res) {
     var boardId = req.params.boardId;
     postModel
         .findPostsByBoardId(boardId)
-        .then(function (status) {
-            res.sendStatus(200);
+        .then(function (posts) {
+            res.json(posts);
             return;
         }, function (err) {
             res.sendStatus(500).send(err);
@@ -40,6 +41,22 @@ function createPost(req, res) {
             return;
         });
 }
+
+function findPostById(req, res) {
+    var postId = req.params.postId;
+
+    postModel
+        .findPostById(postId)
+        .then(function (post) {
+            res.json(post);
+            return;
+        }, function (err) {
+            res.send(err);
+            return;
+        });
+}
+
+
 
 
 

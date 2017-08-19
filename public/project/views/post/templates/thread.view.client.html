@@ -1,0 +1,85 @@
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <!--<title>WebDev</title>-->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">-->
+    <!--<link rel="stylesheet" href="css.css">-->
+    <!--<link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Oswald|Raleway" rel="stylesheet">-->
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
+    <!--&lt;!&ndash;<script src="stuff.js"></script>&ndash;&gt;-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>-->
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>-->
+    <!--<script src="https://use.fontawesome.com/2e48185324.js"></script>-->
+
+<!--</head>-->
+
+<div class="container-fluid post-container pull-left">
+    <div class="row">
+<h3 class="board-subheadings">{{model.post.title}}</h3>
+        <h4 class="thread-score align-text-bottom"><span class="badge badge-info">{{model.post.votes}}</span>
+<span class="badge badge-warning badge-pill" ng-show="model.post.isEndorsed">Coach Endorsed</span></h4>
+    </div>
+    <div class="row">
+        <p class="post-info">by {{model.post._user}}
+            <img src="https://vignette4.wikia.nocookie.net/overwatch/images/8/8f/Competitive_Bronze_Icon.png/revision/latest?cb=20161122023401" width="20" height="20">
+            {{model.post.dateCreated}}</p>
+    </div>
+    <div class="container post-content-container rounded">
+        <span style="float: right; margin-bottom: 5px; margin-top: -10px;"><a class="text-right">
+            <i class="fa fa-star" aria-hidden="true"></i> Save</a></span>
+        {{model.post.content}}
+        <hr/>
+        <p class="post-tags rounded">{{model.post.tags}}</p>
+    </div>
+    <div class="row vote-container">
+        <div class="btn-group" role="group">
+        <a class="btn btn-outline-success vote-button-lg" data-toggle="button" aria-pressed="false" href="#">
+            <i class="fa fa-arrow-circle-up" aria-hidden="true"> Upvote Post</i></a>
+        <a class="btn btn-outline-warning vote-button-lg" data-toggle="button" aria-pressed="false"  href="#">
+            Downvote Post <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></a>
+        </div>
+        <a ng-show="vm.user.isCoach" class="btn btn-outline-info endorse-button-lg" data-toggle="button" aria-pressed="false"  href="#">
+            Endorse Post <i class="fa fa-check-circle" aria-hidden="true"></i></a>
+    </div>
+</div>
+    <hr/>
+    <div class="container-fluid all-comments-container pull-left">
+    <div class="row form-group">
+        <label for="description">New Comment</label>
+        <textarea class="form-control"
+                  name="description"
+                  rows="5"
+                  ng-model="vm.board.description"
+                  placeholder="Comment here..."></textarea>
+        <button type="button" class="btn btn-secondary btn-small clearfix" style="float: right; margin-top: 5px;">Submit</button>
+    </div>
+    <div class="comment-container rounded">
+        <span style="float: right; margin-bottom: 5px;">
+            <span class="badge badge-info">50</span>
+            <a class="text-right">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            <i class="fa fa-minus" aria-hidden="true"></i></a></span>
+        <div class="media">
+            <img class="d-flex mr-3" src="http://dcmjs.com/overwatch/images/icon/OW-icon_genji.svg"
+                 width="45" height="45" alt="genji">
+            <div class="media-body">
+                <h5 class="mt-0">genjilvr420</h5>
+                <p>those plays r sik</p>
+            </div>
+        </div>
+    </div>
+    <div class="comment-container rounded">
+        <span style="float: right; margin-bottom: 5px;"><a class="text-right">
+            <i class="fa fa-star" aria-hidden="true"></i> Save</a></span>
+        <div class="media">
+            <img class="d-flex mr-3" src="http://dcmjs.com/overwatch/images/icon/OW-icon_genji.svg"
+                 width="45" height="45" alt="genji">
+            <div class="media-body">
+                <h5 class="mt-0">genjilvr420</h5>
+                <p>honestly u suk</p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+

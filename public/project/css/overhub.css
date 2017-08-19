@@ -314,3 +314,7 @@ th {
     font-size: 100%;
     margin: 20px 0;
 }
+
+text-angular .popover {
+    display: none;
+}

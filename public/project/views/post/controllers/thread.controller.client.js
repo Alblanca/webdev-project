@@ -1,19 +1,24 @@
 /**
- * Created by berti on 7/25/2017.
+ * Created by ani on 8/10/17.
  */
 (function () {
     angular
         .module("OverHub")
-        .controller("postNewController", postNewController);
+        .controller("threadViewController", threadViewController);
 
-    function postNewController($routeParams, postService, $location) {
+    function threadViewController($routeParams, postService, $location) {
         var model = this;
         // model.userId = $routeParams["userId"];
         model.boardId = $routeParams["boardId"];
-
-        model.createPost = createPost;
+        model.postId = $routeParams["postId"];
 
         function init() {
+            postService
+                .findPostById(model.postId)
+                .then(function (post) {
+                    model.post = post;
+                });
+
             // pageService
             //     .findPagesForWebpage(model.userId, model.websiteId)
             //     .then(function (pages) {

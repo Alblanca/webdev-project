@@ -17,6 +17,7 @@ var postModel = mongoose.model("PostModel", postSchema);
 
 postModel.findPostsByBoardId = findPostsByBoardId;
 postModel.createPost = createPost;
+postModel.findPostById = findPostById;
 
 module.exports = postModel;
 
@@ -36,6 +37,11 @@ function createPost(post, boardId) {
         .then(function (postDoc) {
             return postTmp;
         });
+}
+
+
+function findPostById(postId) {
+    return postModel.findById(postId);
 }
 
 

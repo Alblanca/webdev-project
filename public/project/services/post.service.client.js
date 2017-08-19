@@ -10,6 +10,7 @@
        var api = {
            "findPostsByBoardId" : findPostsByBoardId,
            "createPost" : createPost,
+           "findPostById" : findPostById,
 
            "findPagesForWebpage" : findPagesForWebpage,
            "findPageById" : findPageById,
@@ -30,12 +31,21 @@
         }
 
         function createPost(boardId, post) {
-            var url = "/api/boards/" + boardId + "/new"
+            var url = "/api/boards/" + boardId + "/new";
 
             return $http.post(url, post)
                 .then(function (response) {
                     return response.data;
                 })
+        }
+
+        function findPostById(postId) {
+            var url = "/api/post/" + postId;
+
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
         }
 
 
