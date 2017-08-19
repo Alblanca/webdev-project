@@ -42,7 +42,7 @@
             <!--<th class="col-xs-1"><button class="btn btn-outline-success" data-toggle="popover" data-trigger="click"-->
                 <!--title="Tags" id="tags-badge">-->
                 {{post.tags.length}}</span></td>
-            <td class="col-2 col-md-2">{{post.dateCreated}}</td>
+            <td class="col-2 col-md-2">{{post.dateCreated  | date: 'dd/MM/yyyy'}}</td>
             <td class="hidden-sm-down col-md-3">{{post.poster}}</td>
             <td class="hidden-sm-down col-md-1">{{post.comments.length}}</td>
 

@@ -16,6 +16,7 @@
             postService
                 .findPostById(model.postId)
                 .then(function (post) {
+                    console.log(post);
                     model.post = post;
                 });
 

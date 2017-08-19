@@ -11,7 +11,7 @@ var postSchema = mongoose
             content : String,
             votes : {type : Number, default : 0},
             comments :    [{type : mongoose.Schema.Types.ObjectId, ref : "commentModel"}],
-            dateCreated : {type : Date, default : Date.now()},
+            dateCreated : {type : Date, default : new Date().toJSON().slice(0,10)},
             tags : Array,
             isEndorsed : {type : Boolean, default : false}
         }, {collection : "post"});
