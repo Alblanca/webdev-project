@@ -17,6 +17,11 @@ app.post("/api/post/:postId", addComment);
 app.get("/api/post/:postId/usr", findPopulatedUserByPostId);
 app.put("/api/post/:postId", updatePost);
 app.delete("/api/post/:postId", deletePost);
+app.put("/api/post/:postId/endorse", endorsePost);
+
+function endorsePost(req, res) {
+    
+}
 
 function findPopulatedUserByPostId(req, res) {
     var postId = req.params.postId;

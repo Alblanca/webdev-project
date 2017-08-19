@@ -15,6 +15,7 @@
            "findPopulatedUserByPostId" : findPopulatedUserByPostId,
            "updatePost" : updatePost,
            "deletePost" : deletePost,
+           "endorsePost" : endorsePost,
 
            "findPagesForWebpage" : findPagesForWebpage,
            "findPageById" : findPageById,
@@ -83,6 +84,11 @@
             var url = "/api/post/" + postId;
 
             return $http.put(url, post);
+        }
+
+        function endorsePost(postId) {
+           var url = "/api/post/" + postId + "/endorse";
+           return $http.put(url, postId);
         }
 
 
