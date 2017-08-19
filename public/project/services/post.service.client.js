@@ -30,9 +30,9 @@
         }
 
         function createPost(boardId, post) {
-            var url = "/api/boards/" + boardId;
+            var url = "/api/boards/" + boardId + "/new"
 
-            return $http.put(url, post)
+            return $http.post(url, post)
                 .then(function (response) {
                     return response.data;
                 })

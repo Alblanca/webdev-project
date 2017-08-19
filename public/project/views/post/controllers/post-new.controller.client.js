@@ -23,7 +23,7 @@
         init ();
 
         function createPost(post) {
-            if(!post || !post.name || !post.content) {
+            if(!post || !post.title || !post.content) {
                 alert("no content!");
                 return;
             }
@@ -31,7 +31,7 @@
             postService
                 .createPost(model.boardId, post)
                 .then(function () {
-                    $location.url("/boards/" + model.boardId);
+                    $location.url("/boards/" + model.boardId + "/new");
                 });
         }
 
