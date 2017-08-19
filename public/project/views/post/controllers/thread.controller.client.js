@@ -19,8 +19,18 @@
             postService
                 .findPostById(model.postId)
                 .then(function (post) {
-                    console.log(post);
                     model.post = post;
+                });
+            postService
+                .findPopulatedUserByPostId(model.postId)
+                .then(function (post) {
+                    model.user = post._user;
+                    console.log(model.user);
+                });
+            userService
+                .getCurrentUser()
+                .then(function (user) {
+                   model.currUser = user.data;
                 });
 
             // pageService
@@ -32,10 +42,10 @@
         init ();
 
         function addComment(comment) {
-            var currentUser = "teststring";
-            // comment._user = currentUser;
+            commentObj = {_user : model.currUser, _post : model.postId, content : comment};
+            console.log(commentObj);
             postService
-                .addComment(comment)
+                .addComment(commentObj)
                 .then(function () {
                     $location.url("/boards/" + model.boardId + "/post/" + model.postId);
                 });

@@ -12,6 +12,7 @@
            "createPost" : createPost,
            "findPostById" : findPostById,
            "addComment" : addComment,
+           "findPopulatedUserByPostId" : findPopulatedUserByPostId,
 
            "findPagesForWebpage" : findPagesForWebpage,
            "findPageById" : findPageById,
@@ -21,6 +22,15 @@
        };
 
        return api;
+
+       function findPopulatedUserByPostId(postId) {
+           var url = "/api/post/" + postId + "/usr";
+
+           return $http.get(url)
+               .then(function (response) {
+                   return response.data;
+               });
+       }
 
         function findPostsByBoardId(boardId) {
             var url = "/api/boards/" + boardId;
@@ -57,7 +67,7 @@
             return $http.post(url, comment)
                 .then(function(response) {
                     return response.data;
-                })
+                });
         }
 
 

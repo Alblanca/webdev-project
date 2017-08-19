@@ -7,7 +7,7 @@
 <span class="badge badge-warning badge-pill" ng-show="model.post.isEndorsed">Coach Endorsed</span></h4>
     </div>
     <div class="row">
-        <p class="post-info">by {{model.post._user}}
+        <p class="post-info">by {{model.user.username}}
             <img src="https://vignette4.wikia.nocookie.net/overwatch/images/8/8f/Competitive_Bronze_Icon.png/revision/latest?cb=20161122023401" width="20" height="20">
             {{model.post.dateCreated | date: 'dd/MM/yyyy'}}</p>
     </div>
@@ -39,7 +39,7 @@
                   rows="5"
                   ng-model="model.post.tempComment"
                   placeholder="Comment here..."></textarea>
-        <a ng-click="model.post.addComment(model.post.tempComent)" type="button" class="btn btn-secondary btn-small clearfix" style="float: right; margin-top: 5px;">Submit</a>
+        <a ng-click="model.addComment(model.post.tempComment)" type="button" class="btn btn-secondary btn-small clearfix" style="float: right; margin-top: 5px;">Submit</a>
     </div>
     <div class="comment-container rounded">
         <span style="float: right; margin-bottom: 5px;">

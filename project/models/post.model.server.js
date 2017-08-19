@@ -21,12 +21,28 @@ postModel.findPostsByBoardId = findPostsByBoardId;
 postModel.createPost = createPost;
 postModel.findPostById = findPostById;
 postModel.addComment = addComment;
+postModel.findPopulatedUserByPostId = findPopulatedUserByPostId;
 
 module.exports = postModel;
 
+function findPopulatedUserByPostId(postId) {
+    return postModel
+        .findById(postId)
+        .populate('_user')
+        .exec(function (err, res) {
+            return res;
+        });
+
+    // return postModel.findById(postId).populate('_user').exec();
+}
+
 function findPostsByBoardId(boardId) {
     return postModel
-        .find({_board : boardId});
+        .find({_board : boardId})
+        .populate('_user')
+        .exec(function (err, res) {
+            return res;
+        });
 }
 
 function createPost(post) {
@@ -53,10 +69,14 @@ function addComment(comment) {
     var postId = comment._post;
     return postModel.findPostById(postId)
         .then(function (post) {
+            console.log('whahahahss');
+            post.comments.push(comment);
+            post.comments.splice(0,0);
+            post.save();
+            console.log(post);
             commentModel
                 .addComment(comment)
                 .then(function (user) {
-                    post.comments.push(comment);
                     return user.save(); //goes and write this to database
                 })
         });

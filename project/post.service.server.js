@@ -14,6 +14,19 @@ app.get("/api/boards/:boardId", findPostsByBoardId);
 app.post("/api/boards/:boardId/new", createPost);
 app.get("/api/post/:postId", findPostById);
 app.post("/api/post/:postId", addComment);
+app.get("/api/post/:postId/usr", findPopulatedUserByPostId);
+
+function findPopulatedUserByPostId(req, res) {
+    var postId = req.params.postId;
+    postModel
+        .findPopulatedUserByPostId(postId)
+        .then(function (result) {
+            console.log('owo');
+            console.log(result._user);
+            res.json(result);
+            return;
+        });
+}
 
 function findPostsByBoardId(req, res) {
     var boardId = req.params.boardId;
@@ -58,7 +71,7 @@ function findPostById(req, res) {
 
 function addComment(req, res) {
     var comment = req.body;
-
+    console.log(comment);
     postModel
         .addComment(comment)
         .then(function (post) {

@@ -7,7 +7,7 @@ var boardSchema = mongoose
         {
             name : String,
             description : String,
-            posts : [{type : mongoose.Schema.Types.ObjectId, ref : "postModel"}],
+            posts : [{type : mongoose.Schema.Types.ObjectId, ref : "PostModel"}],
             bannerUrl : String,
             bannerIconUrl: String
         }, {collection : "board"});
