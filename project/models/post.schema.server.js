@@ -9,9 +9,9 @@ var postSchema = mongoose
             _board : {type : mongoose.Schema.Types.ObjectId, ref : "boardModel"},
             title : String,
             content : String,
-            votes : Number,
+            votes : {type : Number, default : 0},
             comments :    [{type : mongoose.Schema.Types.ObjectId, ref : "commentModel"}],
-            dateCreated : {type : Date, default : Date.now()},
+            dateCreated : {type : Date, default : new Date().toJSON().slice(0,10)},
             tags : Array,
             isEndorsed : {type : Boolean, default : false}
         }, {collection : "post"});

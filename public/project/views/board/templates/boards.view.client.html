@@ -20,7 +20,7 @@
     <!--<script src="https://use.fontawesome.com/2e48185324.js"></script>-->
 
 <!--</head>-->
-
+<overhub-navbar></overhub-navbar>
 <h1 class="text-left posts-headings">Available Boards</h1>
 <a class="btn btn-outline-secondary posts-headings" href="#!/boards/new"><i class="fa fa-plus" aria-hidden="true"></i> Create A New Board</a>
 <hr/>
@@ -31,7 +31,7 @@
         <div class="card-block board-content">
             <h4 class="card-title">{{board.name}}</h4>
             <p class="card-text">{{board.description}}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <a href="#!/boards/{{board._id}}" class="btn btn-primary">Go somewhere</a>
         </div>
     </div>
 </div>

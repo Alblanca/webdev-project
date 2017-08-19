@@ -63,6 +63,11 @@
                 controller: "postNewController",
                 controllerAs: "model"
             })
+            .when("/boards/:boardId/post/:postId", {
+                templateUrl: "views/post/templates/thread.view.client.html",
+                controller: "threadViewController",
+                controllerAs: "model"
+            })
             .when("/terminate-auth", {
                 templateUrl: "views/home/templates/terminate-auth.view.client.html"
             });

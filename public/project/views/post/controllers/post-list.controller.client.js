@@ -12,7 +12,6 @@
         // model.websiteId = $routeParams["websiteId"];
 
         function init() {
-            console.log("we here do");
             postService
                 .findPostsByBoardId(model.boardId)
                 .then(function (posts) {
