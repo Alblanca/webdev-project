@@ -13,12 +13,13 @@
            "findPostById" : findPostById,
            "addComment" : addComment,
            "findPopulatedUserByPostId" : findPopulatedUserByPostId,
+           "updatePost" : updatePost,
+           "deletePost" : deletePost,
 
            "findPagesForWebpage" : findPagesForWebpage,
            "findPageById" : findPageById,
-           "createPage" : createPage,
-           "updatePage" : updatePage,
-           "deletePage" : deletePage
+           "createPage" : createPage
+
        };
 
        return api;
@@ -69,6 +70,19 @@
                 .then(function(response) {
                     return response.data;
                 });
+        }
+
+        function deletePost(postId) {
+            var url = "/api/post/" + postId;
+
+            return $http.delete(url);
+        }
+
+        function updatePost(post) {
+           var postId = post._id;
+            var url = "/api/post/" + postId;
+
+            return $http.put(url, post);
         }
 
 

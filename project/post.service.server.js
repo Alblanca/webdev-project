@@ -15,6 +15,8 @@ app.post("/api/boards/:boardId/new", createPost);
 app.get("/api/post/:postId", findPostById);
 app.post("/api/post/:postId", addComment);
 app.get("/api/post/:postId/usr", findPopulatedUserByPostId);
+app.put("/api/post/:postId", updatePost);
+app.delete("/api/post/:postId", deletePost);
 
 function findPopulatedUserByPostId(req, res) {
     var postId = req.params.postId;
@@ -85,20 +87,11 @@ function addComment(req, res) {
         });
 }
 
+function deletePost(req, res) {
+    var postId = req.params.postId;
 
-
-
-
-
-
-
-
-function deletePage(req, res) {
-    var pageId = req.params.pageId;
-    var websiteId = req.params.websiteId;
-
-    pageModel
-        .deletePage(websiteId, pageId)
+    postModel
+        .deletePost(postId)
         .then(function (status) {
             res.sendStatus(200);
             return;
@@ -108,12 +101,12 @@ function deletePage(req, res) {
         });
 }
 
-function updatePage(req, res) {
-    var pageId = req.params.pageId;
-    var page = req.body;
+function updatePost(req, res) {
+    var postId = req.params.pageId;
+    var post = req.body;
 
-    pageModel
-        .updatePage(pageId, page)
+    postModel
+        .updatePost(postId, post)
         .then(function (status) {
             res.json(status);
             return;
@@ -122,6 +115,15 @@ function updatePage(req, res) {
             return;
         });
 }
+
+
+
+
+
+
+
+
+
 
 function findPageById(req, res) {
     var pageId = req.params.pageId;

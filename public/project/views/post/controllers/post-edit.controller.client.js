@@ -6,15 +6,21 @@
         .module("OverHub")
         .controller("postEditController", postEditController);
 
-    function postEditController($routeParams, postService, $location, currentUser) {
+    function postEditController($routeParams, postService, $location) {
         var model = this;
         // model.userId = $routeParams["userId"];
         model.boardId = $routeParams["boardId"];
+        model.postId = $routeParams["postId"];
 
         model.updatePost = updatePost;
         model.deletePost = deletePost;
 
         function init() {
+            postService
+                .findPostById(model.postId)
+                .then(function (post) {
+                    model.post = post;
+                });
             // pageService
             //     .findPagesForWebpage(model.userId, model.websiteId)
             //     .then(function (pages) {
@@ -24,23 +30,19 @@
         init ();
 
         function updatePost(post) {
-            // if(!post || !post.title || !post.content) {
-            //     alert("no content!");
-            //     return;
-            // }
-            //
-            // post._board = model.boardId;
-            // post._user = currentUser;
-            //
-            // postService
-            //     .createPost(post)
-            //     .then(function () {
-            //         $location.url("/boards/" + model.boardId);
-            //     });
+            postService
+                .updatePost(post)
+                .then(function () {
+                    $location.url("/boards/"+model.boardId+"/post/"+model.postId);
+                });
         }
 
         function deletePost() {
-
+                postService
+                    .deletePost(model.postId)
+                    .then(function () {
+                        $location.url("/boards/"+model.boardId);
+                    });
         }
 
     }

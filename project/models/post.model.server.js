@@ -8,8 +8,7 @@ var commentModel = require("./comment.model.server");
 var postModel = mongoose.model("PostModel", postSchema);
 //
 // pageModel.findPagesForWebsite = findPagesForWebsite;
-// pageModel.createPage = createPage;
-// pageModel.deletePage = deletePage;
+
 // pageModel.findPageById = findPageById;
 // pageModel.updatePage = updatePage;
 // pageModel.addWidget = addWidget;
@@ -22,6 +21,8 @@ postModel.createPost = createPost;
 postModel.findPostById = findPostById;
 postModel.addComment = addComment;
 postModel.findPopulatedUserByPostId = findPopulatedUserByPostId;
+postModel.updatePost = updatePost;
+postModel.deletePost = deletePost;
 
 module.exports = postModel;
 
@@ -83,6 +84,24 @@ function addComment(comment, user, postId) {
         });
 }
 
+function deletePost(postId) {
+    return postModel
+        .remove({_id : postId})
+        .then(function (status) {
+            //return websiteModel.removePage(websiteId, pageId);
+            return;
+        });
+}
+
+function updatePost(postId, post) {
+    return postModel
+        .update(
+            {_id: postId}, {$set: post}
+        );
+}
+
+
+
 
 function findWidgetsForPage(pageId) {
     return pageModel
@@ -106,12 +125,7 @@ function updateWidgetPosition(pageId, startIndex, endIndex) {
         });
 }
 
-function updatePage(pageId, page) {
-    return pageModel
-        .update(
-            {_id: pageId}, {$set: page}
-        );
-}
+
 
 function findPagesForWebsite(websiteId) {
     return pageModel.find({website: websiteId});
@@ -133,13 +147,7 @@ function createPage(websiteId, page) {
         });
 }
 
-function deletePage(websiteId, pageId) {
-    return pageModel
-        .remove({_id : pageId})
-        .then(function (status) {
-            return websiteModel.removePage(websiteId, pageId);
-        });
-}
+
 
 function findPageById(pageId) {
     return pageModel.findById(pageId);
