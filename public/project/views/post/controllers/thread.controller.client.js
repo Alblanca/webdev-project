@@ -8,9 +8,12 @@
 
     function threadViewController($routeParams, postService, $location) {
         var model = this;
+        model.tempComment = "";
         // model.userId = $routeParams["userId"];
         model.boardId = $routeParams["boardId"];
         model.postId = $routeParams["postId"];
+        //model.endorsePost = endorsePost();
+        model.addComment = addComment();
 
         function init() {
             postService
@@ -28,18 +31,19 @@
         }
         init ();
 
-        function createPost(post) {
-            if(!post || !post.title || !post.content) {
-                alert("no content!");
-                return;
-            }
-
+        function addComment(comment) {
+            var currentUser = "teststring";
+            comment._user = currentUser;
             postService
-                .createPost(model.boardId, post)
+                .addComment(comment)
                 .then(function () {
-                    $location.url("/boards/" + model.boardId);
+                    $location.url("/boards/" + model.boardId + "/post/" + model.postId);
                 });
         }
 
+        // function endorsePost() {
+        //     postService
+        //         .endorsePost(model.post)
+        // }
     }
 })();

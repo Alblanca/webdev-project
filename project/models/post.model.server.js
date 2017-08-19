@@ -2,6 +2,8 @@ var mongoose = require("mongoose");
 var postSchema = require("./post.schema.server");
 var db = require("./database");
 var boardModel = require("./board.model.server");
+var userModel = require("./user.model.server");
+var commentModel = require("./comment.model.server");
 
 var postModel = mongoose.model("PostModel", postSchema);
 //
@@ -18,6 +20,7 @@ var postModel = mongoose.model("PostModel", postSchema);
 postModel.findPostsByBoardId = findPostsByBoardId;
 postModel.createPost = createPost;
 postModel.findPostById = findPostById;
+postModel.addComment = addComment;
 
 module.exports = postModel;
 
@@ -26,13 +29,15 @@ function findPostsByBoardId(boardId) {
         .find({_board : boardId});
 }
 
-function createPost(post, boardId) {
-    post._board = boardId;
+function createPost(post) {
+    var boardId = post._board;
+    var userId = post._user;
     return postModel
         .create(post)
         .then(function (postDoc) {
             postTmp = postDoc;
             boardModel.addPost(boardId, postDoc._id);
+            userModel.addPost(userId, postDoc._id);
         })
         .then(function (postDoc) {
             return postTmp;
@@ -42,6 +47,19 @@ function createPost(post, boardId) {
 
 function findPostById(postId) {
     return postModel.findById(postId);
+}
+
+function addComment(comment) {
+    var postId = comment._post;
+    return postModel.findPostById(postId)
+        .then(function (post) {
+            commentModel
+                .addComment(comment)
+                .then(function (user) {
+                    post.comments.push(comment);
+                    return user.save(); //goes and write this to database
+                })
+        });
 }
 
 

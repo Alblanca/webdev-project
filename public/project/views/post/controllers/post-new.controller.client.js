@@ -6,7 +6,7 @@
         .module("OverHub")
         .controller("postNewController", postNewController);
 
-    function postNewController($routeParams, postService, $location) {
+    function postNewController($routeParams, postService, $location, currentUser) {
         var model = this;
         // model.userId = $routeParams["userId"];
         model.boardId = $routeParams["boardId"];
@@ -28,8 +28,11 @@
                 return;
             }
 
+            post._board = model.boardId;
+            post._user = currentUser;
+
             postService
-                .createPost(model.boardId, post)
+                .createPost(post)
                 .then(function () {
                     $location.url("/boards/" + model.boardId);
                 });

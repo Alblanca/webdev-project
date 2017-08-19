@@ -6,11 +6,25 @@ var commentModel = mongoose.model("CommentModel", commentSchema);
 
 module.exports = commentModel;
 
-widgetModel.createWidget = createWidget;
-widgetModel.findWidgetById = findWidgetById;
-widgetModel.updateWidget = updateWidget;
-widgetModel.deleteWidget = deleteWidget;
+commentModel.addComment = addComment;
 
+// widgetModel.createWidget = createWidget;
+// widgetModel.findWidgetById = findWidgetById;
+// widgetModel.updateWidget = updateWidget;
+// widgetModel.deleteWidget = deleteWidget;
+
+
+function addComment(comment) {
+    return commentModel
+        .create(comment)
+        .then(function (comment) {
+        commentTmp = comment;
+    })
+        .then(function (comment) {
+            return commentTmp;
+        });
+
+}
 
 function deleteWidget(pageId, widgetId) {
     return widgetModel

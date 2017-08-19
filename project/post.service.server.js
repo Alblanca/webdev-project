@@ -13,6 +13,7 @@ var postModel = require("./models/post.model.server");
 app.get("/api/boards/:boardId", findPostsByBoardId);
 app.post("/api/boards/:boardId/new", createPost);
 app.get("/api/post/:postId", findPostById);
+app.post("/api/post/:postId", addComment);
 
 function findPostsByBoardId(req, res) {
     var boardId = req.params.boardId;
@@ -29,10 +30,9 @@ function findPostsByBoardId(req, res) {
 
 function createPost(req, res) {
     var post = req.body;
-    var boardId = req.params.boardId;
 
     postModel
-        .createPost(post, boardId)
+        .createPost(post)
         .then(function (post) {
             res.json(post);
             return;
@@ -47,6 +47,20 @@ function findPostById(req, res) {
 
     postModel
         .findPostById(postId)
+        .then(function (post) {
+            res.json(post);
+            return;
+        }, function (err) {
+            res.send(err);
+            return;
+        });
+}
+
+function addComment(req, res) {
+    var comment = req.body;
+
+    postModel
+        .addComment(comment)
         .then(function (post) {
             res.json(post);
             return;

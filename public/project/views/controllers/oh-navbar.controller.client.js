@@ -7,6 +7,8 @@
         var model = this;
 
         model.logout = logout;
+        model.savePost = savePost;
+        model.findUserById = findUserById;
 
         function init() {
             userService
@@ -23,6 +25,14 @@
                 .then(function () {
                     $window.location.reload();
                 });
+        }
+
+        function savePost(postId) {
+            userService.savePost(postId, model.currentUser._id);
+        }
+
+        function findUserById(userId) {
+            return userService.findUserById(userId);
         }
 
     }

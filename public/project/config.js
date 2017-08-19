@@ -51,7 +51,10 @@
             .when("/boards/new", {
                 templateUrl: "views/board/templates/boards-new.view.client.html",
                 controller: 'boardNewController',
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkLogin
+                }
             })
             .when("/boards/:boardId", {
                 templateUrl: "views/post/templates/posts.view.client.html",
@@ -61,7 +64,10 @@
             .when("/boards/:boardId/new", {
                 templateUrl: "views/post/templates/posts-new.view.client.html",
                 controller: "postNewController",
-                controllerAs: "model"
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkLogin
+                }
             })
             .when("/boards/:boardId/post/:postId", {
                 templateUrl: "views/post/templates/thread.view.client.html",

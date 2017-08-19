@@ -132,6 +132,8 @@ app.get('/login/auth/google', passport.authenticate('google', { scope : ['profil
 app.get("/api/logout", logout);
 app.get('/api/currentUser', getCurrentUser);
 
+app.put('/api/:userId/save', savePost);
+
 //auth strategies
 app.get('/login/auth/blizzard', passport.authenticate('bnet'));
 
@@ -152,6 +154,17 @@ app.get('/google/callback', passport.authenticate('google', {failureRedirect: '/
         res.redirect('/project/#!/terminate-auth');
     });
 
+function savePost(req, res) {
+    var userId = req.params.userId;
+    var postId = req.body;
+    userModel
+        .savePost(postId, userId)
+        .then(function (status) {
+            res.json(status);
+        }, function (err) {
+            res.sendStatus(500).send(err);
+        });
+}
 
 function checkLogin(req, res) {
     res.send(req.isAuthenticated() ? req.user : '0');

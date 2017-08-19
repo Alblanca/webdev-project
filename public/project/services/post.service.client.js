@@ -11,6 +11,7 @@
            "findPostsByBoardId" : findPostsByBoardId,
            "createPost" : createPost,
            "findPostById" : findPostById,
+           "addComment" : addComment,
 
            "findPagesForWebpage" : findPagesForWebpage,
            "findPageById" : findPageById,
@@ -30,7 +31,8 @@
                 });
         }
 
-        function createPost(boardId, post) {
+        function createPost(post) {
+            var boardId = post._id;
             var url = "/api/boards/" + boardId + "/new";
 
             return $http.post(url, post)
@@ -46,6 +48,16 @@
                 .then(function (response) {
                     return response.data;
                 });
+        }
+
+        function addComment(comment) {
+            var postId = comment._post;
+            var url = "/api/post/" + postId;
+
+            return $http.post(url, comment)
+                .then(function(response) {
+                    return response.data;
+                })
         }
 
 

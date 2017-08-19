@@ -25,7 +25,7 @@
             {{model.post.dateCreated | date: 'dd/MM/yyyy'}}</p>
     </div>
     <div class="post-content-container rounded">
-        <span style="float: right; margin-bottom: 5px; margin-top: -10px;"><a class="text-right">
+        <span ng-click="navController.savePost()"><a class="text-right">
             <i class="fa fa-star" aria-hidden="true"></i> Save</a></span>
         <div ta-bind ng-model="model.post.content"></div>
         <hr/>
@@ -52,7 +52,7 @@
                   rows="5"
                   ng-model="model.post.tempComment"
                   placeholder="Comment here..."></textarea>
-        <a ng-click="" type="button" class="btn btn-secondary btn-small clearfix" style="float: right; margin-top: 5px;">Submit</a>
+        <a ng-click="model.post.addComment(model.post.tempComent)" type="button" class="btn btn-secondary btn-small clearfix" style="float: right; margin-top: 5px;">Submit</a>
     </div>
     <div class="comment-container rounded">
         <span style="float: right; margin-bottom: 5px;">

@@ -20,37 +20,37 @@
 <h1 class="text-left posts-headings">Posts in {{model.findOne({board : model.boardId}).populate('_board', 'name')}}</h1>
 <a class="btn btn-outline-secondary posts-headings" href="#!/boards/{{model.boardId}}/new"><i class="fa fa-plus" aria-hidden="true"></i> Create A New Post</a>
 <hr/>
+<post-list-component></post-list-component>
+<!--<div class="posts-table col-12">-->
+<!--<table class="table dt-responsive table-striped">-->
+    <!--<thead class="thead-inverse">-->
+        <!--<tr class="row col-12">-->
+            <!--<th class="col-2 col-md-1">Score</th>-->
+            <!--<th class="col-8 col-md-4">Title</th>-->
+            <!--<th class="hidden-sm-down col-md-1">Tags</th>-->
+            <!--<th class="col-2 col-md-2">Date</th>-->
+            <!--<th class="hidden-sm-down col-md-3">Poster</th>-->
+            <!--<th class="hidden-sm-down col-md-1">Comments</th>-->
+        <!--</tr>-->
+    <!--</thead>-->
+    <!--<tbody>-->
+        <!--<tr class="row col-12" ng-repeat="post in model.posts">-->
+            <!--<td class="col-2 col-md-1">{{post.votes}}</td>-->
+            <!--<td class="col-8 col-md-4"><a href="#!/boards/{{post._board}}/post/{{post._id}}">{{post.title}}</a></td>-->
+            <!--<td class="hidden-sm-down col-md-1"><span class="badge badge-pill badge-warning" data-toggle="popover" data-trigger="click"-->
+                                                      <!--title="Tags" id="tags-badge">-->
+            <!--&lt;!&ndash;<th class="col-xs-1"><button class="btn btn-outline-success" data-toggle="popover" data-trigger="click"&ndash;&gt;-->
+                <!--&lt;!&ndash;title="Tags" id="tags-badge">&ndash;&gt;-->
+                <!--{{post.tags.length}}</span></td>-->
+            <!--<td class="col-2 col-md-2">{{post.dateCreated  | date: 'dd/MM/yyyy'}}</td>-->
+            <!--<td class="hidden-sm-down col-md-3">{{post.poster}}</td>-->
+            <!--<td class="hidden-sm-down col-md-1">{{post.comments.length}}</td>-->
 
-<div class="posts-table col-12">
-<table class="table dt-responsive table-striped">
-    <thead class="thead-inverse">
-        <tr class="row col-12">
-            <th class="col-2 col-md-1">Score</th>
-            <th class="col-8 col-md-4">Title</th>
-            <th class="hidden-sm-down col-md-1">Tags</th>
-            <th class="col-2 col-md-2">Date</th>
-            <th class="hidden-sm-down col-md-3">Poster</th>
-            <th class="hidden-sm-down col-md-1">Comments</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr class="row col-12" ng-repeat="post in model.posts">
-            <td class="col-2 col-md-1">{{post.votes}}</td>
-            <td class="col-8 col-md-4"><a href="#!/boards/{{post._board}}/post/{{post._id}}">{{post.title}}</a></td>
-            <td class="hidden-sm-down col-md-1"><span class="badge badge-pill badge-warning" data-toggle="popover" data-trigger="click"
-                                                      title="Tags" id="tags-badge">
-            <!--<th class="col-xs-1"><button class="btn btn-outline-success" data-toggle="popover" data-trigger="click"-->
-                <!--title="Tags" id="tags-badge">-->
-                {{post.tags.length}}</span></td>
-            <td class="col-2 col-md-2">{{post.dateCreated  | date: 'dd/MM/yyyy'}}</td>
-            <td class="hidden-sm-down col-md-3">{{post.poster}}</td>
-            <td class="hidden-sm-down col-md-1">{{post.comments.length}}</td>
+        <!--</tr>-->
 
-        </tr>
-
-    </tbody>
-</table>
-</div>
+    <!--</tbody>-->
+<!--</table>-->
+<!--</div>-->
 
 
 <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->

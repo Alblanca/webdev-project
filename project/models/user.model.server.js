@@ -15,7 +15,31 @@ userModel.unregisterUser = unregisterUser;
 userModel.findUserByGoogleId = findUserByGoogleId;
 userModel.findUserByBlizzardId = findUserByBlizzardId;
 
+userModel.addPost = addPost;
+userModel.savePost = savePost;
+
 module.exports = userModel;
+
+
+function addPost(userId, postId) {
+    return userModel
+        .findUserById(userId)
+        .then(function (user) {
+            user.posts.push(postId);
+            console.log(user);
+            return user.save(); //goes and write this to database
+        });
+}
+
+function savePost(postId, userId) {
+    return userModel
+        .findUserById(userId)
+        .then(function (user) {
+            user.savedPosts.push(postId);
+            console.log(user);
+            return user.save(); //goes and write this to database
+        });
+}
 
 function findUserByBlizzardId(bid) {
     return userModel

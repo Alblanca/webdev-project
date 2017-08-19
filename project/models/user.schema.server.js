@@ -9,6 +9,8 @@ var userSchema = mongoose.Schema(
         nickname: String,
         // websites: [{type: mongoose.Schema.Types.ObjectId, ref:"WebsiteModel"}],   //1. arrays of references
         isAdmin: {type: Boolean, default: false},
+        savedPosts : [{type: mongoose.Schema.Types.ObjectId, ref:"postModel"}],
+        posts : [{type: mongoose.Schema.Types.ObjectId, ref:"postModel"}],
         google: {
             id:    String,
             token: String
