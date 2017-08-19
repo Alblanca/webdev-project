@@ -7,26 +7,27 @@
         .module("OverHub")
         .controller("postListComponentController", postListComponentController);
 
-    function postListComponentController($window, $location, postService) {
+    function postListComponentController($window, $location, postService, $routeParams) {
         var model = this;
+        model.boardId = $routeParams["boardId"];
         model.getPostsByBoardId = getPostsByBoardId;
 
         function init() {
-            // userService
-            //     .getCurrentUser()
-            //     .then(function (response) {
-            //         model.currentUser = response.data;
-            //     });
+
         }
         init();
 
         function getPostsByBoardId(boardId) {
             postService
                 .findPostsByBoardId(boardId)
-                .then(function (posts) {
-                    model.posts = posts;
+                .then(function (board) {
+                    model.posts = board.posts;
+                    console.log(model.posts);
                 });
         }
+        // function getPostsByBoardId(boardId) {
+        //
+        // }
 
         // function logout() {
         //     userService
@@ -36,5 +37,5 @@
         //         });
         // }
 
-    }
+}
 })();

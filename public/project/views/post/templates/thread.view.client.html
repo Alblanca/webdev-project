@@ -1,35 +1,39 @@
 
 <overhub-navbar></overhub-navbar>
 <div class="container-fluid post-container">
-    <div class="row">
-<h3 class="board-subheadings">{{model.post.title}}</h3>
+    <div class="row justify-content-between">
+        <div class="col-8">
+        <h1 class="board-subheadings">{{model.post.title}}</h1>
         <h4 class="thread-score align-text-bottom"><span class="badge badge-info">{{model.post.votes}}</span>
-<span class="badge badge-warning badge-pill" ng-show="model.post.isEndorsed">Coach Endorsed</span></h4>
+            <span class="badge badge-warning badge-pill" ng-show="!model.post.isEndorsed">Coach Endorsed</span></h4></div>
+        <div class="col-2">
+        <a ng-show="!model.user.isAdmin" href="#!/boards/{{model.post._board}}/post/{{model.post._id}}/edit"><span class="edit-icon pull-right"><i class="fa fa-pencil" aria-hidden="true"></i></span></a>
+        <a ng-click="model.savePost()"><span class="edit-icon pull-right"><i class="fa fa-star" aria-hidden="true"></i></span></a>
+        </div>
+            <!--<span ng-click="model.savePost()"><a class="text-right pull-right">-->
+            <!--<i class="fa fa-star" aria-hidden="true"></i></a></span>  -->
     </div>
     <div class="row">
-        <p class="post-info">by {{model.post._user}}
+        <p class="post-info">by {{model.user.username}}
             <img src="https://vignette4.wikia.nocookie.net/overwatch/images/8/8f/Competitive_Bronze_Icon.png/revision/latest?cb=20161122023401" width="20" height="20">
             {{model.post.dateCreated | date: 'dd/MM/yyyy'}}</p>
     </div>
     <div class="post-content-container rounded">
-        <span ng-click="model.savePost()"><a class="text-right">
-            <i class="fa fa-star" aria-hidden="true"></i> Save</a></span>
         <div ta-bind ng-model="model.post.content"></div>
         <hr/>
         <p class="post-tags rounded">{{model.post.tags}}</p>
     </div>
     <div class="row vote-container">
         <div class="btn-group" role="group">
-        <a class="btn btn-outline-success vote-button-lg" data-toggle="button" aria-pressed="false" ng-click="">
-            <i class="fa fa-arrow-circle-up" aria-hidden="true"> Upvote Post</i></a>
+            <a href="#" class="btn btn-outline-primary btn-large"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i> Upvote Post</a>
         <a class="btn btn-outline-warning vote-button-lg" data-toggle="button" aria-pressed="false"  href="#">
             Downvote Post <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></a>
         </div>
-        <a ng-show="model.user.isCoach" class="btn btn-outline-info endorse-button-lg" data-toggle="button" aria-pressed="false"  href="#">
+        <a ng-show="model.user.isCoach" class="btn btn-outline-info endorse-button-lg" data-toggle="button" aria-pressed="false"  ng-click="model.endorsePost()">
             Endorse Post <i class="fa fa-check-circle" aria-hidden="true"></i></a>
     </div>
 </div>
-    <hr/>
+
 
     <div class="container-fluid all-comments-container pull-left">
     <div class="row form-group">
@@ -39,35 +43,37 @@
                   rows="5"
                   ng-model="model.post.tempComment"
                   placeholder="Comment here..."></textarea>
-        <a ng-click="model.post.addComment(model.post.tempComent)" type="button" class="btn btn-secondary btn-small clearfix" style="float: right; margin-top: 5px;">Submit</a>
+        <a class="btn btn-secondary" data-toggle="button" aria-pressed="false"  ng-click="model.addComment(model.post.tempComment)"">
+            Submit <i class="fa fa-check" aria-hidden="true"></i></a>
+    <!--</div>-->
+    <!--<div class="comment-container rounded">-->
+        <!--<span style="float: right; margin-bottom: 5px;">-->
+            <!--<span class="badge badge-info">50</span>-->
+            <!--<a class="text-right">-->
+            <!--<i class="fa fa-plus" aria-hidden="true"></i>-->
+            <!--<i class="fa fa-minus" aria-hidden="true"></i></a></span>-->
+        <!--<div class="media">-->
+            <!--<img class="d-flex mr-3" src="http://dcmjs.com/overwatch/images/icon/OW-icon_genji.svg"-->
+                 <!--width="45" height="45" alt="genji">-->
+            <!--<div class="media-body">-->
+                <!--<h5 class="mt-0">genjilvr420</h5>-->
+                <!--<p>those plays r sik</p>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="comment-container rounded">-->
+        <!--<span style="float: right; margin-bottom: 5px;"><a class="text-right">-->
+            <!--<i class="fa fa-star" aria-hidden="true"></i> Save</a></span>-->
+        <!--<div class="media">-->
+            <!--<img class="d-flex mr-3" src="http://dcmjs.com/overwatch/images/icon/OW-icon_genji.svg"-->
+                 <!--width="45" height="45" alt="genji">-->
+            <!--<div class="media-body">-->
+                <!--<h5 class="mt-0">genjilvr420</h5>-->
+                <!--<p>honestly u suk</p>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
     </div>
-    <div class="comment-container rounded">
-        <span style="float: right; margin-bottom: 5px;">
-            <span class="badge badge-info">50</span>
-            <a class="text-right">
-            <i class="fa fa-plus" aria-hidden="true"></i>
-            <i class="fa fa-minus" aria-hidden="true"></i></a></span>
-        <div class="media">
-            <img class="d-flex mr-3" src="http://dcmjs.com/overwatch/images/icon/OW-icon_genji.svg"
-                 width="45" height="45" alt="genji">
-            <div class="media-body">
-                <h5 class="mt-0">genjilvr420</h5>
-                <p>those plays r sik</p>
-            </div>
-        </div>
-    </div>
-    <div class="comment-container rounded">
-        <span style="float: right; margin-bottom: 5px;"><a class="text-right">
-            <i class="fa fa-star" aria-hidden="true"></i> Save</a></span>
-        <div class="media">
-            <img class="d-flex mr-3" src="http://dcmjs.com/overwatch/images/icon/OW-icon_genji.svg"
-                 width="45" height="45" alt="genji">
-            <div class="media-body">
-                <h5 class="mt-0">genjilvr420</h5>
-                <p>honestly u suk</p>
-            </div>
-        </div>
-    </div>
-    </div>
+        <comments-component></comments-component>
 
 

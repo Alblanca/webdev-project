@@ -12,18 +12,31 @@
            "createPost" : createPost,
            "findPostById" : findPostById,
            "addComment" : addComment,
+           "findPopulatedUserByPostId" : findPopulatedUserByPostId,
+           "updatePost" : updatePost,
+           "deletePost" : deletePost,
+           "endorsePost" : endorsePost,
 
            "findPagesForWebpage" : findPagesForWebpage,
            "findPageById" : findPageById,
-           "createPage" : createPage,
-           "updatePage" : updatePage,
-           "deletePage" : deletePage
+           "createPage" : createPage
+
        };
 
        return api;
 
+       function findPopulatedUserByPostId(postId) {
+           var url = "/api/post/" + postId + "/usr";
+
+           return $http.get(url)
+               .then(function (response) {
+                   return response.data;
+               });
+       }
+
         function findPostsByBoardId(boardId) {
-            var url = "/api/boards/" + boardId;
+           console.log(boardId, "asdkfjalskdjfkla");
+            var url = "/api/boards/" + boardId + '/posts';
 
             return $http.get(url)
                 .then(function (response) {
@@ -50,14 +63,32 @@
                 });
         }
 
-        function addComment(comment) {
-            var postId = comment._post;
+        function addComment(comment, user, postId) {
             var url = "/api/post/" + postId;
+            var commentObj = {comment: comment, user: user};
 
-            return $http.post(url, comment)
+            return $http.post(url, commentObj)
                 .then(function(response) {
                     return response.data;
-                })
+                });
+        }
+
+        function deletePost(postId) {
+            var url = "/api/post/" + postId;
+
+            return $http.delete(url);
+        }
+
+        function updatePost(post) {
+           var postId = post._id;
+            var url = "/api/post/" + postId;
+
+            return $http.put(url, post);
+        }
+
+        function endorsePost(postId) {
+           var url = "/api/post/" + postId + "/endorse";
+           return $http.put(url, postId);
         }
 
 

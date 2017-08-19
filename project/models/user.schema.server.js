@@ -9,8 +9,8 @@ var userSchema = mongoose.Schema(
         nickname: String,
         introduction: String,
         isAdmin: {type: Boolean, default: false},
-        savedPosts : [{type: mongoose.Schema.Types.ObjectId, ref:"postModel"}],
-        posts : [{type: mongoose.Schema.Types.ObjectId, ref:"postModel"}],
+        savedPosts : [{type: mongoose.Schema.Types.ObjectId, ref:"PostModel"}],
+        posts : [{type: mongoose.Schema.Types.ObjectId, ref:"PostModel"}],
         google: {
             id:    String,
             token: String

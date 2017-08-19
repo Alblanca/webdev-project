@@ -56,6 +56,14 @@
                     currentUser: checkLogin
                 }
             })
+            .when("/boards/:boardId/edit", {
+                templateUrl: "views/board/templates/boards-edit.view.client.html",
+                controller: 'boardEditController',
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkLogin
+                }
+            })
             .when("/boards/:boardId", {
                 templateUrl: "views/post/templates/posts.view.client.html",
                 controller: 'postListController',
@@ -72,6 +80,11 @@
             .when("/boards/:boardId/post/:postId", {
                 templateUrl: "views/post/templates/thread.view.client.html",
                 controller: "threadViewController",
+                controllerAs: "model"
+            })
+            .when("/boards/:boardId/post/:postId/edit", {
+                templateUrl: "views/post/templates/posts-edit.view.client.html",
+                controller: "postEditController",
                 controllerAs: "model"
             })
             .when("/terminate-auth", {

@@ -10,15 +10,25 @@
 
         this.findAllBoards = findAllBoards;
         this.createBoard = createBoard;
+        this.findBoardById = findBoardById;
+        this.deleteBoard = deleteBoard;
+        this.updateBoard = updateBoard;
+
 
         this.findWebsitesForUser = findWebsitesForUser;
         this.createWebsite = createWebsite;
         this.findWebsiteById = findWebsiteById;
-        this.deleteWebsite = deleteWebsite;
-        this.updateWebsite = updateWebsite;
 
         function findAllBoards() {
             var url = "/api/boards";
+            return $http.get(url)
+                .then(function (response){
+                    return response.data;
+                });
+        }
+
+        function findBoardById(boardId) {
+            var url = "/api/boards/" + boardId;
             return $http.get(url)
                 .then(function (response){
                     return response.data;
@@ -54,16 +64,16 @@
                 });
         }
 
-        function deleteWebsite(userId, id) {
-            var url = "/api/user/" + userId + "/website/" + id;
+        function deleteBoard(boardId) {
+            var url = "/api/boards/" + boardId;
 
             return $http.delete(url);
         }
 
-        function updateWebsite(website, userId, websiteId) {
-            var url = "/api/user/" +  userId + "/website/" + websiteId;
+        function updateBoard(board) {
+            var url = "/api/boards/" + board._id;
 
-            return $http.put(url, website);
+            return $http.put(url, board);
         }
 
     }

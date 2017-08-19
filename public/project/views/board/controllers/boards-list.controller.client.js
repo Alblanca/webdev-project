@@ -6,7 +6,7 @@
         .module("OverHub")
         .controller("boardListController", boardListController);
 
-    function boardListController($routeParams, boardService) {
+    function boardListController($routeParams, boardService, userService) {
         var model = this;
         // model.userId = $routeParams["userId"];
 
@@ -18,6 +18,12 @@
                     // '[[b1, b2, b3],[b1,b2,b3],[b1]]'
                     model.boards = boards;
                 });
+            userService
+                .getCurrentUser()
+                .then(function (user) {
+                   model.user = user;
+                });
+
         }
         init();
 

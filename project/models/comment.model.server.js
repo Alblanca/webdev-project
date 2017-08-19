@@ -14,16 +14,17 @@ commentModel.addComment = addComment;
 // widgetModel.deleteWidget = deleteWidget;
 
 
-function addComment(comment) {
+function addComment(comment, user, postId) {
+    commentTemp = {_user : user, _post : postId, content : comment};
     return commentModel
-        .create(comment)
+        .create(commentTemp)
         .then(function (comment) {
-        commentTmp = comment;
+            commentRs = comment;
+            console.log("IM A COMMENT YEAAAAAA", comment);
     })
         .then(function (comment) {
-            return commentTmp;
+            return commentRs;
         });
-
 }
 
 function deleteWidget(pageId, widgetId) {

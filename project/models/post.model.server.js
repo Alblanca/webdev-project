@@ -8,8 +8,7 @@ var commentModel = require("./comment.model.server");
 var postModel = mongoose.model("PostModel", postSchema);
 //
 // pageModel.findPagesForWebsite = findPagesForWebsite;
-// pageModel.createPage = createPage;
-// pageModel.deletePage = deletePage;
+
 // pageModel.findPageById = findPageById;
 // pageModel.updatePage = updatePage;
 // pageModel.addWidget = addWidget;
@@ -21,12 +20,31 @@ postModel.findPostsByBoardId = findPostsByBoardId;
 postModel.createPost = createPost;
 postModel.findPostById = findPostById;
 postModel.addComment = addComment;
+postModel.findPopulatedUserByPostId = findPopulatedUserByPostId;
+postModel.updatePost = updatePost;
+postModel.deletePost = deletePost;
 
 module.exports = postModel;
 
+function findPopulatedUserByPostId(postId) {
+    return postModel
+        .findById(postId)
+        .populate('_user')
+        .exec(function (err, res) {
+            return res;
+        });
+
+    // return postModel.findById(postId).populate('_user').exec();
+}
+
 function findPostsByBoardId(boardId) {
     return postModel
-        .find({_board : boardId});
+        .find({_board : boardId})
+        .populate('_user')
+        .populate('posts')
+        .exec(function (err, res) {
+            return res;
+        });
 }
 
 function createPost(post) {
@@ -46,22 +64,41 @@ function createPost(post) {
 
 
 function findPostById(postId) {
-    return postModel.findById(postId);
-}
-
-function addComment(comment) {
-    var postId = comment._post;
-    return postModel.findPostById(postId)
-        .then(function (post) {
-            commentModel
-                .addComment(comment)
-                .then(function (user) {
-                    post.comments.push(comment);
-                    return user.save(); //goes and write this to database
-                })
+    return postModel
+        .findById(postId)
+        .populate('comments')
+        .exec(function (err, res) {
+            return res;
         });
 }
 
+function addComment(comment, user, postId) {
+    return commentModel
+        .addComment(comment, user, postId)
+        .then(function (comment) {
+            postModel.findPostById(postId)
+                .then(function (post) {
+                    post.comments.push(comment);
+                    return post.save();
+                });
+        });
+}
+
+function deletePost(postId) {
+    return postModel
+        .remove({_id : postId})
+        .then(function (status) {
+            //return websiteModel.removePage(websiteId, pageId);
+            return;
+        });
+}
+
+function updatePost(postId, post) {
+    return postModel
+        .update(
+            {_id: postId}, {$set: post}
+        );
+}
 
 function findWidgetsForPage(pageId) {
     return pageModel
@@ -85,12 +122,7 @@ function updateWidgetPosition(pageId, startIndex, endIndex) {
         });
 }
 
-function updatePage(pageId, page) {
-    return pageModel
-        .update(
-            {_id: pageId}, {$set: page}
-        );
-}
+
 
 function findPagesForWebsite(websiteId) {
     return pageModel.find({website: websiteId});
@@ -112,13 +144,7 @@ function createPage(websiteId, page) {
         });
 }
 
-function deletePage(websiteId, pageId) {
-    return pageModel
-        .remove({_id : pageId})
-        .then(function (status) {
-            return websiteModel.removePage(websiteId, pageId);
-        });
-}
+
 
 function findPageById(pageId) {
     return pageModel.findById(pageId);

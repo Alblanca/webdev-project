@@ -10,10 +10,30 @@ var postModel = require("./models/post.model.server");
 // app.put("/api/user/:userId/website/:websiteId/page/:pageId", updatePage);
 // app.delete("/api/user/:userId/website/:websiteId/page/:pageId", deletePage);
 
-app.get("/api/boards/:boardId", findPostsByBoardId);
+app.get("/api/boards/:boardId/posts", findPostsByBoardId);
 app.post("/api/boards/:boardId/new", createPost);
 app.get("/api/post/:postId", findPostById);
 app.post("/api/post/:postId", addComment);
+app.get("/api/post/:postId/usr", findPopulatedUserByPostId);
+app.put("/api/post/:postId", updatePost);
+app.delete("/api/post/:postId", deletePost);
+app.put("/api/post/:postId/endorse", endorsePost);
+
+function endorsePost(req, res) {
+    
+}
+
+function findPopulatedUserByPostId(req, res) {
+    var postId = req.params.postId;
+    postModel
+        .findPopulatedUserByPostId(postId)
+        .then(function (result) {
+            console.log('owo');
+            console.log(result._user);
+            res.json(result);
+            return;
+        });
+}
 
 function findPostsByBoardId(req, res) {
     var boardId = req.params.boardId;
@@ -57,10 +77,12 @@ function findPostById(req, res) {
 }
 
 function addComment(req, res) {
-    var comment = req.body;
-
+    var comment = req.body.comment;
+    var user = req.body.user;
+    var postId = req.params.postId;
+    console.log(comment);
     postModel
-        .addComment(comment)
+        .addComment(comment, user, postId)
         .then(function (post) {
             res.json(post);
             return;
@@ -70,20 +92,11 @@ function addComment(req, res) {
         });
 }
 
+function deletePost(req, res) {
+    var postId = req.params.postId;
 
-
-
-
-
-
-
-
-function deletePage(req, res) {
-    var pageId = req.params.pageId;
-    var websiteId = req.params.websiteId;
-
-    pageModel
-        .deletePage(websiteId, pageId)
+    postModel
+        .deletePost(postId)
         .then(function (status) {
             res.sendStatus(200);
             return;
@@ -93,12 +106,12 @@ function deletePage(req, res) {
         });
 }
 
-function updatePage(req, res) {
-    var pageId = req.params.pageId;
-    var page = req.body;
+function updatePost(req, res) {
+    var postId = req.params.postId;
+    var post = req.body;
 
-    pageModel
-        .updatePage(pageId, page)
+    postModel
+        .updatePost(postId, post)
         .then(function (status) {
             res.json(status);
             return;
@@ -107,6 +120,15 @@ function updatePage(req, res) {
             return;
         });
 }
+
+
+
+
+
+
+
+
+
 
 function findPageById(req, res) {
     var pageId = req.params.pageId;

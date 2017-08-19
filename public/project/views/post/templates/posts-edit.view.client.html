@@ -23,14 +23,9 @@
 
     <hr/>
 
-    <tags-input ng-model="model.post.tags" add-from-autocomplete-only="true">
-        <auto-complete source="loadTags($query)"></auto-complete>
-    </tags-input>
-
-
     <a class="btn btn-primary btn-block form-control"
-            ng-click="model.createPost(model.post)">Save Changes</a>
+            ng-click="model.updatePost(model.post)">Save Changes</a>
     <a class="btn btn-primary btn-danger btn-block form-control"
-       href="#!/boards/{{model.boardId}}">Cancel</a>
+       ng-click="model.deletePost()">Delete</a>
 </div>
 </div>
