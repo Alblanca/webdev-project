@@ -42,7 +42,8 @@ function blizzardStrategy(token, refreshToken, profile, done) {
                     blizzard: {
                         id: profile.id,
                         token: token,
-                        provider: profile.provider
+                        provider: profile.provider,
+                        battletag: profile.battletag
                     }
                 }
             }
