@@ -30,7 +30,6 @@ function findPopulatedUserByPostId(req, res) {
 
 function findPostsByBoardId(req, res) {
     var boardId = req.params.boardId;
-    console.log('?!?!?!');
     postModel
         .findPostsByBoardId(boardId)
         .then(function (posts) {

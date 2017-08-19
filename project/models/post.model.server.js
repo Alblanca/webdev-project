@@ -37,13 +37,11 @@ function findPopulatedUserByPostId(postId) {
 }
 
 function findPostsByBoardId(boardId) {
-    console.log("sdafkljasdklfjaskdljf",postModel.find({_board : boardId}));
     return postModel
         .find({_board : boardId})
         .populate('_user')
         .populate('posts')
         .exec(function (err, res) {
-            console.log(res);
             return res;
         });
 }
