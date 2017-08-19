@@ -34,7 +34,6 @@
             <button ng-show="!currentUser" class="pull-right btn btn-danger navbar-menus"
                      ng-click="navController.logout()">Logout</button>
         </li>
-
     </ul>
 
 </nav>
@@ -108,40 +107,6 @@
                                    id="registerPassword"
                                    class="form-control"
                                    placeholder="Password"
-                                   ng-model="registerController.user.password"/>
-
-                            <label for="registerPassword2" class="register-login-button"><b>Confirm Password</b></label>
-                            <input type="password"
-                                   id="registerPassword2"
-                                   class="form-control"
-                                   placeholder="Confirm Password"
-                                   ng-model="registerController.user.password2"/>
-
-                            <a class="btn btn-success btn-block register-login-button"
-                               href=""
-                               ng-click="registerController.registerUser(registerController.user)">Register</a>
-                            <a class="btn btn-danger btn-block register-login-button"
-                               href=""
-                               ng-click="registerController.onClickBack()">Back</a>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="RegisterContinue" ng-controller="registerController as registerController">
-                        <div class="container">
-                            <div ng-show="registerController.errorMessage" class="alert alert-danger">
-                                {{registerController.errorMessage}}
-                            </div>
-                            <label for="registerNickname"><b>Nickname</b></label>
-                            <input type="text"
-                                   id="registerNickname"
-                                   class="form-control"
-                                   placeholder="Choose Nickname for account"
-                                   ng-model="registerController.user.nickname"/>
-
-                            <label for="updatePassword" class="register-login-button"><b>Password</b></label>
-                            <input type="password"
-                                   id="updatePassword"
-                                   class="form-control"
-                                   placeholder="Choose password"
                                    ng-model="registerController.user.password"/>
 
                             <label for="registerPassword2" class="register-login-button"><b>Confirm Password</b></label>
