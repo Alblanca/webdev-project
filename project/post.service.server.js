@@ -102,7 +102,7 @@ function deletePost(req, res) {
 }
 
 function updatePost(req, res) {
-    var postId = req.params.pageId;
+    var postId = req.params.postId;
     var post = req.body;
 
     postModel

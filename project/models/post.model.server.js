@@ -100,9 +100,6 @@ function updatePost(postId, post) {
         );
 }
 
-
-
-
 function findWidgetsForPage(pageId) {
     return pageModel
         .find({_id: pageId})
