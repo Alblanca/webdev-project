@@ -131,6 +131,7 @@ app.get("/api/checkLogin", checkLogin);
 app.get('/login/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
 app.get("/api/logout", logout);
 app.get('/api/currentUser', getCurrentUser);
+app.get('/api/nickname/', findUserByNickname);
 
 //auth strategies
 app.get('/login/auth/blizzard', passport.authenticate('bnet'));
@@ -173,6 +174,20 @@ function getCurrentUser (req, res) {
     } else {
         res.json(req.user);
     }
+}
+
+function findUserByNickname(req, res) {
+    var nickname = req.query.nickname;
+
+    userModel
+        .findUserByNickname(nickname)
+        .then(function (response) {
+            res.send(response);
+            return;
+        }, function (err) {
+            res.send(err.message);
+            return;
+        });
 }
 
 function unregisterUser(req, res) {

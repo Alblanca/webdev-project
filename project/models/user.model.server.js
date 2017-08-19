@@ -14,8 +14,14 @@ userModel.findUserByUsername = findUserByUsername;
 userModel.unregisterUser = unregisterUser;
 userModel.findUserByGoogleId = findUserByGoogleId;
 userModel.findUserByBlizzardId = findUserByBlizzardId;
+userModel.findUserByNickname = findUserByNickname;
 
 module.exports = userModel;
+
+function findUserByNickname(nickname) {
+    return userModel
+        .findOne({'nickname' : nickname});
+}
 
 function findUserByBlizzardId(bid) {
     return userModel
