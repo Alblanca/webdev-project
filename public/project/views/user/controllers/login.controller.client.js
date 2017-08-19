@@ -6,12 +6,11 @@
         .module("OverHub")
         .controller("loginController", loginController);
 
-    function loginController($location, userService, $rootScope) {
+    function loginController($window, $location, userService, $rootScope) {
         var model = this;
         model.login = login;
 
         function init() {
-
         }
         init();
 
@@ -19,12 +18,21 @@
             userService
                 .login(user.username, user.password)
                 .then(function (_user) {
-                    if (_user === null) {
-                        model.errorMessage = "User not found";
+
+                    $('.modal').modal('toggle');
+                    $window.location.reload();
+
+                }, function (err) {
+                    if(err.status === 401) {
+                        model.errorMessage = "User not found. Check username and password again";
                     } else {
-                        $location.url("profile/");
+                        model.errorMessage = "Internal Server Error. Please retry in a while";
                     }
+                    $('.modal').effect('shake');
                 });
+                // .finally(function (wha) {
+                //     console.log(wha);
+                // });
         }
     }
 })();

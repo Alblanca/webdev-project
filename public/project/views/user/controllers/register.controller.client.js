@@ -11,7 +11,6 @@
         model.registerUser = registerUser;
 
         function init() {
-
         }
         init();
 

@@ -13,7 +13,6 @@
                 .getCurrentUser()
                 .then(function (response) {
                     model.currentUser = response.data;
-                    console.log(model.currentUser);
                 });
         }
         init();

@@ -39,6 +39,8 @@
 
 </nav>
 
+<!-- LOGIN MODALS-->
+
 <div class="modal fade" id="loginRegisterModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -54,26 +56,26 @@
                     <li class="nav-link" style="display: none;"><a href="#Register" data-toggle="tab" role="tab">Registration</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane active" id="Login">
+                    <div class="tab-pane active" id="Login" ng-controller="loginController as loginController">
                         <div>
                             <div class="container">
                                 <div>
-                                    <div ng-show="vm.errorMessage" class="alert alert-danger">
-                                        {{vm.errorMessage}}
+                                    <div ng-show="loginController.errorMessage" class="alert alert-danger">
+                                        {{loginController.errorMessage}}
                                     </div>
 
                                     <input type="text"
                                            class="form-control"
                                            placeholder="username"
-                                           ng-model="vm.user.username"/>
+                                           ng-model="loginController.user.username"/>
                                     <input type="password"
                                            class="form-control"
                                            placeholder="password"
-                                           ng-model="vm.user.password"/>
+                                           ng-model="loginController.user.password"/>
 
                                     <a class="btn btn-primary btn-block register-login-button"
                                        href=""
-                                       ng-click="vm.login(vm.user)">Login</a>
+                                       ng-click="loginController.login(loginController.user)">Login</a>
                                     <a class="btn btn-success btn-block register-login-button"
                                        href=""
                                        ng-click="vm.login(vm.user)">Register</a>
