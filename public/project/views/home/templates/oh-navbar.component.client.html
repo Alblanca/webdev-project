@@ -32,7 +32,7 @@
         </li>
         <li class="nav-item" ng-show="model.currentUser">
             <button ng-show="!currentUser" class="pull-right btn btn-danger navbar-menus"
-                    data-toggle="modal" data-target="#loginRegisterModal" href="#!/login">Logout</button>
+                     ng-click="model.logout()">Logout</button>
         </li>
 
     </ul>

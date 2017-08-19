@@ -3,8 +3,10 @@
         .module("OverHub")
         .controller("ohNavbarController", ohNavbarController);
 
-    function ohNavbarController(userService) {
+    function ohNavbarController($window, $location, userService) {
         var model = this;
+
+        model.logout = logout;
 
         function init() {
             userService
@@ -15,6 +17,14 @@
                 });
         }
         init();
+
+        function logout() {
+            userService
+                .logout()
+                .then(function () {
+                    $window.location.reload();
+                });
+        }
 
     }
 })();
