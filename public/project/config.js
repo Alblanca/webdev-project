@@ -62,6 +62,9 @@
                 templateUrl: "views/post/templates/posts-new.view.client.html",
                 controller: "postNewController",
                 controllerAs: "model"
+            })
+            .when("/terminate-auth", {
+                templateUrl: "views/home/templates/terminate-auth.view.client.html"
             });
             // .when("/user/:userId/website/new", {
             //     templateUrl: "views/website/templates/website-new.view.client.html",

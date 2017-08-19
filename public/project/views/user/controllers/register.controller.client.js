@@ -6,12 +6,14 @@
         .module("OverHub")
         .controller("registerController", registerController);
 
-    function registerController($window, userService, $location) {
+    var workFunction = "bitch";
+
+    function registerController($window, userService, $location, $rootScope) {
         var model = this;
         model.registerUser = registerUser;
         model.onClickBack = onClickBack;
-
         function init() {
+
         }
         init();
 
@@ -44,8 +46,7 @@
                     })
                     .then(function (res) {
                         // $location.url("profile/");
-                        if(res.data) {
-                            console.log(res);
+                        if(res) {
                             $window.location.reload();
                         }
                     });

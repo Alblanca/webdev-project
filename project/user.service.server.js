@@ -140,12 +140,18 @@ app.get('/blizzard/callback',
         successRedirect: '/project/#!/profile',
         failureRedirect: '/'
     }));
+//
+// app.get('/google/callback',
+//     passport.authenticate('google', {
+//         successRedirect: '/project/#!/profile',
+//         failureRedirect: '/project/#!/login'
+//     }));
 
-app.get('/google/callback',
-    passport.authenticate('google', {
-        successRedirect: '/project/#!/profile',
-        failureRedirect: '/project/#!/login'
-    }));
+app.get('/google/callback', passport.authenticate('google', {failureRedirect: '/'}),
+    function (req, res) {
+        res.redirect('/project/#!/terminate-auth');
+    });
+
 
 function checkLogin(req, res) {
     res.send(req.isAuthenticated() ? req.user : '0');
