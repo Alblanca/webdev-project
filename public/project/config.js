@@ -22,12 +22,12 @@
                 controllerAs: "model"
             })
             .when("/profile", {
-                templateUrl: "views/user/templates/profile.view.client.html",
+                templateUrl: "views/user/templates/profileOLD.view.client.html",
                 controller: "profileController",
                 controllerAs: "model",
-                // resolve: {
-                //     currentUser: checkLogin
-                // }
+                resolve: {
+                    currentUser: checkLogin
+                }
             })
             .when("/unauthorized", {
                 templateUrl: "views/user/templates/unauthorized.view.client.html"

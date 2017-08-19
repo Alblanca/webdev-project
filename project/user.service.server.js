@@ -163,7 +163,7 @@ function logout(req, res) {
 
 function getCurrentUser (req, res) {
     if (req.user === undefined) {
-        res.json({});
+        res.json(null);
     } else {
         res.json(req.user);
     }

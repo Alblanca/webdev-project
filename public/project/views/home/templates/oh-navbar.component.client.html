@@ -16,21 +16,21 @@
             </ul>
         </div>
 
-        <li class="nav-item navbar-menus">
+        <li class="nav-item navbar-menus" ng-show="model.currentUser.isAdmin">
             <button class="btn btn-secondary">Admin</button>
         </li>
 
-        <li class="nav-item navbar-menus">
-            <button type="button" class="btn btn-primary btn-outline-primary" href="#!/profile/{{currentUser._id}}">
+        <li class="nav-item navbar-menus" ng-show='model.currentUser'>
+            <button type="button" class="btn btn-primary btn-outline-primary" href="#!/profile/{{model.currentUser._id}}">
                 <img src="http://watchkings.de/wp-content/uploads/2017/01/icon-vector-dva.png" width="18" height="18" class="d-inline-block align-top" alt="">
-                Alblanca
+                {{model.currentUser.username}}
             </button>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" ng-show="!model.currentUser">
             <button ng-show="!currentUser" class="pull-right btn btn-outline-success navbar-menus"
                     data-toggle="modal" data-target="#loginRegisterModal" href="#!/login">Login</button>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" ng-show="model.currentUser">
             <button ng-show="!currentUser" class="pull-right btn btn-danger navbar-menus"
                     data-toggle="modal" data-target="#loginRegisterModal" href="#!/login">Logout</button>
         </li>
