@@ -7,8 +7,7 @@ var boardModel = mongoose.model("BoardModel", boardSchema);
 // websiteModel.createWebsite = createWebsite;
 // websiteModel.findWebsitesForUser = findWebsitesForUser;
 // websiteModel.findWebsiteById = findWebsiteById;
-// websiteModel.deleteWebsite = deleteWebsite;
-// websiteModel.updateWebsite = updateWebsite;
+
 // websiteModel.addPage = addPage;
 // websiteModel.removePage = removePage;
 
@@ -16,6 +15,8 @@ boardModel.findAllBoards = findAllBoards;
 boardModel.createBoard = createBoard;
 boardModel.addPost = addPost;
 boardModel.findBoardById = findBoardById;
+boardModel.deleteBoard = deleteBoard;
+boardModel.updateBoard = updateBoard;
 
 module.exports = boardModel;
 // create website, update, remove ...
@@ -46,21 +47,19 @@ function findBoardById(boardId) {
 }
 
 
-
-
-
-function updateWebsite(websiteId, website) {
-    return websiteModel
+function updateBoard(board) {
+    var boardId = board._id;
+    return boardModel
         .update(
-             {_id: websiteId}, {$set: website}
+             {_id: boardId}, {$set: board}
         );
 }
 
-function deleteWebsite(developerId, websiteId) {
-    return websiteModel
-        .remove({_id : websiteId})
+function deleteBoard(boardId) {
+    return boardModel
+        .remove({_id : boardId})
         .then(function (status) {
-           return userModel.removeWebsite(developerId, websiteId);
+            return;
         });
 }
 

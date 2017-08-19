@@ -1,3 +1,4 @@
+<h3 class="board-subheadings">Comment Section</h3>
 <div ng-repeat="comment in model.comments">
 <div class="comment-container rounded">
         <span style="float: right; margin-bottom: 5px;">
@@ -8,8 +9,8 @@
     <div class="media">
         <span class="ohi-ana comment-icon"></span>
         <div class="media-body">
-            <h5 class="mt-0">genjilvr420</h5>
-            <p>honestly u suk</p>
+            <h5 class="mt-0">{{comment._user.username}}</h5>
+            <p>{{comment.content}}</p>
         </div>
     </div>
 </div>

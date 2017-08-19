@@ -37,10 +37,13 @@ function findPopulatedUserByPostId(postId) {
 }
 
 function findPostsByBoardId(boardId) {
+    console.log("sdafkljasdklfjaskdljf",postModel.find({_board : boardId}));
     return postModel
         .find({_board : boardId})
         .populate('_user')
+        .populate('posts')
         .exec(function (err, res) {
+            console.log(res);
             return res;
         });
 }
@@ -62,23 +65,23 @@ function createPost(post) {
 
 
 function findPostById(postId) {
-    return postModel.findById(postId);
+    return postModel
+        .findById(postId)
+        .populate('comments')
+        .exec(function (err, res) {
+            return res;
+        });
 }
 
-function addComment(comment) {
-    var postId = comment._post;
-    return postModel.findPostById(postId)
-        .then(function (post) {
-            console.log('whahahahss');
-            post.comments.push(comment);
-            post.comments.splice(0,0);
-            post.save();
-            console.log(post);
-            commentModel
-                .addComment(comment)
-                .then(function (user) {
-                    return user.save(); //goes and write this to database
-                })
+function addComment(comment, user, postId) {
+    return commentModel
+        .addComment(comment, user, postId)
+        .then(function (comment) {
+            postModel.findPostById(postId)
+                .then(function (post) {
+                    post.comments.push(comment);
+                    return post.save();
+                });
         });
 }
 

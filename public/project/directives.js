@@ -2,7 +2,8 @@
     angular
         .module("overHubDirectives", [])
         .directive("overhubNavbar", overhubNavbar)
-        .directive("postListComponent", postListComponent);
+        .directive("postListComponent", postListComponent)
+        .directive("commentsComponent", commentsComponent);
 
     function overhubNavbar($http) {
         // function linkFunction(scope, element) {
@@ -37,6 +38,14 @@
             templateUrl: "views/home/templates/post-list.component.client.html",
             controller: "postListComponentController",
             controllerAs: "postList"
+        }
+    }
+
+    function commentsComponent($http) {
+        return {
+            templateUrl: "views/home/templates/comment.component.client.html",
+            controller: "commentComponentController",
+            controllerAs: "commentList"
         }
     }
 

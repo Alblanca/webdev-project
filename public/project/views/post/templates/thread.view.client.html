@@ -2,7 +2,7 @@
 <overhub-navbar></overhub-navbar>
 <div class="container-fluid post-container">
     <div class="row">
-<h3 class="board-subheadings">{{model.post.title}}</h3>
+<h1 class="board-subheadings">{{model.post.title}}</h1>
         <h4 class="thread-score align-text-bottom"><span class="badge badge-info">{{model.post.votes}}</span>
 <span class="badge badge-warning badge-pill" ng-show="model.post.isEndorsed">Coach Endorsed</span></h4>
     </div>
@@ -25,7 +25,7 @@
         <a class="btn btn-outline-warning vote-button-lg" data-toggle="button" aria-pressed="false"  href="#">
             Downvote Post <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></a>
         </div>
-        <a ng-show="model.user.isCoach" class="btn btn-outline-info endorse-button-lg" data-toggle="button" aria-pressed="false"  href="#">
+        <a ng-show="model.user.isCoach" class="btn btn-outline-info endorse-button-lg" data-toggle="button" aria-pressed="false"  ng-click="model.endorsePost()">
             Endorse Post <i class="fa fa-check-circle" aria-hidden="true"></i></a>
     </div>
 </div>
@@ -40,34 +40,35 @@
                   ng-model="model.post.tempComment"
                   placeholder="Comment here..."></textarea>
         <a ng-click="model.addComment(model.post.tempComment)" type="button" class="btn btn-secondary btn-small clearfix" style="float: right; margin-top: 5px;">Submit</a>
+    <!--</div>-->
+    <!--<div class="comment-container rounded">-->
+        <!--<span style="float: right; margin-bottom: 5px;">-->
+            <!--<span class="badge badge-info">50</span>-->
+            <!--<a class="text-right">-->
+            <!--<i class="fa fa-plus" aria-hidden="true"></i>-->
+            <!--<i class="fa fa-minus" aria-hidden="true"></i></a></span>-->
+        <!--<div class="media">-->
+            <!--<img class="d-flex mr-3" src="http://dcmjs.com/overwatch/images/icon/OW-icon_genji.svg"-->
+                 <!--width="45" height="45" alt="genji">-->
+            <!--<div class="media-body">-->
+                <!--<h5 class="mt-0">genjilvr420</h5>-->
+                <!--<p>those plays r sik</p>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="comment-container rounded">-->
+        <!--<span style="float: right; margin-bottom: 5px;"><a class="text-right">-->
+            <!--<i class="fa fa-star" aria-hidden="true"></i> Save</a></span>-->
+        <!--<div class="media">-->
+            <!--<img class="d-flex mr-3" src="http://dcmjs.com/overwatch/images/icon/OW-icon_genji.svg"-->
+                 <!--width="45" height="45" alt="genji">-->
+            <!--<div class="media-body">-->
+                <!--<h5 class="mt-0">genjilvr420</h5>-->
+                <!--<p>honestly u suk</p>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
     </div>
-    <div class="comment-container rounded">
-        <span style="float: right; margin-bottom: 5px;">
-            <span class="badge badge-info">50</span>
-            <a class="text-right">
-            <i class="fa fa-plus" aria-hidden="true"></i>
-            <i class="fa fa-minus" aria-hidden="true"></i></a></span>
-        <div class="media">
-            <img class="d-flex mr-3" src="http://dcmjs.com/overwatch/images/icon/OW-icon_genji.svg"
-                 width="45" height="45" alt="genji">
-            <div class="media-body">
-                <h5 class="mt-0">genjilvr420</h5>
-                <p>those plays r sik</p>
-            </div>
-        </div>
-    </div>
-    <div class="comment-container rounded">
-        <span style="float: right; margin-bottom: 5px;"><a class="text-right">
-            <i class="fa fa-star" aria-hidden="true"></i> Save</a></span>
-        <div class="media">
-            <img class="d-flex mr-3" src="http://dcmjs.com/overwatch/images/icon/OW-icon_genji.svg"
-                 width="45" height="45" alt="genji">
-            <div class="media-body">
-                <h5 class="mt-0">genjilvr420</h5>
-                <p>honestly u suk</p>
-            </div>
-        </div>
-    </div>
-    </div>
+        <comments-component></comments-component>
 
 

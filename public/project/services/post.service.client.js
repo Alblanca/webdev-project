@@ -33,7 +33,8 @@
        }
 
         function findPostsByBoardId(boardId) {
-            var url = "/api/boards/" + boardId;
+           console.log(boardId, "asdkfjalskdjfkla");
+            var url = "/api/boards/" + boardId + '/posts';
 
             return $http.get(url)
                 .then(function (response) {
@@ -60,11 +61,11 @@
                 });
         }
 
-        function addComment(comment) {
-            var postId = comment._post;
+        function addComment(comment, user, postId) {
             var url = "/api/post/" + postId;
+            var commentObj = {comment: comment, user: user};
 
-            return $http.post(url, comment)
+            return $http.post(url, commentObj)
                 .then(function(response) {
                     return response.data;
                 });

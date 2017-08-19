@@ -56,6 +56,14 @@
                     currentUser: checkLogin
                 }
             })
+            .when("/boards/:boardId/edit", {
+                templateUrl: "views/board/templates/boards-edit.view.client.html",
+                controller: 'boardEditController',
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkLogin
+                }
+            })
             .when("/boards/:boardId", {
                 templateUrl: "views/post/templates/posts.view.client.html",
                 controller: 'postListController',

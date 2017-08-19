@@ -10,7 +10,7 @@ var postModel = require("./models/post.model.server");
 // app.put("/api/user/:userId/website/:websiteId/page/:pageId", updatePage);
 // app.delete("/api/user/:userId/website/:websiteId/page/:pageId", deletePage);
 
-app.get("/api/boards/:boardId", findPostsByBoardId);
+app.get("/api/boards/:boardId/posts", findPostsByBoardId);
 app.post("/api/boards/:boardId/new", createPost);
 app.get("/api/post/:postId", findPostById);
 app.post("/api/post/:postId", addComment);
@@ -30,6 +30,7 @@ function findPopulatedUserByPostId(req, res) {
 
 function findPostsByBoardId(req, res) {
     var boardId = req.params.boardId;
+    console.log('?!?!?!');
     postModel
         .findPostsByBoardId(boardId)
         .then(function (posts) {
@@ -70,10 +71,12 @@ function findPostById(req, res) {
 }
 
 function addComment(req, res) {
-    var comment = req.body;
+    var comment = req.body.comment;
+    var user = req.body.user;
+    var postId = req.params.postId;
     console.log(comment);
     postModel
-        .addComment(comment)
+        .addComment(comment, user, postId)
         .then(function (post) {
             res.json(post);
             return;
