@@ -168,21 +168,35 @@ body {
     font-family: 'Anton', 'sans-serif';
     text-transform: uppercase;
     padding: 10px;
+    padding-bottom: 0px;
+}
+
+#profile-battlenet {
+    padding-top: 0px; !important
 }
 
 h3.profile-header {
     text-transform: lowercase;
     opacity: .7;
-    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+.profile-info-elements {
+    margin-top: 10px;
 }
 
 .profile-icon {
     background-color: darkslategray;
     box-shadow: 5px 5px 3px grey;
-    margin: 15px;
+    margin: 22px;
+    margin-left: 0px;
     color: white;
-    font-size: 90px;
+    font-size: 80px;
     padding: 5px;
+}
+
+#profile-edit {
+    margin-top: 10px;
 }
 
 .edit-icon {
