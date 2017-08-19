@@ -1,20 +1,43 @@
 var mongoose = require("mongoose");
 var postSchema = require("./post.schema.server");
 var db = require("./database");
-var commentModel = require("./comment.model.server");
+var boardModel = require("./board.model.server");
 
 var postModel = mongoose.model("PostModel", postSchema);
+//
+// pageModel.findPagesForWebsite = findPagesForWebsite;
+// pageModel.createPage = createPage;
+// pageModel.deletePage = deletePage;
+// pageModel.findPageById = findPageById;
+// pageModel.updatePage = updatePage;
+// pageModel.addWidget = addWidget;
+// pageModel.removeWidget = removeWidget;
+// pageModel.updateWidgetPosition = updateWidgetPosition;
+// pageModel.findWidgetsForPage = findWidgetsForPage;
 
-pageModel.findPagesForWebsite = findPagesForWebsite;
-pageModel.createPage = createPage;
-pageModel.deletePage = deletePage;
-pageModel.findPageById = findPageById;
-pageModel.updatePage = updatePage;
-pageModel.addWidget = addWidget;
-pageModel.removeWidget = removeWidget;
-pageModel.updateWidgetPosition = updateWidgetPosition;
-pageModel.findWidgetsForPage = findWidgetsForPage;
+postModel.findPostsByBoardId = findPostsByBoardId;
+postModel.createPost = createPost;
+
 module.exports = postModel;
+
+function findPostsByBoardId(boardId) {
+    return postModel
+        .find({_board : boardId});
+}
+
+function createPost(post, boardId) {
+    post._board = boardId;
+    return postModel
+        .create(post)
+        .then(function (postDoc) {
+            postTmp = postDoc;
+            boardModel.addPost(boardId, postDoc._id);
+        })
+        .then(function (postDoc) {
+            return postTmp;
+        });
+}
+
 
 function findWidgetsForPage(pageId) {
     return pageModel

@@ -1,21 +1,30 @@
+<div class="container-fluid profile-edit-container">
 <div class="form-group container-list-group">
-    <label for="name">Title</label>
+    <h4 class="board-edit-headings">Title</h4>
     <input type="text"
            class="element-margin form-control"
            placeholder="Post Title"
-           ng-model="vm.post.title"/>
+           ng-model="model.post.title"/>
 
-    <label for="html">HTML Content</label>
-    <div text-angular class="element-margin"
-         placeholder="HTML content goes here!"
-         ng-model="vm.post.content"
-         ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
-        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
-        ['indent','outdent'],['html']]">
+    <h4 class="board-edit-headings">HTML Content</h4>
+    <div text-angular
+         class="element-margin form-control"
+         ng-model="model.post.content"
+         ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],['indent','outdent'],['html']]"
+         placeholder="HTML content goes here!">
     </div>
 
-    <button class="btn btn-primary btn-block form-control"
-            ng-click="vm.updatePost(vm.widget)">Save Changes</button>
+    <h4 class="board-edit-headings">Tags</h4>
+    <input type="text"
+           class="element-margin form-control"
+           placeholder="Add up to 10 relevant (comma-separated) tags to help others find your post."
+           ng-model="model.post.tags"/>
+
+    <hr/>
+
+    <a class="btn btn-primary btn-block form-control"
+            ng-click="model.createPost(model.post)">Save Changes</a>
     <a class="btn btn-primary btn-danger btn-block form-control"
-       ng-click="vm.deletePost()">Delete</a>
+       ng-click="model.deletePost()">Delete</a>
+</div>
 </div>

@@ -26,13 +26,6 @@
 
     <script src="../vendor/jquery/jquery-ui.js"></script>
 
-    <!-- bootstrap-->
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-
-
     <!--Angular-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
@@ -41,9 +34,19 @@
     <script src="directives.js"></script>
 
     <!--Text-angular scripts-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.4.2/dist/textAngular.min.js"></script>
     <script src="../vendor/text-angular/textAngular-rangy.min.js"></script>
     <script src="../vendor/text-angular/textAngular-sanitize.min.js"></script>
-    <script src="../vendor/text-angular/textAngular.min.js"></script>
+    <!--<script src="../vendor/text-angular/textAngular.min.js"></script>-->
+
+    <!-- bootstrap-->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+
+
 
     <!-- Controllers and Config files-->
     <script src="app.js"></script>
@@ -55,10 +58,11 @@
 
     <script src="views/board/controllers/boards-list.controller.client.js"></script>
     <script src="views/controllers/oh-navbar.controller.client.js"></script>
+    <script src="views/board/controllers/boards-new.controller.client.js"></script>
     <!--<script src="views/website/controllers/website-new.controller.client.js"></script>-->
     <!--<script src="views/website/controllers/website-edit.controller.client.js"></script>-->
-    <!--<script src="views/page/controllers/page-list.controller.client.js"></script>-->
-    <!--<script src="views/page/controllers/page-new.controller.client.js"></script>-->
+    <script src="views/post/controllers/post-list.controller.client.js"></script>
+    <script src="views/post/controllers/post-new.controller.client.js"></script>
     <!--<script src="views/page/controllers/page-edit.controller.client.js"></script>-->
     <!--<script src="views/widget/controllers/widget-list.controller.client.js"></script>-->
     <!--<script src="views/widget/controllers/widget-new.controller.client.js"></script>-->
@@ -71,7 +75,7 @@
     <script src="services/user.service.client.js"></script>
     <script src="services/test.service.client.js"></script>
     <script src="services/board.service.client.js"></script>
-    <!--<script src="services/page.service.client.js"></script>-->
+    <script src="services/post.service.client.js"></script>
     <!--<script src="services/widget.service.client.js"></script>-->
     <!--<script src="services/search.service.client.js"></script>-->
 
@@ -101,7 +105,7 @@
 
 <body>
 
-<div ng-view></div>
+<div class="container-fluid" ng-view></div>
 
 </body>
 

@@ -30,7 +30,7 @@ function findAllBoards(req, res) {
 function createBoard(req, res) {
     var board = req.body;
     boardModel
-        .createBoard(userId, board)
+        .createBoard(board)
         .then(function (websiteDoc) {
             res.json(websiteDoc);
             return;

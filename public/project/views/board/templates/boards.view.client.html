@@ -21,37 +21,46 @@
 
 <!--</head>-->
 
-<h1>{{model.boards}}asdf</h1>
-
 <h1 class="text-left posts-headings">Available Boards</h1>
-<button class="btn btn-outline-secondary posts-headings" href="#!/boards/new"><i class="fa fa-plus" aria-hidden="true"></i> Create A New Board</button>
+<a class="btn btn-outline-secondary posts-headings" href="#!/boards/new"><i class="fa fa-plus" aria-hidden="true"></i> Create A New Board</a>
 <hr/>
 
 <div id="boardList" class="card-deck w-75 mx-auto">
-    <div class="card">
-        <img class="card-img-top img-responsive" src="https://t12.deviantart.net/vGEEQIa8pz8bHe_tf1Iv89D6y8I=/fit-in/700x350/filters:fixed_height(100,100):origin()/pre03/d175/th/pre/f/2017/004/b/a/overwatch_vector_wallpaper___widowmaker_by_choren64-daa3mem.jpg"">
+    <div class="card" ng-repeat="board in model.boards">
+        <img class="card-img-top img-responsive" src="{{board.bannerUrl}}">
         <div class="card-block board-content">
-            <h4 class="card-title">General Tips & Guides</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <h4 class="card-title">{{board.name}}</h4>
+            <p class="card-text">{{board.description}}</p>
             <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
     </div>
-    <div class="card">
-        <img class="card-img-top img-responsive" src="https://t13.deviantart.net/-oN-CImm1XdZ2SuYV0nsdTPg2dw=/fit-in/700x350/filters:fixed_height(100,100):origin()/pre06/a97f/th/pre/f/2017/004/5/f/overwatch_vector_wallpaper___d_va_by_choren64-daa3jld.jpg">
-        <div class="card-block board-content">
-            <h4 class="card-title">VOD Reviews</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-    <div class="card">
-        <img class="card-img-top img-responsive" src="https://t06.deviantart.net/4ApwYGAR2JubQCwrHbySz4GYSzE=/fit-in/700x350/filters:fixed_height(100,100):origin()/pre05/8ddd/th/pre/f/2017/004/c/a/overwatch_vector_wallpaper___lucio_by_choren64-daa3kcm.jpg">
-        <div class="card-block board-content">
-            <h4 class="card-title">Discussion & Feedback</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
+</div>
+
+<div class="card-deck w-75 mx-auto">
+    <!--<div class="card">-->
+        <!--<img class="card-img-top img-responsive" src="https://t13.deviantart.net/-oN-CImm1XdZ2SuYV0nsdTPg2dw=/fit-in/700x350/filters:fixed_height(100,100):origin()/pre06/a97f/th/pre/f/2017/004/5/f/overwatch_vector_wallpaper___d_va_by_choren64-daa3jld.jpg">-->
+        <!--<div class="card-block board-content">-->
+            <!--<h4 class="card-title">VOD Reviews</h4>-->
+            <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+            <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="card">-->
+        <!--<img class="card-img-top img-responsive" src="https://t06.deviantart.net/4ApwYGAR2JubQCwrHbySz4GYSzE=/fit-in/700x350/filters:fixed_height(100,100):origin()/pre05/8ddd/th/pre/f/2017/004/c/a/overwatch_vector_wallpaper___lucio_by_choren64-daa3kcm.jpg">-->
+        <!--<div class="card-block board-content">-->
+            <!--<h4 class="card-title">Discussion & Feedback</h4>-->
+            <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+            <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="card">-->
+        <!--<img class="card-img-top img-responsive" src="https://t13.deviantart.net/-oN-CImm1XdZ2SuYV0nsdTPg2dw=/fit-in/700x350/filters:fixed_height(100,100):origin()/pre06/a97f/th/pre/f/2017/004/5/f/overwatch_vector_wallpaper___d_va_by_choren64-daa3jld.jpg">-->
+        <!--<div class="card-block board-content">-->
+            <!--<h4 class="card-title">VOD Reviews</h4>-->
+            <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+            <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
+        <!--</div>-->
+    <!--</div>-->
 </div>
 
 <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->

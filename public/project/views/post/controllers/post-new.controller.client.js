@@ -9,7 +9,7 @@
     function postNewController($routeParams, postService, $location) {
         var model = this;
         // model.userId = $routeParams["userId"];
-        // model.websiteId = $routeParams["websiteId"];
+        model.boardId = $routeParams["boardId"];
 
         model.createPost = createPost;
 
@@ -23,16 +23,16 @@
         init ();
 
         function createPost(post) {
-            // if(!page || !page.name || !page.description) {
-            //     alert("no content!");
-            //     return;
-            // }
-            //
-            // pageService
-            //     .createPage(model.userId, model.websiteId, page)
-            //     .then(function () {
-            //         $location.url("/user/" + model.userId + "/website/" + model.websiteId + "/page");
-            //     });
+            if(!post || !post.title || !post.content) {
+                alert("no content!");
+                return;
+            }
+
+            postService
+                .createPost(model.boardId, post)
+                .then(function () {
+                    $location.url("/boards/" + model.boardId + "/new");
+                });
         }
 
     }

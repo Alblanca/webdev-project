@@ -4,5 +4,6 @@
 
 require("./user.service.server");
 require("./board.service.server.js");
+require("./post.service.server.js");
 
 var db = require("./models/database");
