@@ -31,7 +31,7 @@
                     data-toggle="modal" data-target="#loginRegisterModal" href="#!/login">Login</button>
         </li>
         <li class="nav-item" ng-show="navController.currentUser">
-            <button ng-show="!currentUser" class="pull-right btn btn-danger navbar-menus"
+            <button ng-show="!currentUser" class="pull-right btn navbar-menus btn-outline-danger"
                      ng-click="navController.logout()">Logout</button>
         </li>
     </ul>
@@ -83,7 +83,7 @@
                                         <span class="fa fa-google-plus"></span>
                                         Sign up via google
                                     </a>
-                                    <a class="btn btn-info btn-block register-login-button"
+                                    <a class="btn btn-info btn-block register-login-button blizzard-button"
                                        href="/login/auth/blizzard" onclick="window.open(this.href, 'mywin','left=20,top=20,width=600,height=600,toolbar=1,resizable=0');return false;">
                                         <img src="../../../img/battlenet-logo.svg" style="width: 20px;">  Sign up via battlenet</a>
                                 </div>

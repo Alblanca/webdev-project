@@ -20,10 +20,15 @@
             model.displayName = currentUser.nickname ? currentUser.nickname : currentUser.username;
             if(currentUser.blizzard) {
                 model.isAuthenticatedUser = true;
+                model.battletag = user.blizzard.battletag;
             } else {
                 model.isAuthenticatedUser = false;
             }
 
+            model.introduction =
+                (currentUser.introduction || currentUser.introduction ==='')
+                ? currentUser.introduction
+                : "This user has no introduction yet";
         }
         init();
 
