@@ -18,7 +18,8 @@ var userSchema = mongoose.Schema(
         blizzard: {
             id: String,
             token: String,
-            provider: String
+            provider: String,
+            battletag: String
         }
     }, {collection: "user"});
 
