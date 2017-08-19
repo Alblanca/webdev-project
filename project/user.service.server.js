@@ -136,11 +136,16 @@ app.get('/api/nickname/', findUserByNickname);
 //auth strategies
 app.get('/login/auth/blizzard', passport.authenticate('bnet'));
 
-app.get('/blizzard/callback',
-    passport.authenticate('bnet', {
-        successRedirect: '/project/#!/profile',
-        failureRedirect: '/'
-    }));
+// app.get('/blizzard/callback',
+//     passport.authenticate('bnet', {
+//         successRedirect: '/project/#!/profile',
+//         failureRedirect: '/'
+//     }));
+
+app.get('/blizzard/callback', passport.authenticate('bnet', {failureRedirect: '/'}),
+    function (req, res) {
+        res.redirect('/project/#!/terminate-auth');
+    });
 //
 // app.get('/google/callback',
 //     passport.authenticate('google', {
