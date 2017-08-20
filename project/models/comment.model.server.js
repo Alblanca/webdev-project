@@ -7,6 +7,8 @@ var commentModel = mongoose.model("CommentModel", commentSchema);
 module.exports = commentModel;
 
 commentModel.addComment = addComment;
+commentModel.editComment = editComment;
+commentModel.deleteComment = deleteComment;
 
 // widgetModel.createWidget = createWidget;
 // widgetModel.findWidgetById = findWidgetById;
@@ -20,20 +22,32 @@ function addComment(comment, user, postId) {
         .create(commentTemp)
         .then(function (comment) {
             commentRs = comment;
-            console.log("IM A COMMENT YEAAAAAA", comment);
     })
         .then(function (comment) {
             return commentRs;
         });
 }
 
-function deleteWidget(pageId, widgetId) {
-    return widgetModel
-        .remove({_id : widgetId})
+function deleteComment(commentId) {
+    return commentModel
+        .remove({_id : commentId})
         .then(function (status) {
-            return pageModel.removeWidget(pageId, widgetId);
+            return status;
+            // return pageModel.removeWidget(pageId, widgetId);
         });
 }
+
+function editComment(comment) {
+    var cId = comment._id;
+    return commentModel.update(
+        {_id : cId}, {$set : comment}
+    );
+}
+
+
+
+
+
 
 function findWidgetById(widgetId) {
     return widgetModel.findById(widgetId);

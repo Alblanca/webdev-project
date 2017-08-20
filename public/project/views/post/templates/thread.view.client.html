@@ -5,7 +5,7 @@
         <div class="col-8">
         <h1 class="board-subheadings">{{model.post.title}}</h1>
         <h4 class="thread-score align-text-bottom"><span class="badge badge-info">{{model.post.votes}}</span>
-            <span class="badge badge-warning badge-pill" ng-show="!model.post.isEndorsed">Coach Endorsed</span></h4></div>
+            <span class="badge badge-warning badge-pill" ng-show="model.post.isEndorsed">Coach Endorsed</span></h4></div>
         <div class="col-2">
         <a ng-show="!model.user.isAdmin" href="#!/boards/{{model.post._board}}/post/{{model.post._id}}/edit"><span class="edit-icon pull-right"><i class="fa fa-pencil" aria-hidden="true"></i></span></a>
         <a ng-click="model.savePost()"><span class="edit-icon pull-right"><i class="fa fa-star" aria-hidden="true"></i></span></a>
@@ -29,7 +29,7 @@
         <a class="btn btn-outline-warning vote-button-lg" data-toggle="button" aria-pressed="false"  href="#">
             Downvote Post <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></a>
         </div>
-        <a ng-show="model.user.isCoach" class="btn btn-outline-info endorse-button-lg" data-toggle="button" aria-pressed="false"  ng-click="model.endorsePost()">
+        <a ng-show="!model.user.isCoach" class="btn btn-outline-info endorse-button-lg" data-toggle="button" aria-pressed="false"  ng-click="model.endorsePost()">
             Endorse Post <i class="fa fa-check-circle" aria-hidden="true"></i></a>
     </div>
 </div>
@@ -74,6 +74,9 @@
         <!--</div>-->
     <!--</div>-->
     </div>
+        <h3 class="board-subheadings">Comment Section</h3>
+        <div ng-repeat="comment in model.comments">
         <comments-component></comments-component>
-
+        </div>
+    </div>
 

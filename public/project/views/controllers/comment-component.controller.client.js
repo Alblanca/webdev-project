@@ -8,7 +8,9 @@
         .controller("commentComponentController", commentComponentController);
 
     function commentComponentController($window, $location, postService) {
-        var model = this;
+        var commentModel = this;
+        commentModel.editing = false;
+        commentModel.editClicked = editClicked;
 
         function init() {
             // userService
@@ -19,6 +21,9 @@
         }
         init();
 
+        function editClicked() {
+            commentModel.editing = true;
+        }
 
         // function logout() {
         //     userService

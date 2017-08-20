@@ -88,7 +88,8 @@
 
         function endorsePost(postId) {
            var url = "/api/post/" + postId + "/endorse";
-           return $http.put(url, postId);
+           console.log(url);
+           return $http.get(url, postId);
         }
 
 

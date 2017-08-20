@@ -17,10 +17,25 @@ app.post("/api/post/:postId", addComment);
 app.get("/api/post/:postId/usr", findPopulatedUserByPostId);
 app.put("/api/post/:postId", updatePost);
 app.delete("/api/post/:postId", deletePost);
-app.put("/api/post/:postId/endorse", endorsePost);
+app.get("/api/post/:postId/endorse", endorsePost);
+app.put("/api/post/:postId/save", savePost);
+
+app.put("/api/post/:postId/:commentId", editComment);
+app.delete("/api/post/:postId/:commentId", deleteComment);
+
+function savePost(req, res) {
+
+}
 
 function endorsePost(req, res) {
-    
+    var postId = req.params.postId;
+    console.log("WE OUT HERE");
+    postModel
+        .endorsePost(postId)
+        .then(function (result) {
+            res.json(result);
+            return;
+        })
 }
 
 function findPopulatedUserByPostId(req, res) {
@@ -28,8 +43,6 @@ function findPopulatedUserByPostId(req, res) {
     postModel
         .findPopulatedUserByPostId(postId)
         .then(function (result) {
-            console.log('owo');
-            console.log(result._user);
             res.json(result);
             return;
         });
@@ -80,7 +93,6 @@ function addComment(req, res) {
     var comment = req.body.comment;
     var user = req.body.user;
     var postId = req.params.postId;
-    console.log(comment);
     postModel
         .addComment(comment, user, postId)
         .then(function (post) {
@@ -119,6 +131,15 @@ function updatePost(req, res) {
             res.sendStatus(500).send(err);
             return;
         });
+}
+
+function editComment(req, res) {
+    var postId = req.params.postId;
+    var commentId = req.params.commentId;
+}
+
+function deleteComment(req, res) {
+
 }
 
 
