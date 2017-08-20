@@ -3,6 +3,7 @@
         .module("overHubDirectives", [])
         .directive("overhubNavbar", overhubNavbar)
         .directive("postListComponent", postListComponent)
+        .directive("postListMinified", postListMinified)
         .directive("commentsComponent", commentsComponent);
 
     function overhubNavbar($http) {
@@ -38,6 +39,12 @@
             templateUrl: "views/home/templates/post-list.component.client.html",
             controller: "postListComponentController",
             controllerAs: "postList"
+        }
+    }
+
+    function postListMinified($http) {
+        return {
+            templateUrl: "views/home/templates/post-list-minified.component.client.html"
         }
     }
 

@@ -25,7 +25,7 @@
 }
 
 .table-component-row {
-    padding: 0px;
+    padding-right: 0px;
 }
 th {
     text-align: left;
@@ -295,11 +295,24 @@ h3.profile-header {
     padding-right: 20px;
 }
 
+.minified-table {
+    padding: 0px;
+    margin-left: 25px;
+}
+
+.home-table {
+    padding: 0px;
+    margin-top: 15px;
+}
+
 /* HERE'S MY NEW CSS THAT I ADDED AFTER WHATEVER PUSH IDK */
 
 
-@media (min-width:600px) {  .profile-edit-container { max-width: 75% !important;}
-    .posts-table{ max-width: 75%; }}
+@media (min-width:600px) {
+    .profile-edit-container { max-width: 75% !important;}
+    .posts-table{ max-width: 75%; }
+    .home-table{ max-width: 75%;}
+}
 
 .profile-edit-container {
     display: block;
