@@ -32,7 +32,7 @@ function deleteComment(commentId) {
     return commentModel
         .remove({_id : commentId})
         .then(function (status) {
-            return status;
+            return;
             // return pageModel.removeWidget(pageId, widgetId);
         });
 }

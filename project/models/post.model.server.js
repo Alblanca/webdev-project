@@ -110,13 +110,15 @@ function editComment(comment) {
 
 function deleteComment(commentId) {
     return commentModel
-        .deleteComment(commentId)
-        .then(function (res) {
-            var index = post.comments.indexOf(commentId);
-            post.comments.splice(index, 1);
-            post.save();
-            return;
-        });
+        .deleteComment(commentId);
+
+    // return postModel.findPostById(postId)
+    //             .then(function (post) {
+    //                 var index = post.comments.indexOf(commentId);
+    //                 post.comments.splice(index, 1);
+    //                 post.save();
+    //                 return;
+    //             });
 }
 
 function deletePost(postId) {

@@ -21,7 +21,7 @@ app.get("/api/post/:postId/endorse", endorsePost);
 app.put("/api/post/:postId/save", savePost);
 
 app.put("/api/post/:postId/comment/:commentId", editComment);
-app.delete("/api/post/:postId/comment/:commentId", deleteComment);
+app.delete("/api/comment/:commentId", deleteComment);
 
 function savePost(req, res) {
 
@@ -29,7 +29,6 @@ function savePost(req, res) {
 
 function endorsePost(req, res) {
     var postId = req.params.postId;
-    console.log("WE OUT HERE");
     postModel
         .endorsePost(postId)
         .then(function (result) {
@@ -106,7 +105,6 @@ function addComment(req, res) {
 
 function deletePost(req, res) {
     var postId = req.params.postId;
-
     postModel
         .deletePost(postId)
         .then(function (status) {
@@ -134,12 +132,34 @@ function updatePost(req, res) {
 }
 
 function editComment(req, res) {
-    var postId = req.params.postId;
-    var commentId = req.params.commentId;
+    // var postId = req.params.postId;
+    // var commentId = req.params.commentId;
+    var comment = req.body;
+
+    postModel
+        .editComment(comment)
+        .then(function (status) {
+            res.json(status);
+            return;
+        }, function (err) {
+            res.sendStatus(500).send(err);
+            return;
+        });
 }
 
 function deleteComment(req, res) {
-
+    var commentId = req.params.commentId;
+    console.log(commentId);
+    postModel
+        .deleteComment(commentId)
+        .then(function (status) {
+            res.sendStatus(200);
+            return;
+        }, function (err) {
+            console.log(err);
+            res.sendStatus(500).send(err);
+            return;
+        });
 }
 
 
