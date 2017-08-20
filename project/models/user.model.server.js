@@ -30,14 +30,16 @@ function addPost(userId, postId) {
         });
 }
 
-function savePost(postId, userId) {
-    return userModel
-        .findUserById(userId)
-        .then(function (user) {
-            user.savedPosts.push(postId);
-            console.log(user);
-            return user.save(); //goes and write this to database
-        });
+function savePost(user, postId) {
+    user.savedPosts.push(postId);
+    return user.save();
+    // return userModel
+    //     .findUserById(userId)
+    //     .then(function (user) {
+    //         user.savedPosts.push(postId);
+    //         console.log(user);
+    //         return user.save(); //goes and write this to database
+    //     });
 }
     function findUserByNickname(nickname) {
         return userModel

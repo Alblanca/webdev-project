@@ -24,7 +24,14 @@ app.put("/api/post/:postId/comment/:commentId", editComment);
 app.delete("/api/comment/:commentId", deleteComment);
 
 function savePost(req, res) {
-
+    var postId = req.params.postId;
+    var user = req.body;
+    postModel
+        .savePost(user, postId)
+        .then(function (result) {
+            res.json(result);
+            return;
+        });
 }
 
 function endorsePost(req, res) {
@@ -34,7 +41,7 @@ function endorsePost(req, res) {
         .then(function (result) {
             res.json(result);
             return;
-        })
+        });
 }
 
 function findPopulatedUserByPostId(req, res) {
@@ -148,10 +155,11 @@ function editComment(req, res) {
 }
 
 function deleteComment(req, res) {
+    var postId = req.params.postId;
     var commentId = req.params.commentId;
     console.log(commentId);
     postModel
-        .deleteComment(commentId)
+        .deleteComment(commentId, postId)
         .then(function (status) {
             res.sendStatus(200);
             return;

@@ -16,6 +16,7 @@
         model.addComment = addComment;
         model.editComment = editComment;
         model.deleteComment = deleteComment;
+        model.savePost = savePost;
 
         function init() {
             postService
@@ -43,13 +44,30 @@
         }
         init ();
 
+        function savePost() {
+            if (model.currUser) {
+                postService
+                    .savePost(model.currUser, model.postId)
+                    .then(function () {
+                        $route.reload();
+                        alert('Post saved to profile.');
+                    });
+            } else {
+                alert('Must be signed in to save post.');
+            }
+        }
+
         function addComment(comment) {
-            postService
-                .addComment(comment, model.currUser, model.postId)
-                .then(function () {
-                    // $location.url("/boards/" + model.boardId + "/post/" + model.postId);
-                    $route.reload();
-                });
+            if (model.currUser) {
+                postService
+                    .addComment(comment, model.currUser, model.postId)
+                    .then(function () {
+                        // $location.url("/boards/" + model.boardId + "/post/" + model.postId);
+                        $route.reload();
+                    });
+            } else {
+                alert('Must be signed in to comment.');
+            }
         }
 
         function editComment(comment) {

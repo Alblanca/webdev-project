@@ -31,9 +31,9 @@ postModel.deleteComment = deleteComment;
 
 module.exports = postModel;
 
-function savePost(postId, userId) {
+function savePost(user, postId) {
     return userModel
-        .savePost(postId, userId);
+        .savePost(user, postId);
 }
 
 function endorsePost(postId) {
@@ -108,9 +108,17 @@ function editComment(comment) {
         .editComment(comment);
 }
 
-function deleteComment(commentId) {
-    return commentModel
-        .deleteComment(commentId);
+function deleteComment(commentId, postId) {
+    return postModel
+        .findPostById(postId)
+        .then(function (post) {
+            var index = post.comments.indexOf(commentId);
+            console.log(index);
+            post.comments.splice(index, 1);
+            post.save();
+            return;
+        });
+
 
     // return postModel.findPostById(postId)
     //             .then(function (post) {

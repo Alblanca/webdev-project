@@ -18,6 +18,7 @@
            "endorsePost" : endorsePost,
            "editComment" : editComment,
            "deleteComment" : deleteComment,
+           "savePost" : savePost,
 
            "findPagesForWebpage" : findPagesForWebpage,
            "findPageById" : findPageById,
@@ -26,6 +27,11 @@
        };
 
        return api;
+
+       function savePost(user, postId) {
+           var url = "/api/post/" + postId + "/save";
+           return $http.put(url, user);
+       }
 
        function findPopulatedUserByPostId(postId) {
            var url = "/api/post/" + postId + "/usr";
