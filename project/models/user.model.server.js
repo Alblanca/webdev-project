@@ -31,8 +31,11 @@ function addPost(userId, postId) {
 }
 
 function savePost(user, postId) {
+    return userModel.findUserById(user._id)
+        .then(function (user) {
     user.savedPosts.push(postId);
     return user.save();
+        });
     // return userModel
     //     .findUserById(userId)
     //     .then(function (user) {
