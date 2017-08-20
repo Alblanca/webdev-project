@@ -44,7 +44,9 @@
 
     function postListMinified($http) {
         return {
-            templateUrl: "views/home/templates/post-list-minified.component.client.html"
+            templateUrl: "views/home/templates/post-list-minified.component.client.html",
+            controller: "minifiedTableController",
+            controllerAs: "miniTableModel"
         }
     }
 
