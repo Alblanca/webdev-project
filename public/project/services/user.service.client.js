@@ -18,10 +18,17 @@
                 "checkLogin" : checkLogin,
                 "logout" : logout,
                 "getCurrentUser" : getCurrentUser,
-                "findUserByNickname" : findUserByNickname
+                "findUserByNickname" : findUserByNickname,
+                "getAllUsers" : getAllUsers
             };
 
             return api;
+
+            function getAllUsers() {
+                var url="/api/users";
+
+                return $http.get(url);
+            }
 
             function findUserByNickname(nickname) {
                 var url="/api/nickname?" + nickname;

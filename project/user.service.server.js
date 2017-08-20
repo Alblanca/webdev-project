@@ -284,8 +284,16 @@ function findUser(req, res) {
     }
 }
 
-function getAllUsers(req, response) {
-    response.send(users);
+function getAllUsers(req, res) {
+    userModel
+        .getAllUsers()
+        .then(function (response) {
+            res.json(response);
+            return;
+        }, function (err) {
+            res.sendStatus(500).send(err);
+            return;
+        });
 }
 
 function getUserById(req, response) {

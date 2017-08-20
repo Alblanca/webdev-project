@@ -14,11 +14,16 @@ userModel.unregisterUser = unregisterUser;
 userModel.findUserByGoogleId = findUserByGoogleId;
 userModel.findUserByBlizzardId = findUserByBlizzardId;
 userModel.findUserByNickname = findUserByNickname;
+userModel.getAllUsers = getAllUsers;
 
 userModel.addPost = addPost;
 userModel.savePost = savePost;
 
 module.exports = userModel;
+
+function getAllUsers() {
+    return userModel.find();
+}
 
 function addPost(userId, postId) {
     return userModel
