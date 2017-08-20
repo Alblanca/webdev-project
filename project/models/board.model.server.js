@@ -17,9 +17,17 @@ boardModel.addPost = addPost;
 boardModel.findBoardById = findBoardById;
 boardModel.deleteBoard = deleteBoard;
 boardModel.updateBoard = updateBoard;
+boardModel.findPopulatedBoards = findPopulatedBoards;
 
 module.exports = boardModel;
 // create website, update, remove ...
+
+function findPopulatedBoards() {
+    return boardModel
+        .find()
+        .populate('posts')
+        .exec();
+}
 
 function findAllBoards() {
     return boardModel.find();

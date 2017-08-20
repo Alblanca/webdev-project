@@ -10,12 +10,24 @@ var boardModel = require("./models/board.model.server.js" );
 // app.post("/api/user/:userId/website", createWebsite);
 // app.get("/api/user/:userId/website/:websiteId", findWebsiteById);
 
-
+app.get("/api/populatedBoards", findPopulatedBoards);
 app.get("/api/boards", findAllBoards);
 app.post("/api/boards", createBoard);
 app.get("/api/boards/:boardId", findBoardById);
 app.put("/api/boards/:boardId", updateBoard);
 app.delete("/api/boards/:boardId", deleteBoard);
+
+function findPopulatedBoards(req, res) {
+    boardModel
+        .findPopulatedBoards()
+        .then(function (response) {
+            res.json(response);
+            return;
+        }, function (err) {
+            res.sendStatus(500).send(err);
+            return;
+        });
+}
 
 function findAllBoards(req, res) {
     boardModel

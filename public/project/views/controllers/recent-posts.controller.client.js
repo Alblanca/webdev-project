@@ -12,10 +12,9 @@
 
         function init() {
             boardService
-                .findAllBoards()
+                .findPopulatedBoards()
                 .then(function (response) {
                     model.boards = response;
-                    console.log(model.boards);
                 });
         }
         init();

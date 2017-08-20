@@ -13,11 +13,20 @@
         this.findBoardById = findBoardById;
         this.deleteBoard = deleteBoard;
         this.updateBoard = updateBoard;
+        this.findPopulatedBoards = findPopulatedBoards;
 
 
         this.findWebsitesForUser = findWebsitesForUser;
         this.createWebsite = createWebsite;
         this.findWebsiteById = findWebsiteById;
+
+        function findPopulatedBoards() {
+            var url ="/api/populatedBoards";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        }
 
         function findAllBoards() {
             var url = "/api/boards";
