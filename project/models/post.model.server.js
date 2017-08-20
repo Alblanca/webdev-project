@@ -127,6 +127,9 @@ function findPostById(postId) {
     return postModel
         .findById(postId)
         .populate('comments')
+        .populate({
+            path : 'comments',
+            populate : {path: '_user', model:'UserModel'}})
         .exec(function (err, res) {
             return res;
         });
