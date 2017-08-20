@@ -19,9 +19,21 @@ app.put("/api/post/:postId", updatePost);
 app.delete("/api/post/:postId", deletePost);
 app.get("/api/post/:postId/endorse", endorsePost);
 app.put("/api/post/:postId/save", savePost);
+app.get("/api/boards/:boardId/search", searchPosts)
 
 app.put("/api/post/:postId/comment/:commentId", editComment);
 app.delete("/api/comment/:commentId", deleteComment);
+
+function searchPosts(req, res) {
+    var searchTerm = req.query.searchTerm;
+
+    postModel
+        .searchPosts(searchTerm)
+        .then(function (results) {
+            res.json(results);
+            return;
+        });
+}
 
 function savePost(req, res) {
     var postId = req.params.postId;

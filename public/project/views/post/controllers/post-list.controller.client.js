@@ -10,6 +10,7 @@
         var model = this;
         model.boardId = $routeParams["boardId"];
         // model.websiteId = $routeParams["websiteId"];
+        model.searchPost = searchPost;
 
         function init() {
             postService
@@ -24,5 +25,13 @@
             //     });
         }
         init ();
+
+        function searchPost(searchTerm) {
+            postService
+                .searchPosts(searchTerm, model.boardId)
+                .then(function (response) {
+                    model.posts = response.data;
+                });
+        }
     }
 })();

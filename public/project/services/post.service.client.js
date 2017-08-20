@@ -19,6 +19,7 @@
            "editComment" : editComment,
            "deleteComment" : deleteComment,
            "savePost" : savePost,
+           "searchPosts" : searchPosts,
 
            "findPagesForWebpage" : findPagesForWebpage,
            "findPageById" : findPageById,
@@ -110,6 +111,13 @@
         }
 
 
+        function searchPosts(searchTerm, boardId) {
+            var url = "/api/boards/" + boardId + "/search?searchTerm=" + searchTerm;
+
+            return $http.get(url);
+        }
+
+
 
 
 
@@ -139,8 +147,6 @@
                     return response.data;
                 });
         }
-
-
 
     }
 
