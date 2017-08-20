@@ -105,6 +105,14 @@
                     adminUser : checkAdmin
                 }
             })
+            .when("/admin/new", {
+                templateUrl:"views/user/templates/admin-create-user.view.client.html",
+                controller: "adminEditController",
+                controllerAs: "model",
+                resolve: {
+                    adminUser: checkAdmin
+                }
+            })
             .when("/terminate-auth", {
                 templateUrl: "views/home/templates/terminate-auth.view.client.html"
             });

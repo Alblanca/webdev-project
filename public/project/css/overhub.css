@@ -144,6 +144,11 @@ p.post-tags {
     /*max-width: 75%;*/
 }
 
+#adminErrorMsg {
+    color: red;
+    font-size: 12px;
+}
+
 #admin-delete {
     color: red;
     margin-left: 15px;

@@ -9,7 +9,6 @@ var userSchema = mongoose.Schema(
         email: String,
         nickname: String,
         introduction: String,
-        isAdmin: {type: Boolean, default: false},
         savedPosts : [{type: mongoose.Schema.Types.ObjectId, ref:"PostModel"}],
         posts : [{type: mongoose.Schema.Types.ObjectId, ref:"PostModel"}],
         created: {type:Date, default:Date.now},

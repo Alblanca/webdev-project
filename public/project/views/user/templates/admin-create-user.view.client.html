@@ -1,4 +1,74 @@
 <overhub-navbar></overhub-navbar>
 <div class="container-fluid">
-    
+    <h1>Create User</h1>
+
+    <form>
+        <label class="element-margin"for="username">Username</label>
+        <input id="username"
+                type="text"
+               class="element-margin form-control"
+               placeholder="Log in username"
+               ng-model="model.user.username"/>
+        <label class="element-margin"for="password">Password</label>
+        <input id="password"
+               type="password"
+               class="element-margin form-control"
+               placeholder="Log in password"
+               ng-model="model.user.password"/>
+        <label class="element-margin"for="password2">Confirm Password</label>
+        <input id="password2"
+               type="password"
+               class="element-margin form-control"
+               placeholder="Log in password"
+               ng-model="model.user.password2"/>
+        <label class="element-margin"for="nickname">Nickname</label>
+        <input id="nickname"
+               type="text"
+               class="element-margin form-control"
+               placeholder="Website display name"
+               ng-model="model.user.nickname"/>
+        <label class="element-margin"for="firstName">First name</label>
+        <input id="firstName"
+               type="text"
+               class="element-margin form-control"
+               placeholder="First name"
+               ng-model="model.user.firstName"/>
+        <label class="element-margin"for="lastName">Last name</label>
+        <input id="lastName"
+               type="text"
+               class="element-margin form-control"
+               placeholder="Last name"
+               ng-model="model.user.lastName"/>
+
+        <label class="element-margin"for="email">Email Address</label>
+        <input id="email"
+               type="text"
+               class="element-margin form-control"
+               placeholder="Email Address"
+               ng-model="model.user.email"/>
+
+        <label class="element-margin"for="introduction"> Introduction </label>
+        <input id="introduction"
+               type="text"
+               class="element-margin form-control"
+               placeholder="User Introduction"
+               ng-model="model.user.introduction"/>
+        </br>
+
+
+        <h6 class="element-margin"> User Role </h6>
+
+        <div class="element-margin row">
+            <label class="radio-inline col-1"><input type="radio" name="role" ng-model="model.user.role" value="USER"  ng-checked="model">User</label>
+            <label class="radio-inline col-1"><input type="radio" name="role" ng-model="model.user.role" value="COACH">Coach</label>
+            <label class="radio-inline col-1"><input type="radio" name="role" ng-model="model.user.role" value="ADMIN">Admin</label>
+        </div>
+
+        <span id="adminErrorMsg" ng-show="model.errorMessage">{{model.errorMessage}}</span>
+        <button type="button" ng-click="model.shakeLikeShit()"  class="btn btn-block btn-primary element-margin">Create User</button>
+    </form>
+    <button type="button" class="btn btn-block btn-danger element-margin">Cancel</button>
+
 </div>
+</br>
+</br>
