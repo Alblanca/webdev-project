@@ -11,7 +11,12 @@
         var model = this;
 
         function init() {
-
+            boardService
+                .findAllBoards()
+                .then(function (response) {
+                    model.boards = response;
+                    console.log(model.boards);
+                });
         }
         init();
 
