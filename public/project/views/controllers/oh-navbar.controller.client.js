@@ -3,8 +3,9 @@
         .module("OverHub")
         .controller("ohNavbarController", ohNavbarController);
 
-    function ohNavbarController($window, $location, userService) {
+    function ohNavbarController($routeParams, $window, $location, userService, boardService) {
         var model = this;
+        var boardId = $routeParams["boardId"];
 
         model.logout = logout;
         model.savePost = savePost;
@@ -16,6 +17,22 @@
                 .then(function (response) {
                     model.currentUser = response.data;
                 });
+
+            boardService
+                .findAllBoards()
+                .then(function (response) {
+                    model.boards = response;
+                    model.currentBoard = boardId
+                        ? model.boards.find(x => x._id === boardId).name
+                        : "Boards";
+
+                    console.log(model.currentBoard)
+                });
+
+            $('.board-content').click(function (event) {
+                $(this).first().click();
+                alert("CLcic");
+            });
         }
         init();
 
