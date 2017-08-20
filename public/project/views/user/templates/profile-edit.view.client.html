@@ -1,0 +1,28 @@
+<overhub-navbar></overhub-navbar>
+
+<a href="http://google.com"><span class="edit-icon pull-right"><i class="fa fa-floppy-o" aria-hidden="true"></i></span></a>
+
+<div class="container-fluid profile-container">
+    <div class="media profile-edit-container">
+        <!--<img class="d-flex mr-3 profile-icon" src="http://dcmjs.com/overwatch/images/icon/OW-icon_genji.svg"-->
+             <!--width="90" height="90" alt="genji">-->
+        <div class="media-body">
+                <div class="form-group container-list-group">
+                    <h4 class="profile-edit-headings">Nickname</h4>
+                    <input type="text"
+                           class="element-margin form-control"
+                           placeholder="Display name (must be unique)"
+                           ng-model="model.user.nickname"/>
+                    <h4 class="profile-edit-headings">Introduction</h4>
+                    <textarea class="form-control"
+                              name="introduction"
+                              rows="5"
+                              ng-model="model.user.introduction"
+                              placeholder="A short introduction for your private profile"></textarea>
+                    <hr/>
+                    <a class="btn btn-danger btn-block form-control"
+                    href="/project/#!/profile/{{model.profileUser.username}}">Back</a>
+        </div>
+    </div>
+    </div>
+</div>

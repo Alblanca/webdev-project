@@ -8,7 +8,6 @@
 
     function profileController($routeParams, $location, userService, paramUser) {
         var model = this;
-        var paramUsername = $routeParams["username"];
 
         //declare functions
         model.updateUser = updateUser;
