@@ -46,6 +46,12 @@
                    model.posts = posts.data.savedPosts;
                 });
 
+            postService
+                .getUserPosts(model.paramUser.username)
+                .then(function (posts) {
+                   model.allPosts = posts.data.posts;
+                });
+
             // model.profileUser = null;
             // userService
             //     .findUserByUsername(paramUsername)

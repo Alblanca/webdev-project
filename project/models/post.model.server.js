@@ -55,8 +55,19 @@ postModel.editComment = editComment;
 postModel.deleteComment = deleteComment;
 postModel.getAllPosts = getAllPosts;
 postModel.getSavedPosts = getSavedPosts;
+postModel.getUserPosts = getUserPosts;
 
 module.exports = postModel;
+
+function getUserPosts(username) {
+    return userModel
+        .findOne({username: username})
+        .populate('posts')
+        .populate({
+            path : 'posts',
+            populate : {path: '_user', model:'UserModel'}})
+        .exec();
+}
 
 function getSavedPosts(username) {
     return userModel
