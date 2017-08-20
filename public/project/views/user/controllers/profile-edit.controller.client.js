@@ -15,24 +15,28 @@
         model.unregisterUser = unregisterUser;
 
         function init() {
-
         }
         init();
 
-        function updateUser(user) {
+        function updateUser() {
             userService
-                .updateUser(user)
+                .updateUser(model.profileUser)
                 .then(function () {
                     alert("User updated!");
+                    $location.url("/profile/" + model.profileUser.username);
                 });
         }
 
-        function unregisterUser(user) {
-            userService
-                .unregisterUser(user)
-                .then(function () {
-                    $location.url("/login");
-                });
+        function unregisterUser() {
+            if (confirm("Are you sure to unregister this user?") == true) {
+                userService
+                    .unregisterUser(model.profileUser)
+                    .then(function () {
+                        $location.url("/");
+                    });
+            } else {
+
+            }
         }
     }
 

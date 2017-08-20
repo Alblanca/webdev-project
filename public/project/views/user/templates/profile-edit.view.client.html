@@ -1,6 +1,6 @@
 <overhub-navbar></overhub-navbar>
 
-<a href="http://google.com"><span class="edit-icon pull-right"><i class="fa fa-floppy-o" aria-hidden="true"></i></span></a>
+<a href=""ng-click="model.updateUser()"><span class="edit-icon pull-right"><i class="fa fa-floppy-o" aria-hidden="true"></i></span></a>
 
 <div class="container-fluid profile-container">
     <div class="media profile-edit-container">
@@ -12,16 +12,18 @@
                     <input type="text"
                            class="element-margin form-control"
                            placeholder="Display name (must be unique)"
-                           ng-model="model.user.nickname"/>
+                           ng-model="model.profileUser.nickname"/>
                     <h4 class="profile-edit-headings">Introduction</h4>
                     <textarea class="form-control"
                               name="introduction"
                               rows="5"
-                              ng-model="model.user.introduction"
+                              ng-model="model.profileUser.introduction"
                               placeholder="A short introduction for your private profile"></textarea>
                     <hr/>
-                    <a class="btn btn-danger btn-block form-control"
-                    href="/project/#!/profile/{{model.profileUser.username}}">Back</a>
+                    <button class="btn btn-primary btn-block form-control"
+                    href="/project/#!/profile/{{model.profileUser.username}}">Back</button>
+                    <button class="btn btn-danger btn-block form-control element-margin"
+                       ng-click="model.unregisterUser()">Unregister</button>
         </div>
     </div>
     </div>
