@@ -10,6 +10,7 @@
 .inner-container{
     margin: 0 0 0 0;
     height: 0px;
+    z-index: 999;
 }
 
 .dropdown-menu {
