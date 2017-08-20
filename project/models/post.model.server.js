@@ -22,10 +22,12 @@ var testUser3 = new userModel({
     password: "raondom2"
 });
 
+var testObj = [{voter: testUser, isUpvote: true}, {voter: testUser2, isUpvote: true}, {voter: testUser3, isUpvote: false}];
+
 var testPost = new postModel({
       title: "wow",
       content: "yeah",
-      votes:[{voter: testUser, isUpvote: true}, {voter: testUser2, isUpvote: true}, {voter: testUser3, isUpvote: false}]
+      votes:[{voter: testUser, isUpvote: true}, {voter: testUser2, isUpvote: true}]
 });
 
 //

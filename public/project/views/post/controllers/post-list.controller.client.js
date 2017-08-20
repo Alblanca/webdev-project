@@ -16,7 +16,6 @@
                 .findPostsByBoardId(model.boardId)
                 .then(function (posts) {
                     model.posts = posts;
-                    console.log(model.posts);
                 });
             // pageService
             //     .findPagesForWebpage(model.userId, model.websiteId)

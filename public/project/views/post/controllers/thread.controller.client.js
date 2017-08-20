@@ -17,6 +17,7 @@
         model.editComment = editComment;
         model.deleteComment = deleteComment;
         model.savePost = savePost;
+        model.votePost = votePost;
 
         function init() {
             postService
@@ -24,23 +25,18 @@
                 .then(function (post) {
                     model.post = post;
                     model.comments = model.post.comments;
-                    console.log(model.comments);
+                    userService
+                        .getCurrentUser()
+                        .then(function (user) {
+                            model.currUser = user.data;
+                            model.voterInfo = getVoterInfo(model.post.votes);
+                        });
                 });
             postService
                 .findPopulatedUserByPostId(model.postId)
                 .then(function (post) {
                     model.user = post._user;
                 });
-            userService
-                .getCurrentUser()
-                .then(function (user) {
-                   model.currUser = user.data;
-                });
-            // pageService
-            //     .findPagesForWebpage(model.userId, model.websiteId)
-            //     .then(function (pages) {
-            //         model.pages = pages;
-            //     });
         }
         init ();
 
@@ -100,5 +96,67 @@
         //     postService
         //         .endorsePost(model.post)
         // }
+
+        function votePost(isUpvote) {
+            if(!model.currUser) { //login verification
+                alert("You need to login to perform this");
+                return;
+            }
+            if(model.post._user === model.currUser._id) {
+                alert("You can't vote your own post");
+                return;
+            }
+
+            //create temporary copy of post object
+            var voterObj = {
+                voter: model.currUser,
+                isUpvote: isUpvote
+            };
+            var tempPost = model.post;
+
+            //update voter info and push
+            if(!model.voterInfo.hasVoted) {
+                // user never voted
+                alert("NEVER VOTED");
+                tempPost.votes.push(voterObj);
+
+            } else if(model.voterInfo.hasVoted && (model.voterInfo.isUpvote === isUpvote)) {
+                // user already voted and pushed same vote button
+                // delete user from list of voters
+                alert("VOTED AND SAME BUTTON");
+                var index = model.voterInfo.voterIndex;
+                tempPost.votes.splice(index, 1);
+            } else {
+                // user already voted but wants to push other vote button
+                //update vote info
+                alert("VOTED BUT DIFFERENT BUTTON");
+                var index = model.voterInfo.voterIndex;
+                tempPost.votes[index] = voterObj;
+            }
+
+            postService
+                .updatePost(tempPost)
+                .then(function () {
+                    alert("successfully voted!");
+                    $route.reload();
+                    return;
+                });
+        }
+
+        //private functions
+        function getVoterInfo(votes) {
+            var voterInfo = {hasVoted: false, isUpvote: false}
+            for(var i =0; i < votes.length; i++) {
+                if(votes[i].voter === model.currUser._id) {
+                    voterInfo.isUpvote = votes[i].isUpvote;
+                    voterInfo.hasVoted = true;
+                    voterInfo.voterIndex = i;
+                }
+            }
+            return voterInfo;
+        }
+
+
+
     }
 })();

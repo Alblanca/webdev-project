@@ -4,7 +4,7 @@
     <div class="row justify-content-between">
         <div class="col-8">
         <h1 class="board-subheadings">{{model.post.title}}</h1>
-        <h4 class="thread-score align-text-bottom"><span class="badge badge-info">{{model.post.votes}}</span>
+        <h4 class="thread-score align-text-bottom"><span class="badge badge-info">{{model.post.score ? model.post.score : 0}}</span>
             <span class="badge badge-warning badge-pill" ng-show="model.post.isEndorsed">Coach Endorsed</span></h4></div>
         <div class="col-2">
         <a ng-show="!model.user.isAdmin" href="#!/boards/{{model.post._board}}/post/{{model.post._id}}/edit"><span class="edit-icon pull-right"><i class="fa fa-pencil" aria-hidden="true"></i></span></a>
@@ -14,7 +14,7 @@
             <!--<i class="fa fa-star" aria-hidden="true"></i></a></span>  -->
     </div>
     <div class="row">
-        <p class="post-info">by {{model.user.username}}
+        <p class="post-info">by {{model.user.nickname}}
             <img src="https://vignette4.wikia.nocookie.net/overwatch/images/8/8f/Competitive_Bronze_Icon.png/revision/latest?cb=20161122023401" width="20" height="20">
             {{model.post.dateCreated | date: 'dd/MM/yyyy'}}</p>
     </div>
@@ -25,9 +25,9 @@
     </div>
     <div class="row vote-container">
         <div class="btn-group" role="group">
-            <a href="#" class="btn btn-outline-primary btn-large"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i> Upvote Post</a>
-        <a class="btn btn-outline-warning vote-button-lg" data-toggle="button" aria-pressed="false"  href="#">
-            Downvote Post <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></a>
+            <button ng-click="model.votePost(true)" class="btn btn-outline-primary btn-large"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i> Upvote Post</button>
+        <button ng-click="model.votePost(false)" class="btn btn-outline-warning vote-button-lg" data-toggle="button" aria-pressed="false"  href="#">
+            Downvote Post <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></button>
         </div>
         <a ng-show="!model.user.isCoach" class="btn btn-outline-info endorse-button-lg" data-toggle="button" aria-pressed="false"  ng-click="model.endorsePost()">
             Endorse Post <i class="fa fa-check-circle" aria-hidden="true"></i></a>

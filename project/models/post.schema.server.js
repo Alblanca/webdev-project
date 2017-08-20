@@ -17,7 +17,15 @@ var postSchema = mongoose
                 voter: {type: mongoose.Schema.Types.ObjectId, ref : "UserModel"},
                 isUpvote: {type: Boolean}
             }]
-        }, {collection : "post"});
+        }, {
+            toObject: {
+                virtuals: true
+            },
+            toJSON: {
+                virtuals: true
+            },
+            collection: "post"
+        });
 
 
 // Virtual property "score"
@@ -34,4 +42,8 @@ postSchema.virtual('score').get(function () {
      return num;
 });
 
+// postSchema.virtual('sumthing').set(function (voteObj) {
+//      console.log("inside set");
+//      this.score= 23;
+// });
 module.exports = postSchema;
