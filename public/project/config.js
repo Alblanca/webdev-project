@@ -21,12 +21,22 @@
                 controller:  "loginController",
                 controllerAs: "model"
             })
-            .when("/profile", {
+            .when("/profile/:username", {
                 templateUrl: "views/user/templates/profile.view.client.html",
                 controller: "profileController",
                 controllerAs: "model",
                 resolve: {
-                    currentUser: checkLogin
+                    paramUser: checkProfileUser
+                }
+            })
+            .when("/profile/:username/edit", {
+                templateUrl:"views/user/templates/profile-edit.view.client.html",
+                controller: "profileEditController",
+                controllerAs: "model",
+                resolve: {
+                    currentUser: checkLogin,
+                    profileUser: checkProfileUser,
+                    useless: checkEditProfile
                 }
             })
             .when("/unauthorized", {
@@ -139,6 +149,41 @@
             // })
             // .otherwise({redirectTo : "/login"});
 
+    }
+
+    function checkEditProfile($route, userService, $q, $location) {
+        var deferred = $q.defer();
+        var paramUsername = $route.current.params.username;
+
+        userService
+            .checkLogin()
+            .then(function (user) {
+                if(user.username === paramUsername) {
+                    deferred.resolve(user);
+                } else {
+                    deferred.reject();
+                    $location.url("/unauthorized");
+                }
+            });
+        return deferred.promise;
+    }
+
+
+    function checkProfileUser($route, userService, $q, $location) {
+        var deferred = $q.defer();
+        var paramUsername = $route.current.params.username;
+
+        userService
+            .findUserByUsername(paramUsername)
+            .then(function (res) {
+                if(res.data === '') {
+                    deferred.reject();
+                    $location.url("/unauthorized");
+                } else {
+                    deferred.resolve(res.data);
+                }
+            });
+        return deferred.promise;
     }
     
     function checkLogin(userService, $q, $location) {

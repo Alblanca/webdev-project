@@ -10,6 +10,7 @@
 .inner-container{
     margin: 0 0 0 0;
     height: 0px;
+    z-index: 999;
 }
 
 .dropdown-menu {
@@ -170,7 +171,26 @@ body {
     padding-bottom: 0px;
 }
 
-#profile-battlenet {
+#profile-authenticate-button {
+    padding-bottom: 0px;
+    margin-bottom: 20px;
+    margin-left: 14px;
+    display: block;
+}
+
+.blizzard-button {
+    background-color: #00b4ff;
+}
+
+.blizzard-button:hover {
+    background-color: #0098ff;
+}
+
+.blizzard-button:active {
+    background-color: #008cff;
+}
+
+.profile-battlenet {
     padding-top: 0px; !important
 }
 

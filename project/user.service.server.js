@@ -290,7 +290,6 @@ function getAllUsers(req, response) {
 
 function getUserById(req, response) {
     var userId = req.params.userId;
-    var what;
     return userModel
         .findUserById(userId)
         .then(function (user) {

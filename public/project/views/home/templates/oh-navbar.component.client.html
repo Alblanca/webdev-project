@@ -5,14 +5,17 @@
 
         <div class="inner-container navbar-menus">
             <button href="" class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
-                Boards <span class="caret"></span>
+                {{navController.currentBoard}} <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">
-                <li class="dropdown-item"><a href="#">Action</a></li>
-                <li class="dropdown-item"><a href="#">Another action</a></li>
-                <li class="dropdown-item"><a href="#">Something else here</a></li>
+                <li class="dropdown-item"><a href="#!/boards">All Boards</a></li>
                 <li class="dropdown-divider"></li>
-                <li class="dropdown-item"><a href="#">Separated link</a></li>
+
+                <a href="#!/boards/{{board._id}}">
+                    <li class="dropdown-item board-content" ng-repeat="board in navController.boards">
+                        <a href="#!/boards/{{board._id}}">{{board.name}}</a>
+                     </li>
+                </a>
             </ul>
         </div>
 
@@ -21,7 +24,7 @@
         </li>
 
         <li class="nav-item navbar-menus" ng-show='navController.currentUser'>
-            <a class="btn btn-primary btn-outline-primary" href="/project/#!/profile">
+            <a class="btn btn-primary btn-outline-primary" href="/project/#!/profile/{{navController.currentUser.username}}">
                 <img src="http://watchkings.de/wp-content/uploads/2017/01/icon-vector-dva.png" width="18" height="18" class="d-inline-block align-top" alt="">
                 {{navController.currentUser.nickname ? navController.currentUser.nickname : navController.currentUser.username}}
             </a>
@@ -31,7 +34,7 @@
                     data-toggle="modal" data-target="#loginRegisterModal" href="#!/login">Login</button>
         </li>
         <li class="nav-item" ng-show="navController.currentUser">
-            <button ng-show="!currentUser" class="pull-right btn btn-danger navbar-menus"
+            <button ng-show="!currentUser" class="pull-right btn navbar-menus btn-outline-danger"
                      ng-click="navController.logout()">Logout</button>
         </li>
     </ul>
@@ -83,7 +86,7 @@
                                         <span class="fa fa-google-plus"></span>
                                         Sign up via google
                                     </a>
-                                    <a class="btn btn-info btn-block register-login-button"
+                                    <a class="btn btn-info btn-block register-login-button blizzard-button"
                                        href="/login/auth/blizzard" onclick="window.open(this.href, 'mywin','left=20,top=20,width=600,height=600,toolbar=1,resizable=0');return false;">
                                         <img src="../../../img/battlenet-logo.svg" style="width: 20px;">  Sign up via battlenet</a>
                                 </div>
