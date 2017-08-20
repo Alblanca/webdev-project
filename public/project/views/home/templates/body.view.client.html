@@ -25,23 +25,25 @@
   <div class="row home-boxes align-items-center">
     <ul class="list-unstyled">
       <li class="media board-listing">
-        <img class="home-icons hidden-xs-down" src="https://68.media.tumblr.com/avatar_4ec60cf6b72c_128.png">
+        <img class="home-icons hidden-xs-down img-responsive" src="https://68.media.tumblr.com/avatar_4ec60cf6b72c_128.png">
         <div class="media-body">
           <h5 class="board-subheadings">Genju Board</h5>
-          <table class="table table-responsive table-striped">
-            <tbody>
-            <tr>
-              <th>+100</th>
-              <th>READ THIS COOL SHIT ABOUT GENJI</th>
-              <th>Sep 10th, 2017</th>
-            </tr>
-            <tr>
-              <th>+100</th>
-              <th>READ THIS COOL SHIT ABOUT GENJI</th>
-              <th>Sep 10th, 2017</th>
-            </tr>
-            </tbody>
-          </table>
+          <post-list-component></post-list-component>
+
+          <!--<table class="table table-responsive table-striped">-->
+            <!--<tbody>-->
+            <!--<tr>-->
+              <!--<th>+100</th>-->
+              <!--<th>READ THIS COOL SHIT ABOUT GENJI</th>-->
+              <!--<th>Sep 10th, 2017</th>-->
+            <!--</tr>-->
+            <!--<tr>-->
+              <!--<th>+100</th>-->
+              <!--<th>READ THIS COOL SHIT ABOUT GENJI</th>-->
+              <!--<th>Sep 10th, 2017</th>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+          <!--</table>-->
         </div>
       </li>
       <li class="media board-listing">
@@ -69,36 +71,40 @@
     <hr/>
     <h3 class="board-headings">Recent Posts</h3>
   </div>
-  <div class="row home-boxes align-items-center">
-    <table class="table table-responsive table-striped">
-      <thead class="thead-inverse">
-      <tr>
-        <th class="col-1">Score</th>
-        <th class="col-4">Title</th>
-        <th class="col-2">Date</th>
-        <th class="col-3">Poster</th>
-        <th class="col-1">Comments</th>
-        <th class="col-1">Tags</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr></tr>
-      <tr></tr>
-      <div ng-repeat="post in vm.posts">
-        <tr>
-          <th class="col-xs-1">{{post.score}}</th>
-          <th class="col-xs-4">{{post.title}}</th>
-          <th class="col-xs-2">{{post.date}}</th>
-          <th class="col-xs-3">{{post.poster}}</th>
-          <th class="col-xs-1">{{post.comments}}</th>
-          <th class="col-xs-1"><span class="badge badge-pill badge-warning" data-toggle="popover" data-trigger="click"
-                                     title="Tags" id="tags-badge">5</span></th>
-        </tr>
-      </div>
-
-      </tbody>
-    </table>
+  <div class=" home-boxes align-items-center ">
+        <post-list-component class="align-items-center"></post-list-component>
   </div>
 
 
 </div>
+
+
+
+<!--<table class="table table-responsive table-striped">-->
+<!--<thead class="thead-inverse">-->
+<!--<tr>-->
+<!--<th class="col-1">Score</th>-->
+<!--<th class="col-4">Title</th>-->
+<!--<th class="col-2">Date</th>-->
+<!--<th class="col-3">Poster</th>-->
+<!--<th class="col-1">Comments</th>-->
+<!--<th class="col-1">Tags</th>-->
+<!--</tr>-->
+<!--</thead>-->
+<!--<tbody>-->
+<!--<tr></tr>-->
+<!--<tr></tr>-->
+<!--<div ng-repeat="post in vm.posts">-->
+<!--<tr>-->
+<!--<th class="col-xs-1">{{post.score}}</th>-->
+<!--<th class="col-xs-4">{{post.title}}</th>-->
+<!--<th class="col-xs-2">{{post.date}}</th>-->
+<!--<th class="col-xs-3">{{post.poster}}</th>-->
+<!--<th class="col-xs-1">{{post.comments}}</th>-->
+<!--<th class="col-xs-1"><span class="badge badge-pill badge-warning" data-toggle="popover" data-trigger="click"-->
+<!--title="Tags" id="tags-badge">5</span></th>-->
+<!--</tr>-->
+<!--</div>-->
+
+<!--</tbody>-->
+<!--</table>-->

@@ -21,7 +21,9 @@
 <a class="btn btn-outline-secondary posts-headings" href="#!/boards/{{model.boardId}}/new"><i class="fa fa-plus" aria-hidden="true"></i> Create A New Post</a>
 <hr/>
 <div class="container-fluid">
-    <post-list-component></post-list-component>
+    <div class="posts-table col-12">
+        <post-list-component></post-list-component>
+    </div>
     <div class="posts-table post-search-bar col-12">
         <div class="input-group container-list-group">
             <input ng-model="searchText" type="text" class="form-control" placeholder="Type search term">

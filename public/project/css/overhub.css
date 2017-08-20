@@ -143,6 +143,11 @@ p.post-tags {
     glyph-orientation-horizontal: center;
 }
 
+.home-icons {
+    width: 128px;
+    height: 128px;
+}
+
 .home-boxes {
     /*max-width: 75%;*/
 }
@@ -293,7 +298,7 @@ h3.profile-header {
 /* HERE'S MY NEW CSS THAT I ADDED AFTER WHATEVER PUSH IDK */
 
 
-@media (min-width:600px) { .profile-edit-container { max-width: 75% !important;}
+@media (min-width:600px) {  .profile-edit-container { max-width: 75% !important;}
     .posts-table{ max-width: 75%; }}
 
 .profile-edit-container {
