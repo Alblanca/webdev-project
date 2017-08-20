@@ -6,7 +6,7 @@
         .module("OverHub")
         .controller("profileController", profileController);
 
-    function profileController($routeParams, $location, userService, paramUser) {
+    function profileController($routeParams, $location, userService, paramUser, $route, postService) {
         var model = this;
 
         //declare functions
@@ -14,6 +14,7 @@
         model.unregisterUser = unregisterUser;
         model.logout = logout;
         model.canEdit = false;
+        model.endorseUser = endorseUser;
 
         function init() {
             model.paramUser = paramUser;
@@ -37,6 +38,12 @@
                         model.currentUser = response.data;
                         model.canEdit = paramUser.username === model.currentUser.username;
                     }
+                });
+
+            postService
+                .getSavedPosts(model.paramUser.username)
+                .then(function (posts) {
+                   model.posts = posts.data.savedPosts;
                 });
 
             // model.profileUser = null;
@@ -90,6 +97,15 @@
                 .unregisterUser(user)
                 .then(function () {
                     $location.url("/login");
+                });
+        }
+
+        function endorseUser() {
+            userService
+                .endorseUser(model.paramUser)
+                .then(function () {
+                   alert("User is now coach endorsed!");
+                   $route.reload();
                 });
         }
     }

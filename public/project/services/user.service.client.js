@@ -18,10 +18,17 @@
                 "checkLogin" : checkLogin,
                 "logout" : logout,
                 "getCurrentUser" : getCurrentUser,
-                "findUserByNickname" : findUserByNickname
+                "findUserByNickname" : findUserByNickname,
+                "endorseUser" : endorseUser
             };
 
             return api;
+
+            function endorseUser(user) {
+                var url="/api/" + user.username + '/endorse';
+                console.log(url);
+                return $http.put(url, user);
+            }
 
             function findUserByNickname(nickname) {
                 var url="/api/nickname?" + nickname;

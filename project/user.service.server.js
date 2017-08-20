@@ -135,6 +135,7 @@ app.get('/api/currentUser', getCurrentUser);
 app.get('/api/nickname/', findUserByNickname);
 
 app.put('/api/:userId/save', savePost);
+app.put('/api/:username/endorse', endorseUser);
 
 //auth strategies
 app.get('/login/auth/blizzard', passport.authenticate('bnet'));
@@ -160,6 +161,19 @@ app.get('/google/callback', passport.authenticate('google', {failureRedirect: '/
     function (req, res) {
         res.redirect('/project/#!/terminate-auth');
     });
+
+function endorseUser(req, res) {
+    var username = req.params.username;
+    var user = req.body;
+    console.log(username);
+    userModel
+        .endorseUser(username)
+        .then(function (status) {
+            res.json(status);
+        }, function (err) {
+            res.sendStatus(500).send(err);
+        });
+}
 
 function savePost(req, res) {
     var userId = req.params.userId;

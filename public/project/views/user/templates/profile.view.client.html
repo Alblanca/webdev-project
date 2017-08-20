@@ -14,21 +14,38 @@
             </div>
             <div class="row" class="profile-battlenet" ng-show="model.isAuthenticatedUser">
                     <h3 class="profile-header"><img src="http://overlog.gg/img/rankIcon/TierTop500.png" height="30" width="40">
-                        {{model.battletag}}  <i class="fa fa-check-circle" aria-hidden="true" style="color: green"></i></h3>
+                        {{model.battletag}} <i class="fa fa-check-circle" aria-hidden="true" style="color: green"></i><span class="badge badge-warning badge-pill" ng-show="model.paramUser.isEndorsed">Coach Endorsed</span> </h3>
+                <div>
+                    <a ng-show="true && !model.paramUser.isEndorsed" class="btn btn-outline-info endorse-button-lg pull-right" data-toggle="button" aria-pressed="false"  ng-click="model.endorseUser()">
+                        Endorse User <i class="fa fa-check-circle" aria-hidden="true"></i></a>
+                </div>
             </div>
             <div class="row" class="profile-battlenet" ng-show="(!model.canEdit && !model.isAuthenticatedUser)">
-                <h3 class="profile-header">This user is not authenticated yet</h3>
+                <h3 class="profile-header">This user is not authenticated yet. <span class="badge badge-warning badge-pill" ng-show="model.paramUser.isEndorsed"> Coach Endorsed</span></h3>
+                <div>
+                    <a ng-show="true && !model.paramUser.isEndorsed" class="btn btn-outline-info endorse-button-lg pull-right" data-toggle="button" aria-pressed="false"  ng-click="model.endorseUser()">
+                        Endorse User <i class="fa fa-check-circle" aria-hidden="true"></i></a>
+                </div>
             </div>
 
             <div class="row" class="profile-battlenet" ng-show="(model.canEdit && !model.isAuthenticatedUser)">
                 <button class="btn btn-sm btn-primary blizzard-button" id="profile-authenticate-button">
                     <img src="/img/battlenet-logo.svg" style="width: 18px;">
                     authenticate profile</button>
+                <h3 class="profile-header"><span class="badge badge-warning badge-pill" ng-show="model.paramUser.isEndorsed"> Coach Endorsed</span></h3>
+                <div>
+                    <a ng-show="true && !model.paramUser.isEndorsed" class="btn btn-outline-info endorse-button-lg pull-right" data-toggle="button" aria-pressed="false"  ng-click="model.endorseUser()">
+                        Endorse User <i class="fa fa-check-circle" aria-hidden="true"></i></a>
+            </div>
             </div>
             <hr class="featurette-divider">
-
-            <h3 class="profile-info-elements"><b>Introduction</b></h3>
-            <p class="profile-info-elements">{{model.introduction}}</p>
         </div>
         </div>
+    <div class="container pull-left">
+        <h3 class="profile-info-elements"><b>Introduction</b></h3>
+        <p class="profile-info-elements">{{model.introduction}}</p>
+        <h3 class="profile-info-elements"><b>User's Saved Posts</b></h3>
+        <post-list-component ng-show="model.posts.length > 0"></post-list-component>
+        <p ng-show="model.posts.length == 0">This user hasn't saved any posts yet.</p>
+    </div>
 </div>

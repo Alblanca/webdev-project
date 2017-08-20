@@ -20,7 +20,8 @@ var userSchema = mongoose.Schema(
             token: String,
             provider: String,
             battletag: String
-        }
+        },
+        isEndorsed: {type: Boolean, default: false}
     }, {collection: "user"});
 
 module.exports = userSchema;

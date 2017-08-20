@@ -32,7 +32,7 @@
                 class="btn btn-outline-danger vote-button-lg " data-toggle="button" aria-pressed="false"  href="#">
             Downvote Post <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></button>
         </div>
-        <a ng-show="!model.user.isCoach" class="btn btn-outline-info endorse-button-lg" data-toggle="button" aria-pressed="false"  ng-click="model.endorsePost()">
+        <a ng-show="!model.user.isCoach && !model.post.isEndorsed" class="btn btn-outline-info endorse-button-lg" data-toggle="button" aria-pressed="false"  ng-click="model.endorsePost()">
             Endorse Post <i class="fa fa-check-circle" aria-hidden="true"></i></a>
     </div>
 </div>

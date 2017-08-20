@@ -17,15 +17,25 @@ userModel.findUserByNickname = findUserByNickname;
 
 userModel.addPost = addPost;
 userModel.savePost = savePost;
+userModel.endorseUser = endorseUser;
 
 module.exports = userModel;
+
+function endorseUser(username) {
+    console.log("we out here");
+    return userModel
+        .findUserByUsername(username)
+        .then(function (user) {
+            user.isEndorsed = true;
+            return user.save();
+        });
+}
 
 function addPost(userId, postId) {
     return userModel
         .findUserById(userId)
         .then(function (user) {
             user.posts.push(postId);
-            console.log(user);
             return user.save(); //goes and write this to database
         });
 }
