@@ -79,6 +79,15 @@ th {
     margin-right: 5px;
 }
 
+.post-search-bar {
+    margin: 0px;
+    padding-right: 35px;
+}
+
+.table-border {
+    border-width: 1px;
+}
+
 a.logo {
     font-family: 'Permanent Marker', 'cursive';
     color: orange !important;
