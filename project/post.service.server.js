@@ -20,8 +20,8 @@ app.delete("/api/post/:postId", deletePost);
 app.get("/api/post/:postId/endorse", endorsePost);
 app.put("/api/post/:postId/save", savePost);
 
-app.put("/api/post/:postId/:commentId", editComment);
-app.delete("/api/post/:postId/:commentId", deleteComment);
+app.put("/api/post/:postId/comment/:commentId", editComment);
+app.delete("/api/post/:postId/comment/:commentId", deleteComment);
 
 function savePost(req, res) {
 

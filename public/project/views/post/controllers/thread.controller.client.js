@@ -14,6 +14,8 @@
         model.postId = $routeParams["postId"];
         model.endorsePost = endorsePost;
         model.addComment = addComment;
+        model.editComment = editComment;
+        model.deleteComment = deleteComment;
 
         function init() {
             postService
@@ -48,6 +50,23 @@
                     // $location.url("/boards/" + model.boardId + "/post/" + model.postId);
                     $route.reload();
                 });
+        }
+
+        function editComment(comment) {
+            postService
+                .editComment(comment, model.postId)
+                .then(function () {
+                   $route.reload();
+                });
+        }
+
+        function deleteComment(commentId) {
+            postService
+                .deleteComment(commentId, model.postId)
+                .then(function () {
+                   $route.reload();
+                });
+
         }
 
         function endorsePost() {

@@ -21,8 +21,8 @@
         }
         init();
 
-        function editClicked() {
-            commentModel.editing = true;
+        function editClicked(bool) {
+            commentModel.editing = bool;
         }
 
         // function logout() {
