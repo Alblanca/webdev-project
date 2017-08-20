@@ -1,8 +1,8 @@
 <ul class="list-unstyled">
     <li class="media board-listing" ng-repeat="board in recentPostModel.boards">
-        <img class="home-icons hidden-md-down img-responsive" src="https://68.media.tumblr.com/avatar_4ec60cf6b72c_128.png">
+        <img class="home-icons hidden-md-down img-responsive" src="{{board.bannerIconUrl}}">
         <div class="media-body">
-            <h5 class="board-subheadings"><a href="">{{board.name}}</a></h5>
+            <h5 class="board-subheadings"><a href="#!/boards/{{board._id}}">{{board.name}}</a></h5>
             <div class="">
                 <div class="minified-table">
                     <table class="table dt-responsive table-striped">
@@ -14,7 +14,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="row col-12 table-component-row tb-data-row" ng-repeat="post in board.posts | limitTo:4">
+                        <tr class="row col-12 table-component-row tb-data-row" ng-repeat="post in board.posts | orderBy:'-score' | limitTo: 4">
                             <td class="col-2">{{post.score}}</td>
                             <td class="col-6"><a href="#!/boards/{{post._board}}/post/{{post._id}}">{{post.title}}</a></td>
                             <td class="col-4">{{post.dateCreated  | date: 'dd/MM/yy'}}</td>
