@@ -26,6 +26,9 @@ function findPopulatedBoards() {
     return boardModel
         .find()
         .populate('posts')
+        .populate({
+            path : 'posts',
+            populate : {path: '_user', model:'UserModel'}})
         .exec();
 }
 

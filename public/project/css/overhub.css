@@ -95,6 +95,12 @@ a.logo:hover {
     padding-top: 10px;
     padding-left: 10px;
     font-family: 'Oswald', 'sans-serif';
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+
+a.board-subheadings {
+    color: #343d4c;
 }
 
 .card-block {
@@ -437,4 +443,13 @@ text-angular .popover {
     margin-top: 0px;
     padding: 5px;
     float: right;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #93a7c6;
+}
+
+a {
+    color: #68778e;
 }

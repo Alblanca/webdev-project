@@ -58,7 +58,12 @@ postModel.getAllPosts = getAllPosts;
 module.exports = postModel;
 
 function getAllPosts() {
-    return postModel.find();
+    return postModel
+        .find()
+        .populate("_user")
+        .exec(function (err, res) {
+            return res;
+        });
 }
 
 function searchPosts(term) {

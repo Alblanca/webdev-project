@@ -7,7 +7,7 @@
     <div class="media">
         <span class="ohi-ana comment-icon"></span>
         <div class="media-body">
-            <h5 class="mt-0">{{comment._user.username}}</h5>
+            <a href="#!/profile/{{comment._user.username}}">{{comment._user.nickname}}</a>    ({{comment.dateCreated | date: 'dd/MM/yyyy'}})
             <p>{{comment.content}}</p>
         </div>
     </div>
@@ -20,7 +20,7 @@
         <div class="media">
             <span class="ohi-ana comment-icon"></span>
             <div class="media-body">
-                <h5 class="mt-0">{{comment._user.username}}</h5>
+                <p>{{comment._user.nickname}}    ({{comment.dateCreated | date: 'dd/MM/yyyy'}})</p>
                 <input type="text"
                        class="element-margin form-control media-body"
                        ng-model="comment.content">

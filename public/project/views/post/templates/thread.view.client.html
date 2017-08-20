@@ -14,7 +14,7 @@
             <!--<i class="fa fa-star" aria-hidden="true"></i></a></span>  -->
     </div>
     <div class="row">
-        <p class="post-info">by {{model.user.nickname}}
+        <p class="post-info">by <a href="#!/profile/{{model.user.username}}">{{model.user.nickname}}</a>
             <img src="https://vignette4.wikia.nocookie.net/overwatch/images/8/8f/Competitive_Bronze_Icon.png/revision/latest?cb=20161122023401" width="20" height="20">
             {{model.post.dateCreated | date: 'dd/MM/yyyy'}}</p>
     </div>
