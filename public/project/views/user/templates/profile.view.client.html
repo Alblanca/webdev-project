@@ -7,7 +7,7 @@
         <div class="media-body">
             <div class="row">
                 <h1 class="profile-header display-2">{{model.displayName}}</h1></br>
-                <div id="profile-edit">
+                <div id="profile-edit" ng-show="model.canEdit">
                     <a href="http://google.com"><span class="edit-icon pull-right"><i class="fa fa-pencil" aria-hidden="true"></i></span></a>
                 </div>
 
@@ -16,7 +16,11 @@
                     <h3 class="profile-header"><img src="http://overlog.gg/img/rankIcon/TierTop500.png" height="30" width="40">
                         {{model.battletag}}  <i class="fa fa-check-circle" aria-hidden="true" style="color: green"></i></h3>
             </div>
-            <div class="row" class="profile-battlenet" ng-show="!model.isAuthenticatedUser">
+            <div class="row" class="profile-battlenet" ng-show="(!model.canEdit && !model.isAuthenticatedUser)">
+                <h3 class="profile-header">This user is not authenticated yet</h3>
+            </div>
+
+            <div class="row" class="profile-battlenet" ng-show="(model.canEdit && !model.isAuthenticatedUser)">
                 <button class="btn btn-sm btn-primary blizzard-button" id="profile-authenticate-button">
                     <img src="/img/battlenet-logo.svg" style="width: 18px;">
                     authenticate profile</button>

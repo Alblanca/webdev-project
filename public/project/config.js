@@ -21,12 +21,12 @@
                 controller:  "loginController",
                 controllerAs: "model"
             })
-            .when("/profile", {
+            .when("/profile/:username", {
                 templateUrl: "views/user/templates/profile.view.client.html",
                 controller: "profileController",
                 controllerAs: "model",
                 resolve: {
-                    currentUser: checkLogin
+                    paramUser: checkProfileUser
                 }
             })
             .when("/unauthorized", {
@@ -139,6 +139,23 @@
             // })
             // .otherwise({redirectTo : "/login"});
 
+    }
+
+    function checkProfileUser($route, userService, $q, $location) {
+        var deferred = $q.defer();
+        var paramUsername = $route.current.params.username;
+
+        userService
+            .findUserByUsername(paramUsername)
+            .then(function (res) {
+                if(res.data === '') {
+                    deferred.reject();
+                    $location.url("/unauthorized");
+                } else {
+                    deferred.resolve(res.data);
+                }
+            });
+        return deferred.promise;
     }
     
     function checkLogin(userService, $q, $location) {
