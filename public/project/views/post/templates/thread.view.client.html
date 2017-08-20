@@ -25,8 +25,11 @@
     </div>
     <div class="row vote-container">
         <div class="btn-group" role="group">
-            <button ng-click="model.votePost(true)" class="btn btn-outline-primary btn-large"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i> Upvote Post</button>
-        <button ng-click="model.votePost(false)" class="btn btn-outline-warning vote-button-lg" data-toggle="button" aria-pressed="false"  href="#">
+            <button id="voteUpBtn" ng-click="model.votePost(true)" class="btn btn-outline-primary btn-large ">
+                <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>  Upvote Post
+            </button>
+        <button id="voteDownBtn" ng-click="model.votePost(false)"
+                class="btn btn-outline-danger vote-button-lg " data-toggle="button" aria-pressed="false"  href="#">
             Downvote Post <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></button>
         </div>
         <a ng-show="!model.user.isCoach" class="btn btn-outline-info endorse-button-lg" data-toggle="button" aria-pressed="false"  ng-click="model.endorsePost()">

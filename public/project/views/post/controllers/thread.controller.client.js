@@ -30,6 +30,7 @@
                         .then(function (user) {
                             model.currUser = user.data;
                             model.voterInfo = getVoterInfo(model.post.votes);
+                            updateButtonUI();
                         });
                 });
             postService
@@ -37,6 +38,7 @@
                 .then(function (post) {
                     model.user = post._user;
                 });
+
         }
         init ();
 
@@ -113,31 +115,32 @@
                 isUpvote: isUpvote
             };
             var tempPost = model.post;
+            var voteMessage = "Successfully voted!";
 
             //update voter info and push
             if(!model.voterInfo.hasVoted) {
                 // user never voted
-                alert("NEVER VOTED");
                 tempPost.votes.push(voterObj);
 
             } else if(model.voterInfo.hasVoted && (model.voterInfo.isUpvote === isUpvote)) {
                 // user already voted and pushed same vote button
                 // delete user from list of voters
-                alert("VOTED AND SAME BUTTON");
                 var index = model.voterInfo.voterIndex;
                 tempPost.votes.splice(index, 1);
+                voteMessage = "Vote cancelled!";
             } else {
                 // user already voted but wants to push other vote button
                 //update vote info
-                alert("VOTED BUT DIFFERENT BUTTON");
                 var index = model.voterInfo.voterIndex;
                 tempPost.votes[index] = voterObj;
+                voteMessage = "Vote changed!";
+
             }
 
             postService
                 .updatePost(tempPost)
                 .then(function () {
-                    alert("successfully voted!");
+                    alert(voteMessage);
                     $route.reload();
                     return;
                 });
@@ -154,6 +157,17 @@
                 }
             }
             return voterInfo;
+        }
+
+        function updateButtonUI() {
+            if(!model.voterInfo.hasVoted) {
+                return;
+            }
+            if(model.voterInfo.isUpvote) {
+                $('#voteUpBtn').addClass('override-upbtn');
+            } else {
+                $('#voteDownBtn').addClass('override-downbtn')
+            }
         }
 
 

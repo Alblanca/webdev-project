@@ -34,6 +34,46 @@ th {
     text-align: center;
 }
 
+.override-upbtn {
+    color: #fff;
+    background-color: #007bff;
+    border-color: green;
+    border-width: 2px;
+}
+
+.override-upbtn:hover {
+    background-color: #0069ff;
+    border-color: green;
+    border-width: 2px;
+}
+
+.override-upbtn:active {
+    background-color: transparent;
+    border-color: green;
+    color: blue;
+    border-width: 2px;
+}
+
+.override-downbtn {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: green;
+    border-width: 2px;
+}
+
+.override-downbtn:hover {
+    background-color: #c41c2d;
+    border-color: green;
+    border-width: 2px;
+}
+
+.override-downbtn:active {
+    background-color: transparent;
+    border-color: green;
+    color: red;
+    border-width: 2px;
+}
+
 .navbar-menus {
     margin-left: 5px;
     margin-right: 5px;
