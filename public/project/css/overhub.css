@@ -359,3 +359,9 @@ th {
 text-angular .popover {
     display: none;
 }
+
+.edit-icon-comment {
+    font-size: 1.4em;
+    margin-left: 40px;
+    margin-top: -70px;
+}

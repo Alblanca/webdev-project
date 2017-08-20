@@ -23,8 +23,27 @@ postModel.addComment = addComment;
 postModel.findPopulatedUserByPostId = findPopulatedUserByPostId;
 postModel.updatePost = updatePost;
 postModel.deletePost = deletePost;
+postModel.endorsePost = endorsePost;
+postModel.savePost = savePost;
+
+postModel.editComment = editComment;
+postModel.deleteComment = deleteComment;
 
 module.exports = postModel;
+
+function savePost(postId, userId) {
+    return userModel
+        .savePost(postId, userId);
+}
+
+function endorsePost(postId) {
+    return postModel
+        .findPostById(postId)
+        .then(function (post) {
+            post.isEndorsed = true;
+            return post.save();
+        })
+}
 
 function findPopulatedUserByPostId(postId) {
     return postModel
@@ -84,6 +103,22 @@ function addComment(comment, user, postId) {
         });
 }
 
+function editComment(comment) {
+    return commentModel
+        .editComment(comment);
+}
+
+function deleteComment(commentId) {
+    return commentModel
+        .deleteComment(commentId)
+        .then(function (res) {
+            var index = post.comments.indexOf(commentId);
+            post.comments.splice(index, 1);
+            post.save();
+            return;
+        });
+}
+
 function deletePost(postId) {
     return postModel
         .remove({_id : postId})
@@ -99,6 +134,13 @@ function updatePost(postId, post) {
             {_id: postId}, {$set: post}
         );
 }
+
+
+
+
+
+
+
 
 function findWidgetsForPage(pageId) {
     return pageModel

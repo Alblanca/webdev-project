@@ -1,6 +1,6 @@
-<h3 class="board-subheadings">Comment Section</h3>
-<div ng-repeat="comment in model.comments">
-<div class="comment-container rounded">
+<!--<h3 class="board-subheadings">Comment Section</h3>-->
+<!--<div ng-repeat="comment in model.comments">-->
+<div class="comment-container rounded" ng-show="commentModel.editing === false">
         <span style="float: right; margin-bottom: 5px;">
             <span class="badge badge-info">50</span>
             <a class="text-right">
@@ -14,4 +14,28 @@
         </div>
     </div>
 </div>
-</div>
+
+    <div class="comment-container rounded" ng-show="commentModel.editing === true">
+        <span style="float: right; margin-bottom: 5px;">
+            <span class="badge badge-info">50</span>
+            <a class="text-right">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            <i class="fa fa-minus" aria-hidden="true"></i></a></span>
+        <div class="media">
+            <span class="ohi-ana comment-icon"></span>
+            <div class="media-body">
+                <h5 class="mt-0">{{comment._user.username}}</h5>
+            </div>
+            <input type="text"
+                 class="element-margin form-control media-body"
+                 ng-model="comment.content">
+            </input>
+        </div>
+
+
+
+    </div>
+    <a href="" ng-show="!model.user.isAdmin && !commentModel.editing" ng-click="commentModel.editClicked(true)"><span class="edit-icon-comment pull-right"><i class="fa fa-pencil" aria-hidden="true"></i></span></a><br>
+    <a href="" ng-show="!model.user.isAdmin && commentModel.editing" ng-click="model.updateComment(comment)"><span class="edit-icon-comment pull-right"><i class="fa fa-check" aria-hidden="true"></i></span><br></a>
+    <a href="" ng-click="model.deleteComment(comment._id)"><span class="edit-icon-comment pull-right"><i class="fa fa-times" aria-hidden="true"></i></span></a>
+<!--</div>-->

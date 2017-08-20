@@ -45,7 +45,7 @@
         return {
             templateUrl: "views/home/templates/comment.component.client.html",
             controller: "commentComponentController",
-            controllerAs: "commentList"
+            controllerAs: "commentModel"
         }
     }
 

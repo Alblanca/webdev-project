@@ -16,6 +16,8 @@
            "updatePost" : updatePost,
            "deletePost" : deletePost,
            "endorsePost" : endorsePost,
+           "updateComment" : updateComment,
+           "deleteComment" : deleteComment,
 
            "findPagesForWebpage" : findPagesForWebpage,
            "findPageById" : findPageById,
@@ -88,10 +90,20 @@
 
         function endorsePost(postId) {
            var url = "/api/post/" + postId + "/endorse";
-           return $http.put(url, postId);
+           return $http.get(url, postId);
         }
 
+        function updateComment(comment, postId) {
+            var url = "/api/post/" + postId + "/comment/" + comment._id;
 
+            return $http.put(url, comment);
+        }
+
+        function deleteComment(commentId, postId) {
+            var url = "/api/post/" + postId + "/comment/" + commentId;
+
+            return $http.delete(url);
+        }
 
 
 
@@ -124,17 +136,7 @@
                 });
         }
 
-        function updatePage(uid, wid, pid, page) {
-            var url = "/api/user/" + uid + "/website/" + wid + "/page/" + pid;
 
-            return $http.put(url, page);
-        }
-
-        function deletePage(uid, wid, pid) {
-            var url = "/api/user/" + uid + "/website/" + wid + "/page/" + pid;
-
-            return $http.delete(url);
-        }
 
     }
 
