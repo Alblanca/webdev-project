@@ -13,11 +13,25 @@ var postSchema = mongoose
             dateCreated : {type : Date, default : new Date().toJSON().slice(0,10)},
             tags : Array,
             isEndorsed : {type : Boolean, default : false},
-            votes : { type : Number, default : 0},
-            votesDetail : [{
-                user: {type: mongoose.Schema.Types.ObjectId, ref : "UserModel"},
+            votes : [{
+                voter: {type: mongoose.Schema.Types.ObjectId, ref : "UserModel"},
                 isUpvote: {type: Boolean}
             }]
         }, {collection : "post"});
+
+
+// Virtual property "score"
+
+postSchema.virtual('score').get(function () {
+     var num = 0;
+     for(i = 0; i < this.votes.length; i++) {
+         if(this.votes[i].isUpvote) {
+             num++;
+         } else {
+             num--;
+         }
+     }
+     return num;
+});
 
 module.exports = postSchema;

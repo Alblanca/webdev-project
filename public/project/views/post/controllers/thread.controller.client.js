@@ -57,6 +57,7 @@
             }
         }
 
+        //TODO Comment related functions should NOT be here. Should implement commentController
         function addComment(comment) {
             if (model.currUser) {
                 postService

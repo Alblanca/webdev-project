@@ -6,6 +6,28 @@ var userModel = require("./user.model.server");
 var commentModel = require("./comment.model.server");
 
 var postModel = mongoose.model("PostModel", postSchema);
+
+var testUser = new userModel({
+    username: "random1",
+    password: "raondom2"
+});
+
+var testUser2 = new userModel({
+    username: "random2",
+    password: "raondom2"
+});
+
+var testUser3 = new userModel({
+    username: "random3",
+    password: "raondom2"
+});
+
+var testPost = new postModel({
+      title: "wow",
+      content: "yeah",
+      votes:[{voter: testUser, isUpvote: true}, {voter: testUser2, isUpvote: true}, {voter: testUser3, isUpvote: false}]
+});
+
 //
 // pageModel.findPagesForWebsite = findPagesForWebsite;
 

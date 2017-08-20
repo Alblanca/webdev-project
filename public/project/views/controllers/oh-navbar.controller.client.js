@@ -25,13 +25,11 @@
                     model.currentBoard = boardId
                         ? model.boards.find(x => x._id === boardId).name
                         : "Boards";
-
-                    console.log(model.currentBoard)
                 });
 
             $('.board-content').click(function (event) {
                 $(this).first().click();
-                alert("CLcic");
+
             });
         }
         init();
