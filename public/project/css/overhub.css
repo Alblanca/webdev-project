@@ -434,6 +434,6 @@ text-angular .popover {
 
 .edit-icon-comment {
     font-size: 1.4em;
-    margin-left: 40px;
     margin-top: -70px;
+    padding: 10px;
 }
