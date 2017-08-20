@@ -24,6 +24,16 @@
     cursor: pointer;
 }
 
+.table-component-row {
+    padding: 0px;
+}
+th {
+    text-align: left;
+}
+.td-center {
+    text-align: center;
+}
+
 .navbar-menus {
     margin-left: 5px;
     margin-right: 5px;
@@ -329,11 +339,6 @@ h3.profile-header {
 
 .posts-headings {
     margin-left: 10%;
-}
-
-th {
-    /*padding: 0 !important;*/
-    margin: 0 !important;
 }
 
 .board-content {
