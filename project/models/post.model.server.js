@@ -114,7 +114,11 @@ function searchPosts(term) {
     //     .sort( { score: { $meta: "textScore" }});
 
     return postModel
-        .find({$text: {$search: term}});
+        .find({$text: {$search: term}})
+        .populate("_user")
+        .exec(function (err, res) {
+            return res;
+        });
 }
 
 
