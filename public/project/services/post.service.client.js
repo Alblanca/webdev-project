@@ -16,7 +16,7 @@
            "updatePost" : updatePost,
            "deletePost" : deletePost,
            "endorsePost" : endorsePost,
-           "updateComment" : updateComment,
+           "editComment" : editComment,
            "deleteComment" : deleteComment,
 
            "findPagesForWebpage" : findPagesForWebpage,
@@ -37,7 +37,6 @@
        }
 
         function findPostsByBoardId(boardId) {
-           console.log(boardId, "asdkfjalskdjfkla");
             var url = "/api/boards/" + boardId + '/posts';
 
             return $http.get(url)
@@ -93,15 +92,14 @@
            return $http.get(url, postId);
         }
 
-        function updateComment(comment, postId) {
+        function editComment(comment, postId) {
             var url = "/api/post/" + postId + "/comment/" + comment._id;
 
             return $http.put(url, comment);
         }
 
-        function deleteComment(commentId, postId) {
-            var url = "/api/post/" + postId + "/comment/" + commentId;
-
+        function deleteComment(commentId) {
+            var url = "/api/comment/" + commentId;
             return $http.delete(url);
         }
 

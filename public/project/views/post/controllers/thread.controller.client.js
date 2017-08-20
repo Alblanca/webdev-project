@@ -62,11 +62,10 @@
 
         function deleteComment(commentId) {
             postService
-                .deleteComment(commentId, model.postId)
+                .deleteComment(commentId)
                 .then(function () {
-                   $route.reload();
+                    $route.reload();
                 });
-
         }
 
         function endorsePost() {
