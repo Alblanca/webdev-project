@@ -3,6 +3,8 @@
  */
 
 var mongoose = require('mongoose');
+var textSearch = require('mongoose-text-search');
+
 var postSchema = mongoose
     .Schema(
         {   _user : {type : mongoose.Schema.Types.ObjectId, ref : "UserModel"},
@@ -41,6 +43,13 @@ postSchema.virtual('score').get(function () {
      }
      return num;
 });
+
+postSchema.plugin(textSearch);
+postSchema.index({ title: 'text', content: 'text', tags: 'text'});
+// postSchema.index({ content: 'text'});
+// postSchema.index({ tags: 'text'});
+
+
 
 // postSchema.virtual('sumthing').set(function (voteObj) {
 //      console.log("inside set");

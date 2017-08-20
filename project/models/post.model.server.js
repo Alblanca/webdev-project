@@ -49,11 +49,23 @@ postModel.updatePost = updatePost;
 postModel.deletePost = deletePost;
 postModel.endorsePost = endorsePost;
 postModel.savePost = savePost;
+postModel.searchPosts =searchPosts;
 
 postModel.editComment = editComment;
 postModel.deleteComment = deleteComment;
 
 module.exports = postModel;
+
+function searchPosts(term) {
+    // return postModel
+    //     .find({$text: {$search: term}}, {score: {$meta: "textScore"}})
+    //     .sort( { score: { $meta: "textScore" }});
+
+    return postModel
+        .find({$text: {$search: term}});
+}
+
+
 
 function savePost(user, postId) {
     return userModel
