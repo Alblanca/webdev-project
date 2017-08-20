@@ -2,26 +2,26 @@
 <table class="table-border table dt-responsive table-striped">
         <thead class="thead-inverse">
         <tr class="row col-12 table-component-row">
-            <th class="col-2 col-md-1">Score</th>
-            <th class="col-6 col-md-4">Title</th>
+            <th class="col-2 col-lg-1">Score</th>
+            <th class="col-6 col-lg-4">Title</th>
             <!--<th class="hidden-sm-down col-md-1">Tags</th>-->
-            <th class="col-4 col-md-2">Date</th>
-            <th class="hidden-sm-down col-md-3">Poster</th>
-            <th class="hidden-sm-down col-md-2">Comments</th>
+            <th class="col-4 col-lg-2">Date</th>
+            <th class="hidden-md-down col-lg-3">Poster</th>
+            <th class="hidden-md-down col-lg-2">Comments</th>
         </tr>
         </thead>
         <tbody>
         <tr class="row col-12 table-component-row" ng-repeat="post in model.posts">
-            <td class="col-2 col-md-1 td-center">{{post.score}}</td>
-            <td class="col-6 col-md-4"><a href="#!/boards/{{post._board}}/post/{{post._id}}">{{post.title}}</a></td>
+            <td class="col-2 col-lg-1 td-center">{{post.score}}</td>
+            <td class="col-6 col-lg-4"><a href="#!/boards/{{post._board}}/post/{{post._id}}">{{post.title}}</a></td>
             <!--<td class="hidden-sm-down col-md-1"><span class="badge badge-pill badge-warning" data-toggle="popover" data-trigger="click"-->
                                                       <!--title="Tags" id="tags-badge">-->
             <!--&lt;!&ndash;<th class="col-xs-1"><button class="btn btn-outline-success" data-toggle="popover" data-trigger="click"&ndash;&gt;-->
                 <!--&lt;!&ndash;title="Tags" id="tags-badge">&ndash;&gt;-->
                 <!--{{post.tags.length}}</span></td>-->
-            <td class="col-4 col-md-2">{{post.dateCreated  | date: 'dd/MM/yyyy'}}</td>
-            <td class="hidden-sm-down col-md-3">{{post._user.username}}</td>
-            <td class="hidden-sm-down col-md-2">{{post.comments.length}}</td>
+            <td class="col-4 col-lg-2">{{post.dateCreated  | date: 'dd/MM/yyyy'}}</td>
+            <td class="hidden-md-down col-lg-3">{{post._user.username}}</td>
+            <td class="hidden-md-down col-lg-2">{{post.comments.length}}</td>
 
         </tr>
         </tbody>

@@ -20,12 +20,12 @@
 
 <div class="container-fluid">
   <div class="row home-boxes align-items-center">
-    <h3 class="board-headings">Popular Boards</h3>
+    <h3 class="board-headings">Recent Posts</h3>
   </div>
   <div class="row home-boxes align-items-center">
     <ul class="list-unstyled">
       <li class="media board-listing">
-        <img class="home-icons hidden-xs-down img-responsive" src="https://68.media.tumblr.com/avatar_4ec60cf6b72c_128.png">
+        <img class="home-icons hidden-md-down img-responsive" src="https://68.media.tumblr.com/avatar_4ec60cf6b72c_128.png">
         <div class="media-body">
           <h5 class="board-subheadings">Genju Board</h5>
           <div class="">
@@ -49,29 +49,35 @@
         </div>
       </li>
       <li class="media board-listing">
-        <img class="home-icons d-flex mr-3" src="">
+        <img class="home-icons hidden-xs-down img-responsive" src="https://68.media.tumblr.com/avatar_4ec60cf6b72c_128.png">
         <div class="media-body">
-          <h5 class="board-subheadings">{{board.title}}</h5>
-          <table class="table table-responsive table-striped">
-            <tbody>
-            <tr>
-              <th>+100</th>
-              <th>READ THIS COOL SHIT ABOUT GENJI</th>
-              <th>Sep 10th, 2017</th>
-            </tr>
-            <tr>
-              <th>+100</th>
-              <th>READ THIS COOL SHIT ABOUT GENJI</th>
-              <th>Sep 10th, 2017</th>
-            </tr>
-            </tbody>
-          </table>                </div>
+          <h5 class="board-subheadings">Genju Board</h5>
+          <div class="">
+            <post-list-minified></post-list-minified>
+          </div>
+
+          <!--<table class="table table-responsive table-striped">-->
+          <!--<tbody>-->
+          <!--<tr>-->
+          <!--<th>+100</th>-->
+          <!--<th>READ THIS COOL SHIT ABOUT GENJI</th>-->
+          <!--<th>Sep 10th, 2017</th>-->
+          <!--</tr>-->
+          <!--<tr>-->
+          <!--<th>+100</th>-->
+          <!--<th>READ THIS COOL SHIT ABOUT GENJI</th>-->
+          <!--<th>Sep 10th, 2017</th>-->
+          <!--</tr>-->
+          <!--</tbody>-->
+          <!--</table>-->
+        </div>
       </li>
+
     </ul>
   </div>
   <div class="row home-boxes align-items-center">
     <hr/>
-    <h3 class="board-headings">Recent Posts</h3>
+    <h3 class="board-headings">Popular Posts</h3>
   </div>
   <div class="row home-boxes align-items-center home-table">
         <post-list-component class="align-items-center"></post-list-component>
