@@ -7,14 +7,14 @@
                 <div class="minified-table">
                     <table class="table dt-responsive table-striped">
                         <thead class="thead-inverse">
-                        <tr class="row col-12 table-component-row">
+                        <tr class="row table-component-row">
                             <th class="col-2">Score</th>
                             <th class="col-6">Title</th>
                             <th class="col-4">Date</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="row col-12 table-component-row tb-data-row" ng-repeat="post in board.posts | orderBy:'-score' | limitTo: 4">
+                        <tr class="row table-component-row tb-data-row" ng-repeat="post in board.posts | orderBy:'-score' | limitTo: 4">
                             <td class="col-2">{{post.score}}</td>
                             <td class="col-6"><a href="#!/boards/{{post._board}}/post/{{post._id}}">{{post.title}}</a></td>
                             <td class="col-4">{{post.dateCreated  | date: 'dd/MM/yy'}}</td>

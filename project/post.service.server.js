@@ -19,10 +19,20 @@ app.put("/api/post/:postId", updatePost);
 app.delete("/api/post/:postId", deletePost);
 app.get("/api/post/:postId/endorse", endorsePost);
 app.put("/api/post/:postId/save", savePost);
-app.get("/api/boards/:boardId/search", searchPosts)
+app.get("/api/boards/:boardId/search", searchPosts);
+app.get("/api/allPosts", getAllPosts);
 
 app.put("/api/post/:postId/comment/:commentId", editComment);
 app.delete("/api/comment/:commentId", deleteComment);
+
+function getAllPosts(req, res) {
+    postModel
+        .getAllPosts()
+        .then(function (posts) {
+            res.json(posts);
+            return;
+        });
+}
 
 function searchPosts(req, res) {
     var searchTerm = req.query.searchTerm;

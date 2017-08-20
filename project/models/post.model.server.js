@@ -53,8 +53,13 @@ postModel.searchPosts =searchPosts;
 
 postModel.editComment = editComment;
 postModel.deleteComment = deleteComment;
+postModel.getAllPosts = getAllPosts;
 
 module.exports = postModel;
+
+function getAllPosts() {
+    return postModel.find();
+}
 
 function searchPosts(term) {
     // return postModel

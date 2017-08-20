@@ -2,10 +2,6 @@
     margin-top: 10px;
     cursor: pointer !important;
 }
-.container{
-    /*overflow-y: overlay;*/
-    /*overflow-x: overlay;*/
-}
 
 .inner-container{
     margin: 0 0 0 0;
@@ -13,23 +9,14 @@
     z-index: 999;
 }
 
-.dropdown-menu {
-    /*position: fixed;*/
-    /*left: auto;*/
-    /*top: auto;*/
-    /*z-index: 1;*/
-}
-
 .btn {
     cursor: pointer;
 }
 
-.table-component-row {
-    padding-right: 0px;
-}
 th {
     text-align: left;
 }
+
 .td-center {
     text-align: center;
 }
@@ -174,6 +161,12 @@ p.post-tags {
     background-color: #e3e5ea;
 }
 
+.minified-table thead .table-component-row {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
 .row.home-boxes {
     display: block;
     margin: 0 auto;
@@ -302,12 +295,14 @@ h3.profile-header {
 
 .minified-table {
     padding: 0px;
-    margin-left: 25px;
+    margin-left: 8px;
+    margin-right: 8px;
 }
 
 .home-table {
     padding: 0px;
     margin-top: 15px;
+    margin-bottom: 50px; !important;
 }
 
 /* HERE'S MY NEW CSS THAT I ADDED AFTER WHATEVER PUSH IDK */

@@ -1,7 +1,7 @@
 <div class="">
 <table class="table-border table dt-responsive table-striped">
         <thead class="thead-inverse">
-        <tr class="row col-12 table-component-row">
+        <tr class="row table-component-row">
             <th class="col-2 col-lg-1">Score</th>
             <th class="col-6 col-lg-4">Title</th>
             <!--<th class="hidden-sm-down col-md-1">Tags</th>-->
@@ -11,7 +11,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr class="row col-12 table-component-row" ng-repeat="post in model.posts">
+        <tr class="row table-component-row" ng-repeat="post in model.posts">
             <td class="col-2 col-lg-1 td-center">{{post.score}}</td>
             <td class="col-6 col-lg-4"><a href="#!/boards/{{post._board}}/post/{{post._id}}">{{post.title}}</a></td>
             <!--<td class="hidden-sm-down col-md-1"><span class="badge badge-pill badge-warning" data-toggle="popover" data-trigger="click"-->

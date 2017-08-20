@@ -20,6 +20,7 @@
            "deleteComment" : deleteComment,
            "savePost" : savePost,
            "searchPosts" : searchPosts,
+           "getAllPosts" : getAllPosts,
 
            "findPagesForWebpage" : findPagesForWebpage,
            "findPageById" : findPageById,
@@ -28,6 +29,12 @@
        };
 
        return api;
+
+       function getAllPosts() {
+           var url="/api/allPosts";
+
+           return $http.get(url);
+       }
 
        function savePost(user, postId) {
            var url = "/api/post/" + postId + "/save";
