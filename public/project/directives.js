@@ -3,7 +3,7 @@
         .module("overHubDirectives", [])
         .directive("overhubNavbar", overhubNavbar)
         .directive("postListComponent", postListComponent)
-        .directive("postListMinified", postListMinified)
+        .directive("recentPostsComponent", recentPostsComponent)
         .directive("commentsComponent", commentsComponent);
 
     function overhubNavbar($http) {
@@ -42,11 +42,11 @@
         }
     }
 
-    function postListMinified($http) {
+    function recentPostsComponent($http) {
         return {
-            templateUrl: "views/home/templates/post-list-minified.component.client.html",
-            controller: "minifiedTableController",
-            controllerAs: "miniTableModel"
+            templateUrl: "views/home/templates/recent-posts.component.client.html",
+            controller: "recentPostController",
+            controllerAs: "recentPostModel"
         }
     }
 
