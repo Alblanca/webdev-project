@@ -155,11 +155,10 @@ function editComment(req, res) {
 }
 
 function deleteComment(req, res) {
-    var postId = req.params.postId;
     var commentId = req.params.commentId;
     console.log(commentId);
     postModel
-        .deleteComment(commentId, postId)
+        .deleteComment(commentId)
         .then(function (status) {
             res.sendStatus(200);
             return;

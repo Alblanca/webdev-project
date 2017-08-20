@@ -108,17 +108,9 @@ function editComment(comment) {
         .editComment(comment);
 }
 
-function deleteComment(commentId, postId) {
-    return postModel
-        .findPostById(postId)
-        .then(function (post) {
-            var index = post.comments.indexOf(commentId);
-            console.log(index);
-            post.comments.splice(index, 1);
-            post.save();
-            return;
-        });
-
+function deleteComment(commentId) {
+    return commentModel
+        .deleteComment(commentId);
 
     // return postModel.findPostById(postId)
     //             .then(function (post) {
