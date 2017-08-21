@@ -21,6 +21,8 @@
            "savePost" : savePost,
            "searchPosts" : searchPosts,
            "getAllPosts" : getAllPosts,
+           "getSavedPosts" : getSavedPosts,
+           "getUserPosts" : getUserPosts,
 
            "findPagesForWebpage" : findPagesForWebpage,
            "findPageById" : findPageById,
@@ -29,6 +31,16 @@
        };
 
        return api;
+
+       function getUserPosts(username) {
+           var url="/api/" + username + "/posts";
+           return $http.get(url);
+       }
+
+       function getSavedPosts(username) {
+           var url="/api/" + username + "/saved";
+           return $http.get(url);
+       }
 
        function getAllPosts() {
            var url="/api/allPosts";

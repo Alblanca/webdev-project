@@ -19,7 +19,8 @@
                 "logout" : logout,
                 "getCurrentUser" : getCurrentUser,
                 "findUserByNickname" : findUserByNickname,
-                "getAllUsers" : getAllUsers
+                "getAllUsers" : getAllUsers,
+                "endorseUser" : endorseUser
             };
 
             return api;
@@ -28,6 +29,12 @@
                 var url="/api/users";
 
                 return $http.get(url);
+            }
+
+            function endorseUser(user) {
+                var url="/api/" + user.username + '/endorse';
+                console.log(url);
+                return $http.put(url, user);
             }
 
             function findUserByNickname(nickname) {

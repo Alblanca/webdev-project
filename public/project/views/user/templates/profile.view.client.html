@@ -14,21 +14,69 @@
             </div>
             <div class="row" class="profile-battlenet" ng-show="model.isAuthenticatedUser">
                     <h3 class="profile-header"><img src="http://overlog.gg/img/rankIcon/TierTop500.png" height="30" width="40">
-                        {{model.battletag}}  <i class="fa fa-check-circle" aria-hidden="true" style="color: green"></i></h3>
+                        {{model.battletag}} <i class="fa fa-check-circle" aria-hidden="true" style="color: green"></i><span class="badge badge-warning badge-pill" ng-show="model.paramUser.isEndorsed">Coach Endorsed</span> </h3>
+                <div>
+                    <a ng-show="true && !model.paramUser.isEndorsed" class="btn btn-outline-info endorse-button-lg pull-right" data-toggle="button" aria-pressed="false"  ng-click="model.endorseUser()">
+                        Endorse User <i class="fa fa-check-circle" aria-hidden="true"></i></a>
+                </div>
             </div>
             <div class="row" class="profile-battlenet" ng-show="(!model.canEdit && !model.isAuthenticatedUser)">
-                <h3 class="profile-header">This user is not authenticated yet</h3>
+                <h3 class="profile-header">This user is not authenticated yet. <span class="badge badge-warning badge-pill" ng-show="model.paramUser.isEndorsed"> Coach Endorsed</span></h3>
+                <div>
+                    <a ng-show="true && !model.paramUser.isEndorsed" class="btn btn-outline-info endorse-button-lg pull-right" data-toggle="button" aria-pressed="false"  ng-click="model.endorseUser()">
+                        Endorse User <i class="fa fa-check-circle" aria-hidden="true"></i></a>
+                </div>
             </div>
 
             <div class="row" class="profile-battlenet" ng-show="(model.canEdit && !model.isAuthenticatedUser)">
                 <button class="btn btn-sm btn-primary blizzard-button" id="profile-authenticate-button">
                     <img src="/img/battlenet-logo.svg" style="width: 18px;">
                     authenticate profile</button>
+                <h3 class="profile-header"><span class="badge badge-warning badge-pill" ng-show="model.paramUser.isEndorsed"> Coach Endorsed</span></h3>
+                <div>
+                    <a ng-show="true && !model.paramUser.isEndorsed" class="btn btn-outline-info endorse-button-lg pull-right" data-toggle="button" aria-pressed="false"  ng-click="model.endorseUser()">
+                        Endorse User <i class="fa fa-check-circle" aria-hidden="true"></i></a>
+            </div>
             </div>
             <hr class="featurette-divider">
+        </div>
+        </div>
+    <div class="container pull-left">
+        <h3 class="profile-info-elements"><b>Introduction</b></h3>
+        <p class="profile-info-elements">{{model.introduction}}</p>
+        <h3 class="profile-info-elements"><b>User's Saved Posts</b></h3>
+        <post-list-component ng-show="model.posts.length > 0"></post-list-component>
+        <p ng-show="model.posts.length == 0">This user hasn't saved any posts yet.</p>
+        <h3 class="profile-info-elements"><b>User's Posts</b></h3>
+        <p ng-show="model.allPosts.length ==0">This user hasn't made any posts yet.</p>
+        <div ng-show="model.allPosts.length > 0">
+            <table class="table-border table dt-responsive table-striped">
+                <thead class="thead-inverse">
+                <tr class="row table-component-row">
+                    <th class="col-2 col-lg-1">Score</th>
+                    <th class="col-6 col-lg-4">Title</th>
+                    <!--<th class="hidden-sm-down col-md-1">Tags</th>-->
+                    <th class="col-4 col-lg-2">Date</th>
+                    <th class="hidden-md-down col-lg-3">Poster</th>
+                    <th class="hidden-md-down col-lg-2">Comments</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="row table-component-row" ng-repeat="post in model.allPosts">
+                    <td class="col-2 col-lg-1 td-center">{{post.score}}</td>
+                    <td class="col-6 col-lg-4"><a href="#!/boards/{{post._board}}/post/{{post._id}}">{{post.title}}</a></td>
+                    <!--<td class="hidden-sm-down col-md-1"><span class="badge badge-pill badge-warning" data-toggle="popover" data-trigger="click"-->
+                    <!--title="Tags" id="tags-badge">-->
+                    <!--&lt;!&ndash;<th class="col-xs-1"><button class="btn btn-outline-success" data-toggle="popover" data-trigger="click"&ndash;&gt;-->
+                    <!--&lt;!&ndash;title="Tags" id="tags-badge">&ndash;&gt;-->
+                    <!--{{post.tags.length}}</span></td>-->
+                    <td class="col-4 col-lg-2">{{post.dateCreated  | date: 'dd/MM/yyyy'}}</td>
+                    <td class="hidden-md-down col-lg-3"><a href="#!/profile/{{post._user.username}}">{{post._user.nickname}}</a></td>
+                    <td class="hidden-md-down col-lg-2">{{post.comments.length}}</td>
 
-            <h3 class="profile-info-elements"><b>Introduction</b></h3>
-            <p class="profile-info-elements">{{model.introduction}}</p>
+                </tr>
+                </tbody>
+            </table>
         </div>
-        </div>
+    </div>
 </div>

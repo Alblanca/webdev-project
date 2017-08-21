@@ -24,6 +24,34 @@ app.get("/api/allPosts", getAllPosts);
 
 app.put("/api/post/:postId/comment/:commentId", editComment);
 app.delete("/api/comment/:commentId", deleteComment);
+app.get("/api/:username/saved", getSavedPosts);
+app.get("/api/:username/posts", getUserPosts);
+
+function getUserPosts(req, res) {
+    var username = req.params.username;
+    postModel
+        .getUserPosts(username)
+        .then(function (posts) {
+            res.json(posts);
+            return;
+        },function (err) {
+            res.send(err.message);
+            return;
+        })
+}
+
+function getSavedPosts(req, res) {
+    var username = req.params.username;
+    postModel
+        .getSavedPosts(username)
+        .then(function (posts) {
+            res.json(posts);
+            return;
+        },function (err) {
+            res.send(err.message);
+            return;
+        })
+}
 
 function getAllPosts(req, res) {
     postModel

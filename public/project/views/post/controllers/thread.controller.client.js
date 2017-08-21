@@ -25,6 +25,7 @@
                 .then(function (post) {
                     model.post = post;
                     model.comments = model.post.comments;
+                    console.log(model.comments);
                     userService
                         .getCurrentUser()
                         .then(function (user) {
@@ -44,12 +45,16 @@
 
         function savePost() {
             if (model.currUser) {
-                postService
-                    .savePost(model.currUser, model.postId)
-                    .then(function () {
-                        $route.reload();
-                        alert('Post saved to profile.');
-                    });
+                if (model.currUser.savedPosts.indexOf(model.postId) >= 0) {
+                    alert('Already saved this post.');
+                } else {
+                    postService
+                        .savePost(model.currUser, model.postId)
+                        .then(function () {
+                            $route.reload();
+                            alert('Post saved to profile.');
+                        });
+                }
             } else {
                 alert('Must be signed in to save post.');
             }

@@ -54,11 +54,58 @@ postModel.searchPosts =searchPosts;
 postModel.editComment = editComment;
 postModel.deleteComment = deleteComment;
 postModel.getAllPosts = getAllPosts;
+postModel.getSavedPosts = getSavedPosts;
+postModel.getUserPosts = getUserPosts;
 
 module.exports = postModel;
 
+function getUserPosts(username) {
+    return userModel
+        .findOne({username: username})
+        .populate('posts')
+        .populate({
+            path : 'posts',
+            populate : {path: '_user', model:'UserModel'}})
+        .exec();
+}
+
+function getSavedPosts(username) {
+    return userModel
+        .findOne({username: username})
+        .populate('savedPosts')
+        .populate({
+            path : 'savedPosts',
+            populate : {path: '_user', model:'UserModel'}})
+        .exec();
+}
+
+// function getSavedPosts(username) {
+//     return userModel
+//         .findUserByUsername(username)
+//         .then(function (user) {
+//             var posts = user.savedPosts;
+//             var savedPosts = [];
+//             for (i = 0; i < posts.length; i++) {
+//                 console.log(posts[i]);
+//                 postModel
+//                     .findPostById(posts[i])
+//                     .then(function (postObj){
+//                         console.log(postObj);
+//                         savedPosts.push(postObj);
+//                     });
+//             }
+//             console.log(savedPosts);
+//             return savedPosts;
+//         });
+// }
+
 function getAllPosts() {
-    return postModel.find();
+    return postModel
+        .find()
+        .populate("_user")
+        .exec(function (err, res) {
+            return res;
+        });
 }
 
 function searchPosts(term) {
@@ -67,7 +114,11 @@ function searchPosts(term) {
     //     .sort( { score: { $meta: "textScore" }});
 
     return postModel
-        .find({$text: {$search: term}});
+        .find({$text: {$search: term}})
+        .populate("_user")
+        .exec(function (err, res) {
+            return res;
+        });
 }
 
 
@@ -127,6 +178,9 @@ function findPostById(postId) {
     return postModel
         .findById(postId)
         .populate('comments')
+        .populate({
+            path : 'comments',
+            populate : {path: '_user', model:'UserModel'}})
         .exec(function (err, res) {
             return res;
         });

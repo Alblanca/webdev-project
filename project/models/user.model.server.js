@@ -18,6 +18,7 @@ userModel.getAllUsers = getAllUsers;
 
 userModel.addPost = addPost;
 userModel.savePost = savePost;
+userModel.endorseUser = endorseUser;
 
 module.exports = userModel;
 
@@ -25,15 +26,24 @@ function getAllUsers() {
     return userModel.find();
 }
 
-function addPost(userId, postId) {
+function endorseUser(username) {
     return userModel
-        .findUserById(userId)
+        .findUserByUsername(username)
         .then(function (user) {
-            user.posts.push(postId);
-            console.log(user);
-            return user.save(); //goes and write this to database
+            user.isEndorsed = true;
+            return user.save();
         });
 }
+
+
+    function addPost(userId, postId) {
+        return userModel
+            .findUserById(userId)
+            .then(function (user) {
+                user.posts.push(postId);
+                return user.save(); //goes and write this to database
+            });
+    }
 
 function savePost(user, postId) {
     return userModel.findUserById(user._id)
