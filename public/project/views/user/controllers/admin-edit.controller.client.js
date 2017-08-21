@@ -8,52 +8,14 @@
 
     function adminEditController($scope, $routeParams, $location, userService, adminUser) {
         var model = this;
-        model.effectArray = ["blind", "bounce", "clip", "drop", "explode", "fade","fold","highlight", "puff", "pulsate", "scale", "shake", "size", "slide"]
-        var speedArray = ["slow", "fast"];
 
         //declare functions
         model.updateUser = updateUser;
         model.unregisterUser = unregisterUser;
         model.registerUser = registerUser;
-        model.shakeLikeShit = shakeLikeShit;
-        model.randomNumber = randomNumber;
-        $document.randomEffect = randomEffect;
 
-        function randomNumber() {
-            return Math.round(getRandomArbitrary(0, effectArray.length - 1));
-        }
-
-        function randomEffect() {
-            console.log(model.effectArray(randomNumber));
-            return model.effectArray(randomNumber);
-        }
-
-        function getRandomArbitrary(min, max) {
-            return Math.random() * (max - min) + min;
-        }
-
-        function sleep(milliseconds) {
-            var start = new Date().getTime();
-            for (var i = 0; i < 1e7; i++) {
-                if ((new Date().getTime() - start) > milliseconds){
-                    break;
-                }
-            }
-        }
-
-        function shakeLikeShit() {
-            for(var i =0; i < 30; i++) {
-                var randomNo = Math.round(getRandomArbitrary(0, effectArray.length - 1));
-                $('body').toggle(effectArray[randomNo]);
-
-                sleep(10000);
-            }
-        }
 
         function init() {
-            $.fn.random = function() {
-                return this.eq(Math.floor(Math.random() * this.length));
-            }
 
             userService
                 .getAllUsers()
