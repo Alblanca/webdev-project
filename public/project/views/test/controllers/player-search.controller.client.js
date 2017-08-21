@@ -44,13 +44,12 @@
                     var playa = JSON.stringify(res.data, null, 2);
                     model.searchData = playa;
 
-                    model.mostPlayedHero = res.data.us.heroes.playtime.quickplay.mercy;
+
 
                     var heroPlaytimes = res.data.us.heroes.playtime.quickplay;
                     console.log(heroPlaytimes);
 
                     var highest = Math.max.apply(this,$.map(heroPlaytimes, function(o){ return o.y; }));
-                    console.log(highest);
 
                     var maxProp = null;
                     var maxValue = -1;
@@ -59,10 +58,12 @@
                             var value = heroPlaytimes[prop];
                             if (value > maxValue) {
                                 maxProp = prop;
-                                maxValue = value
+                                maxValue = value;
                             }
                         }
                     }
+
+                    model.mostPlayedHero = maxProp;
 
                 });
         }

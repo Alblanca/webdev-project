@@ -41,7 +41,7 @@
                     } else {
                         model.currentUser = null;
                     }
-                });
+                })
 
             postService
                 .getSavedPosts(model.paramUser.username)
@@ -59,12 +59,6 @@
                 .getFavUsers(model.paramUser.username)
                 .then(function (users) {
                     model.favUsers = users.data.favUsers;
-
-                    model.usrInFaves = false;
-                    $.each(model.favUsers, function(i,obj) {
-                        if (obj.name === model.currentUser.name) { model.usrInFaves = true; return false;}
-                    });
-
                 });
 
 
@@ -97,6 +91,12 @@
 
         }
         init();
+
+        function checkFaved() {
+
+        }
+
+        checkFaved();
 
         function logout() {
             userService
@@ -132,12 +132,26 @@
         }
 
         function favoriteUser() {
-            userService
-                .favoriteUser(model.currentUser.username, model.paramUser)
-                .then(function () {
-                    alert("Saved user as a favorite!");
-                    $route.reload();
+                userService
+                    .getFavUsers(model.currentUser.username)
+                    .then(function (users) {
+                        model.usrInFaves = false;
+                        $.each(users.data.favUsers, function(i,obj) {
+                            if (obj.name === model.paramUser.name) { model.usrInFaves = true; return false;}
+                        });
+                    }).then(function (res) {
+                        if (!model.usrInFaves) {
+                            userService
+                                .favoriteUser(model.currentUser.username, model.paramUser)
+                                .then(function () {
+                                    alert("Saved user as a favorite!");
+                                    $route.reload();
+                                });
+                        } else {
+                            alert("User already saved as a favorite.");
+                        }
                 });
+
         }
 
     }
