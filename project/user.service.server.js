@@ -1,6 +1,8 @@
 /**
  * Created by berti on 7/31/2017.
  */
+
+//TODO passport and authentication logics are too mingled. This maybe separated to different file for better readibility
 var app = require("../express");
 var userModel = require("./models/user.model.server");
 var passport = require('passport');
@@ -24,11 +26,48 @@ var blizzardConfig = {
     region: "us"
 };
 
-passport.use(new BnetStrategy(blizzardConfig, blizzardStrategy));
+var blizzardAuthConfig = {
+    clientID: process.env.OVERHUB_BLIZZARD_AUTH_CLIENT_ID,
+    clientSecret: process.env.OVERHUB_BLIZZARD_AUTH_CLIENT_SECRET,
+    callbackURL: process.env.OVERHUB_BLIZZARD_AUTH_CALLBACK_URL,
+    region: "us"
+};
+
+passport.use('bnet-auth', new BnetStrategy(blizzardAuthConfig, blizzardAuthenticateProfileStrategy));
+passport.use('bnet', new BnetStrategy(blizzardConfig, blizzardStrategy));
 passport.use(new LocalStrategy(localStrategy));
 passport.use(new GoogleStrategy(googleConfig, googleStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
+
+//new strategy for authentication ONLY
+function blizzardAuthenticateProfileStrategy(token, refreshToken, profile, done) {
+    userModel
+        .findUserByBlizzardId(profile.id)
+        .then(function (user) {
+            if(user) {
+                return done(null, user);
+            } else {
+                var newBlizzardUser = {
+                    username: profile.battletag.split('#').join('-'),
+                    blizzard: {
+                        id: profile.id,
+                        token: token,
+                        provider: profile.provider,
+                        battletag: profile.battletag
+                    }
+                }
+            }
+            return userModel.createUser(newBlizzardUser);
+        }, function (err) {
+            if(err) { return done(err); }
+        })
+        .then(function (user) {
+            return done(null, user);
+        }, function (err) {
+            if(err) { return done(err); }
+        });
+}
 
 function blizzardStrategy(token, refreshToken, profile, done) {
     userModel
@@ -142,24 +181,19 @@ app.get('/api/:username/fav', getFavUsers);
 
 //auth strategies
 app.get('/login/auth/blizzard', passport.authenticate('bnet'));
+app.get('/authorize/blizzard', passport.authenticate('bnet-auth'));
 
 
-// app.get('/blizzard/callback',
-//     passport.authenticate('bnet', {
-//         successRedirect: '/project/#!/profile',
-//         failureRedirect: '/'
-//     }));
-
-app.get('/blizzard/callback', passport.authenticate('bnet', {failureRedirect: '/', session: false}),
+app.get('/blizzard/callback', passport.authenticate('bnet', {failureRedirect: '/'}),
     function (req, res) {
         res.redirect('/project/#!/terminate-auth');
     });
-//
-// app.get('/google/callback',
-//     passport.authenticate('google', {
-//         successRedirect: '/project/#!/profile',
-//         failureRedirect: '/project/#!/login'
-//     }));
+//auth one does not persist session
+app.get('/blizzard/authentication', passport.authenticate('bnet-auth', {failureRedirect: '/', session: false}),
+    function (req, res) {
+        res.redirect('/project/#!/terminate-auth');
+    });
+
 
 
 app.get('/google/callback', passport.authenticate('google', {failureRedirect: '/'}),
