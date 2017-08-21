@@ -17,8 +17,8 @@
 
 <!--</head>-->
 <overhub-navbar></overhub-navbar>
-<h1 class="text-left posts-headings">Posts in {{model.findOne({board : model.boardId}).populate('_board', 'name')}}</h1>
-<a class="btn btn-outline-secondary posts-headings" href="#!/boards/{{model.boardId}}/new"><i class="fa fa-plus" aria-hidden="true"></i> Create A New Post</a>
+<h1 class="text-left posts-headings">Posts in {{model.board.name}}</h1>
+<a class="btn btn-outline-success posts-headings" href="#!/boards/{{model.boardId}}/new"><i class="fa fa-plus" aria-hidden="true"></i> Create A New Post</a>
 <hr/>
 <div class="container-fluid">
     <div class="posts-table col-12">
