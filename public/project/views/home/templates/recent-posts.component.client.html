@@ -1,5 +1,5 @@
 <ul class="list-unstyled">
-    <li class="media board-listing" ng-repeat="board in recentPostModel.boards | limitTo: 2">
+    <li class="media board-listing" ng-repeat="board in recentPostModel.boards | limitTo: 3">
         <img class="home-icons hidden-md-down img-responsive" src="{{board.bannerIconUrl}}">
         <div class="media-body">
             <h3><a class="board-subheadings" href="#!/boards/{{board._id}}">{{board.name}}</a></h3>
@@ -15,7 +15,7 @@
                         </thead>
                         <tbody>
                         <tr class="row table-component-row tb-data-row" ng-repeat="post in board.posts | orderBy:'-score' | limitTo: 4">
-                            <td class="col-2">{{post.score}}</td>
+                            <td class="col-2"><b class="score">{{post.score}}</b></td>
                             <td class="col-6"><a href="#!/boards/{{post._board}}/post/{{post._id}}">{{post.title}}</a></td>
                             <td class="col-4">{{post.dateCreated  | date: 'dd/MM/yy'}}</td>
                         </tr>

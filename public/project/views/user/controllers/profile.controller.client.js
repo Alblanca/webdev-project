@@ -15,6 +15,7 @@
         model.logout = logout;
         model.canEdit = false;
         model.endorseUser = endorseUser;
+        model.favoriteUser = favoriteUser;
 
         function init() {
             model.paramUser = paramUser;
@@ -29,7 +30,7 @@
             model.introduction =
                         (paramUser.introduction || paramUser.introduction ==='')
                             ? paramUser.introduction
-                            : "This user has no introduction yet";
+                            : "This user has no introduction yet.";
 
             userService
                 .getCurrentUser()
@@ -37,6 +38,8 @@
                     if(response.data) {
                         model.currentUser = response.data;
                         model.canEdit = paramUser.username === model.currentUser.username;
+                    } else {
+                        model.currentUser = null;
                     }
                 });
 
@@ -51,6 +54,19 @@
                 .then(function (posts) {
                    model.allPosts = posts.data.posts;
                 });
+
+            userService
+                .getFavUsers(model.paramUser.username)
+                .then(function (users) {
+                    model.favUsers = users.data.favUsers;
+
+                    model.usrInFaves = false;
+                    $.each(model.favUsers, function(i,obj) {
+                        if (obj.name === model.currentUser.name) { model.usrInFaves = true; return false;}
+                    });
+
+                });
+
 
             // model.profileUser = null;
             // userService
@@ -114,6 +130,16 @@
                    $route.reload();
                 });
         }
+
+        function favoriteUser() {
+            userService
+                .favoriteUser(model.currentUser.username, model.paramUser)
+                .then(function () {
+                    alert("Saved user as a favorite!");
+                    $route.reload();
+                });
+        }
+
     }
 
 })();

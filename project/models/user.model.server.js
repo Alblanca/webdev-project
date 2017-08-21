@@ -18,11 +18,29 @@ userModel.findUserByNickname = findUserByNickname;
 userModel.addPost = addPost;
 userModel.savePost = savePost;
 userModel.endorseUser = endorseUser;
+userModel.favoriteUser = favoriteUser;
+userModel.getFavUsers = getFavUsers;
 
 module.exports = userModel;
 
+function getFavUsers(username) {
+    return userModel
+        .findOne({username: username})
+        .populate('favUsers')
+        .exec();
+}
+
+function favoriteUser(username, toFav) {
+    return userModel
+        .findUserByUsername(username)
+        .then(function (user) {
+            user.favUsers.push(toFav);
+            console.log(user.favUsers);
+            return user.save();
+        });
+}
+
 function endorseUser(username) {
-    console.log("we out here");
     return userModel
         .findUserByUsername(username)
         .then(function (user) {
@@ -43,8 +61,8 @@ function addPost(userId, postId) {
 function savePost(user, postId) {
     return userModel.findUserById(user._id)
         .then(function (user) {
-    user.savedPosts.push(postId);
-    return user.save();
+        user.savedPosts.push(postId);
+        return user.save();
         });
     // return userModel
     //     .findUserById(userId)

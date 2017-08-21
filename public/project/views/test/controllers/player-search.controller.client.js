@@ -10,6 +10,7 @@
         var model = this;
         model.login = login;
         model.searchUser = searchUser;
+        model.searchUserHeroes = searchUserHeroes;
 
         function init() {
 
@@ -25,6 +26,28 @@
                 .then(function (res) {
                     var playa = JSON.stringify(res.data, null, 2);
                     model.searchData = playa;
+
+                    model.SR = res.data.us.stats.competitive.overall_stats.comprank;
+                    model.compRank = res.data.us.stats.competitive.overall_stats.tier;
+
+
+                });
+        }
+
+        function searchUserHeroes(searchText) {
+            var apiText = null;
+            apiText = searchText.replace('#', '-');
+
+            testService
+                .searchUser(apiText)
+                .then(function (res) {
+                    var playa = JSON.stringify(res.data, null, 2);
+                    model.searchData = playa;
+
+                    model.SR = res.data.us.stats.competitive.overall_stats.comprank;
+                    model.compRank = res.data.us.stats.competitive.overall_stats.tier;
+
+
                 });
         }
 
