@@ -29,9 +29,9 @@
             </div>
 
             <div class="row" class="profile-battlenet" ng-show="(model.canEdit && !model.isAuthenticatedUser)">
-                <button class="btn btn-sm btn-primary blizzard-button" id="profile-authenticate-button">
+                <a class="btn btn-sm btn-primary blizzard-button" id="profile-authenticate-button" href="/login/auth/google">
                     <img src="/img/battlenet-logo.svg" style="width: 18px;">
-                    authenticate profile</button>
+                    authenticate profile</a>
                 <h3 class="profile-header"><span class="badge badge-warning badge-pill" ng-show="model.paramUser.isEndorsed"> Coach Endorsed</span></h3>
                 <div>
                     <a ng-show="true && !model.paramUser.isEndorsed" class="btn btn-outline-info endorse-button-lg pull-right" data-toggle="button" aria-pressed="false"  ng-click="model.endorseUser()">

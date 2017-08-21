@@ -129,7 +129,8 @@ app.post("/api/register", registerUser);
 app.put("/api/user/:userId", updateUser);
 app.delete("/api/user/:userId", unregisterUser);
 app.get("/api/checkLogin", checkLogin);
-app.get('/login/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+app.get('/login/auth/google', passport.authenticate('google', {scope : ['profile', 'email']}));
+
 app.get("/api/logout", logout);
 app.get('/api/currentUser', getCurrentUser);
 app.get('/api/nickname/', findUserByNickname);
@@ -140,13 +141,14 @@ app.put('/api/:username/endorse', endorseUser);
 //auth strategies
 app.get('/login/auth/blizzard', passport.authenticate('bnet'));
 
+
 // app.get('/blizzard/callback',
 //     passport.authenticate('bnet', {
 //         successRedirect: '/project/#!/profile',
 //         failureRedirect: '/'
 //     }));
 
-app.get('/blizzard/callback', passport.authenticate('bnet', {failureRedirect: '/'}),
+app.get('/blizzard/callback', passport.authenticate('bnet', {failureRedirect: '/', session: false}),
     function (req, res) {
         res.redirect('/project/#!/terminate-auth');
     });
@@ -156,6 +158,7 @@ app.get('/blizzard/callback', passport.authenticate('bnet', {failureRedirect: '/
 //         successRedirect: '/project/#!/profile',
 //         failureRedirect: '/project/#!/login'
 //     }));
+
 
 app.get('/google/callback', passport.authenticate('google', {failureRedirect: '/'}),
     function (req, res) {
