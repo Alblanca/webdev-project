@@ -17,17 +17,7 @@
         var secret = "33a2aeae5f3afb0f";
         var urlBase = "https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&api_key=API_KEY&text=TEXT";
 
-        function searchUser(battleTag) {
-            var reqUrl ="https://owapi.net/api/v3/u/"+ battleTag +"/stats?format=json_pretty";
 
-            return $http.get(reqUrl);
-        }
-
-        function searchUserHeroes(battleTag) {
-            var reqUrl ="https://owapi.net/api/v3/u/"+ battleTag +"/heroes?format=json_pretty";
-
-            return $http.get(reqUrl);
-        }
 
         function choosePhoto(uid, wid, pid, widgetId, photo) {
             var _url = "/api/user/" + uid + "/website/" + wid + "/page/" + pid +"/widget/" + widgetId;

@@ -124,8 +124,8 @@
             return $http.put(url, comment);
         }
 
-        function deleteComment(commentId) {
-            var url = "/api/comment/" + commentId;
+        function deleteComment(commentId, postId) {
+            var url = "/api/" + postId +"/comment/" + commentId;
             return $http.delete(url);
         }
 

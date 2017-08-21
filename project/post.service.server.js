@@ -23,7 +23,7 @@ app.get("/api/boards/:boardId/search", searchPosts);
 app.get("/api/allPosts", getAllPosts);
 
 app.put("/api/post/:postId/comment/:commentId", editComment);
-app.delete("/api/comment/:commentId", deleteComment);
+app.delete("/api/:postId/comment/:commentId", deleteComment);
 app.get("/api/:username/saved", getSavedPosts);
 app.get("/api/:username/posts", getUserPosts);
 
@@ -206,14 +206,13 @@ function editComment(req, res) {
 
 function deleteComment(req, res) {
     var commentId = req.params.commentId;
-    console.log(commentId);
+    var postId = req.params.postId;
     postModel
-        .deleteComment(commentId)
+        .deleteComment(commentId, postId)
         .then(function (status) {
             res.sendStatus(200);
             return;
         }, function (err) {
-            console.log(err);
             res.sendStatus(500).send(err);
             return;
         });
