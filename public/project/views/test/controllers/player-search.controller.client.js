@@ -10,23 +10,16 @@
         var model = this;
         model.login = login;
         model.searchUser = searchUser;
+        model.searchUserHeroes = searchUserHeroes;
 
         function init() {
 
         }
         init();
 
-        function searchUser(searchText) {
-            var apiText = null;
-            apiText = searchText.replace('#', '-');
 
-            testService
-                .searchUser(apiText)
-                .then(function (res) {
-                    var playa = JSON.stringify(res.data, null, 2);
-                    model.searchData = playa;
-                });
-        }
+
+
 
         function login(user) {
             userService.findUserByUsernameAndPassword(user.username, user.password)

@@ -84,7 +84,7 @@
 
         function deleteComment(commentId) {
             postService
-                .deleteComment(commentId)
+                .deleteComment(commentId, model.postId)
                 .then(function () {
                     $route.reload();
                 });

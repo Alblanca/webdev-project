@@ -19,11 +19,24 @@
                 "logout" : logout,
                 "getCurrentUser" : getCurrentUser,
                 "findUserByNickname" : findUserByNickname,
+                "endorseUser" : endorseUser,
+                "favoriteUser" : favoriteUser,
+                "getFavUsers" : getFavUsers,
                 "getAllUsers" : getAllUsers,
                 "endorseUser" : endorseUser
             };
 
             return api;
+
+            function getFavUsers(username) {
+                var url="/api/" + username + "/fav";
+                return $http.get(url);
+            }
+
+            function favoriteUser(currUsr, toFav) {
+                var url = "/api/" + currUsr + "/fav";
+                return $http.put(url, toFav);
+            }
 
             function getAllUsers() {
                 var url="/api/users";
@@ -33,7 +46,6 @@
 
             function endorseUser(user) {
                 var url="/api/" + user.username + '/endorse';
-                console.log(url);
                 return $http.put(url, user);
             }
 

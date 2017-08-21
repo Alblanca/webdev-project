@@ -7,6 +7,9 @@
         <div class="media-body">
             <div class="row">
                 <h1 class="profile-header display-2">{{model.displayName}}</h1></br>
+                <div id="profile-save" ng-show="model.currentUser != null">
+                    <a href="" ng-click="model.favoriteUser()"><span class="edit-icon pull-right"><i class="fa fa-star" aria-hidden="true"></i></span></a>
+                </div>
                 <div id="profile-edit" ng-show="model.canEdit">
                     <a href="/project/#!/profile/{{model.paramUser.username}}/edit"><span class="edit-icon pull-right"><i class="fa fa-pencil" aria-hidden="true"></i></span></a>
                 </div>
@@ -44,10 +47,11 @@
     <div class="container pull-left">
         <h3 class="profile-info-elements"><b>Introduction</b></h3>
         <p class="profile-info-elements">{{model.introduction}}</p>
-        <h3 class="profile-info-elements"><b>User's Saved Posts</b></h3>
+        <h3 class="profile-info-elements"><b>{{model.displayName}}'s Saved Posts</b></h3>
         <post-list-component ng-show="model.posts.length > 0"></post-list-component>
         <p ng-show="model.posts.length == 0">This user hasn't saved any posts yet.</p>
-        <h3 class="profile-info-elements"><b>User's Posts</b></h3>
+
+        <h3 class="profile-info-elements"><b>{{model.displayName}}'s Posts</b></h3>
         <p ng-show="model.allPosts.length ==0">This user hasn't made any posts yet.</p>
         <div ng-show="model.allPosts.length > 0">
             <table class="table-border table dt-responsive table-striped">
@@ -63,7 +67,7 @@
                 </thead>
                 <tbody>
                 <tr class="row table-component-row" ng-repeat="post in model.allPosts">
-                    <td class="col-2 col-lg-1 td-center">{{post.score}}</td>
+                    <td class="col-2 col-lg-1 td-center"><b class="score">{{post.score}}</b></td>
                     <td class="col-6 col-lg-4"><a href="#!/boards/{{post._board}}/post/{{post._id}}">{{post.title}}</a></td>
                     <!--<td class="hidden-sm-down col-md-1"><span class="badge badge-pill badge-warning" data-toggle="popover" data-trigger="click"-->
                     <!--title="Tags" id="tags-badge">-->
@@ -78,5 +82,12 @@
                 </tbody>
             </table>
         </div>
+
+        <h3 class="profile-info-elements"><b>{{model.displayName}}'s Favorite Users</b></h3>
+        <p ng-show="model.favUsers.length == 0">This user hasn't favorited anyone yet.</p>
+        <div ng-show="model.favUsers.length > 0" ng-repeat="user in model.favUsers">
+            <a href="#!/profile/{{user.username}}">{{user.nickname}}</a>
+        </div>
+
     </div>
 </div>

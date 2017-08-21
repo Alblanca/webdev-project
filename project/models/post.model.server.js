@@ -43,6 +43,7 @@ var testPost = new postModel({
 postModel.findPostsByBoardId = findPostsByBoardId;
 postModel.createPost = createPost;
 postModel.findPostById = findPostById;
+postModel.findPostByIdNoUsr = findPostByIdNoUsr;
 postModel.addComment = addComment;
 postModel.findPopulatedUserByPostId = findPopulatedUserByPostId;
 postModel.updatePost = updatePost;
@@ -186,6 +187,15 @@ function findPostById(postId) {
         });
 }
 
+function findPostByIdNoUsr(postId) {
+    return postModel
+        .findById(postId)
+        .populate('comments')
+        .exec(function (err, res) {
+            return res;
+        });
+}
+
 function addComment(comment, user, postId) {
     return commentModel
         .addComment(comment, user, postId)
@@ -203,17 +213,26 @@ function editComment(comment) {
         .editComment(comment);
 }
 
-function deleteComment(commentId) {
-    return commentModel
-        .deleteComment(commentId);
-
-    // return postModel.findPostById(postId)
-    //             .then(function (post) {
-    //                 var index = post.comments.indexOf(commentId);
-    //                 post.comments.splice(index, 1);
-    //                 post.save();
-    //                 return;
-    //             });
+function deleteComment(commentId, postId) {
+    return postModel.findPostByIdNoUsr(postId)
+                .then(function (post) {
+                    console.log("!!!!" + commentId);
+                    // for (comment in post.comments) {
+                    for (var idx = 0; idx <= post.comments.length; idx ++) {
+                        console.log(post.comments[idx]._id);
+                        if (post.comments[idx]._id == commentId) {
+                            var index = idx;
+                            break;
+                        }
+                    }
+                    console.log(index);
+                    post.comments.splice(index, 1);
+                    post.save();
+                });
+        //         }).then(function (res) {
+        //     return commentModel
+        //         .deleteComment(commentId);
+        // });
 }
 
 function deletePost(postId) {

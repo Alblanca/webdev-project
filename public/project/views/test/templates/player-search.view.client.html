@@ -11,8 +11,24 @@
                 </span>
         </div>
     </div>
+    <div class="post-search-bar col-12">
+        <div class="input-group container-list-group">
+            <input ng-model="searchText" type="text" class="form-control" placeholder="Type Battle tag (e.g. Alblanca#1581)">
+            <span class="input-group-btn">
+                      <a ng-click="model.searchUserHeroes(searchText)"
+                         class="btn btn-default"
+                         type="button">
+                         <i class="fa fa-search" aria-hidden="true"></i>
+                        </a>
+                </span>
+        </div>
+    </div>
 </div>
 
 <pre class="container-fluid">
+    <h1>h1</h1>
+    <h1>{{model.SR}}</h1>
+    <h1>{{model.compRank}}</h1>
+    <h1>{{model.mostPlayedHero}}</h1>
     {{model.searchData}}
 </pre>

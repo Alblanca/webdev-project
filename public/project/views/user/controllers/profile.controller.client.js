@@ -15,6 +15,7 @@
         model.logout = logout;
         model.canEdit = false;
         model.endorseUser = endorseUser;
+        model.favoriteUser = favoriteUser;
 
         function init() {
             model.paramUser = paramUser;
@@ -29,7 +30,7 @@
             model.introduction =
                         (paramUser.introduction || paramUser.introduction ==='')
                             ? paramUser.introduction
-                            : "This user has no introduction yet";
+                            : "This user has no introduction yet.";
 
             userService
                 .getCurrentUser()
@@ -38,6 +39,9 @@
                         model.currentUser = response.data;
                         model.canEdit = (paramUser.username === model.currentUser.username)
                                                 || model.currentUser.role === "ADMIN";
+                        model.canEdit = paramUser.username === model.currentUser.username;
+                    } else {
+                        model.currentUser = null;
                     }
                 });
 
@@ -52,6 +56,13 @@
                 .then(function (posts) {
                    model.allPosts = posts.data.posts;
                 });
+
+            userService
+                .getFavUsers(model.paramUser.username)
+                .then(function (users) {
+                    model.favUsers = users.data.favUsers;
+                });
+
 
             // model.profileUser = null;
             // userService
@@ -82,6 +93,12 @@
 
         }
         init();
+
+        function checkFaved() {
+
+        }
+
+        checkFaved();
 
         function logout() {
             userService
@@ -115,6 +132,30 @@
                    $route.reload();
                 });
         }
+
+        function favoriteUser() {
+                userService
+                    .getFavUsers(model.currentUser.username)
+                    .then(function (users) {
+                        model.usrInFaves = false;
+                        $.each(users.data.favUsers, function(i,obj) {
+                            if (obj.name === model.paramUser.name) { model.usrInFaves = true; return false;}
+                        });
+                    }).then(function (res) {
+                        if (!model.usrInFaves) {
+                            userService
+                                .favoriteUser(model.currentUser.username, model.paramUser)
+                                .then(function () {
+                                    alert("Saved user as a favorite!");
+                                    $route.reload();
+                                });
+                        } else {
+                            alert("User already saved as a favorite.");
+                        }
+                });
+
+        }
+
     }
 
 })();

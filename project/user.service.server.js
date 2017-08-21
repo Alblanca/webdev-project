@@ -137,6 +137,8 @@ app.get('/api/nickname/', findUserByNickname);
 
 app.put('/api/:userId/save', savePost);
 app.put('/api/:username/endorse', endorseUser);
+app.put('/api/:username/fav', favoriteUser);
+app.get('/api/:username/fav', getFavUsers);
 
 //auth strategies
 app.get('/login/auth/blizzard', passport.authenticate('bnet'));
@@ -165,10 +167,35 @@ app.get('/google/callback', passport.authenticate('google', {failureRedirect: '/
         res.redirect('/project/#!/terminate-auth');
     });
 
+function getFavUsers(req, res) {
+    var username = req.params.username;
+    userModel
+        .getFavUsers(username)
+        .then(function (response) {
+            console.log(response);
+            res.send(response);
+            return;
+        }, function (err) {
+            res.send(err.message);
+            return;
+        });
+}
+
+function favoriteUser(req, res) {
+    var username = req.params.username;
+    var toFav = req.body;
+    userModel
+        .favoriteUser(username, toFav)
+        .then(function (status) {
+            res.json(status);
+        }, function (err) {
+            res.sendStatus(500).send(err);
+        });
+}
+
 function endorseUser(req, res) {
     var username = req.params.username;
     var user = req.body;
-    console.log(username);
     userModel
         .endorseUser(username)
         .then(function (status) {

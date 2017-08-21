@@ -12,7 +12,7 @@
         </thead>
         <tbody>
         <tr class="row table-component-row" ng-repeat="post in model.posts">
-            <td class="col-2 col-lg-1 td-center">{{post.score}}</td>
+            <td class="col-2 col-lg-1 td-center"><b class="score">{{post.score}}</b></td>
             <td class="col-6 col-lg-4"><a href="#!/boards/{{post._board}}/post/{{post._id}}">{{post.title}}</a></td>
             <!--<td class="hidden-sm-down col-md-1"><span class="badge badge-pill badge-warning" data-toggle="popover" data-trigger="click"-->
                                                       <!--title="Tags" id="tags-badge">-->

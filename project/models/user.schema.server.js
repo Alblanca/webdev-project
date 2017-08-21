@@ -22,7 +22,8 @@ var userSchema = mongoose.Schema(
             provider: String,
             battletag: String
         },
-        isEndorsed: {type: Boolean, default: false}
+        isEndorsed: {type: Boolean, default: false},
+        favUsers : [{type: mongoose.Schema.Types.ObjectId, ref:"UserModel"}]
     }, {collection: "user"});
 
 module.exports = userSchema;
