@@ -32,7 +32,10 @@
             </div>
 
             <div class="row" class="profile-battlenet" ng-show="(model.canEdit && !model.isAuthenticatedUser)">
-                <a class="btn btn-sm btn-primary blizzard-button" id="profile-authenticate-button" href="/authorize/blizzard">
+                <a class="btn btn-sm btn-primary blizzard-button"
+                   id="profile-authenticate-button"
+                   href="/authorize/blizzard"
+                   onclick="window.open(this.href, 'mywin','left=20,top=20,width=600,height=600,toolbar=1,resizable=0');return false;">
                     <img src="/img/battlenet-logo.svg" style="width: 18px;">
                     authenticate profile</a>
                 <h3 class="profile-header"><span class="badge badge-warning badge-pill" ng-show="model.paramUser.isEndorsed"> Coach Endorsed</span></h3>
