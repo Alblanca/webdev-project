@@ -16,6 +16,7 @@
                 .getCurrentUser()
                 .then(function (response) {
                     model.currentUser = response.data;
+                    model.isAdmin = (model.currentUser.role === 'ADMIN');
                 });
 
             boardService
@@ -26,11 +27,6 @@
                         ? model.boards.find(x => x._id === boardId).name
                         : "Boards";
                 });
-
-            $('.board-content').click(function (event) {
-                $(this).first().click();
-
-            });
         }
         init();
 

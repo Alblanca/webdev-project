@@ -14,6 +14,7 @@ userModel.unregisterUser = unregisterUser;
 userModel.findUserByGoogleId = findUserByGoogleId;
 userModel.findUserByBlizzardId = findUserByBlizzardId;
 userModel.findUserByNickname = findUserByNickname;
+userModel.getAllUsers = getAllUsers;
 
 userModel.addPost = addPost;
 userModel.savePost = savePost;
@@ -40,6 +41,10 @@ function favoriteUser(username, toFav) {
         });
 }
 
+    function getAllUsers() {
+    return userModel.find();
+}
+
 function endorseUser(username) {
     return userModel
         .findUserByUsername(username)
@@ -49,14 +54,15 @@ function endorseUser(username) {
         });
 }
 
-function addPost(userId, postId) {
-    return userModel
-        .findUserById(userId)
-        .then(function (user) {
-            user.posts.push(postId);
-            return user.save(); //goes and write this to database
-        });
-}
+
+    function addPost(userId, postId) {
+        return userModel
+            .findUserById(userId)
+            .then(function (user) {
+                user.posts.push(postId);
+                return user.save(); //goes and write this to database
+            });
+    }
 
 function savePost(user, postId) {
     return userModel.findUserById(user._id)

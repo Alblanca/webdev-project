@@ -21,7 +21,9 @@
                 "findUserByNickname" : findUserByNickname,
                 "endorseUser" : endorseUser,
                 "favoriteUser" : favoriteUser,
-                "getFavUsers" : getFavUsers
+                "getFavUsers" : getFavUsers,
+                "getAllUsers" : getAllUsers,
+                "endorseUser" : endorseUser
             };
 
             return api;
@@ -32,8 +34,14 @@
             }
 
             function favoriteUser(currUsr, toFav) {
-                var url="/api/" + currUsr + "/fav";
+                var url = "/api/" + currUsr + "/fav";
                 return $http.put(url, toFav);
+            }
+
+            function getAllUsers() {
+                var url="/api/users";
+
+                return $http.get(url);
             }
 
             function endorseUser(user) {

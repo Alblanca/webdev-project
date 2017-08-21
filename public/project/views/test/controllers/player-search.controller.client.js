@@ -39,14 +39,30 @@
             apiText = searchText.replace('#', '-');
 
             testService
-                .searchUser(apiText)
+                .searchUserHeroes(apiText)
                 .then(function (res) {
                     var playa = JSON.stringify(res.data, null, 2);
                     model.searchData = playa;
 
-                    model.SR = res.data.us.stats.competitive.overall_stats.comprank;
-                    model.compRank = res.data.us.stats.competitive.overall_stats.tier;
+                    model.mostPlayedHero = res.data.us.heroes.playtime.quickplay.mercy;
 
+                    var heroPlaytimes = res.data.us.heroes.playtime.quickplay;
+                    console.log(heroPlaytimes);
+
+                    var highest = Math.max.apply(this,$.map(heroPlaytimes, function(o){ return o.y; }));
+                    console.log(highest);
+
+                    var maxProp = null;
+                    var maxValue = -1;
+                    for (var prop in heroPlaytimes) {
+                        if (heroPlaytimes.hasOwnProperty(prop)) {
+                            var value = heroPlaytimes[prop];
+                            if (value > maxValue) {
+                                maxProp = prop;
+                                maxValue = value
+                            }
+                        }
+                    }
 
                 });
         }

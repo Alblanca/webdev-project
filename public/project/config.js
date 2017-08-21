@@ -97,6 +97,22 @@
                 controller: "postEditController",
                 controllerAs: "model"
             })
+            .when("/admin/edit", {
+                templateUrl:"views/user/templates/admin-control.view.client.html",
+                controller: "adminEditController",
+                controllerAs: "model",
+                resolve: {
+                    adminUser : checkAdmin
+                }
+            })
+            .when("/admin/new", {
+                templateUrl:"views/user/templates/admin-create-user.view.client.html",
+                controller: "adminEditController",
+                controllerAs: "model",
+                resolve: {
+                    adminUser: checkAdmin
+                }
+            })
             .when("/terminate-auth", {
                 templateUrl: "views/home/templates/terminate-auth.view.client.html"
             });
@@ -196,6 +212,26 @@
                     $location.url("/unauthorized");
                 } else {
                     deferred.resolve(user);
+                }
+            });
+        return deferred.promise;
+    }
+
+    function checkAdmin(userService, $q, $location) {
+        var deferred = $q.defer();
+        userService
+            .checkLogin()
+            .then(function (user) {
+                if(user === '0') {
+                    deferred.reject();
+                    $location.url("/unauthorized");
+                } else {
+                    if(user.role === "ADMIN") {
+                        deferred.resolve(user);
+                    } else {
+                        deferred.reject();
+                        $location.url("/unauthorized");
+                    }
                 }
             });
         return deferred.promise;

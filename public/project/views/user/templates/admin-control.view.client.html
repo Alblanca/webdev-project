@@ -1,10 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>pull</title>
-</head>
-<body>
+<overhub-navbar></overhub-navbar>
+<div class="container-fluid">
+    <div class="">
+        <table class="table-border table dt-responsive table-striped">
+            <thead class="thead-inverse">
+            <tr class="row table-component-row">
+                <th class="hidden-sm-down col-md-1 col-lg-1">Role</th>
+                <th class="col-xs-8 col-sm-10 col-md-2 col-lg-1">Username</th>
+                <th class="hidden-md-down col-lg-1">Nickname</th>
+                <th class="hidden-md-down col-lg-1">Firstname</th>
+                <th class="hidden-md-down col-lg-1">Lastname</th>
+                <th class="hidden-sm-down col-md-4 col-lg-4">Email</th>
+                <th class="hidden-sm-down col-md-3 col-lg-2">Joined</th>
+                <th class="col-xs-4 col-sm-2 col-md-2 col-lg-1">
+                    <a href="#!/admin/new" type="button" class="btn btn-sm btn-primary pull-right">
+                        <i class="fa fa-plus" aria-hidden="true"></i> Create User
+                    </a>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr class="row table-component-row" ng-repeat="user in model.users">
+                    <td class="hidden-sm-down col-md-1 col-lg-1">{{user.role}}</td>
+                    <td class="col-xs-8 col-sm-10 col-md-2 col-lg-1">{{user.username}}</td>
+                    <td class="hidden-md-down col-lg-1">{{user.nickname}}</td>
+                    <td class="hidden-md-down col-lg-1">{{user.firstName}}</td>
+                    <td class="hidden-md-down col-lg-1">{{user.lastName}}</td>
+                    <td class="hidden-sm-down col-md-4 col-lg-4">{{user.email}}</td>
+                    <td class="hidden-sm-down col-md-3 col-lg-2">{{user.created | date: 'dd/MM/yyyy'}}</td>
+                    <td class="col-xs-4 col-sm-2 col-md-2 col-lg-1">
+                        <a href="#!/admin/edit/{{user.username}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a href="" ng-click="model.unregisterUser(user)"><i class="fa fa-times" id="admin-delete" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-</body>
-</html>
+    <!-- Search Bar -->
+
+</div>
