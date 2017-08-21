@@ -252,22 +252,26 @@ function updateUser(req, res) {
 
 function registerUser(req, res) {
     var user = req.body;
+    var currentUser = req.user;
 
     userModel
         .createUser(user)
         .then(function(user){
                 if(user){
-                    req.login(user, function(err) {
-                        if(err) {
-                            res.status(400).send(err);
-                        } else {
-                            res.json(user);
-                        }
-                    });
+                    if(currentUser) {
+                        res.sendStatus(200);
+                    } else {
+                        req.login(user, function(err) {
+                            if(err) {
+                                res.status(400).send(err);
+                            } else {
+                                res.json(user);
+                            }
+                        });
+                    }
+
                 }
             });
-
-
 }
 
 function findUser(req, res) {

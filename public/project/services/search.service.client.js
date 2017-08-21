@@ -17,8 +17,8 @@
 
         function choosePhoto(uid, wid, pid, widgetId, photo) {
             var _url = "/api/user/" + uid + "/website/" + wid + "/page/" + pid +"/widget/" + widgetId;
-            var photoUrl ="https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/"+ photo.id +"_"+ photo.secret + ".jpg"
-            var tmpObj = {url: photoUrl}
+            var photoUrl ="https://farm" + photo.farm + ".staticflickr.com/" + photo.server + "/"+ photo.id +"_"+ photo.secret + ".jpg";
+            var tmpObj = {url: photoUrl};
 
             return $http.put(_url, tmpObj)
                 .then(function (response) {

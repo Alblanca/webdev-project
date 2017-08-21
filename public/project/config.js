@@ -174,7 +174,7 @@
         userService
             .checkLogin()
             .then(function (user) {
-                if(user.username === paramUsername) {
+                if(user.username === paramUsername || user.role === "ADMIN") {
                     deferred.resolve(user);
                 } else {
                     deferred.reject();
@@ -207,7 +207,7 @@
         userService
             .checkLogin()
             .then(function (user) {
-                if(user === '0') {
+                if(user === '') {
                     deferred.reject();
                     $location.url("/unauthorized");
                 } else {

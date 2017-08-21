@@ -21,14 +21,14 @@
             <tbody>
                 <tr class="row table-component-row" ng-repeat="user in model.users">
                     <td class="hidden-sm-down col-md-1 col-lg-1">{{user.role}}</td>
-                    <td class="col-xs-8 col-sm-10 col-md-2 col-lg-1">{{user.username}}</td>
+                    <td class="col-xs-8 col-sm-10 col-md-2 col-lg-1"><a href="#!/profile/{{user.username}}">{{user.username}}</a></td>
                     <td class="hidden-md-down col-lg-1">{{user.nickname}}</td>
                     <td class="hidden-md-down col-lg-1">{{user.firstName}}</td>
                     <td class="hidden-md-down col-lg-1">{{user.lastName}}</td>
                     <td class="hidden-sm-down col-md-4 col-lg-4">{{user.email}}</td>
                     <td class="hidden-sm-down col-md-3 col-lg-2">{{user.created | date: 'dd/MM/yyyy'}}</td>
                     <td class="col-xs-4 col-sm-2 col-md-2 col-lg-1">
-                        <a href="#!/admin/edit/{{user.username}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a href="#!/profile/{{user.username}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                         <a href="" ng-click="model.unregisterUser(user)"><i class="fa fa-times" id="admin-delete" aria-hidden="true"></i></a>
                     </td>
                 </tr>

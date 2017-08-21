@@ -6,11 +6,11 @@
         .module("OverHub")
         .controller("profileEditController", profileEditController);
 
-    function profileEditController($routeParams, $location, userService, currentUser) {
+    function profileEditController($routeParams, $location, userService, currentUser, profileUser) {
         var model = this;
 
         //declare functions
-        model.profileUser = currentUser;
+        model.profileUser = profileUser;
         model.updateUser = updateUser;
         model.unregisterUser = unregisterUser;
 
