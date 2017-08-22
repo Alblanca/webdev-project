@@ -7,8 +7,8 @@
         <h4 class="thread-score align-text-bottom"><span class="badge badge-info">{{model.post.score ? model.post.score : 0}}</span>
             <span class="badge badge-warning badge-pill" ng-show="model.post.isEndorsed">Coach Endorsed</span></h4></div>
         <div class="col-2">
-        <a ng-show="model.user.role === 'ADMIN' || model.user.username === model.currentUser.username" href="#!/boards/{{model.post._board}}/post/{{model.post._id}}/edit"><span class="edit-icon pull-right"><i class="fa fa-pencil" aria-hidden="true"></i></span></a>
-        <a href="" ng-click="model.savePost()"><span class="edit-icon pull-right"><i class="fa fa-star" aria-hidden="true"></i></span></a>
+        <a ng-show="model.user.role === 'ADMIN' || model.user.username === model.currUser.username" href="#!/boards/{{model.post._board}}/post/{{model.post._id}}/edit"><span class="edit-icon pull-right"><i class="fa fa-pencil" aria-hidden="true"></i></span></a>
+        <a href="" ng-click="model.savePost()" ng-show="model.currUser != null"><span class="edit-icon pull-right"><i class="fa fa-star" aria-hidden="true"></i></span></a>
         </div>
             <!--<span ng-click="model.savePost()"><a class="text-right pull-right">-->
             <!--<i class="fa fa-star" aria-hidden="true"></i></a></span>  -->

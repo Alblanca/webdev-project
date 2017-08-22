@@ -14,11 +14,11 @@
         commentModel.canEdit = false;
 
         function init() {
-            userService
-                .getCurrentUser()
-                .then(function (response) {
-                    model.currentUser = response.data;
-                });
+            // userService
+            //     .getCurrentUser()
+            //     .then(function (response) {
+            //         model.currentUser = response.data;
+            //     });
         }
         init();
 
