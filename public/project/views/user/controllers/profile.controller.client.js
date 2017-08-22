@@ -6,7 +6,7 @@
         .module("OverHub")
         .controller("profileController", profileController);
 
-    function profileController($routeParams, $location, userService, paramUser, $route, postService) {
+    function profileController($routeParams, $location, userService, paramUser, $route, postService, overwatchService) {
         var model = this;
 
         //declare functions
