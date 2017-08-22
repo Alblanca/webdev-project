@@ -109,7 +109,8 @@
                     .then(function (response) {
                         $route.reload();
                     }, function (err) {
-                        alert(err.message);
+                        console.log("bug here===");
+                        console.log(err);
                     });
                 // .then(function (response) {
                 //     var owProfile = response;
