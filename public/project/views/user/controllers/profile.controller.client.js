@@ -81,7 +81,7 @@
             userService
                     .updateUser(tempUser)
                     .then(function (response) {
-                        $route.reload();
+                        
                     }, function (err) {
                         console.log("Error on updating user data");
                         console.log(err);

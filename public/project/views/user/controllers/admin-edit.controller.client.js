@@ -89,7 +89,7 @@
                     });
             } else {
                 model.errorMessage = "Password does not match";
-                shakeAlert()
+                shakeAlert();
                 return;
             }
         }
