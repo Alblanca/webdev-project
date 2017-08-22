@@ -12,6 +12,7 @@
         this.getRawStat = findRawStat;
         this.searchUserHeroes = searchUserHeroes;
         this.searchUser = searchUser;
+        this.getTemporaryResult = getTemporaryResult;
 
         var baseApiUrl = "https://owapi.net/api/v3/u/";
         var prettify = "?format=json_pretty";
@@ -23,7 +24,7 @@
         function findAllBoards() {
             var url = "/api/boards";
             return $http.get(url)
-                .then(function (response){
+                .then(function (response) {
                     return response.data;
                 });
         }
@@ -89,18 +90,27 @@
         }
 
         function searchUser(battleTag) {
-            var reqUrl ="https://owapi.net/api/v3/u/"+ battleTag +"/stats?format=json_pretty";
+            var reqUrl = "https://owapi.net/api/v3/u/" + battleTag + "/stats?format=json_pretty";
 
             return $http.get(reqUrl);
         }
 
         function searchUserHeroes(battleTag) {
-            var reqUrl ="https://owapi.net/api/v3/u/"+ battleTag +"/heroes?format=json_pretty";
+            var reqUrl = "https://owapi.net/api/v3/u/" + battleTag + "/heroes?format=json_pretty";
 
             return $http.get(reqUrl);
         }
 
-
+        function getTemporaryResult(battleTag) {
+            var blizzardObj = {
+                battletag: battleTag,
+                skillrating: "3670",
+                tier: "Master",
+                mostPlayedHero: "Genji",
+                tierImageSource: "http://overlog.gg/img/rankIcon/Master.png",
+                heroPortraitSource: "ohi-genji"
+            };
+        }
     }
 
 })();
