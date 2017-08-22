@@ -75,13 +75,15 @@
 
         function updateOverwatchProfile(battletag) {
             var owProfile = overwatchService.getOverwatchProfile(battletag);
+            alert("Reached");
+            console.log(owProfile);
             var tempUser = model.paramUser;
             tempUser.overwatchProfile = owProfile;
 
             userService
                     .updateUser(tempUser)
                     .then(function (response) {
-                        
+
                     }, function (err) {
                         console.log("Error on updating user data");
                         console.log(err);
