@@ -6,7 +6,7 @@
         .module("OverHub")
         .controller("postListController", postListController);
 
-    function postListController($routeParams, postService) {
+    function postListController($routeParams, postService, boardService) {
         var model = this;
         model.boardId = $routeParams["boardId"];
         // model.websiteId = $routeParams["websiteId"];
@@ -18,11 +18,13 @@
                 .then(function (posts) {
                     model.posts = posts;
                 });
-            // pageService
-            //     .findPagesForWebpage(model.userId, model.websiteId)
-            //     .then(function (pages) {
-            //         model.pages = pages;
-            //     });
+
+            boardService
+                .findBoardById(model.boardId)
+                .then(function (response) {
+                    model.board = response;
+                    console.log(model.board);
+                });
         }
         init ();
 

@@ -63,7 +63,7 @@
                 controller: 'boardNewController',
                 controllerAs: "model",
                 resolve: {
-                    currentUser: checkLogin
+                    currentUser: checkAdmin
                 }
             })
             .when("/boards/:boardId/edit", {
@@ -71,7 +71,7 @@
                 controller: 'boardEditController',
                 controllerAs: "model",
                 resolve: {
-                    currentUser: checkLogin
+                    currentUser: checkAdmin
                 }
             })
             .when("/boards/:boardId", {
@@ -174,7 +174,7 @@
         userService
             .checkLogin()
             .then(function (user) {
-                if(user.username === paramUsername) {
+                if(user.username === paramUsername || user.role === "ADMIN") {
                     deferred.resolve(user);
                 } else {
                     deferred.reject();
@@ -207,7 +207,7 @@
         userService
             .checkLogin()
             .then(function (user) {
-                if(user === '0') {
+                if(user === '') {
                     deferred.reject();
                     $location.url("/unauthorized");
                 } else {
@@ -222,16 +222,11 @@
         userService
             .checkLogin()
             .then(function (user) {
-                if(user === '0') {
+                if(user === '0' || user.role != 'ADMIN') {
                     deferred.reject();
                     $location.url("/unauthorized");
                 } else {
-                    if(user.role === "ADMIN") {
-                        deferred.resolve(user);
-                    } else {
-                        deferred.reject();
-                        $location.url("/unauthorized");
-                    }
+                    deferred.resolve(user);
                 }
             });
         return deferred.promise;

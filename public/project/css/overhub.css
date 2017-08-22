@@ -154,7 +154,8 @@ p.post-tags {
 
 #adminErrorMsg {
     color: red;
-    font-size: 12px;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 #admin-delete {
@@ -434,7 +435,8 @@ h3.profile-header {
     padding: 10px;
 }
 
-.board-edit-headings {
+.board-edit-button {
+    margin-left : 10px;
 }
 
 .tags-search {

@@ -38,11 +38,13 @@
                 .then(function (response) {
                     if(response.data) {
                         model.currentUser = response.data;
+                        model.canEdit = (paramUser.username === model.currentUser.username)
+                                                || model.currentUser.role === "ADMIN";
                         model.canEdit = paramUser.username === model.currentUser.username;
                     } else {
                         model.currentUser = null;
                     }
-                })
+                });
 
             postService
                 .getSavedPosts(model.paramUser.username)

@@ -8,7 +8,6 @@
 
     function boardListController($routeParams, boardService, userService) {
         var model = this;
-        // model.userId = $routeParams["userId"];
 
         function init() {
             boardService
@@ -21,7 +20,7 @@
             userService
                 .getCurrentUser()
                 .then(function (user) {
-                   model.user = user;
+                   model.user = user.data;
                 });
 
         }
