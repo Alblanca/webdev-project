@@ -102,12 +102,12 @@
 
         function updateOverwatchProfile(battletag) {
             var owProfile = overwatchService.getTemporaryResult(battletag);
-            model.paramUser.overwatchProfile = owProfile;
+            var tempUser = model.paramUser;
+            tempUser.overwatchProfile = owProfile;
             userService
-                    .updateUser(model.paramUser._id, model.paramUser)
+                    .updateUser(model.paramUser._id, tempUser)
                     .then(function (response) {
                         $route.reload();
-                        alert("Most recent user data updated!");
                     }, function (err) {
                         alert(err.message);
                     });
