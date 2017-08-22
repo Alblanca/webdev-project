@@ -10,8 +10,6 @@
 
         this.findAllBoards = findAllBoards;
         this.getRawStat = findRawStat;
-        // this.searchUserHeroes = searchUserHeroes;
-        // this.searchUser = searchUser;
         this.searchStats = searchStats;
         this.getTemporaryResult = getTemporaryResult;
         this.getOverwatchProfile = getOverwatchProfile;
@@ -83,47 +81,8 @@
                         blizzardObj.tierImageSource = "http://overlog.gg/img/rankIcon/rank-1.png";
                     }
 
-                    console.log(blizzardObj);
                     return blizzardObj;
                 });
-        }
-                    // searchUser(battletag)
-                    // .then(function (res) {
-                    //     var skillrating = res.data.skillrating;
-                    //     var tier = res.data.tier;
-                    //     var tierUpper = tier.toUpperCase();
-                    //         searchUserHeroes(battletag)
-                    //         .then(function (res2) {
-                    //             var mostPlayedHero = res2.data.mostPlayedHero;
-                    //
-                    //             var blizzardObj =  {
-                    //                 battletag: battletag,
-                    //                 skillrating: skillrating,
-                    //                 tier: tier,
-                    //                 mostPlayedHero: mostPlayedHero,
-                    //                 tierImageSource: "http://overlog.gg/img/rankIcon/Tier" + tierUpper + ".png",
-                    //                 heroPortraitSource: "ohi-" + mostPlayedHero
-                    //             };
-                    //             console.log(blizzardObj);
-                    //             return blizzardObj;
-                    //
-                    //         });
-                    // });
-
-
-
-
-        function getTemporaryResult(battleTag) {
-            var blizzardObj = {
-                battletag: battleTag,
-                skillrating: 3670,
-                tier: "Master",
-                mostPlayedHero: "Genji",
-                tierImageSource: "http://overlog.gg/img/rankIcon/TierMaster.png",
-                heroPortraitSource: "ohi-genji"
-            };
-
-            return blizzardObj;
         }
     }
 

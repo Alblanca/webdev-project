@@ -72,68 +72,22 @@
                     model.favUsers = users.data.favUsers;
                 });
 
-
-            // model.profileUser = null;
-            // userService
-            //     .findUserByUsername(paramUsername)
-            //     .then(function (paramUser) {
-            //
-            //         model.profileUser = paramUser.data;
-            //         model.displayName = paramUser.nickname ? paramUser.nickname : paramUser.username;
-            //         if(paramUser.blizzard) {
-            //             model.isAuthenticatedUser = true;
-            //             model.battletag = paramUser.blizzard.battletag;
-            //         } else {
-            //             model.isAuthenticatedUser = false;
-            //         }
-            //         model.introduction =
-            //             (paramUser.introduction || paramUser.introduction ==='')
-            //                 ? paramUser.introduction
-            //                 : "This user has no introduction yet";
-            //
-            //         userService
-            //             .getCurrentUser()
-            //             .then(function (response) {
-            //                 model.currentUser = response.data;
-            //                 model.canEdit = paramUsername === model.currentUser.username;
-            //             });
-            //     });
-
-
         }
         init();
 
         function updateOverwatchProfile(battletag) {
-            var owProfile = overwatchService.getTemporaryResult(battletag);
+            var owProfile = overwatchService.getOverwatchProfile(battletag);
             var tempUser = model.paramUser;
             tempUser.overwatchProfile = owProfile;
-
-            console.log("This is what I am sending (ID): " + tempUser._id);
-            console.log(tempUser);
 
             userService
                     .updateUser(tempUser)
                     .then(function (response) {
                         $route.reload();
                     }, function (err) {
-                        console.log("bug here===");
+                        console.log("Error on updating user data");
                         console.log(err);
                     });
-                // .then(function (response) {
-                //     var owProfile = response;
-                //     var TempUser = {
-                //         overwatchProfile: owProfile
-                //     };
-                //
-                //     userService
-                //         .updateUser(model.paramUser._id, TempUser)
-                //         .then(function (response) {
-                //             $route.reload();
-                //             alert("Most recent user data updated!");
-                //         }, function (err) {
-                //             alert(err.message);
-                //         });
-                // });
         }
 
         function logout() {
