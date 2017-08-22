@@ -70,7 +70,7 @@
 
                     var blizzardObj = {
                         battletag: battletag,
-                        skillrating: skillrating,
+                        skillrating: skillrating ? String(skillrating) : "This user hasn't played competitive this season.",
                         tier: tier,
                         mostPlayedHero: mostPlayedHero,
                         tierImageSource: "http://overlog.gg/img/rankIcon/Tier" + tierUpper + ".png",

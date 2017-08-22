@@ -24,7 +24,7 @@ var userSchema = mongoose.Schema(
         },
         overwatchProfile: {
             battletag: String,
-            skillrating: Number,
+            skillrating: String,
             tier: String,
             mostPlayedHero: String,
             tierImageSource: String,
