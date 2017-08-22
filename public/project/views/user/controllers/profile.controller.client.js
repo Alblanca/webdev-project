@@ -101,10 +101,18 @@
         init();
 
         function updateOverwatchProfile(battletag) {
-            overwatchService
-                .getTemporaryResult(battletag);
-            $route.reload();
-            alert("MOST recent user data updated!");
+            var owProfile = overwatchService.getTemporaryResult(battletag);
+            var TempUser = {
+                        overwatchProfile: owProfile
+                    };
+            userService
+                    .updateUser(model.paramUser._id, TempUser)
+                    .then(function (response) {
+                        $route.reload();
+                        alert("Most recent user data updated!");
+                    }, function (err) {
+                        alert(err.message);
+                    });
                 // .then(function (response) {
                 //     var owProfile = response;
                 //     var TempUser = {
