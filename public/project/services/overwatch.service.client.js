@@ -11,7 +11,6 @@
         this.findAllBoards = findAllBoards;
         this.getRawStat = findRawStat;
         this.searchStats = searchStats;
-        this.getTemporaryResult = getTemporaryResult;
         this.getOverwatchProfile = getOverwatchProfile;
 
         var baseApiUrl = "https://owapi.net/api/v3/u/";

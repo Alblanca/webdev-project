@@ -16,8 +16,6 @@
         model.canEdit = false;
         model.endorseUser = endorseUser;
         model.favoriteUser = favoriteUser;
-        model.getBlizzProfileData = getBlizzProfileData;
-        model.updateUserBlizzData = updateUserBlizzData;
         model.updateOverwatchProfile = updateOverwatchProfile;
 
         function init() {
