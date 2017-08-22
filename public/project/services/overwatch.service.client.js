@@ -104,7 +104,7 @@
         function getTemporaryResult(battleTag) {
             var blizzardObj = {
                 battletag: battleTag,
-                skillrating: "3670",
+                skillrating: 3670,
                 tier: "Master",
                 mostPlayedHero: "Genji",
                 tierImageSource: "http://overlog.gg/img/rankIcon/Master.png",

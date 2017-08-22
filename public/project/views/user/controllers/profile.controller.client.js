@@ -102,9 +102,7 @@
 
         function updateOverwatchProfile(battletag) {
             var owProfile = overwatchService.getTemporaryResult(battletag);
-            var TempUser = {
-                        overwatchProfile: owProfile
-                    };
+            model.paramUser.overwatchProfile = owProfile;
             userService
                     .updateUser(model.paramUser._id, TempUser)
                     .then(function (response) {
