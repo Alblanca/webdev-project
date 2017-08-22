@@ -240,9 +240,9 @@ body {
 .pull-right {
     float:right;
 }
-h4 .profile-header {
-    opacity: .5;
-    margin-bottom: 20px;
+h4.profile-header {
+    opacity: 0.5;
+    margin-bottom: 0px;
 }
 
 .profile-header .display-2 {
@@ -281,7 +281,7 @@ h4 .profile-header {
 
 h3.profile-header {
     opacity: .7;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 
 .profile-info-elements {
