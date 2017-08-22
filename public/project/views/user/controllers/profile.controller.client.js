@@ -33,7 +33,7 @@
             model.displayName = paramUser.nickname ? paramUser.nickname : paramUser.username;
             if(paramUser.blizzard) {
                 model.battletag = paramUser.blizzard.battletag;
-                if(paramUser.overwatchProfile) {
+                if(paramUser.overwatchProfile.skillrating) {
                     model.isAuthenticatedUser = true;
                     model.playerPortrait = model.paramUser.overwatchProfile.heroPortraitSource;
                 } else {
