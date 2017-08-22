@@ -14,13 +14,7 @@
          ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],['indent','outdent'],['html'],['insertImage', 'insertLink', 'insertVideo']]"
          placeholder="HTML content goes here!">
     </div>
-
     <hr/>
-
-    <tags-input ng-model="model.post.tags" add-from-autocomplete-only="true">
-        <auto-complete source="loadTags($query)"></auto-complete>
-    </tags-input>
-
 
     <a class="btn btn-primary btn-block form-control"
             ng-click="model.createPost(model.post)">Save Changes</a>

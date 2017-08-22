@@ -16,6 +16,7 @@
         model.canEdit = false;
         model.endorseUser = endorseUser;
         model.favoriteUser = favoriteUser;
+        model.getBlizzAPI = getBlizzAPI;
 
         function init() {
             model.paramUser = paramUser;
@@ -152,6 +153,19 @@
                         }
                 });
 
+        }
+
+        function getBlizzAPI(battletag) {
+            overwatchService
+                .searchUser(battletag)
+                .then(function (res) {
+                    model.genStatsJSON = res.data;
+                    overwatchService
+                        .searchUserHeroes(battletag)
+                        .then(function (res2) {
+                        model.heroStatsJSON = res2.data;
+                        });
+                });
         }
 
     }
