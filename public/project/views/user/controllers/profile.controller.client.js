@@ -104,8 +104,11 @@
             var owProfile = overwatchService.getTemporaryResult(battletag);
             var tempUser = model.paramUser;
             tempUser.overwatchProfile = owProfile;
+
+            console.log("This is what I am sending (ID): " + tempUser._id);
+            console.log(tempUser);
             userService
-                    .updateUser(model.paramUser._id, tempUser)
+                    .updateUser(tempUser._id, tempUser)
                     .then(function (response) {
                         $route.reload();
                     }, function (err) {
