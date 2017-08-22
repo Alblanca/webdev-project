@@ -55,12 +55,10 @@ function blizzardAuthenticateProfileStrategy(req, token, refreshToken, profile, 
             battletag: profile.battletag
         };
 
-        var tempUserObj = {
-            Blizzard : newBlizzardProfile
-        };
+        loggedInUser.blizzard = newBlizzardProfile;
 
         return userModel
-            .updateUser(loggedInUser._id, tempUserObj)
+            .updateUser(loggedInUser._id, loggedInUser)
             .then(function (user) {
                 return done(null, user);
             },function (err) {
