@@ -27,10 +27,8 @@ var userSchema = mongoose.Schema(
             skillrating: String,
             tier: String,
             mostPlayedHero: String,
-            tierImageSource : String,
-            heroPortraitSource : String
-            // tierImageSource: {type : String, default : "http://overlog.gg/img/rankIcon/rank-1.png"},
-            // heroPortraitSource: {type : String, default : "ohi-bastion"}
+            tierImageSource: {type : String, default : "http://overlog.gg/img/rankIcon/rank-1.png"},
+            heroPortraitSource: {type : String, default : "ohi-bastion"}
         },
         isEndorsed: {type: Boolean, default: false},
         favUsers : [{type: mongoose.Schema.Types.ObjectId, ref:"UserModel"}]
