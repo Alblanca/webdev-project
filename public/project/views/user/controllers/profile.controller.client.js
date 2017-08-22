@@ -21,11 +21,13 @@
 
         function init() {
             model.paramUser = paramUser;
+            model.playerPortrait = "ohi-bastion";
             model.displayName = paramUser.nickname ? paramUser.nickname : paramUser.username;
             if(paramUser.blizzard) {
                 model.battletag = paramUser.blizzard.battletag;
                 if(paramUser.overwatchProfile) {
                     model.isAuthenticatedUser = true;
+                    model.playerPortrait = model.paramUser.overwatchProfile.heroPortraitSource;
                 } else {
                     updateOverwatchProfile(paramUser.blizzard.battletag);
                 }
