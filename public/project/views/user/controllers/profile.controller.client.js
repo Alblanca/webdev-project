@@ -74,20 +74,23 @@
         init();
 
         function updateOverwatchProfile(battletag) {
-            var owProfile = overwatchService.getOverwatchProfile(battletag);
-            alert("Reached");
-            console.log(owProfile);
             var tempUser = model.paramUser;
-            tempUser.overwatchProfile = owProfile;
+            
+            overwatchService
+                .getOverwatchProfile(battletag)
+                .then(function (_profile) {
+                    tempUser.overwatchProfile = _profile;
+                    console.log("CONSOLE 1");
+                    console.log(_profile);
+                    userService
+                        .updateUser(tempUser)
+                        .then(function (response) {
 
-            userService
-                    .updateUser(tempUser)
-                    .then(function (response) {
-
-                    }, function (err) {
-                        console.log("Error on updating user data");
-                        console.log(err);
-                    });
+                        }, function (err) {
+                            console.log("Error on updating user data");
+                            console.log(err);
+                        });
+                });
         }
 
         function logout() {

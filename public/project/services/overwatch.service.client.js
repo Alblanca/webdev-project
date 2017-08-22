@@ -56,34 +56,34 @@
         }
 
         function getOverwatchProfile(battletag) {
-            searchStats(battletag)
-                .then(function (res) {
-                    var skillrating = res.data.skillrating;
-                    var tier = res.data.tier;
-                    if (tier != null) {
-                        var tierUpper = tier[0].toUpperCase() + tier.slice(1);
-                    } else {
-                        tierUpper = "";
-                    }
-                    var mostPlayedHero = res.data.mostPlayedHero;
+            return searchStats(battletag)
+                    .then(function (res) {
+                        var skillrating = res.data.skillrating;
+                        var tier = res.data.tier;
+                        if (tier != null) {
+                            var tierUpper = tier[0].toUpperCase() + tier.slice(1);
+                        } else {
+                            tierUpper = "";
+                        }
+                        var mostPlayedHero = res.data.mostPlayedHero;
 
-                    var blizzardObj = {
-                        battletag: battletag,
-                        skillrating: skillrating ? String(skillrating) : "This user hasn't played competitive this season.",
-                        tier: tier,
-                        mostPlayedHero: mostPlayedHero,
-                        tierImageSource: "http://overlog.gg/img/rankIcon/Tier" + tierUpper + ".png",
-                        heroPortraitSource: "ohi-" + mostPlayedHero
-                    };
+                        var blizzardObj = {
+                            battletag: battletag,
+                            skillrating: skillrating ? String(skillrating) : "This user hasn't played competitive this season.",
+                            tier: tier,
+                            mostPlayedHero: mostPlayedHero,
+                            tierImageSource: "http://overlog.gg/img/rankIcon/Tier" + tierUpper + ".png",
+                            heroPortraitSource: "ohi-" + mostPlayedHero
+                        };
 
-                    if (tier === null) {
-                        blizzardObj.tierImageSource = "http://overlog.gg/img/rankIcon/rank-1.png";
-                    }
+                        if (tier === null) {
+                            blizzardObj.tierImageSource = "http://overlog.gg/img/rankIcon/rank-1.png";
+                        }
 
-                    console.log("ABout to send");
-                    console.log(blizzardObj);
-                    return blizzardObj;
-                });
+                        console.log("ABout to send");
+                        console.log(blizzardObj);
+                        return blizzardObj;
+                    });
         }
     }
 
