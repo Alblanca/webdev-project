@@ -135,16 +135,12 @@
         }
 
         function favoriteUser() {
-                console.log(model.currentUser.username);
                 userService
                     .getFavUsers(model.currentUser.username)
                     .then(function (users) {
-                        console.log(users.data.favUsers);
                         model.usrInFaves = false;
                         $.each(users.data.favUsers, function(i,obj) {
-                            console.log(model.paramUser.name);
-                            if (obj.name === model.paramUser.name) {
-                                console.log(obj.name);
+                            if (obj._id === model.paramUser._id) {
                                 model.usrInFaves = true;
                                 return false;}
                         });
