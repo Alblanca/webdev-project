@@ -80,6 +80,8 @@
                         blizzardObj.tierImageSource = "http://overlog.gg/img/rankIcon/rank-1.png";
                     }
 
+                    console.log("ABout to send");
+                    console.log(blizzardObj);
                     return blizzardObj;
                 });
         }
