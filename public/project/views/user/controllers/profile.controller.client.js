@@ -17,13 +17,18 @@
         model.endorseUser = endorseUser;
         model.favoriteUser = favoriteUser;
         model.getBlizzAPI = getBlizzAPI;
+        model.updateOverwatchProfile = updateOverwatchProfile;
 
         function init() {
             model.paramUser = paramUser;
             model.displayName = paramUser.nickname ? paramUser.nickname : paramUser.username;
             if(paramUser.blizzard) {
-                model.isAuthenticatedUser = true;
                 model.battletag = paramUser.blizzard.battletag;
+                if(paramUser.overwatchProfile) {
+                    model.isAuthenticatedUser = true;
+                } else {
+                    updateOverwatchProfile(paramUser.blizzard.battletag);
+                }
             } else {
                 model.isAuthenticatedUser = false;
             }
@@ -95,11 +100,25 @@
         }
         init();
 
-        function checkFaved() {
+        function updateOverwatchProfile(battletag) {
+            overwatchService
+                .getTemporaryResult(battletag)
+                .then(function (response) {
+                    var owProfile = response;
+                    var TempUser = {
+                        overwatchProfile: owProfile
+                    };
 
+                    userService
+                        .updateUser(model.paramUser._id, TempUser)
+                        .then(function (response) {
+                            $route.reload();
+                            alert("Most recent user data updated!");
+                        }, function (err) {
+                            alert(err.message);
+                        });
+                });
         }
-
-        checkFaved();
 
         function logout() {
             userService

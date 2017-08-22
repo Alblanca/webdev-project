@@ -20,8 +20,11 @@ var userSchema = mongoose.Schema(
             id: String,
             token: String,
             provider: String,
+            battletag: String
+        },
+        overwatchProfile: {
             battletag: String,
-            skillrating: String,
+            skillrating: Number,
             tier: String,
             mostPlayedHero: String,
             tierImageSource: String,

@@ -16,7 +16,7 @@
 
             </div>
             <div class="row" class="profile-battlenet" ng-show="model.isAuthenticatedUser">
-                    <h3 class="profile-header"><img src="http://overlog.gg/img/rankIcon/TierTop500.png" height="30" width="40">
+                    <h3 class="profile-header"><img src="{{model.paramUser.overwatchProfile.tierImageSource}}" height="30" width="40">
                         {{model.battletag}} <i class="fa fa-check-circle" aria-hidden="true" style="color: green"></i><span class="badge badge-sm badge-warning badge-pill" ng-show="model.paramUser.isEndorsed">Coach Endorsed</span> </h3>
                 <div>
                     <a ng-show="model.currentUser.role === 'COACH' && !model.paramUser.isEndorsed" class="btn btn-sm btn-outline-info endorse-button-lg pull-right" data-toggle="button" aria-pressed="false"  ng-click="model.endorseUser()">
