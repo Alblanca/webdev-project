@@ -13,6 +13,7 @@
         this.searchUserHeroes = searchUserHeroes;
         this.searchUser = searchUser;
         this.getTemporaryResult = getTemporaryResult;
+        this.getOverwatchProfile = getOverwatchProfile;
 
         var baseApiUrl = "https://owapi.net/api/v3/u/";
         var prettify = "?format=json_pretty";
@@ -43,62 +44,53 @@
             return btg.split('#').join('-');
         }
 
-        function searchUser(searchText) {
-            var apiText = null;
-            apiText = searchText.replace('#', '-');
+        function getOverwatchProfile(battletag) {
+                overwatchService
+                    .searchUser(battletag)
+                    .then(function (res) {
+                        var skillrating = res.data.skillrating;
+                        var tier = res.data.tier;
+                        var tierUpper = tier.toUpperCase();
+                        overwatchService
+                            .searchUserHeroes(battletag)
+                            .then(function (res2) {
+                                var mostPlayedHero = res2.data.mostPlayedHero;
 
-            testService
-                .searchUser(apiText)
-                .then(function (res) {
-                    var playa = JSON.stringify(res.data, null, 2);
-                    model.searchData = playa;
+                                var blizzardObj =  {
+                                    battletag: battletag,
+                                    skillrating: skillrating,
+                                    tier: tier,
+                                    mostPlayedHero: mostPlayedHero,
+                                    tierImageSource: "http://overlog.gg/img/rankIcon/" + tierUpper + ".png",
+                                    heroPortraitSource: "ohi-" + mostPlayedHero
+                                };
 
-                    model.SR = res.data.us.stats.competitive.overall_stats.comprank;
-                    model.compRank = res.data.us.stats.competitive.overall_stats.tier;
+                                return blizzardObj;
 
-
-                });
-        }
-
-        function searchUserHeroes(searchText) {
-            var apiText = null;
-            apiText = searchText.replace('#', '-');
-
-            testService
-                .searchUserHeroes(apiText)
-                .then(function (res) {
-                    var playa = JSON.stringify(res.data, null, 2);
-                    model.searchData = playa;
-
-                    var heroPlaytimes = res.data.us.heroes.playtime.quickplay;
-
-                    var maxProp = null;
-                    var maxValue = -1;
-                    for (var prop in heroPlaytimes) {
-                        if (heroPlaytimes.hasOwnProperty(prop)) {
-                            var value = heroPlaytimes[prop];
-                            if (value > maxValue) {
-                                maxProp = prop;
-                                maxValue = value;
-                            }
-                        }
-                    }
-
-                    model.mostPlayedHero = maxProp;
-
-                });
+                            });
+                    });
         }
 
         function searchUser(battleTag) {
-            var reqUrl = "https://owapi.net/api/v3/u/" + battleTag + "/stats?format=json_pretty";
+            var fixedBattleTag = parseBattleTag(battleTag);
 
-            return $http.get(reqUrl);
+            var reqUrl = "https://owapi.net/api/v3/u/" + fixedBattleTag + "/stats?format=json_pretty";
+            return $http.get(reqUrl)
+                .then(function (jsonStats) {
+                var sreqUrl = "/api/parse/stats";
+                    return $http.put(sreqUrl, jsonStats);
+                });
         }
 
         function searchUserHeroes(battleTag) {
-            var reqUrl = "https://owapi.net/api/v3/u/" + battleTag + "/heroes?format=json_pretty";
+            var fixedBattleTag = parseBattleTag(battleTag);
 
-            return $http.get(reqUrl);
+            var reqUrl = "https://owapi.net/api/v3/u/" + fixedBattleTag + "/heroes?format=json_pretty";
+            return $http.get(reqUrl)
+                .then(function (jsonStatsHero) {
+                    var sreqUrl = "/api/parse/statshero";
+                    return $http.put(sreqUrl, jsonStatsHero);
+                });
         }
 
         function getTemporaryResult(battleTag) {

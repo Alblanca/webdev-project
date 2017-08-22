@@ -16,7 +16,8 @@
         model.canEdit = false;
         model.endorseUser = endorseUser;
         model.favoriteUser = favoriteUser;
-        model.getBlizzAPI = getBlizzAPI;
+        model.getBlizzProfileData = getBlizzProfileData;
+        model.updateUserBlizzData = updateUserBlizzData;
 
         function init() {
             model.paramUser = paramUser;
@@ -40,7 +41,7 @@
                         model.currentUser = response.data;
                         model.canEdit = (paramUser.username === model.currentUser.username)
                                                 || model.currentUser.role === "ADMIN";
-                        model.canEdit = paramUser.username === model.currentUser.username;
+                        //model.canEdit = paramUser.username === model.currentUser.username;
                     } else {
                         model.currentUser = null;
                     }
@@ -157,19 +158,6 @@
                         }
                 });
 
-        }
-
-        function getBlizzAPI(battletag) {
-            overwatchService
-                .searchUser(battletag)
-                .then(function (res) {
-                    model.genStatsJSON = res.data;
-                    overwatchService
-                        .searchUserHeroes(battletag)
-                        .then(function (res2) {
-                        model.heroStatsJSON = res2.data;
-                        });
-                });
         }
 
     }

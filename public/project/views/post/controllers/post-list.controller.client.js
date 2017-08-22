@@ -23,7 +23,6 @@
                 .findBoardById(model.boardId)
                 .then(function (response) {
                     model.board = response;
-                    console.log(model.board);
                 });
         }
         init ();

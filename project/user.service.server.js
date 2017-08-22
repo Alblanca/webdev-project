@@ -206,7 +206,6 @@ function getFavUsers(req, res) {
     userModel
         .getFavUsers(username)
         .then(function (response) {
-            console.log(response);
             res.send(response);
             return;
         }, function (err) {

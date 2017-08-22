@@ -25,7 +25,6 @@
                 .then(function (post) {
                     model.post = post;
                     model.comments = model.post.comments;
-                    console.log(model.comments);
                     userService
                         .getCurrentUser()
                         .then(function (user) {

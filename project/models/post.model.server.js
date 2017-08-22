@@ -216,16 +216,13 @@ function editComment(comment) {
 function deleteComment(commentId, postId) {
     return postModel.findPostByIdNoUsr(postId)
                 .then(function (post) {
-                    console.log("!!!!" + commentId);
                     // for (comment in post.comments) {
                     for (var idx = 0; idx <= post.comments.length; idx ++) {
-                        console.log(post.comments[idx]._id);
                         if (post.comments[idx]._id == commentId) {
                             var index = idx;
                             break;
                         }
                     }
-                    console.log(index);
                     post.comments.splice(index, 1);
                     post.save();
                 });

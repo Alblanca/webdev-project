@@ -36,7 +36,6 @@ function favoriteUser(username, toFav) {
         .findUserByUsername(username)
         .then(function (user) {
             user.favUsers.push(toFav);
-            console.log(user.favUsers);
             return user.save();
         });
 }

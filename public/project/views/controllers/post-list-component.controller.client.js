@@ -22,11 +22,11 @@
                 .findPostsByBoardId(boardId)
                 .then(function (board) {
                     model.posts = board.posts;
-                    console.log(model.posts);
                 });
         }
         // function getPostsByBoardId(boardId) {
         //
+        // }
         // }
 
         // function logout() {
