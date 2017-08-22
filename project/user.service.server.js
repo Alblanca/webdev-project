@@ -43,31 +43,32 @@ passport.deserializeUser(deserializeUser);
 
 //new strategy for authentication ONLY
 function blizzardAuthenticateProfileStrategy(req, token, refreshToken, profile, done) {
-    userModel
-        .findUserByBlizzardId(profile.id)
-        .then(function (user) {
-            if(user) {
+    var loggedInUser = req.user;
+    if(!loggedInUser) {
+        return done({message: "Current User Logged in for current session. Internal Server Error"});
+    } else {
+        //Update current user's blizzard's profile
+        var newBlizzardProfile = {
+            id: profile.id,
+            token: token,
+            provider: profile.provider,
+            battletag: profile.battletag
+        };
+
+        var tempUserObj = {
+            Blizzard : newBlizzardProfile
+        };
+
+        return userModel
+            .updateUser(currentUser._id, tempUserObj)
+            .then(function (user) {
                 return done(null, user);
-            } else {
-                var newBlizzardUser = {
-                    username: profile.battletag.split('#').join('-'),
-                    blizzard: {
-                        id: profile.id,
-                        token: token,
-                        provider: profile.provider,
-                        battletag: profile.battletag
-                    }
-                }
-            }
-            return userModel.createUser(newBlizzardUser);
-        }, function (err) {
-            if(err) { return done(err); }
-        })
-        .then(function (user) {
-            return done(null, user);
-        }, function (err) {
-            if(err) { return done(err); }
-        });
+            },function (err) {
+                if (err) { return done(err) ;}
+            });
+    }
+    //TODO userModel.findUserByBlizzardId and INVALIDATE their profile.
+
 }
 
 function blizzardStrategy(token, refreshToken, profile, done) {
