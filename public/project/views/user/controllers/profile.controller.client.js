@@ -108,7 +108,7 @@
             console.log("This is what I am sending (ID): " + tempUser._id);
             console.log(tempUser);
             userService
-                    .updateUser(tempUser._id, tempUser)
+                    .updateUser(tempUser)
                     .then(function (response) {
                         $route.reload();
                     }, function (err) {
