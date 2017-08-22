@@ -10,8 +10,9 @@
 
         this.findAllBoards = findAllBoards;
         this.getRawStat = findRawStat;
-        this.searchUserHeroes = searchUserHeroes;
-        this.searchUser = searchUser;
+        // this.searchUserHeroes = searchUserHeroes;
+        // this.searchUser = searchUser;
+        this.searchStats = searchStats;
         this.getTemporaryResult = getTemporaryResult;
         this.getOverwatchProfile = getOverwatchProfile;
 
@@ -44,54 +45,73 @@
             return btg.split('#').join('-');
         }
 
-        function getOverwatchProfile(battletag) {
-                overwatchService
-                    .searchUser(battletag)
-                    .then(function (res) {
-                        var skillrating = res.data.skillrating;
-                        var tier = res.data.tier;
-                        var tierUpper = tier.toUpperCase();
-                        overwatchService
-                            .searchUserHeroes(battletag)
-                            .then(function (res2) {
-                                var mostPlayedHero = res2.data.mostPlayedHero;
+        function searchStats(battletag) {
+            var fixedBattleTag = parseBattleTag(battletag);
 
-                                var blizzardObj =  {
-                                    battletag: battletag,
-                                    skillrating: skillrating,
-                                    tier: tier,
-                                    mostPlayedHero: mostPlayedHero,
-                                    tierImageSource: "http://overlog.gg/img/rankIcon/" + tierUpper + ".png",
-                                    heroPortraitSource: "ohi-" + mostPlayedHero
-                                };
-
-                                return blizzardObj;
-
-                            });
-                    });
-        }
-
-        function searchUser(battleTag) {
-            var fixedBattleTag = parseBattleTag(battleTag);
-
-            var reqUrl = "https://owapi.net/api/v3/u/" + fixedBattleTag + "/stats?format=json_pretty";
+            var reqUrl = "https://owapi.net/api/v3/u/" + fixedBattleTag + "/blob?format=json_pretty";
             return $http.get(reqUrl)
                 .then(function (jsonStats) {
-                var sreqUrl = "/api/parse/stats";
+                    var sreqUrl = "/api/parse/stats";
                     return $http.put(sreqUrl, jsonStats);
+                }, function (err) {
+                    return $http.put();
                 });
         }
 
-        function searchUserHeroes(battleTag) {
-            var fixedBattleTag = parseBattleTag(battleTag);
+        function getOverwatchProfile(battletag) {
+            searchStats(battletag)
+                .then(function (res) {
+                    var skillrating = res.data.skillrating;
+                    var tier = res.data.tier;
+                    if (tier != null) {
+                        var tierUpper = tier[0].toUpperCase() + tier.slice(1);
+                    } else {
+                        tierUpper = "";
+                    }
+                    var mostPlayedHero = res.data.mostPlayedHero;
 
-            var reqUrl = "https://owapi.net/api/v3/u/" + fixedBattleTag + "/heroes?format=json_pretty";
-            return $http.get(reqUrl)
-                .then(function (jsonStatsHero) {
-                    var sreqUrl = "/api/parse/statshero";
-                    return $http.put(sreqUrl, jsonStatsHero);
+                    var blizzardObj = {
+                        battletag: battletag,
+                        skillrating: skillrating,
+                        tier: tier,
+                        mostPlayedHero: mostPlayedHero,
+                        tierImageSource: "http://overlog.gg/img/rankIcon/Tier" + tierUpper + ".png",
+                        heroPortraitSource: "ohi-" + mostPlayedHero
+                    };
+
+                    if (tier === null) {
+                        blizzardObj.tierImageSource = "http://overlog.gg/img/rankIcon/rank-1.png";
+                    }
+
+                    console.log(blizzardObj);
+                    return blizzardObj;
                 });
         }
+                    // searchUser(battletag)
+                    // .then(function (res) {
+                    //     var skillrating = res.data.skillrating;
+                    //     var tier = res.data.tier;
+                    //     var tierUpper = tier.toUpperCase();
+                    //         searchUserHeroes(battletag)
+                    //         .then(function (res2) {
+                    //             var mostPlayedHero = res2.data.mostPlayedHero;
+                    //
+                    //             var blizzardObj =  {
+                    //                 battletag: battletag,
+                    //                 skillrating: skillrating,
+                    //                 tier: tier,
+                    //                 mostPlayedHero: mostPlayedHero,
+                    //                 tierImageSource: "http://overlog.gg/img/rankIcon/Tier" + tierUpper + ".png",
+                    //                 heroPortraitSource: "ohi-" + mostPlayedHero
+                    //             };
+                    //             console.log(blizzardObj);
+                    //             return blizzardObj;
+                    //
+                    //         });
+                    // });
+
+
+
 
         function getTemporaryResult(battleTag) {
             var blizzardObj = {

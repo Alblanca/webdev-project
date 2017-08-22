@@ -6,5 +6,6 @@ require("./user.service.server.js");
 require("./board.service.server.js");
 require("./post.service.server.js");
 require("./comment.service.server.js");
+require("./overwatch.service.server");
 
 var db = require("./models/database");

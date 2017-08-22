@@ -6,31 +6,20 @@
         .module("OverHub")
         .controller("playerSearchController", playerSearchController);
 
-    function playerSearchController($location, testService, $rootScope) {
+    function playerSearchController($location, $rootScope, overwatchService) {
         var model = this;
-        model.login = login;
-        model.searchUser = searchUser;
-        model.searchUserHeroes = searchUserHeroes;
+        model.test = test;
 
         function init() {
+            return overwatchService
+                .getOverwatchProfile("Alblanca#1581");
 
         }
         init();
 
+        function test() {
 
-
-
-
-        function login(user) {
-            userService.findUserByUsernameAndPassword(user.username, user.password)
-                .then(function (_user) {
-                    if (_user === null) {
-                        model.errorMessage = "User not found";
-                    } else {
-                        $rootScope.currentUser = _user;
-                        $location.url("profile/" + _user._id);
-                    }
-                });
         }
+
     }
 })();
