@@ -15,7 +15,7 @@
     </div>
     <div class="row">
         <p class="post-info">by <a href="#!/profile/{{model.user.username}}">{{model.user.nickname}}</a>
-            <img src="https://vignette4.wikia.nocookie.net/overwatch/images/8/8f/Competitive_Bronze_Icon.png/revision/latest?cb=20161122023401" width="20" height="20">
+            <img src="{{model.rankIcon}}" width="25" height="25">
             {{model.post.dateCreated | date: 'dd/MM/yyyy'}}</p>
     </div>
     <div class="post-content-container rounded">

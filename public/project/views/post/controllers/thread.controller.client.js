@@ -29,6 +29,11 @@
                         .getCurrentUser()
                         .then(function (user) {
                             model.currUser = user.data;
+                            if (model.currUser.overwatchProfile) {
+                                model.rankIcon = model.currUser.overwatchProfile.tierImageSource;
+                            } else {
+                                model.rankIcon = "http://overlog.gg/img/rankIcon/rank-1.png";
+                            }
                             model.voterInfo = getVoterInfo(model.post.votes);
                             updateButtonUI();
                         });
@@ -38,6 +43,8 @@
                 .then(function (post) {
                     model.user = post._user;
                 });
+
+
 
         }
         init ();
