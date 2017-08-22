@@ -26,6 +26,7 @@
                 model.battletag = paramUser.blizzard.battletag;
                 if(paramUser.overwatchProfile) {
                     model.isAuthenticatedUser = true;
+                    setProfileIcon();
                 } else {
                     updateOverwatchProfile(paramUser.blizzard.battletag);
                 }
@@ -202,6 +203,7 @@
                         });
                 });
         }
+
 
     }
 

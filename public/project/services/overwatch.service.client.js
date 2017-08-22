@@ -107,7 +107,7 @@
                 skillrating: 3670,
                 tier: "Master",
                 mostPlayedHero: "Genji",
-                tierImageSource: "http://overlog.gg/img/rankIcon/Master.png",
+                tierImageSource: "http://overlog.gg/img/rankIcon/TierMaster.png",
                 heroPortraitSource: "ohi-genji"
             };
 
