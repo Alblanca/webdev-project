@@ -20,7 +20,12 @@ var userSchema = mongoose.Schema(
             id: String,
             token: String,
             provider: String,
-            battletag: String
+            battletag: String,
+            skillrating: String,
+            tier: String,
+            mostPlayedHero: String,
+            tierImageSource: String,
+            heroPortraitSource: String
         },
         isEndorsed: {type: Boolean, default: false},
         favUsers : [{type: mongoose.Schema.Types.ObjectId, ref:"UserModel"}]
