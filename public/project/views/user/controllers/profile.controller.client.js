@@ -104,7 +104,7 @@
             var owProfile = overwatchService.getTemporaryResult(battletag);
             model.paramUser.overwatchProfile = owProfile;
             userService
-                    .updateUser(model.paramUser._id, TempUser)
+                    .updateUser(model.paramUser._id, model.paramUser)
                     .then(function (response) {
                         $route.reload();
                         alert("Most recent user data updated!");
