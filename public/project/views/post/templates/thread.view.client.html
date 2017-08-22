@@ -20,8 +20,6 @@
     </div>
     <div class="post-content-container rounded">
         <div ta-bind ng-model="model.post.content"></div>
-        <hr/>
-        <p class="post-tags rounded">{{model.post.tags}}</p>
     </div>
     <div class="row vote-container">
         <div class="btn-group" role="group">
@@ -32,7 +30,7 @@
                 class="btn btn-outline-danger vote-button-lg " data-toggle="button" aria-pressed="false"  href="#">
             Downvote Post <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></button>
         </div>
-        <a ng-show="model.user.role === 'COACH' && !model.post.isEndorsed" class="btn btn-outline-info endorse-button-lg" data-toggle="button" aria-pressed="false"  ng-click="model.endorsePost()">
+        <a ng-show="model.currUser.role === 'COACH' && !model.post.isEndorsed" class="btn btn-outline-info endorse-button-lg" data-toggle="button" aria-pressed="false"  ng-click="model.endorsePost()">
             Endorse Post <i class="fa fa-check-circle" aria-hidden="true"></i></a>
     </div>
 </div>
