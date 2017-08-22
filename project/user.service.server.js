@@ -60,7 +60,7 @@ function blizzardAuthenticateProfileStrategy(req, token, refreshToken, profile, 
         };
 
         return userModel
-            .updateUser(currentUser._id, tempUserObj)
+            .updateUser(loggedInUser._id, tempUserObj)
             .then(function (user) {
                 return done(null, user);
             },function (err) {
