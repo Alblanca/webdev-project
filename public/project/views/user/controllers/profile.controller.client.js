@@ -6,7 +6,7 @@
         .module("OverHub")
         .controller("profileController", profileController);
 
-    function profileController($routeParams, $location, userService, paramUser, $route, postService, overwatchService) {
+    function profileController($location, userService, paramUser, $route, postService, overwatchService) {
         var model = this;
 
         //declare functions
@@ -18,6 +18,15 @@
         model.favoriteUser = favoriteUser;
         model.updateOverwatchProfile = updateOverwatchProfile;
 
+        var loadingText = $("<div>");
+        loadingText.css({
+            "color"         : "#202020",
+            "font-family"   : "Raleway",
+            "font-size"     : "30pt",
+            "font-weight"   : "bold",
+            "margin-top"    : "200px"
+        });
+
         function init() {
             model.paramUser = paramUser;
             model.playerPortrait = "ohi-bastion";
@@ -28,6 +37,9 @@
                     model.isAuthenticatedUser = true;
                     model.playerPortrait = model.paramUser.overwatchProfile.heroPortraitSource;
                 } else {
+                    //loading starts
+                    $.LoadingOverlay("show", {custom : loadingText});
+                    loadingText.text("Fetching Overwatch Stats...");
                     updateOverwatchProfile(paramUser.blizzard.battletag);
                 }
             } else {
@@ -75,17 +87,18 @@
 
         function updateOverwatchProfile(battletag) {
             var tempUser = model.paramUser;
-            
+
             overwatchService
                 .getOverwatchProfile(battletag)
                 .then(function (_profile) {
+                    loadingText.text("Fetch Successful. Updating Profile...");
                     tempUser.overwatchProfile = _profile;
-                    console.log("CONSOLE 1");
-                    console.log(_profile);
                     userService
                         .updateUser(tempUser)
                         .then(function (response) {
-
+                            loadingText.text("Profile Updated! Refreshing Page...");
+                            $.LoadingOverlay("hide");
+                            $route.reload();
                         }, function (err) {
                             console.log("Error on updating user data");
                             console.log(err);
@@ -150,7 +163,6 @@
                 });
 
         }
-
     }
 
 })();
