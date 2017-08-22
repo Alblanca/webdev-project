@@ -7,17 +7,18 @@
         .module("OverHub")
         .controller("commentComponentController", commentComponentController);
 
-    function commentComponentController($window, $location, postService) {
+    function commentComponentController($window, $location, postService, userService) {
         var commentModel = this;
         commentModel.editing = false;
         commentModel.editClicked = editClicked;
+        commentModel.canEdit = false;
 
         function init() {
-            // userService
-            //     .getCurrentUser()
-            //     .then(function (response) {
-            //         model.currentUser = response.data;
-            //     });
+            userService
+                .getCurrentUser()
+                .then(function (response) {
+                    model.currentUser = response.data;
+                });
         }
         init();
 

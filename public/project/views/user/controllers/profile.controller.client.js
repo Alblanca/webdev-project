@@ -135,12 +135,18 @@
         }
 
         function favoriteUser() {
+                console.log(model.currentUser.username);
                 userService
                     .getFavUsers(model.currentUser.username)
                     .then(function (users) {
+                        console.log(users.data.favUsers);
                         model.usrInFaves = false;
                         $.each(users.data.favUsers, function(i,obj) {
-                            if (obj.name === model.paramUser.name) { model.usrInFaves = true; return false;}
+                            console.log(model.paramUser.name);
+                            if (obj.name === model.paramUser.name) {
+                                console.log(obj.name);
+                                model.usrInFaves = true;
+                                return false;}
                         });
                     }).then(function (res) {
                         if (!model.usrInFaves) {
