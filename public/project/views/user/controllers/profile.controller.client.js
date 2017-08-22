@@ -21,7 +21,7 @@
         var loadingText = $("<div>");
         loadingText.css({
             "color"         : "#202020",
-            "font-family"   : "sans-serif",
+            "font-family"   : "Raleway",
             "font-size"     : "30pt",
             "font-weight"   : "bold",
             "margin-top"    : "200px"
@@ -39,7 +39,7 @@
                 } else {
                     //loading starts
                     $.LoadingOverlay("show", {custom : loadingText});
-                    loadingText.text("Profile Outdated. Updating user profile...");
+                    loadingText.text("Fetching Overwatch Stats...");
                     updateOverwatchProfile(paramUser.blizzard.battletag);
                 }
             } else {
@@ -91,7 +91,7 @@
             overwatchService
                 .getOverwatchProfile(battletag)
                 .then(function (_profile) {
-                    loadingText.text("Overwatch stats fetched. Updating Profile...");
+                    loadingText.text("Fetch Successful. Updating Profile...");
                     tempUser.overwatchProfile = _profile;
                     userService
                         .updateUser(tempUser)
