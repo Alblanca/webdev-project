@@ -7,7 +7,7 @@
     <div class="media">
         <span class="{{comment._user.overwatchProfile.heroPortraitSource}} comment-icon"></span>
         <div class="media-body">
-            <a href="#!/profile/{{comment._user.username}}">{{comment._user.nickname}}</a><img src="{{comment._user.overwatchProfile.tierImageSource}}" width="25" height="25">    ({{comment.dateCreated | date: 'dd/MM/yyyy'}})
+            <a href="#!/profile/{{comment._user.username}}">{{comment._user.nickname}}</a><img src="{{comment._user.overwatchProfile.tierImageSource}}" width="25" height="19">    ({{comment.dateCreated | date: 'dd/MM/yyyy'}})
             <p>{{comment.content}}</p>
         </div>
     </div>
@@ -18,9 +18,9 @@
         <a href="" ng-show="(model.currUser.role === 'ADMIN' && commentModel.editing) || comment._user.username === model.currUser.username" ng-click="model.editComment(comment)"><span class="edit-icon-comment"><i class="fa fa-check" aria-hidden="true"></i></span></a>
         <a href="" ng-show="(model.currUser.role === 'ADMIN' && !commentModel.editing) || comment._user.username === model.currUser.username" ng-click="model.deleteComment(comment._id)"><i class="fa fa-times" aria-hidden="true"></i></span></a>
         <div class="media">
-            <span class="ohi-ana comment-icon"></span>
+            <span class="{{comment._user.overwatchProfile.heroPortraitSource}} comment-icon"></span>
             <div class="media-body">
-                <p>{{comment._user.nickname}}    ({{comment.dateCreated | date: 'dd/MM/yyyy'}})</p>
+                <p>{{comment._user.nickname}}<img src="{{comment._user.overwatchProfile.tierImageSource}}" width="25" height="19">     ({{comment.dateCreated | date: 'dd/MM/yyyy'}})</p>
                 <input type="text"
                        class="element-margin form-control media-body"
                        ng-model="comment.content">
