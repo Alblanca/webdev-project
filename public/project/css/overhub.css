@@ -240,6 +240,10 @@ body {
 .pull-right {
     float:right;
 }
+h4.profile-header {
+    margin-bottom: 0px;
+    color: #8b8f96;
+}
 
 .profile-header .display-2 {
     font-size: 2em;
@@ -276,9 +280,9 @@ body {
 }
 
 h3.profile-header {
-    text-transform: lowercase;
     opacity: .7;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
+    margin-left: 15px;
 }
 
 .profile-info-elements {

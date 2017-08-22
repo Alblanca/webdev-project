@@ -3,7 +3,7 @@
         <div class="media">
         <!--<img class="d-flex mr-3 profile-icon" src="http://dcmjs.com/overwatch/images/icon/OW-icon_genji.svg"-->
              <!--width="90" height="90" alt="genji">-->
-            <span class="ohi-ana profile-icon img-responsive"></span>
+            <span class="profile-icon img-responsive" ng-class="model.playerPortrait"></span>
         <div class="media-body">
             <div class="row">
                 <h1 class="profile-header display-2">{{model.displayName}}</h1></br>
@@ -16,11 +16,14 @@
 
             </div>
             <div class="row" class="profile-battlenet" ng-show="model.isAuthenticatedUser">
-                    <h3 class="profile-header"><img src="http://overlog.gg/img/rankIcon/TierTop500.png" height="30" width="40">
+                    <h3 class="profile-header">
                         {{model.battletag}} <i class="fa fa-check-circle" aria-hidden="true" style="color: green"></i><span class="badge badge-sm badge-warning badge-pill" ng-show="model.paramUser.isEndorsed">Coach Endorsed</span> </h3>
                 <div>
                     <a ng-show="model.currentUser.role === 'COACH' && !model.paramUser.isEndorsed" class="btn btn-sm btn-outline-info endorse-button-lg pull-right" data-toggle="button" aria-pressed="false"  ng-click="model.endorseUser()">
                         Endorse User <i class="fa fa-check-circle" aria-hidden="true"></i></a>
+                </div>
+                <div class="col-12">
+                    <h4 class="profile-header">SR: {{model.paramUser.overwatchProfile.skillrating}} <img src="{{model.paramUser.overwatchProfile.tierImageSource}}" height="30" width="40"></h4>
                 </div>
             </div>
             <div class="row" class="profile-battlenet" ng-show="(!model.canEdit && !model.isAuthenticatedUser)">
@@ -44,9 +47,9 @@
                         Endorse User <i class="fa fa-check-circle" aria-hidden="true"></i></a>
                 </div>
             </div>
-            <hr class="featurette-divider">
         </div>
         </div>
+    <hr class="featurette-divider">
     <div class="container pull-left">
         <h3 class="profile-info-elements"><b>Introduction</b></h3>
         <p class="profile-info-elements">{{model.introduction}}</p>

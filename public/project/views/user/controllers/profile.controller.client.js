@@ -6,7 +6,7 @@
         .module("OverHub")
         .controller("profileController", profileController);
 
-    function profileController($routeParams, $location, userService, paramUser, $route, postService) {
+    function profileController($routeParams, $location, userService, paramUser, $route, postService, overwatchService) {
         var model = this;
 
         //declare functions
@@ -18,13 +18,20 @@
         model.favoriteUser = favoriteUser;
         model.getBlizzProfileData = getBlizzProfileData;
         model.updateUserBlizzData = updateUserBlizzData;
+        model.updateOverwatchProfile = updateOverwatchProfile;
 
         function init() {
             model.paramUser = paramUser;
+            model.playerPortrait = "ohi-bastion";
             model.displayName = paramUser.nickname ? paramUser.nickname : paramUser.username;
             if(paramUser.blizzard) {
-                model.isAuthenticatedUser = true;
                 model.battletag = paramUser.blizzard.battletag;
+                if(paramUser.overwatchProfile) {
+                    model.isAuthenticatedUser = true;
+                    model.playerPortrait = model.paramUser.overwatchProfile.heroPortraitSource;
+                } else {
+                    updateOverwatchProfile(paramUser.blizzard.battletag);
+                }
             } else {
                 model.isAuthenticatedUser = false;
             }
@@ -96,11 +103,38 @@
         }
         init();
 
-        function checkFaved() {
+        function updateOverwatchProfile(battletag) {
+            var owProfile = overwatchService.getTemporaryResult(battletag);
+            var tempUser = model.paramUser;
+            tempUser.overwatchProfile = owProfile;
 
+            console.log("This is what I am sending (ID): " + tempUser._id);
+            console.log(tempUser);
+
+            userService
+                    .updateUser(tempUser)
+                    .then(function (response) {
+                        $route.reload();
+                    }, function (err) {
+                        console.log("bug here===");
+                        console.log(err);
+                    });
+                // .then(function (response) {
+                //     var owProfile = response;
+                //     var TempUser = {
+                //         overwatchProfile: owProfile
+                //     };
+                //
+                //     userService
+                //         .updateUser(model.paramUser._id, TempUser)
+                //         .then(function (response) {
+                //             $route.reload();
+                //             alert("Most recent user data updated!");
+                //         }, function (err) {
+                //             alert(err.message);
+                //         });
+                // });
         }
-
-        checkFaved();
 
         function logout() {
             userService
