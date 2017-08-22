@@ -30,7 +30,8 @@ var blizzardAuthConfig = {
     clientID: process.env.OVERHUB_BLIZZARD_AUTH_CLIENT_ID,
     clientSecret: process.env.OVERHUB_BLIZZARD_AUTH_CLIENT_SECRET,
     callbackURL: process.env.OVERHUB_BLIZZARD_AUTH_CALLBACK_URL,
-    region: "us"
+    region: "us",
+    passReqToCallback: true
 };
 
 passport.use('bnet-auth', new BnetStrategy(blizzardAuthConfig, blizzardAuthenticateProfileStrategy));
@@ -41,7 +42,7 @@ passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 
 //new strategy for authentication ONLY
-function blizzardAuthenticateProfileStrategy(token, refreshToken, profile, done) {
+function blizzardAuthenticateProfileStrategy(req, token, refreshToken, profile, done) {
     userModel
         .findUserByBlizzardId(profile.id)
         .then(function (user) {

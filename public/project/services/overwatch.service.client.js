@@ -110,6 +110,8 @@
                 tierImageSource: "http://overlog.gg/img/rankIcon/Master.png",
                 heroPortraitSource: "ohi-genji"
             };
+
+            return blizzardObj;
         }
     }
 
